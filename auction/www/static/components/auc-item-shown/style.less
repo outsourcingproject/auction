@@ -1,0 +1,160 @@
+@color-main: #6c000a;
+@dark-yellow: #91793f;
+.header {
+  margin-right: .6rem;
+  .nav {
+    padding: .2rem 0;
+    span { color: @dark-yellow; }
+  }
+}
+.auc-item-shown {
+  margin-right: .6rem;
+  .main {
+    border-top: 1px dotted @dark-yellow;
+    border-bottom: 1px dotted @dark-yellow;
+    padding: 1rem 0;
+    min-height: 27rem;
+
+    .snapshot {
+      float: left;
+      display: inline-block;
+      padding: 0 3rem;
+      .prev-main {
+        display: block;
+        position: relative;
+        margin: .1rem;
+        img { width: 18.4rem; height: 18.4rem; }
+        .plus {
+          position: absolute;
+          bottom: 0; right: 0;
+          width: 6.3rem; height: 6.3rem;
+          line-height: 6.3rem;
+          text-align: center;
+          font-size: 2rem;
+          color: white;
+          background: rgba(255, 255, 255, .4);
+        }
+      }
+      .gallery {
+        position: relative;
+        .nav {
+          display: inline-block;
+          position: absolute;
+          top: .1rem;
+          height: 6rem; width: .8rem;
+          background: #e6e6e6;
+          line-height: 6rem;
+          text-align: center;
+          border: 1px solid #8e8e8e;
+          cursor: pointer;
+          &.left { left: -1rem; }
+          &.right { right: -1rem; }
+        }
+        .prev-tiny {
+          display: inline-block;
+          margin: .1rem;
+          cursor: pointer;
+          img { width: 6rem; height: 6rem; }
+        }
+      }
+    }
+    .info {
+      float: left;
+      .name {
+        display: inline-block;
+        color: @dark-yellow;
+        font-size: large;
+      }
+      .stars { display: inline-block; }
+      .eye {
+        display: inline-block;
+        &:before {
+          content: url('/static/images/eye.png');
+          margin-right: .3rem;
+        }
+      }
+
+      .watch, .watching {
+        display: inline-block;
+        margin-left: .5rem;
+        cursor: pointer;
+        &:before {
+          content: url('/static/images/heart_empty.png');
+          margin-right: .3rem;
+        }
+      }
+      .watching:before { content: url('/static/images/heart_full.png'); }
+      .text { margin-top: 1rem; }
+      .table {
+        display: inline-block;
+        padding: 2rem 0 1rem 0;
+        border-bottom: 1px dotted @dark-yellow;
+        font-size: .8rem;
+        table, tr, td { border: 1px solid #7c7c7c; }
+        table {
+          thead {
+            background: #666666;
+            color: white;
+            .red { background: @color-main; }
+          }
+          tbody .red { color: @color-main; }
+          td { padding: .1rem 3.9rem; }
+        }
+      }
+      .form {
+        button {
+          border: none;
+          background: #666666;
+          color: white;
+          &.submit {
+            background: @color-main;
+            width: 5rem;
+          }
+        }
+      }
+    }
+  }
+  .detail {
+    padding: 1rem 0;
+    .tabs {
+      padding: 0;
+      li {
+        display: inline-block;
+        color: white;
+        cursor: pointer;
+        background: #666666;
+        padding: .2rem 1rem;
+        margin-right: .4rem;
+        &.active { background: @color-main; }
+      }
+    }
+    .boxes {
+      overflow: hidden;
+      .box {
+        display: inline-block;
+        border: 1px solid #8e8e8e;
+        height: 24rem;
+        .box-header {
+          background: #666666;
+          color: white;
+          padding-left: .5rem;
+          min-height: 1rem;
+        }
+        .box-body {
+          padding: 2rem 1rem;
+        }
+        &.left {
+          float: left;
+          width: 65%;
+        }
+        &.right {
+          float: right;
+          width: 30%;
+          .box-body {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

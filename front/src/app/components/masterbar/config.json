@@ -1,0 +1,18 @@
+{
+  "header": [
+    { "link": ["Todo"], "text": "登陆/注册" },
+    { "link": ["Todo"], "text": "我的宝贝" },
+    { "link": ["Todo"], "text": "退出" },
+    { "link": ["Todo"], "text": "订单中心" },
+    { "link": ["Todo"], "text": "竞拍中心" },
+    { "link": ["Todo"], "text": "消息" },
+    { "link": ["Todo"], "text": "微信微博" }
+  ],
+  "main": [
+    { "link": ["Home"], "text": "首页" },
+    { "link": ["Auctioning"], "text": "正在拍卖" },
+    { "link": ["Todo"], "text": "结束拍卖" },
+    { "link": ["Todo"], "text": "网站简介" },
+    { "link": ["Todo"], "text": "用户反馈" }
+  ]
+}

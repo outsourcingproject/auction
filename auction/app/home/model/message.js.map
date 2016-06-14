@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\home\\model\\message.js"
+    ],
+    "names": [],
+    "mappings": ";;;;;;;;;;;;;;;;AAAA;;;;;;IACqB;;;;;;;;;;;;gJACnB,SAAS;AACP,YAAM;;AAEJ,cAAM,MAAN;AACA,iBAAS,IAAT;OAHF;AAKA,UAAI;;AAEF,cAAM,MAAN;AACA,iBAAS,IAAT;OAHF;AAKA,eAAS;AACP,cAAM,MAAN;AACA,iBAAS,IAAT;AACA,iBAAS,EAAT;OAHF;;AAMA,YAAM;AACJ,cAAM,MAAN;AACA,iBAAS,IAAT;AACA,iBAAS,CAAT;OAHF;AAKA,gBAAU;AACR,cAAM,IAAN;AACA,kBAAU,IAAV;AACA,iBAAS;iBAAI,IAAI,IAAJ;SAAJ;OAHX;AAKA,gBAAU;AACR,cAAM,IAAN;AACA,kBAAU,IAAV;AACA,iBAAS;iBAAI,IAAI,IAAJ;SAAJ;OAHX;;;;SA5BiB",
+    "file": "..\\..\\..\\src\\home\\model\\message.js",
+    "sourcesContent": [
+        "import Base from './base.js'\r\nexport default class Message extends Base {\r\n  schema = {\r\n    from: {\r\n      //ref to collection user.username\r\n      type: String,\r\n      require: true\r\n    },\r\n    to: {\r\n      //ref to collection user.username\r\n      type: String,\r\n      require: true\r\n    },\r\n    content: {\r\n      type: String,\r\n      require: true,\r\n      default: ''\r\n    },\r\n    //已读？1:0\r\n    read: {\r\n      type: Number,\r\n      require: true,\r\n      default: 0\r\n    },\r\n    createAt: {\r\n      type: Date,\r\n      required: true,\r\n      default: ()=>new Date()\r\n    },\r\n    updateAt: {\r\n      type: Date,\r\n      required: true,\r\n      default: ()=>new Date()\r\n    }\r\n  }\r\n}"
+    ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "path": "/",
+    "redirectTo": ["Main"]
+  },
+  {
+    "path": "/main",
+    "as": "Main",
+    "component": "main",
+    "privilege": 0
+  },
+  {
+    "path": "/login",
+    "as": "Login",
+    "component": "login-form",
+    "privilege": 0
+  },
+  {
+    "path": "/signup",
+    "as": "Signup",
+    "component": "signup-form",
+    "privilege": 0
+  }
+]

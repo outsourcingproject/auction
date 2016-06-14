@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\rest\\controller\\authority.js"
+    ],
+    "names": [],
+    "mappings": ";;;;;;;;;;;;;;;;AAAA;;;;;;IAEqB",
+    "file": "..\\..\\..\\src\\rest\\controller\\authority.js",
+    "sourcesContent": [
+        "import Base from \"./base\";\r\n\r\nexport default class Authority extends Base {\r\n\r\n}"
+    ]
+}

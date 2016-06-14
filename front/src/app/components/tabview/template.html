@@ -1,0 +1,18 @@
+<div class="tabview">
+    <div class="header">
+        <div *ngFor="let tab of tabs; let idx = index" class="tab"
+             [class.onshow]="idx === curTab"
+             (click)="onTabClick(idx)">{{tab}}</div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <img src={{details[curTab][curDetail].image}}>
+        </div>
+        <ul class="right">
+            <li *ngFor="let detail of details[curTab]; let idx = index">
+                <a [routerLink]="detail.link" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
+                {{detail.date}}
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<aside class="sidebar">
+    <div *ngFor="let item of data; let idx = index" (mouseover)="onMouseOver(idx)">
+        <div class="title" [style.background]="item.image">{{idx + 1}}F&nbsp;{{item.title}}</div>
+        <div class="content" [class.show]="curIdx === idx">
+            <a [routerLink]="item.link">{{item.content}}</a>
+        </div>
+    </div>
+</aside>

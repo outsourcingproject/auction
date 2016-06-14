@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\home\\model\\base.js"
+    ],
+    "names": [],
+    "mappings": ";;;;;;;;;;;;;;;;;;IAAqB;;;;;;;;iBACnB,qCAAa,MAAM;AACjB,SAAK,QAAL,GAAgB,IAAI,IAAJ,EAAhB,CADiB;AAEjB,WAAO,IAAP,CAFiB;;;AADA,iBAMnB,+BAAU,MAAM;AACd,SAAK,QAAL,GAAgB,IAAI,IAAJ,EAAhB,CADc;AAEd,SAAK,QAAL,GAAgB,IAAI,IAAJ,EAAhB,CAFc;AAGd,WAAO,IAAP,CAHc;;;SANG;EAAa,MAAM,KAAN,CAAY,KAAZ;;kBAAb",
+    "file": "..\\..\\..\\src\\home\\model\\base.js",
+    "sourcesContent": [
+        "export default class Base extends think.model.mongo {\r\n  beforeUpdate(data) {\r\n    data.updateAt = new Date();\r\n    return data;\r\n  }\r\n\r\n  beforeAdd(data) {\r\n    data.updateAt = new Date();\r\n    data.createAt = new Date();\r\n    return data;\r\n  }\r\n\r\n}"
+    ]
+}

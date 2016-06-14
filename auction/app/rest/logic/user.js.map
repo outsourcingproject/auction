@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\rest\\logic\\user.js"
+    ],
+    "names": [],
+    "mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;IAMqB;;;;;;;;;EAAa,MAAM,KAAN,CAAY,IAAZ;;kBAAb",
+    "file": "..\\..\\..\\src\\rest\\logic\\user.js",
+    "sourcesContent": [
+        "'use strict';\r\n/**\r\n * logic\r\n * @param  {} []\r\n * @return {}     []\r\n */\r\nexport default class User extends think.logic.base {\r\n\r\n}"
+    ]
+}

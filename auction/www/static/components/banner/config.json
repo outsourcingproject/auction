@@ -1,0 +1,5 @@
+[
+  { "link": ["Todo"], "image": "/static/images/banner1.png" },
+  { "link": ["Todo"], "image": "/static/images/banner2.png" },
+  { "link": ["Todo"], "image": "/static/images/banner3.png" }
+]

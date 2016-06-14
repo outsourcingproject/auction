@@ -1,0 +1,11 @@
+<div class="banner container">
+    <ul class="content">
+        <li *ngFor="#slide of slides; #idx=index" [class.onshow]="idx === showIdx">
+            <a [routerLink]="slide.link"><img src={{slide.image}}></a>
+        </li>
+    </ul>
+    <ul class="monitor">
+        <li *ngFor="#slide of slides; #idx=index" [class.onshow]="idx === showIdx"
+            (click)="onMonitorClick(idx)"></li>
+    </ul>
+</div>

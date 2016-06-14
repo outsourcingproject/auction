@@ -1,0 +1,13 @@
+<div class="auc-item-detailed">
+    <div class="image">
+        <img src={{image}}>
+    </div>
+    <div class="detail">
+        <h4><a [routerLink]="link">{{name}}</a></h4>
+        <p class="price">¥ {{price}}</p>
+        <p>下线时间: {{ end_time | date:"MM/dd HH:mm" }}</p>
+        <div class="eye">{{watch_cnt}}人围观</div>
+        <div *ngIf="!watching" class="watch" (click)="watchIt(true)">点击关注</div>
+        <div *ngIf="watching" class="watching" (click)="watchIt(false)">正在关注</div>
+    </div>
+</div>

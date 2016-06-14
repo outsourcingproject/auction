@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\common\\config\\config.js"
+    ],
+    "names": [],
+    "mappings": "AAAA;;;;;;kBAIe;;AAEX,UAAM,MAAN;;AAEA,UAAM,WAAN;;AAEA,cAAU,OAAV;;AAEA,qBAAiB,OAAjB;;AAEA,aAAS,GAAT;;AAEA,cAAU,IAAV;;AAEA,iBAAa,IAAb;AACA,oBAAgB,MAAhB;AACA,wBAAoB,MAApB;AACA,oBAAgB,OAAhB",
+    "file": "..\\..\\..\\src\\common\\config\\config.js",
+    "sourcesContent": [
+        "'use strict';\r\n/**\r\n * config\r\n */\r\nexport default {\r\n    //服务监听的端口\r\n    port: '8360',\r\n    //服务监听的 host\r\n    host: '127.0.0.1',\r\n    //项目编码\r\n    encoding: \"utf-8\",\r\n    //pathname 去除的后缀，路由解析中使用\r\n    pathname_suffix: \".html\",\r\n    //请求超时时间\r\n    timeout: 120,\r\n    //是否开启自定义路由\r\n    route_on: true,\r\n    // 是否处理静态资源请求， porxy_on 开启下可以关闭该配置\r\n    resource_on: true,\r\n    default_module: \"home\", //默认模块\r\n    default_controller: \"main\",  //默认的控制器\r\n    default_action: \"index\", //默认的 Action\r\n};"
+    ]
+}

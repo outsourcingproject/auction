@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\rest\\controller\\bid.js"
+    ],
+    "names": [],
+    "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;IAEqB;;;;;;;;gBAEb;;;;;;AACJ,mBAAK,aAAL,GAAqB,MAAM,KAAN,CAAY,KAAZ,EAAmB,IAAnB,EAAyB,MAAzB,CAArB;;qBACqB,KAAK,aAAL,CAAmB,KAAnB;;;AAArB,mBAAK,OAAL;;qBAEQ,MAAM,KAAN,CAAY,QAAZ,EAAsB,IAAtB,EAA4B,OAA5B,EAAqC,GAArC,CAAyC,eAAzC;;;;;;;;;;;qBACG,MAAM,KAAN,CAAY,QAAZ,EAAsB,IAAtB,EAA4B,OAA5B,EAAqC,GAArC,CAAyC,mBAAzC;;;;;;AAFX,mBAAK,SAAL;;;;;;;;;;;;;;;;;SALiB",
+    "file": "..\\..\\..\\src\\rest\\controller\\bid.js",
+    "sourcesContent": [
+        "import Base from './base';\r\n\r\nexport default class Bid extends Base {\r\n  \r\n  async __before() {\r\n    this.modelInstance = think.model('bid', null, 'home');\r\n    this.modelPk = await this.modelInstance.getPk();\r\n    this.pageCount =\r\n      await think.model('config', null, 'admin').get('pageCount.bid')\r\n      || await think.model('config', null, 'admin').get('pageCount.default');\r\n\r\n  }\r\n}"
+    ]
+}

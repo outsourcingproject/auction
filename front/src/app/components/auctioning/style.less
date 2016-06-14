@@ -1,0 +1,88 @@
+@color-main: #6c000a;
+@color-default: #959595;
+@page-idx-border: #947c44;
+@page-idx-active: #91793f;
+.header { margin-right: .6rem; }
+.split {
+  margin: 1rem 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+
+  @media all and (min-width: 601px) {
+    .split-line {
+      display: inline-block;
+      position: relative;
+      width: 16.5rem;
+      &.left .boxes { right: 0; }
+      &.right .boxes { left: -.7rem; }
+      hr {
+        width: 15rem;
+        height: .1rem;
+        background: @color-main;
+      }
+      .boxes {
+        position: absolute;
+        top: 32%;
+        .box {
+          position: absolute;
+          top: 0; left: 0;
+          display: inline-block;
+          width: .75rem;
+          height: .75rem;
+          border: .1rem solid @color-main;
+          transform: rotate(45deg);
+          &:nth-child(1) { left: -.6rem; }
+          &:nth-child(3) { left: .6rem; }
+        }
+      }
+    }
+  }
+  @media all and(max-width: 600px) {
+    .split-line { display: none; }
+  }
+  .split-text {
+    display: inline-block;
+    margin: 0 2rem;
+    color: @color-default;
+    font-size: .6rem;
+    h4 {
+      color: @color-main;
+      font-size: .9rem;
+    }
+  }
+}
+.filter {
+  text-align: center;
+  font-size: .7rem;
+  ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    li {
+      display: inline-block;
+      list-style-type: none;
+      padding: .1rem .5rem;
+      margin: .5rem .25rem;
+      cursor: pointer;
+      &.selected { background: @color-main; color: white; }
+    }
+  }
+}
+.items {
+  border-bottom: 1px dotted @page-idx-border;
+}
+.page-idx {
+  float: right;
+  padding-top: .5rem;
+  margin-bottom: 2rem;
+  div { display: inline-block; }
+  .page-idx-box {
+    margin: .2rem;
+    padding: .2rem .8rem;
+    color: white;
+    cursor: pointer;
+    background: @color-main;
+    &.active { background: @page-idx-active; }
+  }
+}

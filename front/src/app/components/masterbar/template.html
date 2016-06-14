@@ -1,0 +1,32 @@
+<header>
+    <nav>
+        <div class="container">
+            <ul class="pull-left">
+                <li><a [routerLink]="['Todo']">收藏我们</a></li>
+                <li>在线客服: 400-442-6952</li>
+            </ul>
+            <ul class="pull-right">
+                <li *ngFor="let menu of menus.header">
+                    <a [routerLink]="menu.link">{{menu.text}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="title container">
+        <img src="/static/images/logo.png" width="300px" alt="logo">
+        <div class="pull-right">
+            <div class="search-bar-container">
+                <div class="search-bar pull-right">
+                    <input id="search" type="text" #keywords>
+                    <label for="search" (click)="search(keywords.value)"><div class="search-icon"></div></label>
+                </div>
+            </div>
+            <ul class="main-menu">
+                <li *ngFor="let menu of menus.main">
+                    <a [routerLink]="menu.link">{{menu.text}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</header>

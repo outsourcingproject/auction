@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\rest\\controller\\user.js"
+    ],
+    "names": [],
+    "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;;;;;;IAEqB;;;;;;;;iBAEb;;;;;;AACJ,mBAAK,aAAL,GAAqB,MAAM,KAAN,CAAY,MAAZ,EAAoB,IAApB,EAA0B,MAA1B,CAArB;;qBACqB,KAAK,aAAL,CAAmB,KAAnB;;;AAArB,mBAAK,OAAL;;qBAEQ,MAAM,KAAN,CAAY,QAAZ,EAAsB,IAAtB,EAA4B,OAA5B,EAAqC,GAArC,CAAyC,gBAAzC;;;;;;;;;;;qBACG,MAAM,KAAN,CAAY,QAAZ,EAAsB,IAAtB,EAA4B,OAA5B,EAAqC,GAArC,CAAyC,mBAAzC;;;;;;AAFX,mBAAK,SAAL;;;;;;;;;;;;;;;;;SALiB",
+    "file": "..\\..\\..\\src\\rest\\controller\\user.js",
+    "sourcesContent": [
+        "import Base from './base.js';\r\n\r\nexport default class User extends Base {\r\n\r\n  async __before() {\r\n    this.modelInstance = think.model('user', null, 'home');\r\n    this.modelPk = await this.modelInstance.getPk();\r\n    this.pageCount =\r\n      await think.model('config', null, 'admin').get('pageCount.user')\r\n      || await think.model('config', null, 'admin').get('pageCount.default');\r\n\r\n  }\r\n}"
+    ]
+}

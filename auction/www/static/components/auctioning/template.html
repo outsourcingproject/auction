@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="header">
+        <img src={{header}} width="100%">
+    </div>
+    <div class="split">
+        <div class="split-line left">
+            <hr/>
+            <div class="boxes">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+        <div class="split-text">
+            <h4>专场详情</h4>
+            PRODUCTION DETAILS
+        </div>
+        <div class="split-line right">
+            <div class="boxes">
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+    <div class="filters">
+        <div *ngFor="#filter of filters; #filterIdx=index" class="filter">
+            <span>{{filter.name}}:</span>
+            <ul>
+                <li *ngFor="#list of filter.lists; #listIdx=index"
+                    [class.selected]="filterSelected[filterIdx] === listIdx"
+                    (click)="onFilterClick(filterIdx, listIdx)">{{list}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="items">
+        <auc-item-detailed *ngFor="#item of items" [data]="item"></auc-item-detailed>
+    </div>
+    <div class="page-idx">
+        <div class="page-idx-box" (click)="prev()"><<</div>
+        <div *ngIf="curPageIdx > 3">...</div>
+        <div *ngFor="#idx of curPageRange" class="page-idx-box" [class.active]="idx === curPageIdx"
+             (click)="pageIdxClick(idx)">{{idx}}</div>
+        <div *ngIf="end === 0">...</div>
+        <div class="page-idx-box" (click)="next()">>></div>
+    </div>
+</div>
