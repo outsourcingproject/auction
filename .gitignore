@@ -1,5 +1,5 @@
 .idea
 *.iml
-/app
+auction/app
 node_modules
 *.log
