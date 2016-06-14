@@ -1,5 +1,5 @@
 .blockview {
-  @color-default: #959595;
+  $color-default: #959595;
   display: inline-block;
   width: 12.5rem;
   margin: 0 .5rem 1.5rem 1rem;
@@ -11,6 +11,6 @@
   }
   .content {
     font-size: .6rem;
-    color: @color-default;
+    color: $color-default;
   }
 }

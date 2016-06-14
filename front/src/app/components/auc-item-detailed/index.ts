@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 let debug = require('debug')('ng:auc-item-detailed');
 let template = require('./template.html');
-let style = require('./style.less');
+let style = require('./style.scss');
 
 @Component({
     selector: 'auc-item-detailed',
@@ -16,7 +16,7 @@ let style = require('./style.less');
     inputs: ['data'],
     directives: []
 })
-export default class AucItemDetailed implements OnInit {
+export class AucItemDetailed implements OnInit {
     @Input() public data;
 
     public link;

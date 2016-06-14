@@ -9,5 +9,5 @@ import {Component} from '@angular/core';
   template: '<h1>TODO</h1>',
   styles: [`h1 { text-align: center; color: #f08f13; }`]
 })
-export default class Todo {
+export class Todo {
 }

@@ -1,8 +1,8 @@
 .tabview {
   margin: 1rem;
   display: inline-block;
-  @color-default: #959595;
-  @color-main: #6c000a;
+  $color-default: #959595;
+  $color-main: #6c000a;
 
   .header {
     margin-bottom: 1rem;
@@ -11,16 +11,16 @@
       width: 5rem;
       height: 2rem;
       margin-right: 1rem;
-      border: 1px solid @color-default;
-      color: @color-default;
+      border: 1px solid $color-default;
+      color: $color-default;
       font-size: .8rem;
       text-align: center;
       line-height: 2rem;
       cursor: pointer;
       transition: all 200ms ease-in-out;
       &.onshow, &:hover {
-        border-color: @color-main;
-        color: @color-main;
+        border-color: $color-main;
+        color: $color-main;
       }
     }
   }
@@ -36,8 +36,8 @@
       padding: 0;
       li {
         list-style-type: none;
-        border-bottom: 1px dashed @color-default;
-        color: @color-default;
+        border-bottom: 1px dashed $color-default;
+        color: $color-default;
         height: 1.35rem;
         font-size: .7rem;
         &:before {
@@ -46,12 +46,12 @@
           margin-right: .25rem;
         }
         a {
-          color: @color-default;
+          color: $color-default;
           margin-right: 1.5rem;
           line-height: 1.35rem;
           text-decoration: none;
           transition: all 200ms ease-in-out;
-          &:hover { color: @color-main; }
+          &:hover { color: $color-main; }
         }
       }
     }

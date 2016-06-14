@@ -18,7 +18,7 @@ let debug = require('debug')('ng:signup-form');
   template: template,
   directives: [FORM_DIRECTIVES]
 })
-export default class SignupForm {
+export class SignupForm {
   public user;
 
   constructor(@Inject(Router)

@@ -6,7 +6,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 let debug = require('debug')('ng:tabview');
 let template = require('./template.html');
-let style = require('./style.less');
+let style = require('./style.scss');
 
 @Component({
   selector: 'tabview',
@@ -16,7 +16,7 @@ let style = require('./style.less');
   inputs: ['data'],
   //lifecycle: [OnInit]
 })
-export default class Tabview implements OnInit {
+export class Tabview implements OnInit {
   @Input()
   public data;
   public tabs;

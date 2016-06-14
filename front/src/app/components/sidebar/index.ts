@@ -6,7 +6,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 let debug = require('debug')('ng:sidebar');
 let template = require('./template.html');
-let style = require('./style.less');
+let style = require('./style.scss');
 
 @Component({
   selector: 'sidebar',
@@ -15,7 +15,7 @@ let style = require('./style.less');
   inputs: ['data'],
   directives: []
 })
-export default class Sidebar implements OnInit {
+export class Sidebar implements OnInit {
   @Input()
   public data;
   public curIdx;

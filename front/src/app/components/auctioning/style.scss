@@ -1,7 +1,7 @@
-@color-main: #6c000a;
-@color-default: #959595;
-@page-idx-border: #947c44;
-@page-idx-active: #91793f;
+$color-main: #6c000a;
+$color-default: #959595;
+$page-idx-border: #947c44;
+$page-idx-active: #91793f;
 .header { margin-right: .6rem; }
 .split {
   margin: 1rem 0;
@@ -19,7 +19,7 @@
       hr {
         width: 15rem;
         height: .1rem;
-        background: @color-main;
+        background: $color-main;
       }
       .boxes {
         position: absolute;
@@ -30,7 +30,7 @@
           display: inline-block;
           width: .75rem;
           height: .75rem;
-          border: .1rem solid @color-main;
+          border: .1rem solid $color-main;
           transform: rotate(45deg);
           &:nth-child(1) { left: -.6rem; }
           &:nth-child(3) { left: .6rem; }
@@ -44,10 +44,10 @@
   .split-text {
     display: inline-block;
     margin: 0 2rem;
-    color: @color-default;
+    color: $color-default;
     font-size: .6rem;
     h4 {
-      color: @color-main;
+      color: $color-main;
       font-size: .9rem;
     }
   }
@@ -65,12 +65,12 @@
       padding: .1rem .5rem;
       margin: .5rem .25rem;
       cursor: pointer;
-      &.selected { background: @color-main; color: white; }
+      &.selected { background: $color-main; color: white; }
     }
   }
 }
 .items {
-  border-bottom: 1px dotted @page-idx-border;
+  border-bottom: 1px dotted $page-idx-border;
 }
 .page-idx {
   float: right;
@@ -82,7 +82,7 @@
     padding: .2rem .8rem;
     color: white;
     cursor: pointer;
-    background: @color-main;
-    &.active { background: @page-idx-active; }
+    background: $color-main;
+    &.active { background: $page-idx-active; }
   }
 }

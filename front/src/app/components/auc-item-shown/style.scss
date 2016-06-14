@@ -1,17 +1,17 @@
-@color-main: #6c000a;
-@dark-yellow: #91793f;
+$color-main: #6c000a;
+$dark-yellow: #91793f;
 .header {
   margin-right: .6rem;
   .nav {
     padding: .2rem 0;
-    span { color: @dark-yellow; }
+    span { color: $dark-yellow; }
   }
 }
 .auc-item-shown {
   margin-right: .6rem;
   .main {
-    border-top: 1px dotted @dark-yellow;
-    border-bottom: 1px dotted @dark-yellow;
+    border-top: 1px dotted $dark-yellow;
+    border-bottom: 1px dotted $dark-yellow;
     padding: 1rem 0;
     min-height: 27rem;
 
@@ -62,14 +62,14 @@
       float: left;
       .name {
         display: inline-block;
-        color: @dark-yellow;
+        color: $dark-yellow;
         font-size: large;
       }
       .stars { display: inline-block; }
       .eye {
         display: inline-block;
         &:before {
-          content: url('/static/images/eye.png');
+          content: url('../../../assets/img/eye.png');
           margin-right: .3rem;
         }
       }
@@ -79,25 +79,25 @@
         margin-left: .5rem;
         cursor: pointer;
         &:before {
-          content: url('/static/images/heart_empty.png');
+          content: url('../../../assets/img/heart_empty.png');
           margin-right: .3rem;
         }
       }
-      .watching:before { content: url('/static/images/heart_full.png'); }
+      .watching:before { content: url('../../../assets/img/heart_full.png'); }
       .text { margin-top: 1rem; }
       .table {
         display: inline-block;
         padding: 2rem 0 1rem 0;
-        border-bottom: 1px dotted @dark-yellow;
+        border-bottom: 1px dotted $dark-yellow;
         font-size: .8rem;
         table, tr, td { border: 1px solid #7c7c7c; }
         table {
           thead {
             background: #666666;
             color: white;
-            .red { background: @color-main; }
+            .red { background: $color-main; }
           }
-          tbody .red { color: @color-main; }
+          tbody .red { color: $color-main; }
           td { padding: .1rem 3.9rem; }
         }
       }
@@ -107,7 +107,7 @@
           background: #666666;
           color: white;
           &.submit {
-            background: @color-main;
+            background: $color-main;
             width: 5rem;
           }
         }
@@ -125,7 +125,7 @@
         background: #666666;
         padding: .2rem 1rem;
         margin-right: .4rem;
-        &.active { background: @color-main; }
+        &.active { background: $color-main; }
       }
     }
     .boxes {

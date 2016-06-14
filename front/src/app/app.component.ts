@@ -1,77 +1,40 @@
 /*
  * Angular 2 decorators and services
  */
-import { Component, ViewEncapsulation } from '@angular/core';
-import { RouteConfig, Router } from '@angular/router-deprecated';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig, Router} from '@angular/router-deprecated';
 
-import { AppState } from './app.service';
-import { Todo } from './components/todo';
-import { RouterActive } from './directives/router-active';
+import {Http} from '@angular/http';
+//import LoggedInRouterOutlet from '../login-form/LoggedInRouterOutlet';
+import {Todo} from './components/todo';
+import {RouterActive} from './directives/router-active';
 
-/*
- * App Component
- * Top Level Component
- */
+import {MasterBar} from './components/masterbar';
+import {Home} from './components/home';
+import {Auctioning} from './components/auctioning';
+import {AucItemShown} from './components/auc-item-shown';
+
+let debug = require('debug')('ng:app');
+let template = require('./template.html');
+let style = require('./style.scss');
+
+@RouteConfig([
+  {path: '/home', as: 'Home', component: Home, useAsDefault: true},
+  {path: '/auc_item/:id', as: 'AucItem', component: AucItemShown},
+  {path: '/auctioning', as: 'Auctioning', component: Auctioning},
+  {path: '/todo', as: 'Todo', component: Todo}
+])
 @Component({
   selector: 'app',
-  pipes: [ ],
-  providers: [ ],
-  directives: [ RouterActive ],
-  encapsulation: ViewEncapsulation.None,
-  styles: [
-    require('./app.css')
-  ],
-  template: `
-    <span router-active>
-      <button [routerLink]=" ['Index'] ">
-        Index
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['Home'] ">
-        Home
-      </button>
-    </span>
-    <span router-active>
-      <button [routerLink]=" ['About'] ">
-        About
-      </button>
-    </span>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-  `
+  template: template,
+  styles: [style],
+  directives: [MasterBar, /*LoggedInRouterOutlet*/]
 })
-@RouteConfig([
-  { path: '/',      name: 'Index', component: Todo, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Todo },
-  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
-  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
-])
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
-  loading = false;
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
-
-  constructor(
-    public appState: AppState) {
-
+  constructor(private _router:Router, private _http:Http) {
+    debug(this._router);
+    debug(this._http);
   }
 
-  ngOnInit() {
-    console.log('Initial App State', this.appState.state);
-  }
-
+  // TODO
 }
-
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */

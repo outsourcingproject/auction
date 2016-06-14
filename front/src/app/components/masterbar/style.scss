@@ -1,8 +1,8 @@
 header {
-  @color-main: #6c000a;
+  $color-main: #6c000a;
   width: 100%;
   nav {
-    background: @color-main;
+    background: $color-main;
     color: white;
     ul {
       margin: 0;
@@ -39,12 +39,12 @@ header {
         position: relative;
         width: 15rem;
         height: 1.9rem;
-        border: .1rem solid @color-main;
+        border: .1rem solid $color-main;
         input { height: 100%; width: 12rem; }
         label {
           position: absolute;
           height: 100%; width: 3rem;
-          background: @color-main;
+          background: $color-main;
           text-align: center;
           cursor: pointer;
           .search-icon:before {
@@ -70,7 +70,7 @@ header {
           transition: all 100ms ease-in-out;
           font-size: .8rem;
           &:hover, &.router-link-active {
-            background: @color-main;
+            background: $color-main;
             color: white;
           }
         }

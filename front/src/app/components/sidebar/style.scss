@@ -1,10 +1,10 @@
-@color-main: #6c0005;
+$color-main: #6c0005;
 .sidebar {
   display: inline-block;
   margin: .5rem;
   width: 10.25rem;
   height: 15.875rem;
-  border: 1px solid @color-main;
+  border: 1px solid $color-main;
   .title {
     height: 2rem;
     background-size: cover !important;

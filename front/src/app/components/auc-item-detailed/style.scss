@@ -1,18 +1,18 @@
-@font-color-default: #626262;
-@font-color-hover: #7c7037;
+$font-color-default: #626262;
+$font-color-hover: #7c7037;
 .auc-item-detailed {
   display: inline-block;
   margin: .5rem;
   .detail {
     cursor: pointer;
     font-size: .8rem;
-    color: @font-color-default;
+    color: $font-color-default;
     transition: color 200ms ease-in-out;
     &:hover {
-      color: @font-color-hover;
-      h4 a, p, div { color: @font-color-hover; }
+      color: $font-color-hover;
+      h4 a, p, div { color: $font-color-hover; }
     }
-    h4 { color: @font-color-default; }
+    h4 { color: $font-color-default; }
     p {
       &.price { color: red; }
     }
@@ -20,7 +20,7 @@
       float: left;
       display: inline-block;
       &:before {
-        content: url('/static/images/eye.png');
+        content: url('../../../assets/img/eye.png');
         margin-right: .3rem;
       }
     }
@@ -29,10 +29,10 @@
       float: right; display: inline-block;
       cursor: pointer;
       &:before {
-        content: url('/static/images/heart_empty.png');
+        content: url('../../../assets/img/heart_empty.png');
         margin-right: .3rem;
       }
     }
-    .watching:before { content: url('/static/images/heart_full.png'); }
+    .watching:before { content: url('../../../assets/img/heart_full.png'); }
   }
 }

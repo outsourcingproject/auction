@@ -177,8 +177,9 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
-      }
-
+      },
+      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
+      { test: /\.(woff2?|ttf|eot|svg|png|fig|bmp|jpg|jpeg)$/, loader: 'url?limit=10000' }
     ]
 
   },

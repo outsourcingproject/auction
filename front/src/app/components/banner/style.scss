@@ -1,5 +1,5 @@
 .banner {
-  @anim-time: 800ms;
+  $anim-time: 800ms;
   position: relative;
   height: 22rem;
   &:hover ul.monitor { opacity: 1; }
@@ -16,10 +16,10 @@
     &.content li {
       position: absolute;
       opacity: 0;
-      transition: opacity @anim-time/2 ease-in-out;
+      transition: opacity $anim-time/2 ease-in-out;
       &.onshow {
         opacity: 1;
-        transition-delay: @anim-time/2;
+        transition-delay: $anim-time/2;
       }
       img { width: 100%; height: 22rem; }
     }
@@ -29,7 +29,7 @@
       width: 100%;
       text-align: center;
       opacity: 0;
-      transition: opacity @anim-time ease-in-out;
+      transition: opacity $anim-time ease-in-out;
       li {
         margin: 0 .5rem;
         width: 1.5rem;
@@ -37,7 +37,7 @@
         border-radius: .25rem;
         background: white;
         cursor: pointer;
-        transition: all @anim-time ease-in-out;
+        transition: all $anim-time ease-in-out;
         &.onshow { background: rgba(255, 255, 255, 0.5); }
       }
     }

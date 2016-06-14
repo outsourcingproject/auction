@@ -8,7 +8,7 @@ let debug = require('debug')('ng:router');
 @Directive({
     selector: 'custom-router-outlet'
 })
-export default class LoggedInRouterOutlet extends RouterOutlet {
+export class LoggedInRouterOutlet extends RouterOutlet {
     private parentRouter:Router;
     private publicRoutes:Object;
 

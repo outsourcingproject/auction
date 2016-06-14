@@ -6,7 +6,7 @@ import { Component, OnInit,Input} from '@angular/core';
 
 let debug = require('debug')('ng:auc-item');
 let template = require('./template.html');
-let style = require('./style.less');
+let style = require('./style.scss');
 
 const STATUS_WILL = 0;
 const STATUS_DOING = 1;
@@ -23,7 +23,7 @@ const STATUS_DONE = 2;
     inputs: ['data'],
     directives: []
 })
-export default class AucItem implements OnInit {
+export class AucItem implements OnInit {
     @Input() public data;
     public link;
     public name;
