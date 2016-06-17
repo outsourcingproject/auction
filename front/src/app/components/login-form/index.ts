@@ -5,13 +5,13 @@
 
 import {Component, Inject,} from '@angular/core';
 import {FORM_DIRECTIVES} from "@angular/common"
-import {Router} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 import {Http, Headers} from '@angular/http';
 
 import User from '../../lib/user';
 
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 let debug = require('debug')('ng:login-form');
 
 @Component({

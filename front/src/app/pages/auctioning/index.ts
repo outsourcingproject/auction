@@ -4,12 +4,12 @@
  */
 import {Component, Inject} from '@angular/core';
 import {Http} from '@angular/http';
-import {AucItemDetailed} from '../auc-item-detailed';
+import {AucItemDetailed} from '../../components/auc-item-detailed';
 
 let debug = require('debug')('ng:auctioning');
 let config = require('./config.json');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 const service = require('./service');
 
 @Component({
@@ -19,7 +19,6 @@ const service = require('./service');
   directives: [AucItemDetailed]
 })
 export class Auctioning {
-  public header;
   public filters;
   public filterSelected;
   public end;
@@ -29,7 +28,7 @@ export class Auctioning {
 
   constructor(@Inject(Http)
               private http) {
-    this.header = config.header;
+    debug(config.header);
     this.filters = config.filters;
 
     this.filterSelected = this.filters.map(() => {

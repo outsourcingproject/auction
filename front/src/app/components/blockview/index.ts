@@ -6,7 +6,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 let debug = require('debug')('ng:blockview');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 
 @Component({
   selector: 'blockview',
@@ -14,7 +14,7 @@ let style = require('./style.scss');
   styles: [style],
   inputs: ['data']
 })
-export class Blockview implements OnInit {
+export class BlockView implements OnInit {
 
   @Input()
   public data;
@@ -23,7 +23,10 @@ export class Blockview implements OnInit {
   public title;
   public content;
 
-  ngOnInit() {
+  constructor(){
+    
+  }
+  public ngOnInit() {
     debug('Load data', this.data);
     this.image = this.data.image;
     this.title = this.data.title;

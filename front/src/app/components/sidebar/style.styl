@@ -1,0 +1,44 @@
+$color-main = #6c0005;
+.sidebar {
+  display: inline-block;
+  margin: .5rem;
+  width: 10.25rem;
+  height: 15.875rem;
+  border: 1px solid $color-main;
+  .group {
+    &:nth-child(2n) {
+      .title {
+        background: url('../../../assets/img/sidebar1.png');
+      }
+    }
+    &:nth-child(2n+1) {
+      .title {
+        background: url('../../../assets/img/sidebar2.png');
+      }
+    }
+    .title {
+      height: 2rem;
+      background-size: cover !important;
+      font-size: .65rem;
+      line-height: 2rem;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+    }
+    .content {
+      position: relative;
+      height: 0;
+      overflow: hidden;
+      transition: height 400ms ease-in-out;
+      &.show {
+        height: 7.875rem;
+      }
+      a {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        color: #756026;
+      }
+    }
+  }
+}

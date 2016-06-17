@@ -6,7 +6,7 @@ import { Component, OnInit,Input} from '@angular/core';
 
 let debug = require('debug')('ng:auc-item');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 
 const STATUS_WILL = 0;
 const STATUS_DOING = 1;

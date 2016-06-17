@@ -33,7 +33,7 @@
     <div class="main">
         <sidebar [data]="sidebarData"></sidebar>
         <div class="exhibition">
-            <auc-item *ngFor="#item of auctionItems" [data]="item"></auc-item>
+            <auc-item *ngFor="let item of auctionItems" [data]="item"></auc-item>
         </div>
     </div>
     <div class="split">
@@ -58,5 +58,5 @@
             <hr/>
         </div>
     </div>
-    <blockview *ngFor="#data of serviceData" [data]="data"></blockview>
+    <blockview *ngFor="let data of serviceData" [data]="data"></blockview>
 </div>

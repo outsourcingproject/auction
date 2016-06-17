@@ -6,7 +6,7 @@ import {Component, OnInit, Input} from '@angular/core';
 
 let debug = require('debug')('ng:sidebar');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 
 @Component({
   selector: 'sidebar',

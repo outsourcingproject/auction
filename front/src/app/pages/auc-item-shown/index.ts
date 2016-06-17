@@ -3,10 +3,11 @@
  * Created by Huxley on 1/10/16.
  */
 import {Component} from '@angular/core';
-import {AucItemDetailed} from '../auc-item-detailed';
+import {AucItemDetailed} from '../../components/auc-item-detailed';
+
 let debug = require('debug')('ng:auc-item-shown');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 const config = require('./config.json');
 
 @Component({

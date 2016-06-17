@@ -3,11 +3,11 @@
  * Created by Huxley on 12/9/15.
  */
 import {Component, Inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 
 let debug = require('debug')('ng:masterbar');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 const menus = require('./config.json');
 
 @Component({

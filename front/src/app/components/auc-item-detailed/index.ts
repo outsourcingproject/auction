@@ -3,11 +3,11 @@
  * Created by Huxley on 12/21/15.
  */
 import { Component, OnInit, Inject,Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router-deprecated';
 
 let debug = require('debug')('ng:auc-item-detailed');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 
 @Component({
     selector: 'auc-item-detailed',

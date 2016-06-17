@@ -10,13 +10,15 @@ import {Todo} from './components/todo';
 import {RouterActive} from './directives/router-active';
 
 import {MasterBar} from './components/masterbar';
-import {Home} from './components/home';
-import {Auctioning} from './components/auctioning';
-import {AucItemShown} from './components/auc-item-shown';
+import {Home} from './pages/home';
+import {Auctioning} from './pages/auctioning';
+import {AucItemShown} from './pages/auc-item-shown';
+import {LoggedInRouterOutlet} from "./components/login-form/LoggedInRouterOutlet";
 
 let debug = require('debug')('ng:app');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
+
 
 @RouteConfig([
   {path: '/home', as: 'Home', component: Home, useAsDefault: true},

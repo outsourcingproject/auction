@@ -54,9 +54,9 @@
     { "link": ["AucItem", { "id": 4 } ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 2, "price": "10000.00" }
   ],
   "service": [
-    { "image": "/static/images/service1.png", "title": "如实描述", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
-    { "image": "/static/images/service2.png", "title": "快速上拍", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
-    { "image": "/static/images/service3.png", "title": "24小时发货", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
-    { "image": "/static/images/service4.png", "title": "诚信服务", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." }
+    { "image": "/assets/img/service1.png", "title": "如实描述", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
+    { "image": "/assets/img/service2.png", "title": "快速上拍", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
+    { "image": "/assets/img/service3.png", "title": "24小时发货", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
+    { "image": "/assets/img/service4.png", "title": "诚信服务", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." }
   ]
 }

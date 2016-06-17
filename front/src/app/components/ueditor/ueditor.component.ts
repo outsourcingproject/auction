@@ -8,7 +8,7 @@ declare var UE:any;
 @Component({
   selector: 'ueditor',
   template: require('./ueditor.html'),
-  styles: [require('./ueditor.css')]
+  styles: [require('./ueditor.styl')]
 })
 export class UEditor implements OnDestroy,OnInit {
 

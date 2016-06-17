@@ -44,7 +44,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#cache
    */
-   //cache: false,
+  //cache: false,
 
   /*
    * The entry point for the bundle
@@ -55,8 +55,8 @@ module.exports = {
   entry: {
 
     'polyfills': './src/polyfills.browser.ts',
-    'vendor':    './src/vendor.browser.ts',
-    'main':      './src/main.browser.ts'
+    'vendor': './src/vendor.browser.ts',
+    'main': './src/main.browser.ts'
 
   },
 
@@ -72,7 +72,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.js', '.json', '.css', '.styl', '.html'],
 
     // Make sure root is src
     root: helpers.root('src'),
@@ -106,7 +106,7 @@ module.exports = {
        *
        * See: https://github.com/wbuchwalter/tslint-loader
        */
-       // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
 
       /*
        * Source map loader support for *.js files
@@ -165,7 +165,7 @@ module.exports = {
        */
       {
         test: /\.css$/,
-        loader: 'raw-loader'
+        loaders: ['css', 'autoprefixer']
       },
 
       /* Raw loader support for *.html
@@ -175,11 +175,12 @@ module.exports = {
        */
       {
         test: /\.html$/,
-        loader: 'raw-loader',
+        loader: 'html',
         exclude: [helpers.root('src/index.html')]
       },
-      { test: /\.scss$/, loaders: ['style', 'css', 'postcss', 'sass'] },
-      { test: /\.(woff2?|ttf|eot|svg|png|fig|bmp|jpg|jpeg)$/, loader: 'url?limit=10000' }
+      {test: /\.styl$/, loaders: ['css-to-string', 'css', 'autoprefixer', 'stylus']},
+      {test: /\.less$/, loaders: ['css-to-string', 'css', 'autoprefixer', 'less']},
+      {test: /\.(woff2?|ttf|eot|svg|png|gif|bmp|jpg|jpeg)$/, loader: 'url?limit=10000'}
     ]
 
   },
@@ -286,6 +287,6 @@ module.exports = {
     module: false,
     clearImmediate: false,
     setImmediate: false
-  }
+  },
 
 };

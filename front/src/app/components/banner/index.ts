@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 
 let debug = require('debug')('ng:banner');
 let template = require('./template.html');
-let style = require('./style.scss');
+let style = require('./style.styl');
 const slides = require('./config.json');
 
 @Component({
