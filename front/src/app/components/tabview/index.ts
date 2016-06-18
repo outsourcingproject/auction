@@ -19,6 +19,9 @@ let style = require('./style.styl');
 export class Tabview implements OnInit {
   @Input()
   public data;
+  @Input()
+  public small:boolean = false;
+
   public tabs;
   public details;
   public curTab;

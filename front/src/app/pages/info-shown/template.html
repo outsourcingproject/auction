@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5">
-      <tabview [data]="leftTabData"></tabview>
-      <tabview [data]="rightTabData"></tabview>
+    <div class="col-md-4">
+      <tabview [data]="leftTabData" [small]="true"></tabview>
+      <tabview [data]="rightTabData" [small]="true"></tabview>
 
     </div>
-    <div class="col-md-7">
+    <div class="col-md-8">
       <h1 class="title">{{title}}</h1>
       <div class="info">
         <span class="time">发布时间:{{createAt| date:'yMdHm'}}</span>

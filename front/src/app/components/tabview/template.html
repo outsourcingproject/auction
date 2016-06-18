@@ -1,4 +1,4 @@
-<div class="tabview">
+<div class="tabview" [class.small]="small">
     <div class="header">
         <div *ngFor="let tab of tabs; let idx = index" class="tab"
              [class.onshow]="idx === curTab"

@@ -1,6 +1,7 @@
 .tabview {
   margin: 1rem;
   display: inline-block;
+  min-width: 288px;
   $color-default = #959595;
   $color-main = #6c000a;
 
@@ -25,10 +26,15 @@
     }
   }
   .content {
+    overflow hidden
+    display flex
+    justify-content space-between
     .left {
       display: inline-block;
       float: left;
-      img { height: 8.1rem; }
+      img {
+        height: 8.1rem;
+      }
     }
     ul.right {
       float: right;
@@ -51,9 +57,26 @@
           line-height: 1.35rem;
           text-decoration: none;
           transition: all 200ms ease-in-out;
-          &:hover { color: $color-main; }
+          &:hover {
+            color: $color-main;
+          }
         }
       }
     }
   }
+  &.small {
+    min-width 243px !important;
+    .content {
+      .left {
+        display none;
+      }
+    }
+    .header {
+      .tab {
+        margin-right: 1px;
+      }
+
+    }
+  }
 }
+

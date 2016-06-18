@@ -40,7 +40,7 @@
     <div class="page-idx">
         <div class="page-idx-box" (click)="prev()"><<</div>
         <div *ngIf="curPageIdx > 3">...</div>
-        <div *ngFor="#idx of curPageRange" class="page-idx-box" [class.active]="idx === curPageIdx"
+        <div *ngFor="let idx of curPageRange" class="page-idx-box" [class.active]="idx === curPageIdx"
              (click)="pageIdxClick(idx)">{{idx}}</div>
         <div *ngIf="end === 0">...</div>
         <div class="page-idx-box" (click)="next()">>></div>

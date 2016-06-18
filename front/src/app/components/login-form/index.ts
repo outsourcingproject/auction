@@ -8,12 +8,14 @@ import {FORM_DIRECTIVES} from "@angular/common"
 import {Router} from '@angular/router-deprecated';
 import {Http, Headers} from '@angular/http';
 
-import User from '../../lib/user';
-
 let template = require('./template.html');
 let style = require('./style.styl');
 let debug = require('debug')('ng:login-form');
 
+class User{
+  public name:string;
+  public password:string;
+}
 @Component({
   selector: 'login-form',
   template: template,
@@ -23,19 +25,17 @@ let debug = require('debug')('ng:login-form');
 export class LoginForm {
   public user:User;
 
-  constructor(@Inject(Router)
-              private router, @Inject(Http)
-              private http) {
+  constructor(private _router:Router,private _http:Http) {
     this.user = new User();
   }
 
   onSubmit() {
     let header = new Headers({'Content-Type': 'application/json'});
-    this.http.post('/auth', JSON.stringify(this.user), {headers: header}).subscribe(res => {
+    this._http.post('/auth', JSON.stringify(this.user), {headers: header}).subscribe(res => {
       let json = res.json();
       if (json) {
         localStorage.setItem('userToken', json.token);
-        this.router.parent.navigateByUrl('/main');
+        this._router.parent.navigateByUrl('/main');
       }
     });
   }
