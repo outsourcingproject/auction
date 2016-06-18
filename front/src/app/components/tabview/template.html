@@ -10,7 +10,7 @@
         </div>
         <ul class="right">
             <li *ngFor="let detail of details[curTab]; let idx = index">
-                <a [routerLink]="detail.link" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
+                <a [routerLink]="['Info',{id:detail.id}]" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
                 {{detail.date}}
             </li>
         </ul>

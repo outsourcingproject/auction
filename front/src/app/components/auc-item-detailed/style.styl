@@ -10,11 +10,15 @@ $font-color-hover = #7c7037;
     transition: color 200ms ease-in-out;
     &:hover {
       color: $font-color-hover;
-      h4 a, p, div { color: $font-color-hover; }
+      h4 a, p, div { color: $font-color-hover }
     }
-    h4 { color: $font-color-default; }
+    h4 {
+      color: $font-color-default;
+    }
     p {
-      &.price { color: red; }
+      &.price {
+        color: red;
+      }
     }
     .eye {
       float: left;
@@ -26,13 +30,16 @@ $font-color-hover = #7c7037;
     }
 
     .watch, .watching {
-      float: right; display: inline-block;
+      float: right;
+      display: inline-block;
       cursor: pointer;
       &:before {
         content: url('../../../assets/img/heart_empty.png');
         margin-right: .3rem;
       }
     }
-    .watching:before { content: url('../../../assets/img/heart_full.png'); }
+    .watching:before {
+      content: url('../../../assets/img/heart_full.png');
+    }
   }
 }

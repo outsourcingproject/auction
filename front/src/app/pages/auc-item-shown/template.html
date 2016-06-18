@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <img src={{header}} width="100%">
+        <img src="../../../assets/img/header.png" width="100%">
         <div class="nav">当前目录&nbsp;首页 - 正在拍卖 - <span>产品详情</span> - {{navname}}{{id | uppercase }}</div>
     </div>
     <div class="auc-item-shown">
@@ -92,7 +92,7 @@
         </div>
         <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
         <div class="items">
-            <auc-item-detailed *ngFor="#item of items" [data]="item"></auc-item-detailed>
+            <auc-item-detailed *ngFor="let item of items" [data]="item"></auc-item-detailed>
         </div>
     </div>
 </div>

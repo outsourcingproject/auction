@@ -24,8 +24,22 @@ export class MasterBar {
     this.menus = menus;
   }
 
-  search(keywords) {
+  public search(keywords) {
     debug(`search ${keywords}`);
     // TODO
   }
+
+  public addFavorite() {
+    try {
+      window.external.addFavorite();
+    } catch (e) {
+      try {
+        window.sidebar.addPanel();
+      }
+      catch (e) {
+        alert("抱歉，您使用的浏览器无法完成此操作。\n\n请使用Ctrl+D进行添加");
+      }
+    }
+  }
+
 }

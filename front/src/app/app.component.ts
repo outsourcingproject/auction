@@ -14,6 +14,7 @@ import {Home} from './pages/home';
 import {Auctioning} from './pages/auctioning';
 import {AucItemShown} from './pages/auc-item-shown';
 import {LoggedInRouterOutlet} from "./components/login-form/LoggedInRouterOutlet";
+import {InfoShown} from './pages/info-shown'
 
 let debug = require('debug')('ng:app');
 let template = require('./template.html');
@@ -24,6 +25,7 @@ let style = require('./style.styl');
   {path: '/home', as: 'Home', component: Home, useAsDefault: true},
   {path: '/auc_item/:id', as: 'AucItem', component: AucItemShown},
   {path: '/auctioning', as: 'Auctioning', component: Auctioning},
+  {path: '/info', as: 'Info', component: InfoShown},
   {path: '/todo', as: 'Todo', component: Todo}
 ])
 @Component({
