@@ -5,9 +5,9 @@
                 <li><a (click)="addFavorite()">收藏我们</a></li>
                 <li>在线客服: 400-442-6952</li>
             </ul>
-            <ul class="pull-right">
-                <li *ngFor="let menu of menus.header">
-                    <a [routerLink]="menu.link">{{menu.text}}</a>
+            <ul class="pull-right menu">
+                <li *ngFor="let menu of menus.header" [routerLink]="menu.link">
+                    {{menu.text}}
                 </li>
             </ul>
         </div>
@@ -28,5 +28,4 @@
             </ul>
         </div>
     </div>
-    <router-outlet></router-outlet>
 </header>

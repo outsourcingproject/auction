@@ -7,23 +7,23 @@ import {Component, Inject} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {Router} from '@angular/router-deprecated';
 import {Http, Headers} from '@angular/http';
+import {User} from "../../entities/User";
 
-import User from '../../lib/user';
-
+let style=require('./style.styl');
 let template = require('./template.html');
 let debug = require('debug')('ng:signup-form');
+
 
 @Component({
   selector: 'signup-form',
   template: template,
+  styles:[style],
   directives: [FORM_DIRECTIVES]
 })
 export class SignupForm {
   public user;
 
-  constructor(@Inject(Router)
-              private _router, @Inject(Http)
-              private _http) {
+  constructor(private _router:Router, private _http:Http) {
     this.user = new User();
   }
 

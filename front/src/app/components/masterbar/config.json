@@ -1,6 +1,6 @@
 {
   "header": [
-    { "link": ["Todo"], "text": "登陆/注册" },
+    { "link": ["Login"], "text": "登陆/注册" },
     { "link": ["Todo"], "text": "我的宝贝" },
     { "link": ["Todo"], "text": "退出" },
     { "link": ["Todo"], "text": "订单中心" },

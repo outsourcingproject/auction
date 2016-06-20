@@ -2,19 +2,20 @@
  * index.js.js
  * Created by Huxley on 12/2/15.
  */
-import { Directive, Attribute, ElementRef, DynamicComponentLoader, Inject } from 'angular2/core'
-import { Router, RouterOutlet, ComponentInstruction } from 'angular2/router';
+import { Directive, Attribute, ElementRef, DynamicComponentLoader, Inject,ViewContainerRef } from '@angular/core'
+import { Router, RouterOutlet, ComponentInstruction } from '@angular/router-deprecated';
 let debug = require('debug')('ng:router');
+
 @Directive({
     selector: 'custom-router-outlet'
 })
-export class LoggedInRouterOutlet extends RouterOutlet {
+export class CustomRouterOutlet extends RouterOutlet {
     private parentRouter:Router;
     private publicRoutes:Object;
 
-    constructor(@Inject(ElementRef) _elementRef, @Inject(DynamicComponentLoader) _loader,
+    constructor(_viewContainerRef: ViewContainerRef, @Inject(DynamicComponentLoader) _loader,
                 @Inject(Router) _parentRouter, @Attribute('name') nameAttr) {
-        super(_elementRef, _loader, _parentRouter, nameAttr);
+        super(_viewContainerRef, _loader, _parentRouter, nameAttr);
 
         this.parentRouter = _parentRouter;
         this.publicRoutes = {
@@ -28,9 +29,9 @@ export class LoggedInRouterOutlet extends RouterOutlet {
     activate(instruction: ComponentInstruction) {
         var url = this.parentRouter.lastNavigationAttempt;
         debug(url);
-        if (!this.publicRoutes[url] && !(localStorage.getItem('userToken') && localStorage.getItem('userToken') !== -1)) {
-            this.parentRouter.navigateByUrl('/login');
-        }
+        // if (!this.publicRoutes[url] && !(localStorage.getItem('userToken') && localStorage.getItem('userToken') !== -1)) {
+        //     this.parentRouter.navigateByUrl('/login');
+        // }
         return super.activate(instruction);
     }
 }

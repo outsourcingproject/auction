@@ -7,20 +7,18 @@ import {Component, Inject,} from '@angular/core';
 import {FORM_DIRECTIVES} from "@angular/common"
 import {Router} from '@angular/router-deprecated';
 import {Http, Headers} from '@angular/http';
+import {User} from "../../entities/User";
 
 let template = require('./template.html');
 let style = require('./style.styl');
 let debug = require('debug')('ng:login-form');
 
-class User{
-  public name:string;
-  public password:string;
-}
+
 @Component({
   selector: 'login-form',
   template: template,
   styles: [style],
-  directives: [FORM_DIRECTIVES]
+  directives: []
 })
 export class LoginForm {
   public user:User;
