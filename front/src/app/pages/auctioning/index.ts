@@ -5,6 +5,7 @@
 import {Component, Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
+import {SplitComponent} from "../../components/split/split.component";
 
 let debug = require('debug')('ng:auctioning');
 let config = require('./config.json');
@@ -16,7 +17,7 @@ const service = require('./service');
   selector: 'auctioning',
   template: template,
   styles: [style],
-  directives: [AucItemDetailed]
+  directives: [AucItemDetailed,SplitComponent]
 })
 export class Auctioning {
   public filters;

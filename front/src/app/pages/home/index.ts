@@ -9,6 +9,7 @@ import {Tabview} from '../../components/tabview';
 import {BlockView} from '../../components/blockview';
 import {Sidebar} from '../../components/sidebar';
 import {AucItem} from '../../components/auc-item';
+import {SplitComponent} from "../../components/split/split.component";
 
 let debug = require('debug')('ng:home');
 let template = require('./template.html');
@@ -20,7 +21,7 @@ const config = require('./config.json');
   selector: 'home',
   template: template,
   styles: [style],
-  directives: [Banner, Tabview, Sidebar, AucItem, BlockView]
+  directives: [Banner, Tabview, Sidebar, AucItem, BlockView,SplitComponent]
 })
 export class Home {
   public leftTabData;

@@ -18,11 +18,11 @@ import { Instruction, Router, RouterLink } from '@angular/router-deprecated';
  *
  * ```
  * <li router-active="active"><a [routerLink]=" ['/Home'] ">Home</a></li>
- * <li [routerActive]=" activeStringValue "><a [routerLink]=" ['/Home'] ">Home</a></li>
+ * <li [routerActive]=" activeStringValue "><a [ routerLink]=" ['/Home'] ">Home</a></li>
  * ```
  */
 @Directive({
-  selector: '[router-active]'
+  selector: '[routerActive]'
 })
 export class RouterActive {
   @Input() routerActive: string = undefined;

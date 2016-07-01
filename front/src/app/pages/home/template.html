@@ -1,62 +1,20 @@
 <banner></banner>
 <div class="container">
-    <div class="tabs">
-        <div class="pull-left">
-            <tabview [data]="leftTabData"></tabview>
-        </div>
-        <div class="pull-right">
-            <tabview [data]="rightTabData"></tabview>
-        </div>
+  <div class="tabs">
+    <div class="pull-left">
+      <tabview [data]="leftTabData"></tabview>
     </div>
-    <div class="split">
-        <div class="split-line left">
-            <hr/>
-            <div class="boxes">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-        </div>
-        <div class="split-text">
-            <h4>专场介绍</h4>
-            PRODUCT DESCRIPTION
-        </div>
-        <div class="split-line right">
-            <div class="boxes">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-            <hr/>
-        </div>
+    <div class="pull-right">
+      <tabview [data]="rightTabData"></tabview>
     </div>
-    <div class="main">
-        <sidebar [data]="sidebarData"></sidebar>
-        <div class="exhibition">
-            <auc-item *ngFor="let item of auctionItems" [data]="item"></auc-item>
-        </div>
+  </div>
+  <split></split>
+  <div class="main">
+    <sidebar [data]="sidebarData"></sidebar>
+    <div class="exhibition">
+      <auc-item *ngFor="let item of auctionItems" [data]="item"></auc-item>
     </div>
-    <div class="split">
-        <div class="split-line left">
-            <hr/>
-            <div class="boxes">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-        </div>
-        <div class="split-text">
-            <h4>服务承诺</h4>
-            SERVICE COMMITMENT
-        </div>
-        <div class="split-line right">
-            <div class="boxes">
-                <div class="box"></div>
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-            <hr/>
-        </div>
-    </div>
-    <blockview *ngFor="let data of serviceData" [data]="data"></blockview>
+  </div>
+  <split [cnTitle]="'服务承诺'" [enTitle]="'SERVICE COMMITMENT'" ></split>
+  <blockview *ngFor="let data of serviceData" [data]="data"></blockview>
 </div>

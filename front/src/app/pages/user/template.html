@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="header">
+    <img src="../../../assets/img/header.png" width="100%">
+  </div>
+  <split [enTitle]="'PERSONAL PAGE'" [cnTitle]="'个人主页'"></split>
+
+  <div class="row">
+    <div class="col-md-4">
+      <user-detail [uid]="id"></user-detail>
+      <user-nav></user-nav>
+    </div>
+    <div class="col-md-8">
+      <custom-router-outlet></custom-router-outlet>
+    </div>
+  </div>
+</div>
