@@ -15,6 +15,9 @@ export default {
   adapter: {
     file: {
       path: think.getPath('common', 'runtime') + '/session',
+    },
+    redis: {
+      prefix: "session_"
     }
   }
 };

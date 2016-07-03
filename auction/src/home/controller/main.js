@@ -40,13 +40,7 @@ export default class Main extends Base {
   }
 
   async testAction() {
-    try {
-      let result = await think.model('bid', null, 'home').select();
-      return this.success(result);
-    } catch (err) {
-      console.log(err);
-      return this.fail(err);
-    }
-
+    await this.session('test',{test:'ok'});
+    return this.json(await this.session('test'));
   }
 }
