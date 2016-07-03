@@ -1,8 +1,7 @@
 import Base from './base.js'
-let ObjectID = require('mongodb-core').BSON.ObjectID;
 
 export default class Bid extends Base {
-  schema = {
+  schemas = {
     item: {
       //ref to collection item._id
       type: ObjectID,

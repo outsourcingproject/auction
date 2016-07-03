@@ -1,6 +1,6 @@
 import Base from './base.js'
 export default class Authority extends Base {
-  schema = {
+  schemas = {
     name: {
       type: String,
       required: true,
@@ -29,7 +29,7 @@ export default class Authority extends Base {
     }
   };
 
-  indexes={
+  indexeses={
     name:{$unique: 1}
   };
   /**

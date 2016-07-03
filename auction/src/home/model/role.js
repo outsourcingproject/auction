@@ -1,8 +1,7 @@
 import Base from './base'
-let ObjectID = require('mongodb-core').BSON.ObjectID;
 
 export default class Role extends Base {
-  schema = {
+  schemas = {
     name: {
       required: true,
       default: '',
@@ -35,7 +34,7 @@ export default class Role extends Base {
     }
   };
 
-  indexes={
+  indexeses={
     name:{$unique: 1}
   };
   /**

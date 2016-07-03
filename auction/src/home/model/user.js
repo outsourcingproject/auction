@@ -3,7 +3,6 @@
  */
 import Base from './base.js'
 
-let ObjectID = require('mongodb-core').BSON.ObjectID;
 
 /**
  * 成功时返回true或者具体对象
@@ -11,7 +10,7 @@ let ObjectID = require('mongodb-core').BSON.ObjectID;
  * 如果没有当前需要的失败字符串,请在该文件中定义
  */
 export default class User extends Base {
-  schema = {
+  schemas = {
     username: {
       type: String,
       required: true,
@@ -51,7 +50,7 @@ export default class User extends Base {
     }
   };
   
-  indexes={
+  indexeses={
     username:{$unique: 1}
   };
 

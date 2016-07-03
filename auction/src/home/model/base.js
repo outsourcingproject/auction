@@ -1,4 +1,4 @@
-export default class Base extends think.model.mongo {
+export default class Base extends think.model.base {
   beforeUpdate(data) {
     data.updateAt = new Date();
     return data;

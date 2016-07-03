@@ -1,8 +1,7 @@
 import Base from './base.js'
-let ObjectID = require('mongodb-core').BSON.ObjectID;
 
 export default class ArticleType extends Base {
-  schema = {
+  schemas = {
     name: {
       type: String,
       require: true,

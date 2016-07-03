@@ -1,6 +1,6 @@
 import Base from './base.js'
 export default class Message extends Base {
-  schema = {
+  schemas = {
     from: {
       //ref to collection user.username
       type: String,

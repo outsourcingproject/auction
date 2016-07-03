@@ -4,12 +4,12 @@
  * @type {Object}
  */
 export default {
-  type: 'mongo',
-  host: 'localhost',
-  port: '27017',
+  type: 'mysql',
+  host: '127.0.0.1',
+  port: '3306',
   database: 'auction',
-  //user: 'root',
-  //password: '888888',
+  user: 'root',
+  password: '888888',
   prefix: '',
   encoding: 'utf8',
   nums_per_page: 10,
