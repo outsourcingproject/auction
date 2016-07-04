@@ -1,22 +1,24 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50528
-Source Host           : localhost:3306
-Source Database       : auction
+ Source Server         : localhost
+ Source Server Type    : MySQL
+ Source Server Version : 50710
+ Source Host           : localhost
+ Source Database       : auction
 
-Target Server Type    : MYSQL
-Target Server Version : 50528
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50710
+ File Encoding         : utf-8
 
-Date: 2016-07-04 00:35:25
+ Date: 07/04/2016 23:05:42 PM
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for article
+--  Table structure for `article`
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
@@ -25,58 +27,46 @@ CREATE TABLE `article` (
   `content` text,
   `author` int(11) NOT NULL,
   `type` int(11) NOT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `author` (`author`),
   KEY `type` (`type`),
-  CONSTRAINT `article_ibfk_2` FOREIGN KEY (`type`) REFERENCES `article_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `article_ibfk_1` FOREIGN KEY (`author`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `article_ibfk_2` FOREIGN KEY (`type`) REFERENCES `article_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of article
--- ----------------------------
-
--- ----------------------------
--- Table structure for article_type
+--  Table structure for `article_type`
 -- ----------------------------
 DROP TABLE IF EXISTS `article_type`;
 CREATE TABLE `article_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `desc` varchar(255) DEFAULT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL,
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of article_type
--- ----------------------------
-
--- ----------------------------
--- Table structure for authority
+--  Table structure for `authority`
 -- ----------------------------
 DROP TABLE IF EXISTS `authority`;
 CREATE TABLE `authority` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `desc` varchar(255) DEFAULT NULL,
-  `allow` text NOT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `allows` text NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of authority
--- ----------------------------
-
--- ----------------------------
--- Table structure for bid
+--  Table structure for `bid`
 -- ----------------------------
 DROP TABLE IF EXISTS `bid`;
 CREATE TABLE `bid` (
@@ -84,21 +74,29 @@ CREATE TABLE `bid` (
   `item` int(11) NOT NULL,
   `user` int(11) NOT NULL,
   `value` decimal(10,0) NOT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `item` (`item`),
   KEY `user` (`user`),
-  CONSTRAINT `bid_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `bid_ibfk_1` FOREIGN KEY (`item`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `bid_ibfk_1` FOREIGN KEY (`item`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `bid_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of bid
+--  Table structure for `config`
 -- ----------------------------
+DROP TABLE IF EXISTS `config`;
+CREATE TABLE `config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `config` text NOT NULL,
+  `createAt` bigint(20) NOT NULL,
+  `updateAt` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for item
+--  Table structure for `item`
 -- ----------------------------
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
@@ -118,16 +116,12 @@ CREATE TABLE `item` (
   PRIMARY KEY (`id`),
   KEY `publisher` (`publisher`),
   KEY `group` (`group`),
-  CONSTRAINT `item_ibfk_2` FOREIGN KEY (`group`) REFERENCES `item_gruop` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`publisher`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`publisher`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `item_ibfk_2` FOREIGN KEY (`group`) REFERENCES `item_gruop` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of item
--- ----------------------------
-
--- ----------------------------
--- Table structure for item_gruop
+--  Table structure for `item_gruop`
 -- ----------------------------
 DROP TABLE IF EXISTS `item_gruop`;
 CREATE TABLE `item_gruop` (
@@ -135,18 +129,14 @@ CREATE TABLE `item_gruop` (
   `name` varchar(255) NOT NULL,
   `desc` varchar(255) DEFAULT NULL,
   `no` int(11) NOT NULL DEFAULT '0',
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of item_gruop
--- ----------------------------
-
--- ----------------------------
--- Table structure for message
+--  Table structure for `message`
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
@@ -156,60 +146,50 @@ CREATE TABLE `message` (
   `title` varchar(255) NOT NULL,
   `content` text,
   `read` bit(1) NOT NULL DEFAULT b'0',
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `from` (`from`),
   KEY `to` (`to`),
-  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`to`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`from`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`from`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `message_ibfk_2` FOREIGN KEY (`to`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of message
--- ----------------------------
-
--- ----------------------------
--- Table structure for role
+--  Table structure for `role`
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `desc` text,
-  `extends` varchar(255) NOT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `extend` varchar(255) NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `extends` (`extends`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `extends` (`extend`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of role
--- ----------------------------
-
--- ----------------------------
--- Table structure for role_authority
+--  Table structure for `role_authority`
 -- ----------------------------
 DROP TABLE IF EXISTS `role_authority`;
 CREATE TABLE `role_authority` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `role` int(11) NOT NULL,
   `authority` int(11) NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `role` (`role`),
   KEY `authority` (`authority`),
-  CONSTRAINT `role_authority_ibfk_2` FOREIGN KEY (`authority`) REFERENCES `authority` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `role_authority_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `role_authority_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `role_authority_ibfk_2` FOREIGN KEY (`authority`) REFERENCES `authority` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of role_authority
--- ----------------------------
-
--- ----------------------------
--- Table structure for user
+--  Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -220,8 +200,8 @@ CREATE TABLE `user` (
   `emailValidate` bit(1) NOT NULL DEFAULT b'0',
   `level` int(11) NOT NULL DEFAULT '0',
   `role` int(11) NOT NULL,
-  `createAt` datetime NOT NULL,
-  `updateAt` datetime NOT NULL,
+  `createAt` bigint(20) NOT NULL DEFAULT '0',
+  `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
@@ -229,6 +209,4 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ----------------------------
--- Records of user
--- ----------------------------
+SET FOREIGN_KEY_CHECKS = 1;

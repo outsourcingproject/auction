@@ -21,8 +21,9 @@ segment.useDefault();
 
 let initAuthority = async()=> {
   "use strict";
+  
   let defaultAuthorities = think.config('site.defaultAuthorities');
-  let authorityModel = think.model('authority', null, 'home');
+  let authorityModel = think.model('authority', null, 'api');
 
   for (let authority of defaultAuthorities) {
     let result = await authorityModel.where({name: authority.name}).find();
@@ -33,8 +34,9 @@ let initAuthority = async()=> {
 };
 let initRole = async()=> {
   "use strict";
+
   let defaultRoles = think.config('site.defaultRoles');
-  let roleModel = think.model('role', null, 'home');
+  let roleModel = think.model('role', null, 'api');
 
   for (let role of defaultRoles) {
     let result = await roleModel.where({name: role.name}).find();
@@ -50,7 +52,7 @@ think.isStringExpReg = (string)=> {
 think.segment=segment;
 
 //Promise.all([initAuthority(), initRole()]).then();
-initAuthority().then();
+//initAuthority().then();
 initRole().then();
 
 global.removeHTMLTag = (str)=> {

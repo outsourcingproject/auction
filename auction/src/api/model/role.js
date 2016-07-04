@@ -1,53 +1,61 @@
 import Base from './base'
 
 export default class Role extends Base {
-  schemas = {
-    name: {
-      required: true,
-      default: '',
-      unique: true
-    },
-    desc: {
-      required: true,
-      default: ''
-    },
-    //继承那些角色的权限
-    extend: {
-      //ref to collection Role.name
-      type: [String],
-      required: true,
-      default: []
-    },
-    authorities: {
-      default: [],
-      type: [ObjectID]
-    },
-    createAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
 
-  indexeses={
-    name:{$unique: 1}
-  };
+  // schemas = {
+  //   name: {
+  //     required: true,
+  //     default: '',
+  //     unique: true
+  //   },
+  //   desc: {
+  //     required: true,
+  //     default: ''
+  //   },
+  //   //继承那些角色的权限
+  //   extend: {
+  //     //ref to collection Role.name
+  //     type: [String],
+  //     required: true,
+  //     default: []
+  //   },
+  //   authorities: {
+  //     default: [],
+  //     type: [ObjectID]
+  //   },
+  //   createAt: {
+  //     type: Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   },
+  //   updateAt: {
+  //     type: Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   }
+  // };
+
+  // indexeses={
+  //   name:{$unique: 1}
+  // };
+  
   /**
    *
    * @param name
    * @param desc
    * @param extend {[String]}
-   * @param authorities
+   * @param authorities {[String]} authority name list
    * @returns {*} true if success, otherwise err string
    */
   async addRole(name, desc = '', extend = ['anonymous', 'registered'], authorities = []) {
-    let result = await this.thenAdd({name, desc, extend, authorities}, {name});
+
+    let roleAuthorityModel=think.model('role_authority',null,'api');
+
+    extend=JSON.stringify(extend);
+    let result = await this.thenAdd({name, desc, extend}, {name});
+
     if (result.type == 'add') {
+      await roleAuthorityModel.addRoleAuthorities(name,...authorities);
       return true;
     } else {
       return 'ROLE_ALREADY_EXIST';
@@ -64,22 +72,6 @@ export default class Role extends Base {
     return this.where({name}).delete();
   }
 
-  /**
-   *
-   * @param name {String} name of role
-   * @param authorities {ObjectID} authorities' name
-   * @returns {Promise}
-   */
-  addAuthorities(name, ...authorities) {
-    let role = this.where({name}).find();
-    for (let authority of authorities) {
-
-      if (!role.authorities.includes(authority)) {
-        role.authorities.push(authority);
-      }
-    }
-    return this.where({name}).update({authorities});
-  }
 
   /**
    *
@@ -125,7 +117,7 @@ export default class Role extends Base {
    * @returns {Promise<[Authority]>} authority's array
    */
   async getRoleAuthorities(name) {
-    let authorityModel = think.model('authority', null, 'home');
+    let authorityModel = think.model('authority', null, 'api');
 
     let addAuthorities = (arr, au)=> {
       for (let i of au) {

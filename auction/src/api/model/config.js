@@ -1,6 +1,6 @@
 import Base from './base.js'
 export default class config extends Base {
-  schema = {
+  schemas = {
     config: {
       type:Object,
       required: true,
@@ -55,7 +55,7 @@ export default class config extends Base {
     }
     let config;
     if (typeof key == 'object') {
-      config = key;
+      config = JSON.stringify(key);
       await this.save(config);
       return config;
     } else {
@@ -80,7 +80,8 @@ export default class config extends Base {
         }
       };
       let oldVal = objectSet(keys, val, config);
-      await this.update(config);
+      config=JSON.stringify(config);
+      await this.where({id:{'>':0}}).update({config});
 
       return oldVal;
     }
@@ -102,12 +103,12 @@ export default class config extends Base {
   async _getDBConfig() {
     let config = await this.select();
 
-    let defaultConfig = think.config('site');
+    let defaultConfig = JSON.stringify(think.config('site'));
     if (config.length != 1) {
       await this.delete();
       await this.add({config: defaultConfig});
-      return defaultConfig;
+      return JSON.parse(defaultConfig);
     }
-    return config[0].config;
+    return JSON.parse(config[0].config);
   }
 }

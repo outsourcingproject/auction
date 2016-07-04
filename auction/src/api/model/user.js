@@ -110,7 +110,7 @@ export default class User extends Base {
    */
   async getUserRole(username) {
     let user = await this.where({username}).find();
-    let roleModel = think.model('role', null, 'home');
+    let roleModel = think.model('role', null, 'api');
     return roleModel.where({name: user.role}).find();
   }
 
@@ -120,7 +120,7 @@ export default class User extends Base {
    * @returns {Promise<[Authority]>}
    */
   async getUserAuthorities(username) {
-    let roleModel = think.model('role', null, 'home');
+    let roleModel = think.model('role', null, 'api');
 
     let user = await this.where({username}).find();
     let role = await roleModel.where({name: user.role}).find();

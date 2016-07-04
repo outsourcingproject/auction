@@ -1,4 +1,4 @@
-export default class Base extends think.model.base {
+export default class Base extends think.model.relation {
   beforeUpdate(data) {
     data.updateAt = new Date();
     return data;

@@ -36,12 +36,14 @@ export default class Authority extends Base {
    *
    * @param name
    * @param desc
-   * @param paths {[String|RegExp]}
+   * @param allows {[String|RegExp]}
    * @returns {*} true if success, otherwise err string
    */
-  async addAuthority(name, desc = '', paths = []) {
+  async addAuthority(name, desc = '', allows = []) {
 
-    let result = await this.thenAdd({name, desc, paths}, {name});
+    allows=JSON.stringify(allows);
+    let result = await this.thenAdd({name, desc, allows,createAt:new Date(),updateAt:new Date()}, {name});
+
     if (result.type == 'add') {
       return true;
     } else {

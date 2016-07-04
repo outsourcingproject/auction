@@ -17,6 +17,8 @@ export default {
     route_on: true,
     // 是否处理静态资源请求， porxy_on 开启下可以关闭该配置
     resource_on: true,
+    //判断为静态资源请求的正则
+    resource_reg: /^(?!api\/)/,
     default_module: "home", //默认模块
     default_controller: "main",  //默认的控制器
     default_action: "index", //默认的 Action
