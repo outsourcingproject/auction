@@ -4,10 +4,10 @@ var path = require('path');
 var rootPath = path.dirname(__dirname);
 
 var instance = new thinkjs({
-  APP_PATH: rootPath + '/app',
+  APP_PATH: path.resolve(rootPath, 'app'),
   ROOT_PATH: rootPath,
-  RESOURCE_PATH: __dirname+'/../../front/dist',
-  UPLOAD_PATH: __dirname + "/upload",
+  RESOURCE_PATH: path.resolve(rootPath, '../front/dist'),
+  UPLOAD_PATH: process.env.OPENSHIFT_DATA_DIR || path.resolve(rootPath, "upload"),
   env: 'development'
 });
 
