@@ -13,12 +13,12 @@ import {UserSettingComponent} from "../../components/user-setting";
 let debug = require('debug')('ng:user-info');
 
 @RouteConfig([
-  {path: 'user-info', as: 'UserInfo', component: UserInfoComponent, useAsDefault: true},
-  {path: 'auction', as: 'Auction', component: UserAuctionComponent},
-  {path: 'order', as: 'Order', component: UserOrderComponent},
-  {path: 'message', as: 'Message', component: Todo},
-  {path: 'account', as: 'Account', component: UserSettingComponent},
-  {path: 'following', as: 'Following', component: Todo},
+  {path: 'user-info', name: 'UserInfo', component: UserInfoComponent, useAsDefault: true},
+  {path: 'auction', name: 'Auction', component: UserAuctionComponent},
+  {path: 'order', name: 'Order', component: UserOrderComponent},
+  {path: 'message', name: 'Message', component: Todo},
+  {path: 'account', name: 'Account', component: UserSettingComponent},
+  {path: 'following', name: 'Following', component: Todo},
 ])
 @Component({
   selector: 'user',

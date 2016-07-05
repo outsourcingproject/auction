@@ -24,14 +24,14 @@ let style = require('./style.styl');
 
 
 @RouteConfig([
-  {path: '/home', as: 'Home', component: Home, useAsDefault: true},
-  {path: '/auc_item/:id', as: 'AucItem', component: AucItemShown},
-  {path: '/auctioning', as: 'Auctioning', component: Auctioning},
-  {path: '/info/:id', as: 'Info', component: InfoShown},
-  {path: '/login', as: 'Login', component: LoginForm},
-  {path: '/signup', as: 'Signup', component: SignupForm},
-  {path: '/user/:id/...', as: 'User', component: UserComponent},
-  {path: '/todo', as: 'Todo', component: Todo}
+  {path: '/home', name: 'Home', component: Home, useAsDefault: true},
+  {path: '/auc_item/:id', name: 'AucItem', component: AucItemShown},
+  {path: '/auctioning', name: 'Auctioning', component: Auctioning},
+  {path: '/info/:id', name: 'Info', component: InfoShown},
+  {path: '/login', name: 'Login', component: LoginForm},
+  {path: '/signup', name: 'Signup', component: SignupForm},
+  {path: '/user/:id/...', name: 'User', component: UserComponent},
+  {path: '/todo', name: 'Todo', component: Todo}
 ])
 @Component({
   selector: 'app',
