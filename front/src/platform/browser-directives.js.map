@@ -1,1 +1,0 @@
-{"version":3,"file":"browser-directives.js","sourceRoot":"","sources":["browser-directives.ts"],"names":[],"mappings":"AAAA;;GAEG;;AAEH,qBAAoC,eAAe,CAAC,CAAA;AACpD,mBAAmB;AACnB,kCAAkC,4BAA4B,CAAC,CAAA;AAE/D,iFAAiF;AACpE,8BAAsB,GAC9B,qCAAiB,QACrB,CAAC;AAEW,kBAAU,GAAG;IACxB,EAAE,OAAO,EAAE,0BAAmB,EAAE,KAAK,EAAE,IAAI,EAAE,QAAQ,EAAE,8BAAsB,EAAE;CAChF,CAAC"}
