@@ -7,9 +7,9 @@
   ],
   "end": false,
   "items": [
-    { "link": ["AucItem", { "id": 5 }], "image": "/static/images/sample.png", "name": "鹿头正银一量", "price": "1300.00", "watch_cnt": "420",
+    { "link": ["/auc-item", 5 ], "image": "/static/images/sample.png", "name": "鹿头正银一量", "price": "1300.00", "watch_cnt": "420",
       "end_time": "", "watching": true, "category": "1" },
-    { "link": ["AucItem", { "id": 5 }], "image": "/static/images/sample.png", "name": "鹿头正银二量", "price": "2600.00", "watch_cnt": "400",
+    { "link": ["/auc-item", 5 ], "image": "/static/images/sample.png", "name": "鹿头正银二量", "price": "2600.00", "watch_cnt": "400",
       "end_time": "", "watching": false, "category": "1" }
   ]
 }

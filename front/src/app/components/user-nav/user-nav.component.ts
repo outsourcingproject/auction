@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {RouterActive} from "../../directives/router-active";
+//import {RouterActive} from "../../directives/router-active";
 
 let debug = require('debug')('ng:user-nav');
 
@@ -7,7 +7,7 @@ let debug = require('debug')('ng:user-nav');
   selector: 'user-nav',
   styles: [require('./style.styl')],
   template: require('./template.html'),
-  directives: [RouterActive]
+ // directives: [RouterActive]
 })
 export class UserNavComponent {
   public nav:Object;

@@ -3,7 +3,7 @@
  * Created by Huxley on 12/9/15.
  */
 import {Component, Inject} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 
 let debug = require('debug')('ng:masterbar');
 let template = require('./template.html');
@@ -19,8 +19,7 @@ const menus = require('./config.json');
 export class MasterBar {
   public menus;
 
-  constructor(@Inject(Router)
-              private router) {
+  constructor(private _router:Router) {
     this.menus = menus;
   }
 

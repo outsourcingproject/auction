@@ -3,8 +3,7 @@
  * Created by Huxley on 1/10/16.
  */
 import {Component} from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated'
-import {Tabview} from "../../components/tabview/index";
+import {TabView} from "../../components/tabview/index";
 
 let debug = require('debug')('ng:info-shown');
 let template = require('./template.html');
@@ -15,7 +14,7 @@ const config = require('./config.json');
   selector: 'info-shown',
   template: template,
   styles: [style],
-  directives: [Tabview]
+  directives: [TabView]
 })
 export class InfoShown {
   public title:string;
@@ -25,7 +24,7 @@ export class InfoShown {
   public leftTabData;
   public rightTabData;
 
-  constructor(private _routeParams:RouteParams) {
+  constructor() {
     this.title = config.title;
     this.content = config.content;
     this.createAt = new Date(config.createAt);
@@ -216,6 +215,5 @@ export class InfoShown {
         ]
       ]
     };
-    console.log(_routeParams.get('id'));
   }
 }

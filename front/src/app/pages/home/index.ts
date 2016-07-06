@@ -5,7 +5,7 @@
 
 import {Component} from '@angular/core';
 import {Banner} from '../../components/banner';
-import {Tabview} from '../../components/tabview';
+import {TabView} from '../../components/tabview';
 import {BlockView} from '../../components/blockview';
 import {Sidebar} from '../../components/sidebar';
 import {AucItem} from '../../components/auc-item';
@@ -21,7 +21,7 @@ const config = require('./config.json');
   selector: 'home',
   template: template,
   styles: [style],
-  directives: [Banner, Tabview, Sidebar, AucItem, BlockView,SplitComponent]
+  directives: [Banner, TabView, Sidebar, AucItem, BlockView,SplitComponent]
 })
 export class Home {
   public leftTabData;

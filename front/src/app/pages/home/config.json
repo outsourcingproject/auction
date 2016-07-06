@@ -3,12 +3,12 @@
     "tabs": ["系统公告"],
     "details": [
       [
-        { "id":19,"link": ["Todo"], "image": "/static/images/block.png", "title": "中国五金具模走...", "date": "2015-10-20" },
-        { "id":20,"link": ["Todo"], "image": "/static/images/block.png", "title": "自动化的贴标机...", "date": "2015-10-20" },
-        { "id":21,"link": ["Todo"], "image": "/static/images/block.png", "title": "贴标机从落后局...", "date": "2015-10-20" },
-        { "id":22,"link": ["Todo"], "image": "/static/images/block.png", "title": "自动化已成药膜...", "date": "2015-10-20" },
-        { "id":23,"link": ["Todo"], "image": "/static/images/block.png", "title": "市场对自动化包...", "date": "2015-10-20" },
-        { "id":24,"link": ["Todo"], "image": "/static/images/block.png", "title": "机器人来了, 我...", "date": "2015-10-20" }
+        { "id":19,"link": ["/todo"], "image": "/static/images/block.png", "title": "中国五金具模走...", "date": "2015-10-20" },
+        { "id":20,"link": ["/todo"], "image": "/static/images/block.png", "title": "自动化的贴标机...", "date": "2015-10-20" },
+        { "id":21,"link": ["/todo"], "image": "/static/images/block.png", "title": "贴标机从落后局...", "date": "2015-10-20" },
+        { "id":22,"link": ["/todo"], "image": "/static/images/block.png", "title": "自动化已成药膜...", "date": "2015-10-20" },
+        { "id":23,"link": ["/todo"], "image": "/static/images/block.png", "title": "市场对自动化包...", "date": "2015-10-20" },
+        { "id":24,"link": ["/todo"], "image": "/static/images/block.png", "title": "机器人来了, 我...", "date": "2015-10-20" }
       ]
     ]
   },
@@ -16,42 +16,42 @@
     "tabs": ["新闻动态", "行业动态", "知识荟萃"],
     "details": [
       [
-        { "id":1,"link": ["Todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-20" },
-        { "id":2,"link": ["Todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-20" },
-        { "id":3,"link": ["Todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-20" },
-        { "id":4,"link": ["Todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-20" },
-        { "id":5,"link": ["Todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-20" },
-        { "id":6,"link": ["Todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-20" }
+        { "id":1,"link": ["/todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-20" },
+        { "id":2,"link": ["/todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-20" },
+        { "id":3,"link": ["/todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-20" },
+        { "id":4,"link": ["/todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-20" },
+        { "id":5,"link": ["/todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-20" },
+        { "id":6,"link": ["/todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-20" }
       ],
       [
-        { "id":7,"link": ["Todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-21" },
-        { "id":8,"link": ["Todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-21" },
-        { "id":9,"link": ["Todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-21" },
-        { "id":10,"link": ["Todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-21" },
-        { "id":11,"link": ["Todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-21" },
-        { "id":12,"link": ["Todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-21" }
+        { "id":7,"link": ["/todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-21" },
+        { "id":8,"link": ["/todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-21" },
+        { "id":9,"link": ["/todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-21" },
+        { "id":10,"link": ["/todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-21" },
+        { "id":11,"link": ["/todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-21" },
+        { "id":12,"link": ["/todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-21" }
       ],
       [
-        { "id":13,"link": ["Todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-22" },
-        { "id":14,"link": ["Todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-22" },
-        { "id":15,"link": ["Todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-22" },
-        { "id":16,"link": ["Todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-22" },
-        { "id":17,"link": ["Todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-22" },
-        { "id":18,"link": ["Todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-22" }
+        { "id":13,"link": ["/todo"], "image": "/static/images/block1.png", "title": "中国五金具模走...", "date": "2015-10-22" },
+        { "id":14,"link": ["/todo"], "image": "/static/images/block2.png", "title": "自动化的贴标机...", "date": "2015-10-22" },
+        { "id":15,"link": ["/todo"], "image": "/static/images/block3.png", "title": "贴标机从落后局...", "date": "2015-10-22" },
+        { "id":16,"link": ["/todo"], "image": "/static/images/block4.png", "title": "自动化已成药膜...", "date": "2015-10-22" },
+        { "id":17,"link": ["/todo"], "image": "/static/images/block5.png", "title": "市场对自动化包...", "date": "2015-10-22" },
+        { "id":18,"link": ["/todo"], "image": "/static/images/block6.png", "title": "机器人来了, 我...", "date": "2015-10-22" }
       ]
     ]
   },
   "sidebar": [
-    { "link": ["Todo"], "image": "/static/images/sidebar1.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
-    { "link": ["Todo"], "image": "/static/images/sidebar2.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
-    { "link": ["Todo"], "image": "/static/images/sidebar1.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
-    { "link": ["Todo"], "image": "/static/images/sidebar2.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" }
+    { "link": ["/todo"], "image": "/static/images/sidebar1.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
+    { "link": ["/todo"], "image": "/static/images/sidebar2.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
+    { "link": ["/todo"], "image": "/static/images/sidebar1.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" },
+    { "link": ["/todo"], "image": "/static/images/sidebar2.png", "title": "【皓月长空】- 情溢中秋", "content": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......" }
   ],
   "auctions": [
-    { "link": ["AucItem", { "id": 1 } ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 0, "price": "6000.00" },
-    { "link": ["AucItem", { "id": 2 } ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 1, "price": "8000.00" },
-    { "link": ["AucItem", { "id": 3 } ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 1, "price": "8000.00" },
-    { "link": ["AucItem", { "id": 4 } ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 2, "price": "10000.00" }
+    { "link": ["/auc-item", 1 ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 0, "price": "6000.00" },
+    { "link": ["/auc-item", 2 ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 1, "price": "8000.00" },
+    { "link": ["/auc-item", 3 ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 1, "price": "8000.00" },
+    { "link": ["/auc-item", 4 ], "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 2, "price": "10000.00" }
   ],
   "service": [
     { "image": "/assets/img/service1.png", "title": "如实描述", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },

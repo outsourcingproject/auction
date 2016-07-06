@@ -1,23 +1,23 @@
-import { RouterConfig }          from '@angular/router';
-import {UserComponent} from "./index";
+import {RouterConfig}          from '@angular/router';
+import {UserComponent}         from "./index";
+import {Todo}                  from "../../components/todo/index";
+import {UserInfoComponent}     from "../../components/user-info/user-info.component";
+import {UserAuctionComponent}  from "../../components/user-auction";
+import {UserOrderComponent}    from "../../components/user-order";
+import {UserSettingComponent}  from "../../components/user-setting";
 
-import {Todo} from "../../components/todo/index";
-import {UserInfoComponent} from "../../components/user-info/user-info.component";
-import {UserAuctionComponent} from "../../components/user-auction";
-import {UserOrderComponent} from "../../components/user-order";
-import {UserSettingComponent} from "../../components/user-setting";
-
-export const userRoutes:RouterConfig=[
+export const userRoutes:RouterConfig = [
   {
-  	path: 'user',
+    path: 'user',
     component: UserComponent,
     children: [
-	  {path: 'user-info', component: UserInfoComponent},
-	  {path: 'auction', component: UserAuctionComponent},
-	  {path: 'order', component: UserOrderComponent},
-	  {path: 'message', component: Todo},
-	  {path: 'account', component: UserSettingComponent},
-	  {path: 'following', component: Todo},
+      {path: '', redirectTo:'user-info'},
+      {path: 'user-info', component: UserInfoComponent},
+      {path: 'auction', component: UserAuctionComponent},
+      {path: 'order', component: UserOrderComponent},
+      {path: 'message', component: Todo},
+      {path: 'account', component: UserSettingComponent},
+      {path: 'following', component: Todo},
     ]
   },
 ]

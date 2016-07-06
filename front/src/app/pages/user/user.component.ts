@@ -1,6 +1,5 @@
 import {Component} from '@angular/core'
 import {SplitComponent} from "../../components/split";
-import {RouteParams, RouteConfig} from '@angular/router-deprecated'
 import {UserDetailComponent} from "../../components/user-detail";
 import {UserNavComponent} from "../../components/user-nav";
 
@@ -16,8 +15,8 @@ let debug = require('debug')('ng:user-info');
 export class UserComponent {
   public id:string;
 
-  constructor(private _routeParams:RouteParams) {
-    this.id = _routeParams.get('id');
+  constructor() {
+    this.id ;
     debug(this.id);
   }
 }

@@ -17,7 +17,7 @@ const service = require('./service');
   selector: 'auctioning',
   template: template,
   styles: [style],
-  directives: [AucItemDetailed,SplitComponent]
+  directives: [AucItemDetailed, SplitComponent]
 })
 export class Auctioning {
   public filters;
@@ -27,8 +27,7 @@ export class Auctioning {
   public items;
   public curPageRange;
 
-  constructor(@Inject(Http)
-              private http) {
+  constructor(private _http:Http) {
     debug(config.header);
     this.filters = config.filters;
 

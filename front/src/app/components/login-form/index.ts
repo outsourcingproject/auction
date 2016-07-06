@@ -4,8 +4,7 @@
  */
 
 import {Component, Inject,} from '@angular/core';
-import {FORM_DIRECTIVES} from "@angular/common"
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import {User} from "../../entities/User";
 
@@ -33,7 +32,7 @@ export class LoginForm {
       let json = res.json();
       if (json) {
         localStorage.setItem('userToken', json.token);
-        this._router.parent.navigateByUrl('/main');
+        this._router.navigate(['/user']);
       }
     });
   }

@@ -16,7 +16,7 @@ let style = require('./style.styl');
   inputs: ['data'],
   //lifecycle: [OnInit]
 })
-export class Tabview implements OnInit {
+export class TabView implements OnInit {
   @Input()
   public data;
   @Input()

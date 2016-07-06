@@ -3,7 +3,6 @@
  * Created by Huxley on 12/21/15.
  */
 import { Component, OnInit, Inject,Input } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
 
 let debug = require('debug')('ng:auc-item-detailed');
 let template = require('./template.html');
@@ -27,7 +26,7 @@ export class AucItemDetailed implements OnInit {
     public watch_cnt;
     public watching;
 
-    constructor(@Inject(Router) private _router) {}
+    constructor() {}
     ngOnInit() {
         debug(this.data);
         this.link = this.data.link;

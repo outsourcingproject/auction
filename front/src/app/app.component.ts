@@ -14,7 +14,7 @@ let style = require('./style.styl');
   selector: 'app',
   template: template,
   styles: [style],
-  directives: [MasterBar]
+  directives:[MasterBar]
 })
 export class App {
   constructor() {

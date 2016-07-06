@@ -5,7 +5,7 @@
 
 import {Component, Inject} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import {User} from "../../entities/User";
 
@@ -33,7 +33,7 @@ export class SignupForm {
     this._http.post('/signup', JSON.stringify(this.user), {headers: headers}).subscribe(res => {
       let json = res.json();
       if (json && 'OK' === json.status) {
-        this._router.parent.navigateByUrl('/main');
+        this._router.navigate(['/user']);
       }
     });
   }
