@@ -1,16 +1,16 @@
 {
   "header": [
-    { "link": ["Login"], "text": "登陆/注册" },
-    { "link": ["User",{"id":1}], "text": "用户中心" },
-    { "link": ["Todo"], "text": "退出" },
-    { "link": ["Todo"], "text": "消息" },
-    { "link": ["Todo"], "text": "微信微博" }
+    { "link": ["login"], "text": "登陆/注册" },
+    { "link": ["user",1], "text": "用户中心" },
+    { "link": ["todo"], "text": "退出" },
+    { "link": ["todo"], "text": "消息" },
+    { "link": ["todo"], "text": "微信微博" }
   ],
   "main": [
-    { "link": ["Home"], "text": "首页" },
-    { "link": ["Auctioning"], "text": "正在拍卖" },
-    { "link": ["Todo"], "text": "结束拍卖" },
-    { "link": ["Todo"], "text": "网站简介" },
-    { "link": ["Todo"], "text": "用户反馈" }
+    { "link": ["home"], "text": "首页" },
+    { "link": ["auctioning"], "text": "正在拍卖" },
+    { "link": ["todo"], "text": "结束拍卖" },
+    { "link": ["todo"], "text": "网站简介" },
+    { "link": ["todo"], "text": "用户反馈" }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "userNav": [
-    { "link": ["UserInfo"], "text": "我的资料" },
-    { "link": ["Auction"], "text": "竞拍中心" },
+    { "link": ["user/userInfo"], "text": "我的资料" },
+    { "link": ["user/auction"], "text": "竞拍中心" },
     { "link": ["Order"], "text": "订单中心" },
     { "link": ["Message"], "text": "消息中心" },
     { "link": ["Account"], "text": "账户设置" },
