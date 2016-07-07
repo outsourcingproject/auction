@@ -2,8 +2,8 @@
  * index.js.js
  * Created by Huxley on 12/9/15.
  */
-import {Component, Inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, ContentChildren, QueryList} from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
 
 let debug = require('debug')('ng:masterbar');
 let template = require('./template.html');
@@ -21,6 +21,7 @@ export class MasterBar {
 
   constructor(private _router:Router) {
     this.menus = menus;
+
   }
 
   public search(keywords) {

@@ -1,5 +1,7 @@
-import {Component} from '@angular/core'
+import {Component, OnInit, ContentChildren, QueryList} from '@angular/core'
 //import {RouterActive} from "../../directives/router-active";
+
+import {Router, RouterLink} from '@angular/router';
 
 let debug = require('debug')('ng:user-nav');
 
@@ -7,12 +9,14 @@ let debug = require('debug')('ng:user-nav');
   selector: 'user-nav',
   styles: [require('./style.styl')],
   template: require('./template.html'),
- // directives: [RouterActive]
+  // directives: [RouterActive]
 })
 export class UserNavComponent {
-  public nav:Object;
 
-  constructor() {
+  public nav:{userNav:Array<{link:Array<any>,text:string}>};
+
+  constructor(private _router:Router) {
     this.nav = require('./config.json')['userNav'];
   }
+
 }

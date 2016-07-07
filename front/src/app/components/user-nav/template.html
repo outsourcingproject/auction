@@ -1,9 +1,9 @@
-<ul class="list-unstyled nav-list">
-  <li *ngFor="let item of nav" [routerLink]="item.link" >
+<ul class="list-unstyled nav-list" >
+  <li *ngFor="let item of nav"  [routerLinkActive]="'active'">
     <div class="circle">
       <div></div>
     </div>
-    <div class="tag">{{item.text}}</div>
+    <a [routerLink]="item.link" class="tag">{{item.text}}</a>
     <div class="fa fa-chevron-left"> </div>
   </li>
 

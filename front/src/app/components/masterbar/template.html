@@ -22,8 +22,8 @@
                 </div>
             </div>
             <ul class="main-menu">
-                <li *ngFor="let menu of menus.main">
-                    <a [routerLink]="menu.link">{{menu.text}}</a>
+                <li *ngFor="let menu of menus.main" >
+                    <a [routerLink]="menu.link" [routerLinkActive]="'active'" >{{menu.text}}</a>
                 </li>
             </ul>
         </div>
