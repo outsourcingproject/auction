@@ -9,7 +9,7 @@ import {
   Renderer
 } from '@angular/core';
 import { isPresent } from '@angular/core/src/facade/lang';
-import { Instruction, Router, RouterLink } from '@angular/router-deprecated';
+import { Router, RouterLink } from '@angular/router';
 
 /**
  * RouterActive dynamically finds the first element with routerLink and toggles the active class

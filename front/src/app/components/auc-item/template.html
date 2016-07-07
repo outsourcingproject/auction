@@ -1,7 +1,7 @@
 <div class="auc-item" [style.background]="imageUrl" [routerLink]="link"
      (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
     <div [ngSwitch]="status" class="item-wrapper">
-        <div *ngSwitchWhen="0" class="status-will">
+        <div *ngSwitchCase="0" class="status-will">
             <div class="center" [class.show]="!mouseOver">
                 <div class="title">{{name}}</div>
                 <div class="info">即将开拍</div>
@@ -11,13 +11,13 @@
                 <div class="title">{{name}}</div>
             </div>
         </div>
-        <div *ngSwitchWhen="1" class="status-doing">
+        <div *ngSwitchCase="1" class="status-doing">
             <div class="fixed">
                 <div class="price">当前竞拍价格<span>{{price}}¥</span></div>
                 <div class="title">{{name}}</div>
             </div>
         </div>
-        <div *ngSwitchWhen="2" class="status-done">
+        <div *ngSwitchCase="2" class="status-done">
             <div class="center" [class.show]="!mouseOver">
                 <div class="info">竞拍结束</div>
                 <div class="price">最终价格{{price}}¥</div>
