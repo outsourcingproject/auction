@@ -1,38 +1,27 @@
 import Base from './base.js'
 
-export default class ItemGroup extends Base {
-  schemas = {
-    name: {
-      type: String,
-      require: true,
-      unique: true,
-      default: ''
-    },
-    desc: {
-      type: String,
-      require: true,
-      default: ''
-    },
-    no: {
-      type: Number,
-      require: true,
-      unique: true,
-      default: ()=> {
-        return this.max('no') + 1;
+export default class ItemGroup extends think.model.relation {
+  init(...args){
+    super.init(...args);
+    this.relation = {
+      item: {
+        type: think.model.HAS_MANY,
+        key:"id",
+        fKey:"group",
+        order: "createAt DESC"
       }
+    };
+  }
 
-    },
-    createAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
+  selectData(id,limit)
+  {
+      id.toString();
+      return this.setRelation(true).where("id = "+id).limit(limit).select();
+  }
+
+  getList(){
+    return this.setRelation(false).order("createAt DESC").limit(4).select();
+  }
 
   async beforeAdd(data) {
     data = super.beforeAdd(data);

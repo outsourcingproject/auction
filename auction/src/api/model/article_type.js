@@ -1,31 +1,34 @@
-import Base from './base.js'
+'use strict';
+/**
+ * relation model
+ */
+export default class extends think.model.relation {
+  /**
+   * init
+   * @param  {} args []
+   * @return {}         []
+   */
+  init(...args){
+    super.init(...args);
 
-export default class ArticleType extends Base {
-  schemas = {
-    name: {
-      type: String,
-      require: true,
-      unique: true,
-      default: ""
-    },
-    desc: {
-      type: String,
-      require: true,
-      default: ""
-    },
-    createAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
+    this.relation = {
+      article:{
+        type: think.model.HAS_MANY,
+        key:"id",
+        fkey:"article_type_id"
+       
+        // field:"id,title"
+      }
     }
   }
-  indexes={
-    name:{$unique: 1}
-  };
+    getList(){
+      return this.setRelation(false).select();
+    }    
 
-}
+    selectData(id,limit){
+      id.toString();
+      return this.setRelation(true).where("id = "+id).limit(limit).select();
+    }
+
+
+  }
