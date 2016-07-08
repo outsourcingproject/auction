@@ -4,9 +4,11 @@
 
 import { PLATFORM_PIPES } from '@angular/core';
 
+import { CUSTOM_PIPES } from '../app/pipes'
+
 // application_pipes: pipes that are global through out the application
 export const APPLICATION_PIPES = [
-
+	...CUSTOM_PIPES
 ];
 
 export const PIPES = [

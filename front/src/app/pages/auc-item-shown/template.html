@@ -27,8 +27,8 @@
                     <div *ngIf="watching" class="watching" (click)="watchIt(false)">正在关注</div>
                 </div>
                 <div class="text">
-                    开始时间: {{startTime | date:'y/MM/dd HH:mm:ss' }}<br/>
-                    结束时间: {{endTime | date:'y/MM/dd HH:mm:ss' }}<br/>
+                    开始时间: {{startTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
+                    结束时间: {{endTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
                     剩余时间: 拍卖结束 延时<br/>
                     出价次数: {{price.cnt}}<br/>
                     拍卖方式: 英式<br/>

@@ -8,4 +8,10 @@ import {Component} from '@angular/core'
 })
 export class UserInfoComponent {
 
+  public data:Object;
+
+  constructor(){
+    this.data=require('./config.json');
+    console.log(this.data);
+  }
 }

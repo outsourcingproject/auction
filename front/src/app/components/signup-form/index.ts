@@ -18,7 +18,7 @@ let debug = require('debug')('ng:signup-form');
   selector: 'signup-form',
   template: template,
   styles:[style],
-  directives: [FORM_DIRECTIVES]
+  directives: []
 })
 export class SignupForm {
   public user;

@@ -3,30 +3,59 @@ import {Component, Input, AfterViewInit, EventEmitter, Output, OnDestroy, OnInit
 import './ueditor.config.js'
 import './ueditor.all.min.js'
 
+
+let debug=require('debug')('ng:ueditor');
 declare var UE:any;
 
 @Component({
   selector: 'ueditor',
   template: require('./ueditor.html'),
-  styles: [require('./ueditor.styl')]
+  styles: [require('./ueditor.styl')],
 })
-export class UEditor implements OnDestroy,OnInit {
+export class UEditor implements OnDestroy,AfterViewInit {
 
+  private _ue;
+  public ueId='ueditor-container-'+parseInt(Math.random()*10000+'');
+  private _ueditorReady:boolean=false;
+  private _content:string='';
 
-  ue;
   @Output()
-  change:EventEmitter<string> = new EventEmitter<string>();
+  ueModelChange:EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnInit():any {
-    this.ue = UE.getEditor('ueditor-container');
-    this.ue.addListener('selectionchange', ()=> {
-      this.change.emit(this.ue.getContent())
+  @Input()
+  public set ueModel(val){
+    this._content=val;
+    if(this._ueditorReady){
+      this._ue.setContent(val);
+    }
+  }
+
+  public get ueModel(){
+    return this._content;
+  }
+
+  @Input()
+  public height:number=300;
+
+  constructor(){
+    debug(this.ueId);
+  }
+
+  ngAfterViewInit():any {
+    this._ue = UE.getEditor(this.ueId);
+    this._ue.addListener('selectionchange', ()=> {
+      this.ueModelChange.emit(this._ue.getContent())
+    })
+    this._ue.addListener('ready',()=>{
+      this._ueditorReady=true;
+      this._ue.setContent(this.ueModel);
+      this._ue.setHeight(this.height);
     })
   }
 
   ngOnDestroy():any {
-    if (this.ue)
-      this.ue.destroy();
+    if (this._ue)
+      this._ue.destroy();
   }
 
 }
