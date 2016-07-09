@@ -12,6 +12,5 @@ export class UserInfoComponent {
 
   constructor(){
     this.data=require('./config.json');
-    console.log(this.data);
   }
 }

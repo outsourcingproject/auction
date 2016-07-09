@@ -19,7 +19,7 @@ export class UserDetailComponent implements OnInit {
       username:'zl8108812838',
       desc:'nihao'
     };
-    
+
   }
 
   ngOnInit() {

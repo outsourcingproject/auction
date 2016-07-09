@@ -2,8 +2,10 @@ import {Injectable}       from '@angular/core';
 import {Http, URLSearchParams,Response}             from '@angular/http';
 import {Observable}       from "rxjs";
 import {User}             from "../entities/User";
+import {BaseService} from "./base.service";
+
 @Injectable()
-export class UserService {
+export class UserService extends BaseService{
   public user:User;
 
   public getDetail():Observable<Object> {
@@ -23,19 +25,15 @@ export class UserService {
     return this._http.post('/api/user/login',user).flatMap(this._extractData);
   }
 
+  public resetPassword(user:User,pwd:string){
+
+  }
+
   public checkAuth(path:string):Observable<boolean> {
     return Observable.of(true).delay(100);
-
   }
-
-  private _extractData(res: Response):Observable<Object>{
-    let body=res.json();
-    if(body.errno){
-      return Observable.throw(new Error(body.errmsg));
-    }
-    return Observable.of(body.data);
+  
+  constructor(private http:Http){
   }
-  constructor(private _http:Http) {
-
-  }
+  
 }

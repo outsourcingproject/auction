@@ -1,5 +1,5 @@
 import {RouterConfig}          from '@angular/router';
-import {UserComponent}         from "./index";
+import {UserComponent}         from ".";
 import {Todo}                  from "../../components/todo/index";
 import {UserInfoComponent}     from "../../components/user-info/user-info.component";
 import {UserAuctionComponent}  from "../../components/user-auction";
@@ -22,4 +22,4 @@ export const userRoutes:RouterConfig = [
       {path: 'following', component: Todo},
     ]
   },
-]
+];

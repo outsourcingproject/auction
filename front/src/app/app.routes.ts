@@ -7,6 +7,7 @@ import {InfoShown} from './pages/info-shown'
 import {LoginForm} from "./components/login-form";
 import {SignupForm} from "./components/signup-form";
 import {userRoutes} from './pages/user'
+import {adminRoutes} from "./pages/admin";
 
 export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ export const appRoutes:RouterConfig = [
   {path: 'login', component: LoginForm},
   {path: 'signup', component: SignupForm},
   ...userRoutes,
+  ...adminRoutes,
   {path: 'todo', component: Todo}
 ];
 
