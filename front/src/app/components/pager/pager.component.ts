@@ -7,7 +7,7 @@ let debug = require('debug')('ng:pager');
   styles: [require('./style.styl')],
   template: require('./template.html')
 })
-export class PagerComponent implements OnInit {
+export class PagerComponent {
 
   public currPageIdx:number;
   public currPageRange:Array<number>;
@@ -24,7 +24,7 @@ export class PagerComponent implements OnInit {
     }
     debug(val);
     this._data = val;
-    this.pageIdxClick(this.currPageIdx||1);
+    this.pageIdxClick(this.currPageIdx || 1);
   }
 
   @Input()
@@ -37,9 +37,6 @@ export class PagerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
-    //this.pageIdxClick(1);
-  }
 
   public pageIdxClick(idx:number) {
     let pageNum = Math.ceil(this.data.length / this.pageSize) || 1;
@@ -49,8 +46,8 @@ export class PagerComponent implements OnInit {
     this.currPageIdx = idx;
 
     setTimeout(()=> {
-      let begin=(idx - 1) * this.pageSize;
-      let end=begin+this.pageSize;
+      let begin = (idx - 1) * this.pageSize;
+      let end = begin + this.pageSize;
       this.pagedDataChange.emit(this.data.slice(begin, end));
     }, 0);
 

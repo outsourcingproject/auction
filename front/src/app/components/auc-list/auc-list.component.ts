@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 
@@ -13,16 +13,16 @@ let style = require('./style.styl');
   styles: [style],
   directives: [AucItemDetailed]
 })
-export class AucListComponent {
+export class AucListComponent implements OnInit {
   @Input()
   public data:Array<{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
-    follow:number,auctionEndTime:number,watching:boolean,type:number}> = config;
+    follow:number,auctionEndTime:number,watching:boolean,type:string}> = config;
 
   @Input()
   public pagedData:Array<{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
-    follow:number,auctionEndTime:number,watching:boolean,type:number}> = [];
+    follow:number,auctionEndTime:number,watching:boolean,type:string}> = [];
 
   @Output()
   public filteredDataChange = new EventEmitter<Array<Object>>();
@@ -46,7 +46,8 @@ export class AucListComponent {
   }
 
   ngOnInit() {
-    setTimeout(()=>this._updateFilteredData(), 1000);
+    this._updateFilteredData()
+    //setTimeout(()=>, 0);
   }
 
   public onFilterClick(idx) {

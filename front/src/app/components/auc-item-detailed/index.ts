@@ -18,10 +18,9 @@ export class AucItemDetailed implements OnInit {
   @Input()
   public data:{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
-    follow:number,auctionEndTime:number,watching:boolean,type:number};
+    follow:number,auctionEndTime:number,watching:boolean,type:string};
 
   public id:number;
-  public currentPrice:number;
   public link;
   public image:string;
   public name:string;
