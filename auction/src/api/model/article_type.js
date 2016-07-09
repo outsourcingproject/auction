@@ -15,7 +15,7 @@ export default class extends think.model.relation {
       article:{
         type: think.model.HAS_MANY,
         key:"id",
-        fkey:"article_type_id"
+        fKey:"type"
        
         // field:"id,title"
       }

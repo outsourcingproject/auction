@@ -57,4 +57,28 @@ export default class User extends Base {
     delete obj.user.password;
     return obj;
   }
+
+  async infoAction(){
+    // let result = [];
+    // let userId = await this.session('user');
+    // let messages = await this.model("message").field("id,creatAt,title,read").select();
+    // let items = await this.model("item").where({user:userId}).select();
+    // let priceOver = [];
+    // items.map((i)=>{let p = })
+    // })
+
+
+  }
+  async detailAction(){
+    let userId = await this.session('user');
+    let userDetail = await this.userModel.field("creatAt,level,creditLines,lastLogin").select();
+    if(think.isEmpty())
+      return this.fail("无此用户");
+    userDetail["totalVolume"] = await this.model("order").where({user:userId}).count();
+    userDetail["totalTurnover"] = await this.model("order").transcaction(async()=>{
+      let itemIds = await this.model("order").where({user:userId}).select();
+      return await self.model("item").where({id:["IN",itemIds]}).sum(currentPrice);
+    })
+    return this.this.success(userDetail);
+  }
 }

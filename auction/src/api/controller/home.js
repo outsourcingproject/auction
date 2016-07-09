@@ -13,8 +13,8 @@ export default class extends Base {
      	// get article on home page
      	let detailNum = 4; //每个类别显示的新闻条数
      	let itemNum = 8;
-     	var articleTypeModel = this.model('article_type',true);
-     	var articles = [];
+     	let articleTypeModel = this.model('article_type',true);
+     	let articles = [];
      	try{
      		await articleTypeModel.startTrans();
      		let typeList = await articleTypeModel.getList();
@@ -49,7 +49,7 @@ export default class extends Base {
 
         let services = await this.model('service').selectData(4);
 
-        let data = {"articles":articles,"groups":groups,"services":services};
+        //format data
 
         let resultDetails = [];let resultItems =[]; let resultGroups  =[]; let resultServices = [];
         for (let  a of articles){
@@ -79,31 +79,5 @@ export default class extends Base {
         	return this.success(result);
         else
         	return this.fail("无相关数据！");
-     }
-     async itemGroupAction(){
-     	let groups = await this.model('item_group').selectData(1,4);//relationFileds,relationLimit,groupNum
-        if(groups!=null)
-        	return this.success(groups);
-        else
-        	return this.fail("无相关数据！");
-
-     }
-     async serviceAction(){
-     	let services = await this.model('service').selectData(4);
-     	if(services!=null)
-        	return this.success(services);
-        else
-        	return this.fail("无相关数据！");
-     }
-     async postAction(){
-     	let article_types =[
-     	{"name":"系统公告","desc":"系统发布的公告",createAt:"123456",updateAt:"123456"},
-     	{"name":"新闻动态","desc":"系统发布的公告",createAt:"123456",updateAt:"123456"},
-     	{"name":"行业动态","desc":"系统发布的公告",createAt:"123456",updateAt:"123456"},
-     	{"name":"知识荟萃","desc":"系统发布的公告",createAt:"123456",updateAt:"123456"}
-     	]
-     	
-     	let result = await this.model("article_type").addMany(article_types);
-     	return this.success(result);
      }
 }
