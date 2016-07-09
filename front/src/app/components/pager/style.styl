@@ -1,0 +1,19 @@
+
+$page-idx-border = #947c44;
+$page-idx-active = #91793f;
+$color-main = #6c000a;
+
+.page-idx {
+  float: right;
+  padding-top: .5rem;
+  margin-bottom: 2rem;
+  div { display: inline-block; }
+  .page-idx-box {
+    margin: .2rem;
+    padding: .2rem .8rem;
+    color: white;
+    cursor: pointer;
+    background: $color-main;
+    &.active { background: $page-idx-active; }
+  }
+}

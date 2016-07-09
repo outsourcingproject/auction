@@ -1,27 +1,12 @@
 <div class="container">
-    <div class="header">
-        <img src="../../../assets/img/header.png" width="100%">
-    </div>
-    <split [cnTitle]="'拍卖中'" [enTitle]="'AUCTIONING'" ></split>
-    <div class="filters">
-        <div *ngFor="let filter of filters; let filterIdx=index" class="filter">
-            <span>{{filter.name}}:</span>
-            <ul>
-                <li *ngFor="let list of filter.lists; let listIdx=index"
-                    [class.selected]="filterSelected[filterIdx] === listIdx"
-                    (click)="onFilterClick(filterIdx, listIdx)">{{list}}</li>
-            </ul>
-        </div>
-    </div>
-    <div class="items">
-        <auc-item-detailed *ngFor="let item of items" [data]="item"></auc-item-detailed>
-    </div>
-    <div class="page-idx">
-        <div class="page-idx-box" (click)="prev()"><<</div>
-        <div *ngIf="curPageIdx > 3">...</div>
-        <div *ngFor="let idx of curPageRange" class="page-idx-box" [class.active]="idx === curPageIdx"
-             (click)="pageIdxClick(idx)">{{idx}}</div>
-        <div *ngIf="end === 0">...</div>
-        <div class="page-idx-box" (click)="next()">>></div>
-    </div>
+  <div class="header">
+    <img src="../../../assets/img/header.png" width="100%">
+  </div>
+
+  <split [cnTitle]="'拍卖中'" [enTitle]="'AUCTIONING'"></split>
+
+  <auc-list (filteredDataChange)="filteredData=$event" [pagedData]="pagedData"></auc-list>
+
+  <pager (pagedDataChange)="pagedData=$event" [data]="filteredData"></pager>
+
 </div>

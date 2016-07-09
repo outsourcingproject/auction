@@ -8,10 +8,10 @@ import {UEditor} from '../ueditor';
   selector: 'todo',
   template: `
   <h1>TODO</h1>
+
+  <ueditor [(ueModel)]="text"></ueditor>
+  <div >{{text}}</div>
   `,
-  // <ueditor [(ueModel)]="text"></ueditor>
-  // <div >{{text}}</div>
-  // `,
   styles: [`h1 { text-align: center; color: #f08f13; }`],
   directives:[UEditor]
 })

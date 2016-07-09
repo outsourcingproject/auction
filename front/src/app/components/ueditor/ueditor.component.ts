@@ -45,7 +45,7 @@ export class UEditor implements OnDestroy,AfterViewInit {
     this._ue = UE.getEditor(this.ueId);
     this._ue.addListener('selectionchange', ()=> {
       this.ueModelChange.emit(this._ue.getContent())
-    })
+    });
     this._ue.addListener('ready',()=>{
       this._ueditorReady=true;
       this._ue.setContent(this.ueModel);

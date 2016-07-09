@@ -1,0 +1,23 @@
+<div class="filters">
+  <div class="filter">
+    <span>藏品类别:</span>
+    <ul>
+      <li *ngFor="let filter of filters; let idx=index"
+          [class.selected]="filterSelected === idx"
+          (click)="onFilterClick(idx)">{{filter}}
+      </li>
+    </ul>
+  </div>
+  <div class="filter">
+    <span>排序:</span>
+    <ul>
+      <li *ngFor="let order of orders; let idx=index"
+          [class.selected]="orderSelected === idx"
+          (click)="onOrderClick(idx)">{{order}}
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="items">
+  <auc-item-detailed *ngFor="let item of pagedData" [data]="item"></auc-item-detailed>
+</div>
