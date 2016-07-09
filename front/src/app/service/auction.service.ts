@@ -8,5 +8,6 @@ import {BaseService} from "./base.service";
 export class AuctionService extends BaseService{
 
   constructor(private http:Http){
+  	super();
   }
 }

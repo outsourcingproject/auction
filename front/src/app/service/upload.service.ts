@@ -1,27 +1,22 @@
 import {Injectable} from 'angular2/core';
-import {Observable} from 'rxjs/Rx';
+import {Observable, Observer} from 'rxjs';
 
 @Injectable()
 export class UploadService {
-  constructor () {
-    this.progress$ = Observable.create(observer => {
-      this.progressObserver = observer
-    }).share();
-  }
 
-  private makeFileRequest (url: string, params: string[], files: File[]): Observable {
+  public makeFileRequest(url:string, files:File[]):Observable<{complate:number,progress?:number,data?:Object}> {
     return Observable.create(observer => {
-      let formData: FormData = new FormData(),
-        xhr: XMLHttpRequest = new XMLHttpRequest();
+      let formData:FormData = new FormData(),
+        xhr:XMLHttpRequest = new XMLHttpRequest();
 
       for (let file of files) {
-        formData.append("uploads[]", file, file.name);
+        formData.append("files[]", file, file.name);
       }
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            observer.next(JSON.parse(xhr.response));
+            observer.next({complate:1,progress:100,data:JSON.parse(xhr.response)});
             observer.complete();
           } else {
             observer.error(xhr.response);
@@ -30,13 +25,11 @@ export class UploadService {
       };
 
       xhr.upload.onprogress = (event) => {
-        this.progress = Math.round(event.loaded / event.total * 100);
-
-        this.progressObserver.next(this.progress);
+        observer.next({complate:0,progress:Math.round(event.loaded / event.total * 100)});
       };
 
       xhr.open('POST', url, true);
       xhr.send(formData);
-    });
+    }).share();
   }
 }
