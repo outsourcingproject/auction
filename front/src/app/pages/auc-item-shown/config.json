@@ -16,11 +16,37 @@
   "start_time": "",
   "end_time": "",
   "way_of_auction": 0,
-  "images": ["/static/images/snapshot.png", "/static/images/snapshot.png", "/static/images/snapshot.png"],
+  "images": [
+    "/static/images/snapshot.png",
+    "/static/images/snapshot.png",
+    "/static/images/snapshot.png"
+  ],
   "items": [
-    { "link": ["/auc-item", 5 ], "image": "/static/images/sample.png", "name": "鹿头正银一量", "price": "1300.00", "watch_cnt": "420",
-      "end_time": "", "watching": true, "category": "1" },
-    { "link": ["/auc-item", 6 ], "image": "/static/images/sample.png", "name": "鹿头正银二量", "price": "2600.00", "watch_cnt": "400",
-      "end_time": "", "watching": false, "category": "1" }
+    {
+      "id": 5,
+      "images": [
+        "/static/images/sample.png"
+      ],
+      "name": "鹿头正银二量",
+      "currentPrice": 1302.00,
+      "auctionTimes": 2,
+      "follow": 402,
+      "auctionEndTime": 1468080278746,
+      "watching": false,
+      "type": "中国现当代"
+    },
+    {
+      "id": 6,
+      "images": [
+        "/static/images/sample.png"
+      ],
+      "name": "鹿头正银二量",
+      "currentPrice": 1302.00,
+      "auctionTimes": 2,
+      "follow": 402,
+      "auctionEndTime": 1468080278746,
+      "watching": false,
+      "type": "中国现当代"
+    }
   ]
 }

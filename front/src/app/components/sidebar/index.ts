@@ -2,7 +2,7 @@
  * index.js
  * Created by Huxley on 12/12/15.
  */
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 let debug = require('debug')('ng:sidebar');
 let template = require('./template.html');
@@ -18,17 +18,20 @@ let style = require('./style.styl');
 export class Sidebar implements OnInit {
   @Input()
   public data;
+
+  @Output()
+  public groupChange = new EventEmitter<Object>();
+
   public curIdx;
+
 
   ngOnInit() {
     debug('Load data', this.data);
-    this.data.forEach(item => {
-      if (item.image) item.image = `url(${item.image})`;
-    });
-    this.curIdx = 0;
+    this.onMouseOver(0);
   }
 
-  onMouseOver(idx) {
+  public onMouseOver(idx) {
     this.curIdx = idx;
+    this.groupChange.emit(this.data[idx].auctions);
   }
 }

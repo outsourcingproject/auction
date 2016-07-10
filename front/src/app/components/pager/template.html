@@ -1,9 +1,11 @@
 <div class="page-idx">
+  <div class="page-idx-box" (click)="first()"><<</div>
   <div class="page-idx-box" (click)="prev()"><</div>
   <div *ngIf="currPageIdx > 3">...</div>
   <div *ngFor="let idx of currPageRange" class="page-idx-box" [class.active]="idx === currPageIdx"
        (click)="pageIdxClick(idx)">{{idx}}
   </div>
-  <div *ngIf="end === 0">...</div>
+  <div *ngIf="pageNum > currPageIdx+2">...</div>
   <div class="page-idx-box" (click)="next()">></div>
+  <div class="page-idx-box" (click)="last()">>></div>
 </div>

@@ -33,8 +33,7 @@ export class Home {
   constructor() {
     this.leftTabData = config.lefttab;
     this.rightTabData = config.righttab;
-    this.sidebarData = config.sidebar;
-    this.auctionItems = config.auctions;
+    this.sidebarData = config.auctionGroups;
     this.serviceData = config.service;
   }
 }

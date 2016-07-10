@@ -24,9 +24,10 @@ export class MasterBar {
 
   }
 
-  public search(keywords) {
-    debug(`search ${keywords}`);
-    // TODO
+  public search(keyword) {
+    debug(`search ${keyword}`);
+    if(keyword&&keyword.length)
+      this._router.navigate(['/search',keyword]);
   }
 
   public addFavorite() {

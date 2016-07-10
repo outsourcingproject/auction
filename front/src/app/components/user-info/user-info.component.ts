@@ -8,7 +8,7 @@ import {Component} from '@angular/core'
 })
 export class UserInfoComponent {
 
-  public data:Object;
+  public data;
 
   constructor(){
     this.data=require('./config.json');

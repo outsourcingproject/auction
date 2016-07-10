@@ -9,8 +9,7 @@
   "main": [
     { "link": ["/home"], "text": "首页" },
     { "link": ["/auctioning"], "text": "正在拍卖" },
-    { "link": ["/todo"], "text": "结束拍卖" },
-    { "link": ["/todo"], "text": "网站简介" },
-    { "link": ["/todo"], "text": "用户反馈" }
+    { "link": ["/auction-end"], "text": "结束拍卖" },
+    { "link": ["/todo"], "text": "网站简介" }
   ]
 }

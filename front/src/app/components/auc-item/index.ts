@@ -20,12 +20,11 @@ const STATUS_DONE = 2;
     selector: 'auc-item',
     template: template,
     styles: [style],
-    inputs: ['data'],
     directives: []
 })
 export class AucItem implements OnInit {
     @Input() public data;
-    public link;
+    public id;
     public name;
     public imageUrl;
     public status;
@@ -34,7 +33,7 @@ export class AucItem implements OnInit {
 
     ngOnInit() {
         debug('Load data', this.data);
-        this.link = this.data.link;
+        this.id=this.data.id;
         this.name = this.data.name;
         this.imageUrl = `url('${this.data.image}')`;
         this.status = this.data.status;

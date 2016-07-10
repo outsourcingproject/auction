@@ -21,7 +21,6 @@ export class AucItemDetailed implements OnInit {
     follow:number,auctionEndTime:number,watching:boolean,type:string};
 
   public id:number;
-  public link;
   public image:string;
   public name:string;
   public currentPrice:number;
@@ -36,8 +35,8 @@ export class AucItemDetailed implements OnInit {
 
   ngOnInit() {
     debug(this.data);
-    this.link = ['', this.data.id];
-    this.image = this.data.images[0];
+    this.id=this.data.id;
+    this.image = this.data.images?this.data.images[0]:'';
     this.name = this.data.name;
     this.currentPrice = this.data.currentPrice;
     //this.end_time = this.data.end_time;

@@ -11,7 +11,8 @@ export class PagerComponent {
 
   public currPageIdx:number;
   public currPageRange:Array<number>;
-
+  public pageNum:number;
+  
   private _data:Array<Object>;
   public get data() {
     return this._data;
@@ -39,7 +40,7 @@ export class PagerComponent {
 
 
   public pageIdxClick(idx:number) {
-    let pageNum = Math.ceil(this.data.length / this.pageSize) || 1;
+    let pageNum = this.pageNum= Math.ceil(this.data.length / this.pageSize) || 1;
 
     if (idx <= 0) idx = 1;
     if (pageNum && pageNum < idx) idx = pageNum;
@@ -65,5 +66,11 @@ export class PagerComponent {
     this.pageIdxClick(this.currPageIdx + 1);
   }
 
+  public first(){
+     this.pageIdxClick(1);
+  }
+  public last(){
+    this.pageIdxClick(this.pageNum);
+  }
 
 }

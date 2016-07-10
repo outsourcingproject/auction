@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 
 let debug = require('debug')('ng:auc-list');
-let config = require('./config.json');
+
 let template = require('./template.html');
 let style = require('./style.styl');
 
@@ -14,11 +14,21 @@ let style = require('./style.styl');
   directives: [AucItemDetailed]
 })
 export class AucListComponent implements OnInit {
-  @Input()
-  public data:Array<{id:number,images:Array<string>,
+  
+  private _data:Array<{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
-    follow:number,auctionEndTime:number,watching:boolean,type:string}> = config;
+    follow:number,auctionEndTime:number,watching:boolean,type:string}> = [];
 
+  @Input()
+  public set data(val){
+    this._data=val;
+    
+    this.filters = ['全部'];
+    new Set(this.data.map((i)=>i.type)).forEach((i)=>this.filters.push(i));
+  }
+  public get data(){
+    return this._data;
+  }
   @Input()
   public pagedData:Array<{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
@@ -37,8 +47,7 @@ export class AucListComponent implements OnInit {
 
   constructor(private _http:Http) {
 
-    this.filters = ['全部'];
-    new Set(this.data.map((i)=>i.type)).forEach((i)=>this.filters.push(i));
+
 
     this.orders = ["默认", "价格", "出价数", "人气", "截拍时间"];
 

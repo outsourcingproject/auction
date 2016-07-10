@@ -15,6 +15,7 @@ import { ENV_PROVIDERS } from './platform/environment';
 */
 import { App, APP_PROVIDERS } from './app';
 
+let debug = require('debug');
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
@@ -46,10 +47,9 @@ export function main(initialHmrState?: any): Promise<any> {
  * Hot Module Reload
  * experimental version by @gdi2290
  */
-if ('development' === ENV && HMR === true) {
-  // activate hot module reload
-  let ngHmr = require('angular2-hmr');
-  ngHmr.hotModuleReplacement(main, module);
+if ('development' === ENV) {
+  debug.enable('ng:*');
+  document.addEventListener('DOMContentLoaded', () => main());
 } else {
   // bootstrap when document is ready
   document.addEventListener('DOMContentLoaded', () => main());

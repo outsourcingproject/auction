@@ -8,9 +8,9 @@
       <tabview [data]="rightTabData"></tabview>
     </div>
   </div>
-  <split></split>
+  <split [cnTitle]="'专场介绍'" [enTitle]="'SPECIAL INTRODUCTION'"></split>
   <div class="main">
-    <sidebar [data]="sidebarData"></sidebar>
+    <sidebar [data]="sidebarData" (groupChange)="auctionItems=$event"></sidebar>
     <div class="exhibition">
       <auc-item *ngFor="let item of auctionItems" [data]="item"></auc-item>
     </div>

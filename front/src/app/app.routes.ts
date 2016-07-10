@@ -8,12 +8,15 @@ import {LoginForm} from "./components/login-form";
 import {SignupForm} from "./components/signup-form";
 import {userRoutes} from './pages/user'
 import {adminRoutes} from "./pages/admin";
-
+import {AuctionEnd} from "./pages/auction-end";
+import {Search} from "./pages/search";
 export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: Home},
   {path: 'auc-item/:id', component: AucItemShown},
   {path: 'auctioning', component: Auctioning},
+  {path: 'auction-end', component: AuctionEnd},
+  {path: 'search/:keyword', component: Search},
   {path: 'info/:id', component: InfoShown},
   {path: 'login', component: LoginForm},
   {path: 'signup', component: SignupForm},

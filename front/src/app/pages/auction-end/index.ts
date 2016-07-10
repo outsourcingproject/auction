@@ -10,19 +10,19 @@ import {AucListComponent} from "../../components/auc-list";
 import {PagerComponent} from "../../components/pager";
 
 
-let debug = require('debug')('ng:auctioning');
+let debug = require('debug')('ng:auction-end');
 let template = require('./template.html');
 let style = require('./style.styl');
 
 let config = require('./config.json');
 
 @Component({
-  selector: 'auctioning',
+  selector: 'auction-end',
   template: template,
   styles: [style],
   directives: [AucItemDetailed, SplitComponent, AucListComponent, PagerComponent]
 })
-export class Auctioning {
+export class AuctionEnd {
   public data=config;
   constructor(private _http:Http) {
   }

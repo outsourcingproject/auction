@@ -1,4 +1,4 @@
-<div class="auc-item" [style.background]="imageUrl" [routerLink]="link"
+<div class="auc-item" [style.background]="imageUrl" [routerLink]="['/auc-item',id]"
      (mouseover)="onMouseOver()" (mouseout)="onMouseOut()">
     <div [ngSwitch]="status" class="item-wrapper">
         <div *ngSwitchCase="0" class="status-will">

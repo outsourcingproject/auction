@@ -24,7 +24,7 @@
       </div>
       <div class="" *ngIf="!data.priseOver||!data.priseOver.length">暂无出价被超</div>
       <ul class="list-unstyled list" *ngIf="data.priseOver.length">
-        <li class="flex-box" *ngFor="let i of data.priseOver"><span>{{i.title}}</span><span>{{i.prise}}</span></li>
+        <li class="flex-box" *ngFor="let i of data.priseOver"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
       </ul>
     </div>
     <div class="flex-box waiting-confident">
@@ -33,7 +33,7 @@
       </div>
       <div class="" *ngIf="!data.auctionConfirm||!data.auctionConfirm.length">暂无得标商品</div>
       <ul class="list-unstyled list" *ngIf="data.auctionConfirm.length">
-        <li class="flex-box" *ngFor="let i of data.auctionConfirm"><span>{{i.title}}</span><span>{{i.prise}}</span></li>
+        <li class="flex-box" *ngFor="let i of data.auctionConfirm"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
       </ul>
     </div>
     <div class="flex-box waiting-payment">
@@ -42,7 +42,7 @@
       </div>
       <div class="" *ngIf="!data.waitPay||!data.waitPay.length">暂无待支付订单</div>
       <ul class="list-unstyled list" *ngIf="data.waitPay.length">
-        <li class="flex-box" *ngFor="let i of data.waitPay"><span>{{i.title}}</span><span>{{i.prise}}</span></li>
+        <li class="flex-box" *ngFor="let i of data.waitPay"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
       </ul>
     </div>
   </div>

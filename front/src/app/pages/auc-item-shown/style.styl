@@ -67,23 +67,24 @@ $dark-yellow = #91793f;
       }
       .stars { display: inline-block; }
       .eye {
+        float: left;
         display: inline-block;
         &:before {
-          content: url('../../../assets/img/eye.png');
-          margin-right: .3rem;
+          margin: 0 .3rem;
         }
       }
 
       .watch, .watching {
+        float: right;
         display: inline-block;
-        margin-left: .5rem;
         cursor: pointer;
         &:before {
-          content: url('../../../assets/img/heart_empty.png');
-          margin-right: .3rem;
+          margin: 0 .3rem;
         }
       }
-      .watching:before { content: url('../../../assets/img/heart_full.png'); }
+      .watching:before {
+        color: red
+      }
       .text { margin-top: 1rem; }
       .table {
         display: inline-block;
@@ -98,7 +99,7 @@ $dark-yellow = #91793f;
             .red { background: $color-main; }
           }
           tbody .red { color: $color-main; }
-          td { padding: .1rem 3.9rem; }
+          td { text-align: center;padding: .1rem 3.9rem; }
         }
       }
       .form {

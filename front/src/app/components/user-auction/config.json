@@ -1,0 +1,44 @@
+[
+	{
+		"$comment":"id is item's id,createAt is bid's createAt",
+		"id":1,
+		"name":"测试1",
+		"price":1000,
+		"createAt":1468145804454,
+		"status":1
+	},
+		{
+		"$comment":"id is item's id,createAt is bid's createAt",
+		"id":2,
+		"name":"测试1",
+		"price":2000,
+		"createAt":1468145814454,
+		"status":0
+	},
+		{
+		"$comment":"id is item's id,createAt is bid's createAt",
+		"id":3,
+		"name":"测试1",
+		"price":3000,
+		"createAt":1468145824454,
+		"status":2
+	},
+		{
+		"$comment":"id is item's id,createAt is bid's createAt",
+		"id":4,
+		"name":"测试1",
+		"price":4000,
+		"createAt":1468145834454,
+		"status":3
+	},
+		{
+		"$comment":"id is item's id,createAt is bid's createAt",
+		"id":5,
+		"name":"测试1",
+		"price":5000,
+		"createAt":1468145844454,
+		"status":3
+	}
+
+
+]
