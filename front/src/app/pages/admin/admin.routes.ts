@@ -10,11 +10,13 @@ export const adminRoutes:RouterConfig = [
     component: AdminComponent,
     canActivate: [AdminGuard],
     children: [
-      {path: '', redirectTo: 'detail'},
-      {path: 'detail', component: Todo /*AdminDetailComponent*/},
+      {path: '', redirectTo: 'overview'},
+      {path: 'overview', component: Todo /*AdminOverviewComponent*/},
       {path: 'item', component: Todo /*AdminItemComponent*/},
+      {path: 'auction', component: Todo /*AdminAuctionComponent*/},
       {path: 'order', component: Todo /*AdminOrderComponent*/},
       {path: 'message', component: Todo /*AdminMessageComponent*/},
+      {path: 'user', component: Todo /*AdminUserComponent*/},
     ]
   },
-]
+];

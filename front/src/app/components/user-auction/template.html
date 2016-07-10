@@ -1,19 +1,19 @@
 <table class="table">
   <thead>
   <tr>
-    <th>商品名称</th>
+    <th style="width: 20rem; overflow: hidden">商品名称</th>
     <th>出价</th>
 
     <th>拍卖状态</th>
-    <th>出价时间</th>
+    <th style="width: 9rem">出价时间</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let i of data">
-    <td><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
+    <td ><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
     <td>{{i.price}}</td>
     <td>{{i.status | itemStatus}}</td>
-    <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
+    <td >{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
   </tr>
   </tbody>
 </table>

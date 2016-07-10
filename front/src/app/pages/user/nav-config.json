@@ -1,0 +1,8 @@
+[
+  { "link": ["/user/user-info"], "text": "我的资料" },
+  { "link": ["/user/auction"], "text": "竞拍中心" },
+  { "link": ["/user/order"], "text": "订单中心" },
+  { "link": ["/user/message"], "text": "消息中心" },
+  { "link": ["/user/account"], "text": "账户设置" },
+  { "link": ["/user/following"], "text": "我的关注" }
+]

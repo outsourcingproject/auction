@@ -3,7 +3,7 @@ import {SplitComponent} from "../../components/split";
 import {UserDetailComponent} from "../../components/user-detail";
 import {UserNavComponent} from "../../components/user-nav";
 
-let debug = require('debug')('ng:user-info');
+let debug = require('debug')('ng:user');
 
 @Component({
   selector: 'user',
@@ -15,8 +15,8 @@ let debug = require('debug')('ng:user-info');
 export class UserComponent {
   public id:string;
 
+  public navList:Array<{link:Array<any>,text:string}>=require('./nav-config.json');
+
   constructor() {
-    this.id ;
-    debug(this.id);
   }
 }
