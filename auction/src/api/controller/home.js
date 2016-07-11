@@ -19,7 +19,7 @@ export default class extends Base {
      		await articleTypeModel.startTrans();
      		let typeList = await articleTypeModel.getList();
      		for(var t in typeList){
-     			let a = await articleTypeModel.selectData(typeList[t]["id"],detailNum)
+     			let a = await articleTypeModel.selectData(typeList[t]["id"])
      			articles.push(a[0]);
      		}
      		await articleTypeModel.commit();
@@ -71,7 +71,7 @@ export default class extends Base {
      			"tabs":[articles[1]["name"],articles[2]["name"],articles[3]["name"]],
      			"details":[resultDetails.slice(1*detailNum,2*detailNum),resultDetails.slice(2*detailNum,3*detailNum),resultDetails.slice(3*detailNum,4*detailNum)] 			
      		},
-     		"groups":resultGroups,
+     		"auctionGroups":resultGroups,
      		"service":resultServices
 
      	}

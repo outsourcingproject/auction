@@ -13,14 +13,14 @@ export default class ItemGroup extends think.model.relation {
     };
   }
 
-  selectData(id,limit)
+  selectData(id)
   {
       id.toString();
       return this.setRelation(true).where("id = "+id).limit(limit).select();
   }
 
   getList(){
-    return this.setRelation(false).order("createAt DESC").limit(4).select();
+    return this.setRelation(false).where({isOpen:1}).order("createAt DESC").select();
   }
 
   async beforeAdd(data) {
@@ -29,5 +29,4 @@ export default class ItemGroup extends think.model.relation {
     data.no = groups.reduce((pre, curr)=>pre > +curr.no ? pre : +curr.no || pre, 0) + 1;
     return data;
   }
-
 }

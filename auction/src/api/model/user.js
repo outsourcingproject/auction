@@ -10,50 +10,6 @@ import Base from './base.js'
  * 如果没有当前需要的失败字符串,请在该文件中定义
  */
 export default class User extends Base {
-  schemas = {
-    username: {
-      type: String,
-      required: true,
-      unique: true
-    },
-    password: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    emailValidate: {
-      type: Boolean,
-      required: true,
-      default: false
-    },
-    level: {
-      type: Number,
-      default: 0
-    },
-    role: {
-      //ref to collection role.name
-      type: String,
-      required:true
-    },
-    createAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
-  
-  indexeses={
-    username:{$unique: 1}
-  };
-
   /**
    *
    * @param username
@@ -74,7 +30,6 @@ export default class User extends Base {
     result = await this.add({username, password, email, role});
 
     return this.where({_id: result}).find();
-
   }
 
   /**
@@ -121,11 +76,8 @@ export default class User extends Base {
    */
   async getUserAuthorities(username) {
     let roleModel = think.model('role', null, 'api');
-
     let user = await this.where({username}).find();
     let role = await roleModel.where({name: user.role}).find();
-
     return roleModel.getRoleAuthorities(role.name);
-
   }
 }

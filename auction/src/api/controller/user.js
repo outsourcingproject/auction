@@ -59,16 +59,45 @@ export default class User extends Base {
   }
 
   async infoAction(){
-    // let result = [];
-    // let userId = await this.session('user');
-    // let messages = await this.model("message").field("id,creatAt,title,read").select();
-    // let items = await this.model("item").where({user:userId}).select();
-    // let priceOver = [];
-    // items.map((i)=>{let p = })
-    // })
+    let userId = await this.session('user');
+
+    // get messages
+    let messages = await this.model("message").select();
+    let resultMessages  = messages.map((m)=>{
+      return {"title":m["title"],"creatAt":m["creatAt"],"messageId":m["id"]}
+    })
+
+    // get bid record with price over mine;
+    let items = await this.model("item").where({user:userId}).select();
+    let myMaxBids = items.map(async(i)=>await self.model("bid").where({user:userId, item:i["id"]}).max("value"));
+    let resultPriceOver = myMaxBids.map(async(m) => await self.model("bid").join("item on bid.item = item.id")
+      .where({id:m["id"],value:{">":m["value"]}}).order({creatAt:"DESC"}).select())
+    .sort((a,b)=>b["creatAt"]-a["creatAt"])
+    .map((p)=>{return {"name":p["name"],"id":p["item"],"price":p["value"]}});
+
+    //get successful auction items
+    let auctionConfirm = await this.model("order").join("item on order.item = item.id").select();
+    resultAuctionConfirm.map((r) => {return {"name":r["name"], "id":r["id"], "price":r["currentPrice"]}})
 
 
-  }
+    //git items waiting paying
+    let waitPay = this.model("order")
+      .join("item on order.item = item.id")
+      .where({user:userId, status:0})
+      .order({creatAt:"DESC"})
+      .select();
+    let resultWaitPay = waitPay.map((w) => {return {"name":w["name"],"id":w["id"],"price":w["currentPrice"]}});
+
+    let result = {
+      "messages":resultMessages,
+      "priceOver":resultPriceOver,
+      "auctionConfirm":resultAuctionConfirm, 
+      "waitPay":resultWaitPay
+    };
+    //
+    return this.success(result);
+    }
+
   async detailAction(){
     let userId = await this.session('user');
     let userDetail = await this.userModel.field("creatAt,level,creditLines,lastLogin").select();
