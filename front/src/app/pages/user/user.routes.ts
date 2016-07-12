@@ -6,6 +6,7 @@ import {UserAuctionComponent}  from "../../components/user-auction";
 import {UserOrderComponent}    from "../../components/user-order";
 import {UserSettingComponent}  from "../../components/user-setting";
 import {UserGuard}             from "../../auth/user.guard";
+import {UserMessageComponent} from "../../components/user-message";
 
 export const userRoutes:RouterConfig = [
   {
@@ -17,7 +18,7 @@ export const userRoutes:RouterConfig = [
       {path: 'user-info', component: UserInfoComponent},
       {path: 'auction', component: UserAuctionComponent},
       {path: 'order', component: UserOrderComponent},
-      {path: 'message', component: Todo},
+      {path: 'message', component: UserMessageComponent},
       {path: 'account', component: UserSettingComponent},
       {path: 'following', component: Todo},
     ]

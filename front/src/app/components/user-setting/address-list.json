@@ -1,0 +1,38 @@
+[
+  {
+    "province": "北京",
+    "city": "北京",
+    "district": "东城区",
+    "address": "xxx路xx街",
+    "name": "张乐",
+    "phoneNum": "18530268149",
+    "isDefault": 1
+  },
+  {
+    "province": "北京",
+    "city": "北京",
+    "district": "西城区",
+    "address": "xxx路xx街",
+    "name": "张乐1",
+    "phoneNum": "18530268149",
+    "isDefault": 0
+  },
+  {
+    "province": "北京",
+    "city": "北京",
+    "district": "海淀区",
+    "address": "xxx路xx街",
+    "name": "张乐2",
+    "phoneNum": "18530268149",
+    "isDefault": 0
+  },
+  {
+    "province": "北京",
+    "city": "北京",
+    "district": "朝阳区",
+    "address": "xxx路xx街",
+    "name": "张乐3",
+    "phoneNum": "18530268149",
+    "isDefault": 0
+  }
+]

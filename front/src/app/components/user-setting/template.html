@@ -9,7 +9,7 @@
                  required [(ngModel)]="user.password" name="password">
         </div>
         <div class="input-group form-group">
-          <label for="pwdReset" class="input-group-addon">新密码： </label>
+          <label for="pwdReset" class="input-group-addon">新密码：　</label>
           <input id="pwdReset" type="password" class="form-control"
                  required [(ngModel)]="user.pwdReset" name="pwdReset">
         </div>
@@ -32,7 +32,31 @@
   </div>
   <div class="flex-row">
     <div class="address-management">
-      <div class="header">收货地址管理 <i class="fa fa-bicycle"></i></div>
+      <div class="header">收货地址管理 <i class="fa fa-bicycle"></i> <a (click)="onNewAddressClick()">添加地址</a></div>
+      <table class="table">
+        <thead>
+        <tr>
+          <th class="edit-selected">编辑</th>
+          <th>详细地址</th>
+          <th>收货人</th>
+          <th>收货电话</th>
+          <th class="default">默认收货地址</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let address of addressList;let idx=index">
+          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)" ></td>
+          <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
+          <td>{{address.name}}</td>
+          <td>{{address.phoneNum}}</td>
+          <td (mouseover)="setActiveDefaultAddressIdx(idx)" (mouseleave)="setActiveDefaultAddressIdx(null)">
+            <div *ngIf="address.isDefault">默认</div>
+            <a class="" *ngIf="!address.isDefault" [hidden]="activeDefaultAddressIdx!=idx" (click)="setDefaultAddress(idx)">设为默认</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <area-picker [(apModel)]="currAddress" [hidden]="!newAddress&&(selectedAddressIdx===null||selectedAddressIdx===undefined)" (addressSubmit)="onAddressSubmit($event)"></area-picker>
     </div>
   </div>
 </div>

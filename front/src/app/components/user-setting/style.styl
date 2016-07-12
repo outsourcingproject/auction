@@ -18,10 +18,11 @@ box-shadow() {
   .password-change {
     max-width 50%
     box-shadow()
-    min-height 15rem
-    
-    .form{
+    min-height 12rem
+
+    .form {
       margin 15px 0px
+      overflow hidden
     }
   }
   .user-info {
@@ -29,8 +30,29 @@ box-shadow() {
     box-shadow()
   }
   .address-management {
+    a {
+      cursor: pointer;
+    }
+    .header {
+      a {
+        float right
+        font-size 0.7rem;
+      }
+    }
     box-shadow()
     min-height 10rem
+    .table {
+      text-align center
+      th {
+        text-align center
+      }
+      .edit-selected {
+        width 2.5rem;
+      }
+      .default {
+        width 5rem;
+      }
+    }
   }
 }
 
@@ -47,7 +69,6 @@ box-shadow() {
 
 }
 
-alert{
-  max-width 90%
+alert {
   display block
 }

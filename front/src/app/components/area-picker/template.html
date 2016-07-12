@@ -1,0 +1,46 @@
+<form class="form" (submit)="onSubmit()">
+  <div class="form-inline form-group">
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="province">省：</label>
+      <select id="province" name="province" class="form-control" [(ngModel)]="apModel.province"
+              (change)="checkArea('province')">
+        <option *ngFor="let i of data" [value]="i.name">{{i.name}}</option>
+      </select>
+    </div>
+
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="city">市：</label>
+      <select id="city" name="city" class="form-control" [(ngModel)]="apModel.city" (change)="checkArea('city')">
+        <option *ngFor="let i of currCities" [value]="i.name">{{i.name}}</option>
+      </select>
+    </div>
+
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="district">区：</label>
+      <select id="district" name="district" class="form-control" [(ngModel)]="apModel.district">
+        <option *ngFor="let i of currDistricts" [value]="i">{{i}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="address">详细地址：</label>
+      <input type="text" id="address" name="address" class="form-control" [(ngModel)]="apModel.address">
+    </div>
+  </div>
+  <div class="form-inline form-group">
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="name">收货人：</label>
+      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="apModel.name">
+    </div>
+    <div class="input-group form-group">
+      <label class="input-group-addon" for="phoneNum">收货电话：</label>
+      <input type="tel" id="phoneNum" name="phoneNum" class="form-control" [(ngModel)]="apModel.phoneNum">
+    </div>
+    <div class="btn-group submit-button">
+      <button class="btn btn-default" type="submit">确定
+      </button>
+    </div>
+  </div>
+</form>
