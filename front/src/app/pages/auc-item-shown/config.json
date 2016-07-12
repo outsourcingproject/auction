@@ -1,27 +1,23 @@
 {
   "id": "cncs-vf35",
   "name": "造光绪元宝库平七钱二分",
-  "found": {
-    "time": "1901-08",
-    "location": "四川省"
-  },
-  "price": {
-    "current": 6000.00,
-    "start": 6000.00,
-    "stage": 100.00,
-    "cnt": 0
-  },
-  "watch_cnt": 420,
-  "watching": true,
-  "start_time": "",
-  "end_time": "",
-  "way_of_auction": 0,
+  "foundTime": "1901-08",
+  "foundLocation": "四川省",
+  "currentPrice":6000.00,
+  "startPrice": 6000.00,
+  "stage": 100.00,
+  "bidCount": 0,
+  "followCount": 420,
+  "following": true,
+  "auctionBeginTime": 1468060278746,
+  "auctionEndTime": 1468080278746,
+  "auctionType": 0,
   "images": [
     "/static/images/snapshot.png",
     "/static/images/snapshot.png",
     "/static/images/snapshot.png"
   ],
-  "items": [
+  "relatedItems": [
     {
       "id": 5,
       "images": [
@@ -29,10 +25,10 @@
       ],
       "name": "鹿头正银二量",
       "currentPrice": 1302.00,
-      "auctionTimes": 2,
-      "follow": 402,
+      "bidCount": 2,
+      "followCount": 402,
       "auctionEndTime": 1468080278746,
-      "watching": false,
+      "following": false,
       "type": "中国现当代"
     },
     {
@@ -42,10 +38,10 @@
       ],
       "name": "鹿头正银二量",
       "currentPrice": 1302.00,
-      "auctionTimes": 2,
-      "follow": 402,
+      "bidCount": 2,
+      "followCount": 402,
       "auctionEndTime": 1468080278746,
-      "watching": false,
+      "following": false,
       "type": "中国现当代"
     }
   ]

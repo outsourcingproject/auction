@@ -2,6 +2,28 @@
   <div class="flex-row">
     <div class="password-change">
       <div class="header">修改密码 <i class="fa fa-key"></i></div>
+      <form (ngSubmit)="onSubmit()" class="form">
+        <div class="input-group form-group">
+          <label for="password" class="input-group-addon">当前密码：</label>
+          <input id="password" type="password" class="form-control"
+                 required [(ngModel)]="user.password" name="password">
+        </div>
+        <div class="input-group form-group">
+          <label for="pwdReset" class="input-group-addon">新密码： </label>
+          <input id="pwdReset" type="password" class="form-control"
+                 required [(ngModel)]="user.pwdReset" name="pwdReset">
+        </div>
+        <div class="input-group form-group">
+          <label for="pwdRepeat" class="input-group-addon">重复密码：</label>
+          <input id="pwdRepeat" type="password" class="form-control"
+                 required [(ngModel)]="user.pwdRepeat" name="pwdRepeat">
+        </div>
+        <div class="btn-group pull-right">
+          <button class="btn btn-default"
+                  type="submit">提交
+          </button>
+        </div>
+      </form>
       <alert [dismissible]="true">nihao just a test</alert>
     </div>
     <div class="user-info">

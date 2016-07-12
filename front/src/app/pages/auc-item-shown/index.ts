@@ -2,7 +2,7 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component} from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 
 let debug = require('debug')('ng:auc-item-shown');
@@ -16,52 +16,50 @@ const config = require('./config.json');
   styles: [style],
   directives: [AucItemDetailed]
 })
-export class AucItemShown {
-  public header;
-  public id;
-  public name;
-  public price;
-  public startTime;
-  public endTime;
-  public watchCnt;
-  public watching;
-  public navname;
-  public snapshots;
-  public snapshotSelectedIdx;
-  public items;
+export class AucItemShown implements OnInit{
+  public tabsItems:Array<string>=['拍品描述', '出价记录', '注意事项'];
+  public data=config;
+  public auctionPrice;
+  public imagesSelectedIdx;
+  public tabsSelectedIdx;
+  public relatedItems;
+
+  private _auctionPirce:number;
+
+  public get auctionPirce(){
+    return this._auctionPirce
+  }
+  public set auctionPirce(val){
+    this._auctionPirce=val;
+  }
 
   constructor() {
-    this.header = "/static/images/header.png";
-
-    // TODO: Fetch the kvs from the global cache or from the server.
-    this.id = config.id;
-    this.name = config.name;
-    this.price = config.price;
-    this.startTime = new Date();
-    this.endTime = new Date();
-    this.watchCnt = config.watch_cnt;
-    this.watching = config.watching;
-
-    this.navname = `${config.found.time}${config.found.location}${config.name}`;
-    this.snapshots = config.images;
-    this.snapshotSelectedIdx = 0;
-
-    this.items = config.items;
+    
+    this.relatedItems = config.relatedItems;
   }
 
-  snapshotClick(idx) {
-    this.snapshotSelectedIdx = idx;
+  ngOnInit(){
+    this.tabsClick(0);
+    this.imagesClick(0);
+    this.auctionPrice=this.data.currentPrice+this.data.stage;
+  }
+  public imagesClick(idx) {
+    this.imagesSelectedIdx = idx;
   }
 
-  snapshotNav(direction) {
-    this.snapshotSelectedIdx = (this.snapshotSelectedIdx + direction + this.snapshots.length) % this.snapshots.length;
+  public imagesNav(direction) {
+    this.imagesSelectedIdx = (this.imagesSelectedIdx + direction + this.data.images.length) % this.data.images.length;
   }
 
-  watchIt(state) {
-    if (state !== this.watching) {
-      this.watching = state;
-      if (state) ++this.watchCnt;
-      else --this.watchCnt;
+  public watchIt(state) {
+    if (state !== this.data.following) {
+      this.data.following = state;
+      if (state) ++this.data.followCount;
+      else --this.data.followCount;
     }
+  }
+
+  public tabsClick(idx){
+    this.tabsSelectedIdx=idx;
   }
 }

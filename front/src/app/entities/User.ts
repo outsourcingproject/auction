@@ -4,7 +4,7 @@ export class User {
   public username:string;
   public password:string;
   public pwdRepeat:string;
-  public pwdRest:string;
+  public pwdReset:string;
   public desc:string;
   public avatar:string;
   public captcha:string;

@@ -17,17 +17,17 @@ let style = require('./style.styl');
 export class AucItemDetailed implements OnInit {
   @Input()
   public data:{id:number,images:Array<string>,
-    name:string,currentPrice:number,auctionTimes:number,
-    follow:number,auctionEndTime:number,watching:boolean,type:string};
+    name:string,currentPrice:number,bidCount:number,
+    followCount:number,auctionEndTime:number,following:boolean,type:string};
 
   public id:number;
   public image:string;
   public name:string;
   public currentPrice:number;
-  public auctionTimes:number;
-  public follow:number;
+  public bidCount:number;
+  public followCount:number;
   public auctionEndTime;
-  public watching:boolean;
+  public following:boolean;
   public type:string;
 
   constructor() {
@@ -39,17 +39,18 @@ export class AucItemDetailed implements OnInit {
     this.image = this.data.images?this.data.images[0]:'';
     this.name = this.data.name;
     this.currentPrice = this.data.currentPrice;
+    this.bidCount=this.data.bidCount;
     //this.end_time = this.data.end_time;
     this.auctionEndTime = this.data.auctionEndTime;
-    this.follow = this.data.follow;
-    this.watching = this.data.watching;
+    this.followCount = this.data.followCount;
+    this.following = this.data.following;
   }
 
   watchIt(state) {
-    if (state !== this.watching) {
-      this.watching = state;
-      if (state) ++this.follow;
-      else --this.follow;
+    if (state !== this.following) {
+      this.following = state;
+      if (state) ++this.followCount;
+      else --this.followCount;
     }
   }
 }

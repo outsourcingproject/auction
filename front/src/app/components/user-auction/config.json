@@ -1,11 +1,12 @@
 [
 	{
-		"$comment":"id is item's id,createAt is bid's createAt",
+		"$comment":"id and is item's, createAt is bid's, win is ",
 		"id":1,
 		"name":"测试 11 11 1 11 ",
 		"price":1000,
 		"createAt":1468145804454,
-		"status":1
+		"itemStatus":1,
+		"bidStatus":0
 	},
 		{
 		"$comment":"id is item's id,createAt is bid's createAt",
@@ -13,32 +14,25 @@
 		"name":"测试1",
 		"price":2000,
 		"createAt":1468145814454,
-		"status":0
+		"itemStatus":0,
+		"bidStatus":1
 	},
 		{
 		"$comment":"id is item's id,createAt is bid's createAt",
 		"id":3,
-		"name":"测试1",
+		"name":"测试2",
 		"price":3000,
 		"createAt":1468145824454,
-		"status":2
+		"itemStatus":2,
+		"bidStatus":2
 	},
 		{
 		"$comment":"id is item's id,createAt is bid's createAt",
 		"id":4,
-		"name":"测试1",
+		"name":"测试3",
 		"price":4000,
 		"createAt":1468145834454,
-		"status":3
-	},
-		{
-		"$comment":"id is item's id,createAt is bid's createAt",
-		"id":5,
-		"name":"测试1",
-		"price":5000,
-		"createAt":1468145844454,
-		"status":3
+		"itemStatus":3,
+		"bidStatus":3
 	}
-
-
 ]

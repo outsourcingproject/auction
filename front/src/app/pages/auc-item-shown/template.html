@@ -1,37 +1,37 @@
 <div class="container">
     <div class="header">
         <img src="../../../assets/img/header.png" width="100%">
-        <div class="nav">当前目录&nbsp;首页 - 正在拍卖 - <span>产品详情</span> - {{navname}}{{id | uppercase }}</div>
+        <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - 正在拍卖 - {{data.name}}</div>
     </div>
     <div class="auc-item-shown">
         <div class="main">
             <div class="snapshot">
                 <div class="prev-main">
-                    <img [src]="snapshots[snapshotSelectedIdx]">
+                    <img [src]="data.images[snapshotSelectedIdx]">
                     <div class="plus">+</div>
                 </div>
                 <div class="gallery">
-                    <div class="nav left" (click)="snapshotNav(-1)"><</div>
-                    <div *ngFor="let image of snapshots; let idx=index"
-                         class="prev-tiny" (click)="snapshotClick(idx)">
+                    <div class="nav left" (click)="imagesNav(-1)"><</div>
+                    <div *ngFor="let image of data.images; let idx=index"
+                         class="prev-tiny" (click)="imagesClick(idx)">
                         <img [src]="image">
                     </div>
-                    <div class="nav right" (click)="snapshotNav(1)">></div>
+                    <div class="nav right" (click)="imagesNav(1)">></div>
                 </div>
             </div>
             <div class="info">
-                <div class="name">{{name}}</div>
+                <div class="name">{{data.name}}</div>
                 <div class="stars pull-right">
-                    <div class="eye fa fa-eye">{{watchCnt}}人围观</div>
-                    <div *ngIf="!watching" class="fa fa-heart-o watch" (click)="watchIt(true)">点击关注</div>
-                    <div *ngIf="watching" class="fa fa-heart watching" (click)="watchIt(false)">正在关注</div>
+                    <div class="eye fa fa-eye">{{data.followCount}}人围观</div>
+                    <div *ngIf="!data.following" class="fa fa-heart-o watch" (click)="watchIt(true)">点击关注</div>
+                    <div *ngIf="data.following" class="fa fa-heart watching" (click)="watchIt(false)">正在关注</div>
                 </div>
                 <div class="text">
-                    开始时间: {{startTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
-                    结束时间: {{endTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
+                    开始时间: {{data.auctionBeginTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
+                    结束时间: {{data.auctionEndTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
                     剩余时间: 拍卖结束 延时<br/>
-                    出价次数: {{price.cnt}}<br/>
-                    拍卖方式: 英式<br/>
+                    出价次数: {{data.bidCount}}<br/>
+                    拍卖方式: {{data.auctionType | auctionType}}<br/>
                 </div>
                 <div class="table">
                     <table>
@@ -44,46 +44,46 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="red">¥{{price.current}}</td>
-                                <td>¥{{price.start}}</td>
-                                <td>¥{{price.stage}}</td>
+                                <td class="red">¥ {{data.currentPrice}}</td>
+                                <td>¥ {{data.startPrice}}</td>
+                                <td>¥ {{data.stage}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="form">
-                    <p>用户别名:<input>
-                    密码:<input>
-                    <button>清空</button></p>
-                    <p>竞拍类型:
-                    <input type="radio">常规竞卖
-                    <input type="radio"><span style="color: #907e4f">代理竞卖</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    什么叫常规竞卖,什么叫<span style="color: #907e4f">代理竞卖</span></p>
-                    <p>竞卖价格: <input type="number">
+                    <p>竞买价: <input type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPirce">
                     验证码: <input>
-                    <button>验证码</button></p>
+                    </p>
                     <button class="submit">提交</button>
                 </div>
             </div>
         </div>
         <div class="detail">
             <ul class="tabs">
-                <li class="active">拍品描述</li>
-                <li>出价记录</li>
-                <li>注意事项</li>
+                <li *ngFor="let item of tabsItems ; let idx = index" [class.active]="tabsSelectedIdx==idx" (click)="tabsClick(idx)">{{item}}</li>
             </ul>
-            <div class="boxes">
+            <div class="boxes" >
                 <div class="box left">
-                    <div class="box-header">拍品信息</div>
-                    <div class="box-body">
+                    <div class="box-header">{{tabsItems[tabsSelectedIdx]}}</div>
+                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=0">
                         <p>长 :68cm    宽 :36cm    材质: 纸本     形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>
                         <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
                         <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
                             <br>现为国家一 ...... 卢星堂简介</p>
                     </div>
+                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
+                        <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
+                    </div>
+                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
+                        <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
+                            <br>现为国家一 ...... 卢星堂简介</p>
+                    </div>
+
                 </div>
+
                 <div class="box right">
-                    <div class="box-header"></div>
+                    <div class="box-header">浏览过的拍品</div>
                     <div class="box-body">
                         <p>浏览过的拍品</p>
                     </div>
@@ -92,7 +92,7 @@
         </div>
         <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
         <div class="items">
-            <auc-item-detailed *ngFor="let item of items" [data]="item"></auc-item-detailed>
+            <auc-item-detailed *ngFor="let item of relatedItems" [data]="item"></auc-item-detailed>
         </div>
     </div>
 </div>

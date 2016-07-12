@@ -6,10 +6,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -19,11 +19,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -33,10 +32,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -46,10 +45,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -59,10 +58,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -72,10 +71,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -85,10 +84,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -98,10 +97,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -111,10 +110,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -124,10 +123,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -137,10 +136,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -150,10 +149,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -163,10 +162,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -176,10 +175,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -189,10 +188,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -202,10 +201,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -215,10 +214,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -228,10 +227,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -241,10 +240,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -254,10 +253,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -267,10 +266,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -280,10 +279,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -293,10 +292,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -306,10 +305,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -319,10 +318,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -332,10 +331,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -345,10 +344,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -358,10 +357,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -371,10 +370,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -384,10 +383,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -397,10 +396,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -410,10 +409,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -423,10 +422,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -436,10 +435,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -449,10 +448,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -462,10 +461,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -475,10 +474,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -488,10 +487,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -501,10 +500,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -514,10 +513,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -527,10 +526,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -540,10 +539,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -553,10 +552,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -566,10 +565,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -579,10 +578,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -592,10 +591,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -605,10 +604,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -618,10 +617,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -631,10 +630,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -644,10 +643,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -657,10 +656,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -670,10 +669,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -683,10 +682,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -696,10 +695,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -709,10 +708,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -722,10 +721,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -735,10 +734,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -748,10 +747,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -761,10 +760,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -774,10 +773,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -787,10 +786,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -800,10 +799,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -813,10 +812,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -826,10 +825,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -839,10 +838,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -852,10 +851,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -865,10 +864,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -878,10 +877,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -891,10 +890,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -904,10 +903,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -917,10 +916,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -930,10 +929,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -943,10 +942,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -956,10 +955,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -969,10 +968,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -982,10 +981,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -995,10 +994,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1008,10 +1007,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1021,10 +1020,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1034,10 +1033,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1047,10 +1046,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1060,10 +1059,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1073,10 +1072,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1086,10 +1085,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1099,10 +1098,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1112,10 +1111,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1125,10 +1124,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1138,10 +1137,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1151,10 +1150,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1164,10 +1163,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1177,10 +1176,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1190,10 +1189,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1203,10 +1202,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1216,10 +1215,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1229,10 +1228,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1242,10 +1241,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1255,10 +1254,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1268,10 +1267,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1281,10 +1280,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1294,10 +1293,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1307,10 +1306,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1320,10 +1319,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1333,10 +1332,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1346,10 +1345,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1359,10 +1358,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1372,10 +1371,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1385,10 +1384,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1398,10 +1397,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1411,10 +1410,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1424,10 +1423,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1437,10 +1436,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1450,10 +1449,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1463,10 +1462,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1476,10 +1475,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1489,10 +1488,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1502,10 +1501,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1515,10 +1514,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1528,10 +1527,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1541,10 +1540,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1554,10 +1553,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1567,10 +1566,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1580,10 +1579,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1593,10 +1592,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1606,10 +1605,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1619,10 +1618,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1632,10 +1631,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1645,10 +1644,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1658,10 +1657,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1671,10 +1670,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1684,10 +1683,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1697,10 +1696,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1710,10 +1709,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1723,10 +1722,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1736,10 +1735,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1749,10 +1748,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1762,10 +1761,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1775,10 +1774,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1788,10 +1787,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1801,10 +1800,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1814,10 +1813,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1827,10 +1826,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1840,10 +1839,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1853,10 +1852,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1866,10 +1865,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1879,10 +1878,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1892,10 +1891,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1905,10 +1904,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1918,10 +1917,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1931,10 +1930,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1944,10 +1943,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1957,10 +1956,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1970,10 +1969,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -1983,10 +1982,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -1996,10 +1995,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2009,10 +2008,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2022,10 +2021,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2035,10 +2034,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2048,10 +2047,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2061,10 +2060,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2074,10 +2073,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2087,10 +2086,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2100,10 +2099,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2113,10 +2112,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2126,10 +2125,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2139,10 +2138,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2152,10 +2151,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2165,10 +2164,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2178,10 +2177,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2191,10 +2190,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2204,10 +2203,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2217,10 +2216,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2230,10 +2229,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2243,10 +2242,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2256,10 +2255,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2269,10 +2268,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2282,10 +2281,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2295,10 +2294,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2308,10 +2307,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2321,10 +2320,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2334,10 +2333,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2347,10 +2346,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2360,10 +2359,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2373,10 +2372,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2386,10 +2385,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2399,10 +2398,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2412,10 +2411,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2425,10 +2424,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2438,10 +2437,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2451,10 +2450,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2464,10 +2463,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2477,10 +2476,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2490,10 +2489,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2503,10 +2502,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2516,10 +2515,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2529,10 +2528,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2542,10 +2541,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2555,10 +2554,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2568,10 +2567,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2581,10 +2580,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2594,10 +2593,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2607,10 +2606,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2620,10 +2619,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2633,10 +2632,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2646,10 +2645,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2659,10 +2658,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2672,10 +2671,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2685,10 +2684,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2698,10 +2697,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2711,10 +2710,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2724,10 +2723,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2737,10 +2736,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2750,10 +2749,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2763,10 +2762,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2776,10 +2775,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2789,10 +2788,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2802,10 +2801,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2815,10 +2814,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2828,10 +2827,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2841,10 +2840,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2854,10 +2853,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2867,10 +2866,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2880,10 +2879,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2893,10 +2892,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2906,10 +2905,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2919,10 +2918,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2932,10 +2931,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2945,10 +2944,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2958,10 +2957,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2971,10 +2970,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -2984,10 +2983,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -2997,10 +2996,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3010,10 +3009,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3023,10 +3022,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3036,10 +3035,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3049,10 +3048,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3062,10 +3061,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3075,10 +3074,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3088,10 +3087,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3101,10 +3100,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3114,10 +3113,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3127,10 +3126,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3140,10 +3139,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3153,10 +3152,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3166,10 +3165,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3179,10 +3178,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3192,10 +3191,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3205,10 +3204,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3218,10 +3217,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3231,10 +3230,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3244,10 +3243,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3257,10 +3256,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3270,10 +3269,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3283,10 +3282,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3296,10 +3295,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3309,10 +3308,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3322,10 +3321,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3335,10 +3334,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3348,10 +3347,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3361,10 +3360,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3374,10 +3373,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3387,10 +3386,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3400,10 +3399,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3413,10 +3412,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3426,10 +3425,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3439,10 +3438,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3452,10 +3451,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3465,10 +3464,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3478,10 +3477,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3491,10 +3490,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3504,10 +3503,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3517,10 +3516,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3530,10 +3529,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3543,10 +3542,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3556,10 +3555,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3569,10 +3568,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3582,10 +3581,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3595,10 +3594,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3608,10 +3607,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3621,10 +3620,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3634,10 +3633,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3647,10 +3646,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3660,10 +3659,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3673,10 +3672,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3686,10 +3685,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3699,10 +3698,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3712,10 +3711,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3725,10 +3724,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3738,10 +3737,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3751,10 +3750,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3764,10 +3763,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3777,10 +3776,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3790,10 +3789,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3803,10 +3802,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3816,10 +3815,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3829,10 +3828,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3842,10 +3841,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3855,10 +3854,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3868,10 +3867,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3881,10 +3880,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3894,10 +3893,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3907,10 +3906,10 @@
     ],
     "name": "鹿头正银一量",
     "currentPrice": 1301.00,
-    "auctionTimes": 1,
-    "follow": 401,
+    "bidCount": 1,
+    "followCount": 401,
     "auctionEndTime": 1468080168746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3920,10 +3919,10 @@
     ],
     "name": "鹿头正银二量",
     "currentPrice": 1302.00,
-    "auctionTimes": 2,
-    "follow": 402,
+    "bidCount": 2,
+    "followCount": 402,
     "auctionEndTime": 1468080278746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3933,10 +3932,10 @@
     ],
     "name": "鹿头正银3量",
     "currentPrice": 1303.00,
-    "auctionTimes": 3,
-    "follow": 403,
+    "bidCount": 3,
+    "followCount": 403,
     "auctionEndTime": 1468080368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3946,10 +3945,10 @@
     ],
     "name": "鹿头正银4量",
     "currentPrice": 1304,
-    "auctionTimes": 4,
-    "follow": 404,
+    "bidCount": 4,
+    "followCount": 404,
     "auctionEndTime": 1468080478746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3959,10 +3958,10 @@
     ],
     "name": "鹿头正银5量",
     "currentPrice": 1305.01123,
-    "auctionTimes": 5,
-    "follow": 405,
+    "bidCount": 5,
+    "followCount": 405,
     "auctionEndTime": 1468080568746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3972,10 +3971,10 @@
     ],
     "name": "鹿头正银6量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -3985,10 +3984,10 @@
     ],
     "name": "鹿头正银7量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -3998,10 +3997,10 @@
     ],
     "name": "鹿头正银8量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4011,10 +4010,10 @@
     ],
     "name": "鹿头正银9量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4024,10 +4023,10 @@
     ],
     "name": "鹿头正银10量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4037,10 +4036,10 @@
     ],
     "name": "鹿头正银11量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4050,10 +4049,10 @@
     ],
     "name": "鹿头正银12量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4063,10 +4062,10 @@
     ],
     "name": "鹿头正银13量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4076,10 +4075,10 @@
     ],
     "name": "鹿头正银14量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4089,10 +4088,10 @@
     ],
     "name": "鹿头正银15量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4102,10 +4101,10 @@
     ],
     "name": "鹿头正银16量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4115,10 +4114,10 @@
     ],
     "name": "鹿头正银17量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4128,10 +4127,10 @@
     ],
     "name": "鹿头正银18量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   },
   {
@@ -4141,10 +4140,10 @@
     ],
     "name": "鹿头正银19量",
     "currentPrice": 1300.00,
-    "auctionTimes": 10,
-    "follow": 420,
+    "bidCount": 10,
+    "followCount": 420,
     "auctionEndTime": 1468084368746,
-    "watching": true,
+    "following": true,
     "type": "中国古代铸币"
   },
   {
@@ -4154,10 +4153,10 @@
     ],
     "name": "鹿头正银20量",
     "currentPrice": 2600.00,
-    "auctionTimes": 11,
-    "follow": 421,
+    "bidCount": 11,
+    "followCount": 421,
     "auctionEndTime": 1468084378746,
-    "watching": false,
+    "following": false,
     "type": "中国现当代"
   }
 
