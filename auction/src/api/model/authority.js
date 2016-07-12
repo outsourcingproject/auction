@@ -1,33 +1,33 @@
 import Base from './base.js'
 export default class Authority extends Base {
-  schemas = {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-      default: ''
-    },
-    desc: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    paths: {
-      type: [String|RegExp],
-      required: true,
-      default: []
-    },
-    createAt: {
-      type:Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type:Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
+  // schemas = {
+  //   name: {
+  //     type: String,
+  //     required: true,
+  //     unique: true,
+  //     default: ''
+  //   },
+  //   desc: {
+  //     type: String,
+  //     required: true,
+  //     default: ''
+  //   },
+  //   paths: {
+  //     type: [String|RegExp],
+  //     required: true,
+  //     default: []
+  //   },
+  //   createAt: {
+  //     type:Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   },
+  //   updateAt: {
+  //     type:Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   }
+  // };
 
   indexeses={
     name:{$unique: 1}

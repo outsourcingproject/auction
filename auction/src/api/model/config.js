@@ -1,22 +1,22 @@
 import Base from './base.js'
 export default class config extends Base {
-  schemas = {
-    config: {
-      type:Object,
-      required: true,
-      default: ()=>think.config('site')
-    },
-    createAt: {
-      type:Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type:Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
+  // schemas = {
+  //   config: {
+  //     type:Object,
+  //     required: true,
+  //     default: ()=>think.config('site')
+  //   },
+  //   createAt: {
+  //     type:Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   },
+  //   updateAt: {
+  //     type:Date,
+  //     required: true,
+  //     default: ()=>new Date()
+  //   }
+  // };
 
   /**
    *
