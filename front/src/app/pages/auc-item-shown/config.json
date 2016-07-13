@@ -1,5 +1,5 @@
 {
-  "id": "cncs-vf35",
+  "id": 3,
   "name": "造光绪元宝库平七钱二分",
   "foundTime": "1901-08",
   "foundLocation": "四川省",
@@ -7,10 +7,11 @@
   "startPrice": 6000.00,
   "stage": 100.00,
   "bidCount": 0,
+  "status":1,
   "followCount": 420,
   "following": true,
   "auctionBeginTime": 1468060278746,
-  "auctionEndTime": 1468080278746,
+  "auctionEndTime": 1468407871178,
   "auctionType": 0,
   "images": [
     "/static/images/snapshot.png",

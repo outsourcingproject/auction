@@ -2,7 +2,7 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component,OnInit} from '@angular/core';
+import {Component,OnInit,OnDestroy} from '@angular/core';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 
 let debug = require('debug')('ng:auc-item-shown');
@@ -16,7 +16,7 @@ const config = require('./config.json');
   styles: [style],
   directives: [AucItemDetailed]
 })
-export class AucItemShown implements OnInit{
+export class AucItemShown implements OnInit,OnDestroy{
   public tabsItems:Array<string>=['拍品描述', '出价记录', '注意事项'];
   public data=config;
   public auctionPrice;
@@ -24,6 +24,9 @@ export class AucItemShown implements OnInit{
   public tabsSelectedIdx;
   public relatedItems;
 
+  public _currTime:number;
+  
+  private _currTimer;
   private _auctionPirce:number;
 
   public get auctionPirce(){
@@ -36,8 +39,14 @@ export class AucItemShown implements OnInit{
   constructor() {
     
     this.relatedItems = config.relatedItems;
+    this._currTimer=setInterval(()=>{
+      this._currTime=this.data.auctionEndTime-new Date().getTime();
+    },1000);
+    
   }
-
+  ngOnDestroy(){
+     clearInterval(this._currTimer);
+  }
   ngOnInit(){
     this.tabsClick(0);
     this.imagesClick(0);

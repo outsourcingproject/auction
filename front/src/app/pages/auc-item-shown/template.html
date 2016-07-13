@@ -1,7 +1,7 @@
 <div class="container">
     <div class="header">
         <img src="../../../assets/img/header.png" width="100%">
-        <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - 正在拍卖 - {{data.name}}</div>
+        <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - <a [routerLink]="['/auc-item',data.id]">{{data.name}}</a></div>
     </div>
     <div class="auc-item-shown">
         <div class="main">
@@ -27,11 +27,12 @@
                     <div *ngIf="data.following" class="fa fa-heart watching" (click)="watchIt(false)">正在关注</div>
                 </div>
                 <div class="text">
-                    开始时间: {{data.auctionBeginTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
-                    结束时间: {{data.auctionEndTime | date:'YYYY/MM/DD HH:mm:ss' }}<br/>
-                    剩余时间: 拍卖结束 延时<br/>
-                    出价次数: {{data.bidCount}}<br/>
-                    拍卖方式: {{data.auctionType | auctionType}}<br/>
+                    <p>开始时间: {{data.auctionBeginTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
+                    <p>结束时间: {{data.auctionEndTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
+                    <p *ngIf="data.status==1">剩余时间: {{data.auctionEndTime | remainTime }}</p>
+                    <p>拍卖状态: {{data.status | itemStatus}}</p>
+                    <p>出价次数: {{data.bidCount}}</p>
+                    <p>拍卖方式: {{data.auctionType | auctionType}}</p>
                 </div>
                 <div class="table">
                     <table>
@@ -55,7 +56,7 @@
                     <p>竞买价: <input type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPirce">
                     验证码: <input>
                     </p>
-                    <button class="submit">提交</button>
+                    <button class="submit">竞买</button>
                 </div>
             </div>
         </div>
@@ -73,11 +74,11 @@
                             <br>现为国家一 ...... 卢星堂简介</p>
                     </div>
                     <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
-                        <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
                     </div>
                     <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
-                        <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
-                            <br>现为国家一 ...... 卢星堂简介</p>
+                        <p style="color: #f60;line-height: 35px;">敬告：您的出价行为表明已经认同了标准古钱币的拍卖规则。不论成功与否，你都承担与之相应的法律行为.</p>
+
+                        <p>注意：根据《拍卖法》的规定：买受人应当按照约定支付拍卖标的的价款，未按照约定支付价款的，应当承担违约责。通过竞买取得的拍品为特殊属性之商品，属于2014年3月15日起施行的《中华人民共和国消费者权益保护法》规定的“其他根据商品性质并经消费者在购买时确认不宜退货的商品，不适用无理由退货”。为了维护买卖双方的利益，规范网络拍卖市场的行为，如果因实物与描述明显不符，客户对拍品有退货的诉求，请在提货之日起7个工作日之内、物流发货请在签收之日起7个工作日内提出，逾期不予受理。不便之处，敬请谅解。<p>
                     </div>
 
                 </div>
