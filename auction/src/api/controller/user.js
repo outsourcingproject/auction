@@ -130,15 +130,15 @@ export default class User extends Base {
       .distinct("item")
       .select();
 
-    let sql ="select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
-
     let myMaxBids = [];
+    let sql ="select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
     console.log(items);
     for (let i of items){
       console.log("******************"+i);
       let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"],userId);
       myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
     }
+
     let resultPriceOver = [];
     for(let m of myMaxBids){
       let r = await this.model("bid")
