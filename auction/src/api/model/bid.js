@@ -29,9 +29,9 @@ export default class Bid extends Base {
   //   }
   // };
 
-  async afterSelect(data) {
-    return  ['sadf', 'sadf'];
-  }
+  // async afterSelect(data) {
+  //   return  ['sadf', 'sadf'];
+  // }
 
 
 }
