@@ -1,7 +1,9 @@
 'use strict';
+import Base from './base.js'
+
 /**
  * model
  */
-export default class extends think.model.base {
+export default class extends Base {
 
 }

@@ -110,7 +110,7 @@ export default class extends Base {
     for (let i =1; i<=28; i++){
       articles.push({
         "title":"这是第"+i+"篇文章的题目",
-        "image":"["+i+"]",
+        "image":i%10+1,
         "content":"这是第"+i+"篇文章的内容，写的真精彩",
         "author":Math.ceil(i/5),
         "type":i%4+1,
@@ -298,7 +298,7 @@ export default class extends Base {
     for(let i = 1 ; i<=20; i++){
       images.push({
         "uuid": uuid.v1(),
-        "name": "image"+i,
+        "originName": "image"+i,
         "path":"www/pictures/image"+i
       })
     }

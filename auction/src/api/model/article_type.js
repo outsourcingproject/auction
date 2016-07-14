@@ -1,8 +1,9 @@
 'use strict';
+import Base from './base.js'
 /**
  * relation model
  */
-export default class extends think.model.relation {
+export default class extends Base {
   /**
    * init
    * @param  {} args []
@@ -29,6 +30,4 @@ export default class extends think.model.relation {
       id.toString();
       return this.setRelation(true).where("id = "+id).limit(limit).select();
     }
-
-
   }
