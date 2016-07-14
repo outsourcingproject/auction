@@ -8,6 +8,5 @@ export default class Message extends Base {
     this.pageCount =
       await think.model('config', null, 'api').get('pageCount.message')
       || await think.model('config', null, 'api').get('pageCount.default');
-
   }
 }
