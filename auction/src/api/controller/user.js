@@ -61,6 +61,22 @@ export default class User extends Base {
     return obj;
   }
 
+
+
+  async detailAction(){
+    let user = await this.session('user');
+    let userId = user.id;
+    let userDetail = await this.userModel.field("createAt,level,creditLines,lastLogin").where({id:userId}).select();
+    if(think.isEmpty(userDetail))
+      return this.fail("无此用户");
+    userDetail[0]["totalVolume"] = await this.model("order").where({user:userId}).count();
+    userDetail[0]["totalTurnover"] = await this.model("order").transaction(async()=>{
+      let itemIds = await this.model("order").field("item").where({user:userId}).select();
+      let itemIdArray = itemIds.map((i)=>i["item"]);
+      return this.model("item").where({id:["IN",itemIdArray]}).sum("currentPrice"); 
+    })
+    return this.success(userDetail[0]);
+  }
   async infoAction(){
     let user = await this.session('user');
     let userId = user["id"];
@@ -75,7 +91,7 @@ export default class User extends Base {
 
     // get bid record with price over mine;
     let resultPriceOver = await this._priceOver(userId);
-  
+
     //get successful auction items
     let auctionConfirm = await this.model("order")
       .join("item on order.item = item.id")
@@ -106,7 +122,7 @@ export default class User extends Base {
     };
     //
     return this.success(result);
-    }
+  }
 
   async _priceOver(userId){
     let items = await this.model("bid")
@@ -114,48 +130,26 @@ export default class User extends Base {
       .distinct("item")
       .select();
 
-    // console.log("************"+items);
+    let sql ="select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
 
     let myMaxBids = [];
+    console.log(items);
     for (let i of items){
-      myMaxBids.push(await this.model("bid")
-          .where({user:userId, item:i["item"]})
-          .max("value"));
+      console.log("******************"+i);
+      let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"],userId);
+      myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
     }
-
-
-    // let myMaxBids = items.map(async(i)=>{return 
-    //       await this.model("bid")
-    //       .where({user:userId, item:i["id"]})
-    //       .max("value")});
-
-    console.log(myMaxBids);
-
-    let resultPriceOver = await myMaxBids
-    .map(async(m) =>
-      await this.model("bid")
+    let resultPriceOver = [];
+    for(let m of myMaxBids){
+      let r = await this.model("bid")
       .join("item on bid.item = item.id")
       .field("bid.createAt, bid.item, bid.value, item.name")
-      .where({id:m["item"],value:{">":m["value"]}})
-      .order("order.createAt DESC")
-      .select())
-    .sort((a,b)=>b["createAt"]-a["createAt"])
-    .map((p)=>{return {"name":p["name"],"id":p["item"],"price":p["value"]}});
+      .where({item:m["item"],value:{">":m["value"]}})
+      .order("bid.createAt DESC")
+      .select();
+      if(!think.isEmpty(r))
+        resultPriceOver.push(r);
+    }
     return resultPriceOver;
-  }
-
-  async detailAction(){
-    let user = await this.session('user');
-    let userId = user.id;
-    let userDetail = await this.userModel.field("createAt,level,creditLines,lastLogin").where({id:userId}).select();
-    if(think.isEmpty(userDetail))
-      return this.fail("无此用户");
-    userDetail[0]["totalVolume"] = await this.model("order").where({user:userId}).count();
-    userDetail[0]["totalTurnover"] = await this.model("order").transaction(async()=>{
-      let itemIds = await this.model("order").field("item").where({user:userId}).select();
-      let itemIdArray = itemIds.map((i)=>i["item"]);
-      return this.model("item").where({id:["IN",itemIdArray]}).sum("currentPrice"); 
-    })
-    return this.success(userDetail[0]);
   }
 }

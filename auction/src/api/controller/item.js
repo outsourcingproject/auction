@@ -17,8 +17,9 @@ export default class extends Base {
   }
 
   async detailAction(){
-  	let itemId = this.post("id");
-    let userId = this.session("user");
+  	let itemId = this.param("id");
+    let user = this.session("user");
+    let userId = user["id"];
     let resItemInfo = await _detailHelper(id,userId);
     let resRelatedItems = await _relatedItemHelper(id,userId);
     resItemInfo["relatedItems"] = resRelatedItems;
