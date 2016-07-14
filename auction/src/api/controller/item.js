@@ -16,6 +16,18 @@ export default class extends Base {
     return this.display();
   }
 
+  async listAction(){
+    let itemModel = this.model("item");
+    let items = await this.model("item").where({status:itemModel.AUCTIONING}).limit(10).select();
+    let user = await this.session("user");
+    if(!think.isEmpty(user)){ 
+      let followingItems =await this.model("follow").field("item").where({user:user["id"]}).select();
+      let itemIds = followingItems.map((f)=>f["item"]);
+      let res = items.map((i)=>{console.log(i["id"]); return (itemIds.indexOf(i["id"])!==-1)?i["following"]=true:i["following"]=false});
+    }
+    return this.success(items);
+  }
+
   async detailAction(){
   	let itemId = this.param("id"); //获取item id;
     let user = await this.session("user");
@@ -44,7 +56,7 @@ export default class extends Base {
     itemInfo["image"] = await this.model("image").getImages(imageIds);
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
-    itemInfo["following"] = think.isEmpty(await this.model("follow").where({"item":id,"user":userId}).select())? false:true;
+    itemInfo["following"] = await this.model("follow").isFollowing(userId,id);
     itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);
     return itemInfo;
   }

@@ -12,4 +12,8 @@ export default class extends Base {
 		else 
 			return this.delete({user:userId, item:itemId});
 	}
+
+	async isFollowing(userId,itemId){
+		return think.isEmpty(await this.model("follow").where({"item":itemId,"user":userId}).select())? false:true;
+	}
 }

@@ -19,6 +19,7 @@ export default class Item extends Base {
     let res = configStage.filter((i)=>i[0]<=currPrice).sort((i,j)=>i[0]<j[0])[0][1];
     return res;
   }
+  
   //check and change item status
   async checkStatus(){
     let currentTime = new date().getTime();
@@ -43,8 +44,4 @@ export default class Item extends Base {
       await this.rollback();
     }
   }
-
-
-
-
 }
