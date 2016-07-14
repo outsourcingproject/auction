@@ -37,22 +37,21 @@ export default class extends Base {
     for(let f in files)
     {
       let file = files[f];
-      let filepath = file.path;
-     
+      let filepath = file.path;     
       let fileType =/\.[^\.]+$/.exec(file.originalFilename); // 判断后缀名    
       //文件上传后，需要将文件移动到项目其他地方，否则会在请求结束时删除掉该文件
-      let uploadPath = think.UPLOAD_PATH + '/upload';
+      let uploadPath = think.UPLOAD_PATH;
       think.mkdir(uploadPath);
       let basename = uuid.v1(); //path.basename(filepath);
       let newPath = uploadPath + '/' + basename + fileType;
       await this.renameAsync(filepath, newPath);
-      picInfos.push({"originName":file.originalFilename, "path":"file://"+basename+fileType});
+      picInfos.push({"originName":file.originalFilename, "path":"file://upload_path/"+basename+fileType});
     }  
 
     let imageModel = think.model("image",null,'api');
-    await imageModel.addMany(picInfos);
+    let result = await imageModel.addMany(picInfos);
 
-    return this.success("success");
+    return think.isEmpty(result)?this.fail("Failed to upload!"):this.success(result);
   }
 
 }

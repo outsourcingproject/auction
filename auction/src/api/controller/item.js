@@ -26,14 +26,6 @@ export default class extends Base {
     return this.success(resItemInfo);
   }
 
-
-  async _stageHelper(currPrice){
-    let configModel = this.model("config");
-    let configStage = await configModel.get("auction.bid_increasment");
-    let res = configStage.filter((i)=>i[0]<=currPrice).sort((i,j)=>i[0]<j[0])[0][1];
-    return res;
-  }
-
   async _relatedItemHelper(id,userId){
     let itemInfo = (await this.itemModel.where({"id":id}).select())[0];
     let relatedItems = await this.itemModel.where({"group":itemInfo["group"]}).field("id").select();
@@ -49,16 +41,11 @@ export default class extends Base {
   async _detailHelper(id,userId){
     let itemInfo = (await this.itemModel.where({"id":id}).select())[0];
     let imageIds = JSON.parse(itemInfo["image"]) ;
-
-    itemInfo["image"] =[];
-    for (let i of imageIds){
-      itemInfo["image"].push((await this.model("image").where({id:i}).select())[0]);
-    }
-
+    itemInfo["image"] = await this.model("image").getImages(imageIds);
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
     itemInfo["following"] = think.isEmpty(await this.model("follow").where({"item":id,"user":userId}).select())? false:true;
-    itemInfo["stage"] = await this._stageHelper(itemInfo["currentPrice"]);
+    itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);
     return itemInfo;
   }
 

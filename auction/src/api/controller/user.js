@@ -61,6 +61,20 @@ export default class User extends Base {
     return obj;
   }
 
+  async resetPasswordAction(){
+    let user = await this.session('user');
+    let oldPassword = this.param('oldpassword');
+    let newPassword = this.param('newpassword');
+    let truePassword = (await this.model("user").field("password").where({id:user['id']}).select())[0];
+    if( oldPassword == truePassword["password"]){
+      let res = await this.model("user").where({id:user["id"]}).update({password:newPassword});
+      if(!think.isEmpty(res))
+        return this.success("修改成功");
+      return this.fail("修改失败")
+    }
+    return this.fail("密码错误");
+  }
+
 
 
   async detailAction(){
@@ -77,41 +91,20 @@ export default class User extends Base {
     })
     return this.success(userDetail[0]);
   }
+
   async infoAction(){
     let user = await this.session('user');
     let userId = user["id"];
 
     // get messages
-    let messages = await this.model("message")
-      .where({"from|to":userId})
-      .select();
-    let resultMessages  = messages.map((m)=>{
-      return {"title":m["title"],"createAt":m["createAt"],"messageId":m["id"]}
-    });
-
+    let resultMessages = await this.model("message").getList(userId);
     // get bid record with price over mine;
-    let resultPriceOver = await this._priceOver(userId);
-
+    let resultPriceOver = await this._getPriceOver(userId);
     //get successful auction items
-    let auctionConfirm = await this.model("order")
-      .join("item on order.item = item.id")
-      .field("item.name, order.id, item.currentPrice")
-      .where({user:userId})
-      .order("order.createAt DESC")
-      .select();
-    // console.log(auctionConfirm);
+    let auctionConfirm = await this.model("order").getConfirmedAuction(userId);
     let resultAuctionConfirm = auctionConfirm.map((r) => {return {"name":r["name"], "id":r["id"], "price":r["currentPrice"]}})
-
-
     //git items waiting paying
-
-    let waitPay = await this.model("order")
-      .where({user:userId})
-      .where("order.status=0")
-      .field("item.name, order.id, item.currentPrice")
-      .join("item on order.item = item.id")
-      .order("order.createAt DESC")
-      .select();
+    let waitPay = await this.model("order").getWaitPay(userId);      
     let resultWaitPay = waitPay.map((w) => {return {"name":w["name"],"id":w["id"],"price":w["currentPrice"]}});
 
     let result = {
@@ -124,29 +117,19 @@ export default class User extends Base {
     return this.success(result);
   }
 
-  async _priceOver(userId){
-    let items = await this.model("bid")
-      .where({user:userId})
-      .distinct("item")
-      .select();
-
+  async _getPriceOver(userId){
+    let items = await this.model("bid").getDistinceList(userId);
+     
     let myMaxBids = [];
     let sql ="select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
-    console.log(items);
     for (let i of items){
-      console.log("******************"+i);
       let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"],userId);
       myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
     }
-
+    console.log(myMaxBids);
     let resultPriceOver = [];
     for(let m of myMaxBids){
-      let r = await this.model("bid")
-      .join("item on bid.item = item.id")
-      .field("bid.createAt, bid.item, bid.value, item.name")
-      .where({item:m["item"],value:{">":m["value"]}})
-      .order("bid.createAt DESC")
-      .select();
+      let r = await this.model("bid").getPriceOver(m["item"],m["value"])
       if(!think.isEmpty(r))
         resultPriceOver.push(r);
     }

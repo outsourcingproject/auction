@@ -59,10 +59,7 @@ global.removeHTMLTag = (str)=> {
   return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
 };
 
-const AUCTION_NOT_STARTED = 0;
-const AUCTIONING = 1;
-const AUCTION_ENDED =2;
-const AUCTION_FAILED = 3; //流拍
+
 
 global.checkAuction = async() =>{
   let itemModel = this.model("item");
