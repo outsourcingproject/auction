@@ -61,5 +61,3 @@ npm-debug.log
 *.swp
 *.iml
 
-# runtime #
-/runtime
