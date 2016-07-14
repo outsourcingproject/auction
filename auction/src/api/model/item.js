@@ -1,73 +1,38 @@
 import Base from './base.js'
 
 export default class Item extends Base {
-  schemas = {
-    name: {
-      type: String,
-      required: true
-    },
-    desc: {
-      type: String,
-      required: true,
-      default: ''
-    },
-    pic: {
-      type: [String],
-      required: true,
-      default: []
-    },
-    publisher: {
-      //ref to collection user.username
-      type: String,
-      required: true
-    },
-    group: {
-      //ref to collection item_group._id
-      type: String,
-      required: true
-    },
-    beginPrice: {
-      type: Number,
-      required: true,
-      default: 0
-    },
-    currentPrice: {
-      type: Number,
-      required: true,
-      default: 0
-    },
-    //one of two type:
-    //AHEAD_TIME
-    //FIX_TIME (default)
-    auctionType: {
-      type: String,
-      required: true,
-      default: 'FIX_TIME'
-    },
-    auctionBeginTime: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    auctionEndTime: {
-      type: Date,
-      required: true
-    },
-    createAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    },
-    updateAt: {
-      type: Date,
-      required: true,
-      default: ()=>new Date()
-    }
-  };
-
   beforeAdd(data) {
     data = super.beforeAdd(data);
     data.auctionBeginTime = data.auctionBeginTime || new Date();
     return data;
   }
+
+  //check and change item status
+  async checkStatus(){
+    let currentTime = new date().getTime();
+    try{
+      await this.startTrans();
+
+      let items_end = await this.where({auctionEndTime:{"<": currentTime},status:["NOTIN",[AUCTION_FAILED,AUCTION_ENDED]]}).select(); 
+      items_end.map(async(i)=>{
+      let boolBid = await this.where({item:i["id"]}).count();
+      if( boolBid == 0 )
+        await this.where({id:i["id"]}).update({status: AUCTION_FAILED});
+      else
+        await this.where({id:i["id"]}).update({status: AUCTION_ENDED});
+      })
+
+      let items_auctioning = await  itemModel.where({auctionBeginTime:{"<":currentTime}, auctionEndTime:{">": currentTime}, status:["NOTIN",[AUCTIONING]]}).select();
+      items_auctioning.map(async(i)=> await itemModel.where({id:i["id"]}).update({status:AUCTIONING}));  
+
+      await this.commit();
+    }
+    catch(e){
+      await this.rollback();
+    }
+  }
+
+
+
+
 }

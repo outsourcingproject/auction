@@ -119,33 +119,17 @@ export default class Role extends Base {
   async getRoleAuthorities(name) {
     let authorityModel = think.model('authority', null, 'api');
 
-    let addAuthorities = (arr, au)=> {
-      for (let i of au) {
-        let has = false;
-        for (let j of arr) {
-          if (i.name == j.name) {
-            has = true;
-            break;
-          }
-        }
-        if (!has) {
-          arr.push(i);
-        }
-      }
-    };
-
     let getAuthorities = async(name)=> {
       let role = await this.where({name}).find();
       if (think.isEmpty(role)) {
         return [];
       }
       let authorities = [];
-      for (let e of role.extend) {
-        addAuthorities(authorities, await getAuthorities(e));
+      for (let e of JSON.parse(role.extend)) {
+        authorities.push(await getAuthorities(e));
       }
-      for (let aName of role.authorities) {
-        addAuthorities(authorities, [await authorityModel.where({name: aName}).find()]);
-      }
+      let roleAuthorityModel = think.model('role_authority', null, 'api');
+      authorities.push(await roleAuthorityModel.where({role: role.id}).find());
       return authorities;
     };
 
