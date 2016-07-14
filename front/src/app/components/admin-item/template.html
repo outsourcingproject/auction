@@ -9,19 +9,13 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let order of pagedData; let idx=index">
+  <tr *ngFor="let order of orders; let idx=index">
     <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
 
     <td>¥ {{order.price|number:'1.2-2'}}</td>
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>
-    <td>
-      <a *ngIf="order.status==0">确认收货地址</a>
-      <a *ngIf="order.status==1">支付</a>
-      <a *ngIf="order.status==4">确认收货</a>
-    </td>
+    <td><a *ngIf="order.status==0">确认收货地址</a> <a *ngIf="order.status==1">支付</a></td>
   </tr>
   </tbody>
 </table>
-
-<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>

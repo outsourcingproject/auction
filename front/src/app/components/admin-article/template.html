@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>标题</th>
+    <th>类型</th>
+    <th>创建时间</th>
+    <th>修改时间</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders; let idx=index">
+    <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
+
+    <td>¥ {{order.price|number:'1.2-2'}}</td>
+    <td>{{order.createAt|date}}</td>
+    <td>{{order.status|orderStatus}}</td>
+    <td><a >修改</a> <a >删除</a></td>
+  </tr>
+  </tbody>
+</table>

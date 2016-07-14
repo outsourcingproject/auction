@@ -28,4 +28,4 @@
   </div>
 </div>
 
-<pager [data]="data" [pageSize]="12" (pagedDataChange)="pagedDataChange($event)"></pager>
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>

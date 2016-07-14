@@ -15,12 +15,15 @@ export class UserMessageComponent{
   public data=config;
   public selectedMessage:number;
   public pagedData;
+  
+  public pageSize:number=12;
+  
   public lgModal;
 
   public onMessageClick(idx:number){
     this.selectedMessage=idx;
   }
-  public pagedDataChange(pagedData){
+  public onPagedDataChange(pagedData){
     this.pagedData=pagedData;
   }
 }

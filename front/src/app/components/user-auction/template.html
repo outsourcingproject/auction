@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let i of data">
+  <tr *ngFor="let i of pagedData">
     <td ><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
     <td>¥ {{i.price | number:'1.2-2'}}</td>
     <td>{{i.itemStatus | itemStatus}}</td>
@@ -18,3 +18,5 @@
   </tr>
   </tbody>
 </table>
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>

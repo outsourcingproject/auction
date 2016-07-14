@@ -25,24 +25,16 @@ export class AucItemShown implements OnInit,OnDestroy{
   public relatedItems;
 
   public _currTime:number;
-  
-  private _currTimer;
-  private _auctionPirce:number;
 
-  public get auctionPirce(){
-    return this._auctionPirce
-  }
-  public set auctionPirce(val){
-    this._auctionPirce=val;
-  }
+  private _currTimer;
 
   constructor() {
-    
+
     this.relatedItems = config.relatedItems;
     this._currTimer=setInterval(()=>{
       this._currTime=this.data.auctionEndTime-new Date().getTime();
     },1000);
-    
+
   }
   ngOnDestroy(){
      clearInterval(this._currTimer);
@@ -51,6 +43,7 @@ export class AucItemShown implements OnInit,OnDestroy{
     this.tabsClick(0);
     this.imagesClick(0);
     this.auctionPrice=this.data.currentPrice+this.data.stage;
+
   }
   public imagesClick(idx) {
     this.imagesSelectedIdx = idx;
