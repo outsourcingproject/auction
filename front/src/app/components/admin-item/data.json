@@ -1,3 +1,82 @@
-{
-  
-}
+[
+  {
+    "id": 1,
+    "name": "测试物品",
+    "images": [
+      "path/to/image",
+      "path/to/image",
+      "path/to/image"
+    ],
+    "desc": "<h2>head</h2>",
+    "foundTime": "1936",
+    "foundLocation": "四川",
+    "group": 1,
+    "beginPrice": 100,
+    "currentPrice": 200,
+    "auctionType": 0,
+    "auctionBeginTime": 1,
+    "auctionEndTime": 10000,
+    "createAt": 100000,
+    "updateAt": 100000
+  },
+  {
+    "id": 2,
+    "name": "测试物品",
+    "images": [
+      "path/to/image",
+      "path/to/image",
+      "path/to/image"
+    ],
+    "desc": "<h2>head</h2>",
+    "foundTime": "1936",
+    "foundLocation": "四川",
+    "group": 2,
+    "beginPrice": 100,
+    "currentPrice": 200,
+    "auctionType": 1,
+    "auctionBeginTime": 1,
+    "auctionEndTime": 10000,
+    "createAt": 100000,
+    "updateAt": 100000
+  },
+  {
+    "id": 3,
+    "name": "测试物品",
+    "images": [
+      "path/to/image",
+      "path/to/image",
+      "path/to/image"
+    ],
+    "desc": "<h2>head</h2>",
+    "foundTime": "1936",
+    "foundLocation": "四川",
+    "group": 3,
+    "beginPrice": 100,
+    "currentPrice": 200,
+    "auctionType": 0,
+    "auctionBeginTime": 1,
+    "auctionEndTime": 10000,
+    "createAt": 100000,
+    "updateAt": 100000
+  },
+  {
+    "id": 4,
+    "name": "测试物品",
+    "images": [
+      "path/to/image",
+      "path/to/image",
+      "path/to/image"
+    ],
+    "desc": "<h2>head</h2>",
+    "foundTime": "1936",
+    "foundLocation": "四川",
+    "group": 4,
+    "beginPrice": 100,
+    "currentPrice": 200,
+    "auctionType": 1,
+    "auctionBeginTime": 1,
+    "auctionEndTime": 10000,
+    "createAt": 100000,
+    "updateAt": 100000
+  }
+]

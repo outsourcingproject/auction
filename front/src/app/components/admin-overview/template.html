@@ -1,0 +1,34 @@
+<!--<button class="btn btn-primary" (click)="lgModal.show()">Large modal</button>-->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Large modal</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="flex-box">
+          <div class="date">
+            <label for="date">日期</label>
+            <div id="date">
+              <datepicker [(ngModel)]="mytime" [minDate]="minDate" [showWeeks]="true"
+                          style="display:inline-block;"></datepicker>
+            </div>
+          </div>
+          <div class="time">
+            <label for="time">时间</label>
+            <div id="time">
+              <timepicker [(ngModel)]="mytime" style="display:inline-block;"></timepicker>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

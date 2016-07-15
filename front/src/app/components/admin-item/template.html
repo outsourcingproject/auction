@@ -1,21 +1,208 @@
+<div class="header">
+  <h2>物品列表</h2>
+  <div><a (click)="onAdd()">添加物品</a></div>
+</div>
 <table class="table">
   <thead>
   <tr>
-    <th>商品名称</th>
-    <th>成交价格</th>
-    <th>成交时间</th>
-    <th>订单状态</th>
+    <th>名称</th>
+    <th>专场</th>
+    <th>起拍价</th>
+    <th>拍卖类型</th>
+    <th>拍卖开始时间</th>
+    <th>创建时间</th>
     <th>操作</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let order of orders; let idx=index">
-    <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
+  <tr *ngFor="let i of pagedData; let idx=index">
+    <td><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
 
-    <td>¥ {{order.price|number:'1.2-2'}}</td>
-    <td>{{order.createAt|date}}</td>
-    <td>{{order.status|orderStatus}}</td>
-    <td><a *ngIf="order.status==0">确认收货地址</a> <a *ngIf="order.status==1">支付</a></td>
+    <td>{{i.group|num2str:itemGroup:1}}</td>
+    <td>¥ {{i.beginPrice|number:'1.2-2'}}</td>
+    <td>{{i.auctionType|num2str:auctionType}}</td>
+    <td>{{i.auctionBeginTime|date}}</td>
+    <td>{{i.createAt|date}}</td>
+
+    <td><a (click)="onModify(i)">修改</a> <a (click)="onDelete(i)">删除</a></td>
   </tr>
   </tbody>
 </table>
+
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+
+<div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="addOrUpdateModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{selectedArticle?'修改':'添加'}}物品</h4>
+      </div>
+      <div class="modal-body">
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">名称</label>
+                <input id="name" type="text" name="name" class="form-control" [(ngModel)]="curr.name" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="begin-price">起拍价</label>
+                <input id="begin-price" type="number" name="beginPrice" class="form-control"
+                       [(ngModel)]="curr.beginPrice"
+                       required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="tag">发货标记</label>
+                <input id="tag" type="text" name="tag" class="form-control" [(ngModel)]="curr.tag" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="found-time">物品年代</label>
+                <input id="found-time" type="text" name="foundTime" class="form-control" [(ngModel)]="curr.foundTime">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="found-location">物品地域</label>
+                <input id="found-location" type="text" name="foundLocation" class="form-control"
+                       [(ngModel)]="curr.foundLocation">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="group">专场</label>
+                <select id="group" name="desc" class="form-control" [(ngModel)]="curr.group">
+                  <option *ngFor="let i of itemGroup" [value]="i.id">{{i.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="auction-type">拍卖类型</label>
+                <select id="auction-type"  name="auctionType" class="form-control"
+                        [(ngModel)]="curr.auctionType">
+                  <option *ngFor="let i of auctionType;let idx=index" [value]="idx">{{i}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="desc">描述</label>
+            <ueditor id="desc" [defaultContent]="curr.desc" (blur)="onUeditorBlur($event)"></ueditor>
+          </div>
+
+          <div class="form-group">
+
+          </div>
+          <div class="form-group">
+            <label for="begin-date">竞拍开始</label>
+            <div class="date-time-wrapper">
+              <div class="date">
+                <label for="begin-date">日期</label>
+                <div id="begin-date">
+                  <datepicker [(ngModel)]="curr.auctionBeginTime" [minDate]="minDate" [showWeeks]="true"
+                              style="display:inline-block;" name="begin-date"></datepicker>
+                </div>
+              </div>
+              <div class="time">
+                <label for="begin-time">时间</label>
+                <div id="begin-time">
+                  <timepicker [(ngModel)]="curr.auctionBeginTime" style="display:inline-block;" name="begin-time"
+                              [showMeridian]="false"></timepicker>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="begin-date">竞拍结束</label>
+            <div class="date-time-wrapper">
+              <div class="date">
+                <label for="end-date">日期</label>
+                <div id="end-date">
+                  <datepicker [(ngModel)]="curr.auctionEndTime" [minDate]="minDate" [showWeeks]="true"
+                              style="display:inline-block;" name="end-date"></datepicker>
+                </div>
+              </div>
+              <div class="time">
+                <label for="end-time">时间</label>
+                <div id="end-time">
+                  <timepicker [(ngModel)]="curr.auctionEndTime" style="display:inline-block;" name="end-time"
+                              [showMeridian]="false"></timepicker>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-success" type="submit">提交</button>
+          <button class="btn btn-default" type="button" (click)="addOrUpdateModal.hide()">取消</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #delConfirmModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="delConfirmModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">确认删除</h4>
+      </div>
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>名称</th>
+            <th>专场</th>
+            <th>起拍价</th>
+            <th>拍卖类型</th>
+            <th>拍卖开始时间</th>
+            <th>创建时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngIf="selected">
+            <td><a [routerLink]="['/auc-item',selected.id]">{{selected.name}}</a></td>
+
+            <td>{{selected.group}}</td>
+            <td>{{selected.beginPrice|number:'1.2-2'}}</td>
+            <td>{{selected.auctionType}}</td>
+            <td>{{selected.auctionBeginTime|date}}</td>
+            <td>{{selected.createAt|date}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div>
+          您确定删除吗？
+          <button class="btn btn-danger" (click)="onDeleteSubmit()">删除</button>
+          <button class="btn btn-warning" (click)="delConfirmModal.hide()">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

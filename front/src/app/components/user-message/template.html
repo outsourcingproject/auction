@@ -8,21 +8,33 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData;let idx=index">
-    <td ><a (click)="onMessageClick(idx);lgModal.show()">{{i.title}}</a></td>
+    <td><a (click)="onMessageClick(idx)">{{i.title}}</a></td>
     <td>{{i.from.username}}</td>
-    <td >{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
+    <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
   </tr>
   </tbody>
 </table>
 
-<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div bsModal #detailModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Large modal</h4>
+        <button type="button" class="close" (click)="detailModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">消息详情</h4>
       </div>
       <div class="modal-body">
-        ...
+
+        <h2 class="message-title">{{selected.title}}</h2>
+
+        <div class="info">
+          <span class="user">发送者 : {{selected.from.username}}</span>
+          <span class="time">时间 : {{selected.createAt|date}}</span>
+        </div>
+        <div class="content" [innerHTML]="selected.content"></div>
       </div>
     </div>
   </div>

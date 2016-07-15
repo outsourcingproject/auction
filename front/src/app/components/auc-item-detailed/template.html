@@ -1,6 +1,8 @@
 <div class="auc-item-detailed">
     <div class="image">
-        <img src={{image}}>
+      <a [routerLink]="['/auc-item',id]">
+        <img [src]="image">
+      </a>
     </div>
     <div class="detail">
         <h4><a [routerLink]="['/auc-item',id]">{{name}}</a></h4>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {User}      from '../../entities/User'
+import {User}      from '../../entities/user'
 import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import {TimepickerComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import {DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';

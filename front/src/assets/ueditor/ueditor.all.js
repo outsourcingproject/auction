@@ -368,10 +368,10 @@ var utils = UE.utils = {
      * @example
      * ```javascript
      *
-     * var protoObject = { sayHello: function () { console.log('Hello UEditor!'); } };
+     * var protoObject = { sayHello: function () { console.log('Hello UEditorComponent!'); } };
      *
      * var newObject = UE.utils.makeInstance( protoObject );
-     * //output: Hello UEditor!
+     * //output: Hello UEditorComponent!
      * newObject.sayHello();
      * ```
      */

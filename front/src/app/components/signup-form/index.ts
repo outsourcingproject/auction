@@ -7,7 +7,7 @@ import {Component, Inject} from '@angular/core';
 import {FORM_DIRECTIVES} from '@angular/common';
 import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
-import {User} from "../../entities/User";
+import {User} from "../../entities/user";
 
 let style=require('./style.styl');
 let template = require('./template.html');

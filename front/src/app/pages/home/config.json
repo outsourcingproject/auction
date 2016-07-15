@@ -42,44 +42,60 @@
     ]
   },
   "auctionGroups": [
-    { 
+    {
       "id": 1, "title": "【皓月长空】- 情溢中秋", "desc": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......",
       "auctions": [
-        { "id": 1, "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 1, "price": "6001.00" },
-        { "id": 2, "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 2, "price": "8001.00" },
-        { "id": 3, "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 0, "price": "8001.00" },
-        { "id": 4, "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 2, "price": "10001.00" }
+        { "id": 1, "name": "1993年意大利著名银币", "image": "/assets/img/item/3.JPG", "status": 1, "price": "6001.00" },
+        { "id": 2, "name": "1993年意大利著名银币", "image": "/assets/img/item/10.JPG", "status": 2, "price": "8001.00" },
+        { "id": 3, "name": "1993年意大利著名银币", "image": "/assets/img/item/11.JPG", "status": 0, "price": "8001.00" },
+        { "id": 4, "name": "1993年意大利著名银币", "image": "/assets/img/item/5.JPG", "status": 2, "price": "10001.00" },
+        { "id": 5, "name": "1993年意大利著名银币", "image": "/assets/img/item/7.JPG", "status": 2, "price": "6003.00" },
+        { "id": 6, "name": "1993年意大利著名银币", "image": "/assets/img/item/8.JPG", "status": 2, "price": "8003.00" },
+        { "id": 7, "name": "1993年意大利著名银币", "image": "/assets/img/item/9.JPG", "status": 1, "price": "8003.00" },
+        { "id": 8, "name": "1993年意大利著名银币", "image": "/assets/img/item/4.JPG", "status": 0, "price": "10004.00" }
       ]
     },
-    { 
+    {
       "id": 2, "title": "【皓月长空】- 情溢中秋", "desc": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......",
       "auctions": [
-        { "id": 1, "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 0, "price": "6002.00" },
-        { "id": 2, "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 1, "price": "8002.00" },
-        { "id": 3, "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 1, "price": "8002.00" },
-        { "id": 4, "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 2, "price": "10002.00" }
+        { "id": 1, "name": "1993年意大利著名银币", "image": "/assets/img/item/13.JPG", "status": 0, "price": "6002.00" },
+        { "id": 2, "name": "1993年意大利著名银币", "image": "/assets/img/item/14.JPG", "status": 1, "price": "8002.00" },
+        { "id": 3, "name": "1993年意大利著名银币", "image": "/assets/img/item/7.JPG", "status": 1, "price": "8002.00" },
+        { "id": 4, "name": "1993年意大利著名银币", "image": "/assets/img/item/6.JPG", "status": 2, "price": "10002.00" },
+        { "id": 5, "name": "1993年意大利著名银币", "image": "/assets/img/item/5.JPG", "status": 1, "price": "6001.00" },
+        { "id": 6, "name": "1993年意大利著名银币", "image": "/assets/img/item/4.JPG", "status": 2, "price": "8001.00" },
+        { "id": 7, "name": "1993年意大利著名银币", "image": "/assets/img/item/3.JPG", "status": 0, "price": "8001.00" },
+        { "id": 8, "name": "1993年意大利著名银币", "image": "/assets/img/item/2.JPG", "status": 2, "price": "10001.00" }
       ]
     },
-    { 
+    {
       "id": 3, "title": "【皓月长空】- 情溢中秋", "desc": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......",
       "auctions": [
-        { "id": 1, "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 2, "price": "6003.00" },
-        { "id": 2, "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 2, "price": "8003.00" },
-        { "id": 3, "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 1, "price": "8003.00" },
-        { "id": 4, "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 0, "price": "10004.00" }
+        { "id": 1, "name": "1993年意大利著名银币", "image": "/assets/img/item/1.JPG", "status": 2, "price": "6003.00" },
+        { "id": 2, "name": "1993年意大利著名银币", "image": "/assets/img/item/2.JPG", "status": 2, "price": "8003.00" },
+        { "id": 3, "name": "1993年意大利著名银币", "image": "/assets/img/item/4.JPG", "status": 1, "price": "8003.00" },
+        { "id": 4, "name": "1993年意大利著名银币", "image": "/assets/img/item/6.JPG", "status": 0, "price": "10004.00" },
+        { "id": 5, "name": "1993年意大利著名银币", "image": "/assets/img/item/8.JPG", "status": 0, "price": "6002.00" },
+        { "id": 6, "name": "1993年意大利著名银币", "image": "/assets/img/item/10.JPG", "status": 1, "price": "8002.00" },
+        { "id": 7, "name": "1993年意大利著名银币", "image": "/assets/img/item/12.JPG", "status": 1, "price": "8002.00" },
+        { "id": 8, "name": "1993年意大利著名银币", "image": "/assets/img/item/14.JPG", "status": 2, "price": "10002.00" }
       ]
     },
-    { 
+    {
     "id": 4, "title": "【皓月长空】- 情溢中秋", "desc": "【皓月长空】-情溢中秋专场，亿拍天堂征集到一部分精美藏品去呈现给广大藏家朋友，藏品上线即可出家，品种丰富，不乏广大泉友喜爱的藏品，0元起拍，全程大部分......",
       "auctions": [
-        { "id": 1, "name": "1993年意大利著名银币", "image": "/static/images/auc_item1.png", "status": 0, "price": "6004.00" },
-        { "id": 2, "name": "1993年意大利著名银币", "image": "/static/images/auc_item2.png", "status": 2, "price": "8004.00" },
-        { "id": 3, "name": "1993年意大利著名银币", "image": "/static/images/auc_item3.png", "status": 2, "price": "8004.00" },
-        { "id": 4, "name": "1993年意大利著名银币", "image": "/static/images/auc_item4.png", "status": 1, "price": "10004.00" }
+        { "id": 1, "name": "1993年意大利著名银币", "image": "/assets/img/item/13.JPG", "status": 0, "price": "6004.00" },
+        { "id": 2, "name": "1993年意大利著名银币", "image": "/assets/img/item/11.JPG", "status": 2, "price": "8004.00" },
+        { "id": 3, "name": "1993年意大利著名银币", "image": "/assets/img/item/8.JPG", "status": 2, "price": "8004.00" },
+        { "id": 4, "name": "1993年意大利著名银币", "image": "/assets/img/item/6.JPG", "status": 1, "price": "10004.00" },
+        { "id": 5, "name": "1993年意大利著名银币", "image": "/assets/img/item/4.JPG", "status": 2, "price": "6003.00" },
+        { "id": 6, "name": "1993年意大利著名银币", "image": "/assets/img/item/3.JPG", "status": 2, "price": "8003.00" },
+        { "id": 7, "name": "1993年意大利著名银币", "image": "/assets/img/item/7.JPG", "status": 1, "price": "8003.00" },
+        { "id": 8, "name": "1993年意大利著名银币", "image": "/assets/img/item/9.JPG", "status": 0, "price": "10004.00" }
       ]
     }
   ],
-  
+
   "service": [
     { "image": "/assets/img/service1.png", "title": "如实描述", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },
     { "image": "/assets/img/service2.png", "title": "快速上拍", "content": "是指房产买房将其已抵押给银行或按揭方式购买且尚未还清的房产转让给..." },

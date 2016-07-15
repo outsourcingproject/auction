@@ -2,8 +2,9 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component,OnInit,OnDestroy} from '@angular/core';
+import {Component,OnInit,OnDestroy,ViewChild} from '@angular/core';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
+import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 
 let debug = require('debug')('ng:auc-item-shown');
 let template = require('./template.html');
@@ -14,7 +15,8 @@ const config = require('./config.json');
   selector: 'auc-item-shown',
   template: template,
   styles: [style],
-  directives: [AucItemDetailed]
+  directives: [AucItemDetailed, MODAL_DIRECTIVES],
+  viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AucItemShown implements OnInit,OnDestroy{
   public tabsItems:Array<string>=['拍品描述', '出价记录', '注意事项'];
@@ -36,6 +38,13 @@ export class AucItemShown implements OnInit,OnDestroy{
     },1000);
 
   }
+
+  @ViewChild('auctionConfirmModal')
+  public auctionConfirmModal:ModalDirective;
+
+  @ViewChild('auctionSuccess')
+  public auctionSuccess:ModalDirective;
+  
   ngOnDestroy(){
      clearInterval(this._currTimer);
   }
@@ -63,5 +72,18 @@ export class AucItemShown implements OnInit,OnDestroy{
 
   public tabsClick(idx){
     this.tabsSelectedIdx=idx;
+  }
+
+  public onAuctionPriceSubmit(){
+    this.auctionConfirmModal.show();
+    return false;
+
+  }
+  public onAuctionPriceConfirm(){
+    //TODO: update db
+
+    this.auctionConfirmModal.hide();
+    this.auctionSuccess.show();
+
   }
 }

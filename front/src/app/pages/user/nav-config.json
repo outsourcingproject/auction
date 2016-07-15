@@ -1,5 +1,5 @@
 [
-  { "link": ["/user/user-info"], "text": "我的资料" },
+  { "link": ["/user/user-info"], "text": "我的动态" },
   { "link": ["/user/auction"], "text": "竞拍中心" },
   { "link": ["/user/order"], "text": "订单中心" },
   { "link": ["/user/message"], "text": "消息中心" },

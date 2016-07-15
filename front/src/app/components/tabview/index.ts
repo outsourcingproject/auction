@@ -21,6 +21,8 @@ export class TabView implements OnInit {
   public data;
   @Input()
   public small:boolean = false;
+  @Input()
+  public imageSrc:string="/assets/img/block.png";
 
   public tabs;
   public details;

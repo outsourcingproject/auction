@@ -6,7 +6,7 @@
 import {Component, Inject,} from '@angular/core';
 import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
-import {User} from "../../entities/User";
+import {User} from "../../entities/user";
 
 let template = require('./template.html');
 let style = require('./style.styl');

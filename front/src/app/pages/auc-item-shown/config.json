@@ -11,18 +11,18 @@
   "followCount": 420,
   "following": true,
   "auctionBeginTime": 1468060278746,
-  "auctionEndTime": 1468407871178,
-  "auctionType": 0,
+  "auctionEndTime": 1468897871178,
+  "auctionType": 1,
   "images": [
-    "/static/images/snapshot.png",
-    "/static/images/snapshot.png",
-    "/static/images/snapshot.png"
+    "/assets/img/item/4.JPG",
+    "/assets/img/item/7.JPG",
+    "/assets/img/item/6.JPG"
   ],
   "relatedItems": [
     {
       "id": 5,
       "images": [
-        "/static/images/sample.png"
+        "/assets/img/item/8.JPG"
       ],
       "name": "鹿头正银二量",
       "currentPrice": 1302.00,
@@ -35,7 +35,7 @@
     {
       "id": 6,
       "images": [
-        "/static/images/sample.png"
+        "/assets/img/item/3.JPG"
       ],
       "name": "鹿头正银二量",
       "currentPrice": 1302.00,

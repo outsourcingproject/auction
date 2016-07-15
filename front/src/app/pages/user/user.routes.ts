@@ -7,6 +7,7 @@ import {UserOrderComponent}    from "../../components/user-order";
 import {UserSettingComponent}  from "../../components/user-setting";
 import {UserGuard}             from "../../auth/user.guard";
 import {UserMessageComponent} from "../../components/user-message";
+import {UserFollowComponent} from "../../components/user-follow";
 
 export const userRoutes:RouterConfig = [
   {
@@ -20,7 +21,7 @@ export const userRoutes:RouterConfig = [
       {path: 'order', component: UserOrderComponent},
       {path: 'message', component: UserMessageComponent},
       {path: 'account', component: UserSettingComponent},
-      {path: 'following', component: Todo},
+      {path: 'following', component: UserFollowComponent},
     ]
   },
 ];

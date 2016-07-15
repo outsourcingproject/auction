@@ -13,12 +13,13 @@ export class UserDetailComponent implements OnInit {
 
   userDetail:Object;
   user:User;
-  constructor(private _userService:UserService){
-    this.userDetail=require('./config.json');
-    this.user={
-      username:'zl8108812838',
-      desc:'nihao'
-    };
+
+  constructor(private _userService:UserService) {
+    this.userDetail = require('./config.json');
+    this.user = new User();
+    this.user.id = 10;
+    this.user.username = 'zl8108812838';
+    this.user.desc = '这里是个人描述';
 
   }
 

@@ -10,9 +10,9 @@
     <div class="col-md-8">
       <h1 class="title">{{title}}</h1>
       <div class="info">
-        <span class="time">发布时间:{{createAt| date:'yMdHm'}}</span>
+        <span class="time">发布时间:{{createAt| date}}</span>
       </div>
-      <div class="content">{{content}}</div>
+      <div class="content" [innerHTML]="content"></div>
     </div>
   </div>
 </div>

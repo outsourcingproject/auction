@@ -1,0 +1,44 @@
+[
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":1,
+    "name": "测试物品1",
+    "status": 0,
+    "createAt": 0
+  },
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":2,
+    "name": "测试物品2",
+    "status": 1,
+    "createAt": 100
+  },
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":3,
+    "name": "测试物品3",
+    "status": 2,
+    "createAt": 1000
+  },
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":4,
+    "name": "测试物品4",
+    "status": 3,
+    "createAt": 10000
+  },
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":5,
+    "name": "测试物品5",
+    "status": 1,
+    "createAt": 100000
+  },
+  {
+    "$comment": "以下字段除createAt外全为item表中字段",
+    "id":6,
+    "name": "测试物品6",
+    "status": 0,
+    "createAt": 1000000
+  }
+]

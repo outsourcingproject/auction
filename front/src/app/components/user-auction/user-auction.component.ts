@@ -1,23 +1,33 @@
-import {Component,OnInit} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {PagerComponent} from '../pager'
-let config=require('./config.json');
+import {Observable} from "rxjs/Observable";
+let config = require('./config.json');
 
 @Component({
-  selector:'user-auction',
-  styles:[require('./style.styl')],
-  template:require('./template.html'),
-  directives:[PagerComponent]
+  selector: 'user-auction',
+  styles: [require('./style.styl')],
+  template: require('./template.html'),
+  directives: [PagerComponent]
 })
-export class UserAuctionComponent implements OnInit{
-  public data=config;
-  public pageSize:number=12;
+export class UserAuctionComponent implements OnInit {
+  public data = [];
+  public pageSize:number = 12;
   public pagedData;
 
-  ngOnInit(){
-
+  ngOnInit() {
+    Observable
+      .of(config)
+      .map((data)=> {
+        return data.map((i)=>{
+          i.itemStatus=Math.floor(i.bidStatus/2)?1:2;
+          return i;
+        })
+      })
+      .delay(500)
+      .subscribe((data)=>this.data = data);
   }
-  
-  public onPagedDataChange(data){
-    this.pagedData=data;
+
+  public onPagedDataChange(data) {
+    this.pagedData = data;
   }
 }

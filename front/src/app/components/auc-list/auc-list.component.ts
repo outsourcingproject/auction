@@ -14,7 +14,7 @@ let style = require('./style.styl');
   directives: [AucItemDetailed]
 })
 export class AucListComponent implements OnInit {
-  
+
   private _data:Array<{id:number,images:Array<string>,
     name:string,currentPrice:number,auctionTimes:number,
     follow:number,auctionEndTime:number,watching:boolean,type:string}> = [];
@@ -22,9 +22,10 @@ export class AucListComponent implements OnInit {
   @Input()
   public set data(val){
     this._data=val;
-    
+
     this.filters = ['全部'];
     new Set(this.data.map((i)=>i.type)).forEach((i)=>this.filters.push(i));
+    this._updateFilteredData();
   }
   public get data(){
     return this._data;
@@ -47,16 +48,12 @@ export class AucListComponent implements OnInit {
 
   constructor(private _http:Http) {
 
-
-
     this.orders = ["默认", "价格", "出价数", "人气", "截拍时间"];
-
 
   }
 
   ngOnInit() {
-    this._updateFilteredData()
-    //setTimeout(()=>, 0);
+
   }
 
   public onFilterClick(idx) {

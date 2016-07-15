@@ -1,7 +1,7 @@
 /*
  * Angular 2 decorators and services
  */
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation,ViewContainerRef} from '@angular/core';
 
 import {MasterBar} from './components/masterbar';
 
@@ -17,7 +17,10 @@ let style = require('./style.styl');
   directives:[MasterBar]
 })
 export class App {
-  constructor() {
+
+  // ng2-bootstrap: small hack in order to catch application root view container ref
+  public constructor(public viewContainerRef:ViewContainerRef) {
+
     debug('init');
   }
 }

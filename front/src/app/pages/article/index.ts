@@ -11,12 +11,12 @@ let style = require('./style.styl');
 const config = require('./config.json');
 
 @Component({
-  selector: 'info-shown',
+  selector: 'article',
   template: template,
   styles: [style],
   directives: [TabView]
 })
-export class InfoShown {
+export class ArticleComponent {
   public title:string;
   public content:string;
   public createAt:Date;
