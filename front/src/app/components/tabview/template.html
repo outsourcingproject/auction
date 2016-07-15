@@ -9,8 +9,8 @@
             <img [src]="imageSrc">
         </div>
         <ul class="right">
-            <li *ngFor="let detail of details[curTab]; let idx = index">
-                <a [routerLink]="['/article',detail.id]" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
+            <li *ngFor="let detail of details[curTab]; let idx = index" class="fa fa-arrows">
+                <a  [routerLink]="['/article',detail.id]" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
                 {{detail.date}}
             </li>
         </ul>

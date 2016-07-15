@@ -22,7 +22,7 @@ export class UEditorComponent implements OnDestroy,AfterViewInit {
   @Output()
   blur:EventEmitter<string> = new EventEmitter<string>();
 
-  
+
   @Input()
   public set defaultContent(val){
     this._content=val;
@@ -51,8 +51,9 @@ export class UEditorComponent implements OnDestroy,AfterViewInit {
   }
 
   ngOnDestroy():any {
-    if (this._ue)
-      this._ue.destroy();
+    // edge destroy ueditor instance may case a run time error
+    // if (this._ue)
+    //   this._ue.destroy();
   }
 
 }
