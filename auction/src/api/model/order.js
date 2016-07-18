@@ -23,4 +23,11 @@ export default class Order extends Base {
 	      .order("order.createAt DESC")
 	      .select();
 	}
+	getListAdmin(){
+		return this.join("item on order.item = item.id")
+			.join("user on order.user = user.id")
+			.field("item.id, item.name, item.currentPrice, user.username, order.createAt, order.status")
+			.order("order.createAt DESC")
+			.select();
+	}
 }

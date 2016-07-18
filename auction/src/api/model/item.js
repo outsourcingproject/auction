@@ -7,6 +7,18 @@ export default class Item extends Base {
    AUCTION_ENDED =2;
    AUCTION_FAILED = 3; //流拍
 
+  init(...args){
+    super.init(...args);
+    this.relation = {
+      item_group: {
+        type: think.model.BELONG_TO,
+        key:"group",
+        fKey:"id",
+        order: "createAt DESC",
+        relation: false
+      }
+    };
+  }
   beforeAdd(data) {
     data = super.beforeAdd(data);
     data.auctionBeginTime = data.auctionBeginTime || new Date();
@@ -43,5 +55,10 @@ export default class Item extends Base {
     catch(e){
       await this.rollback();
     }
+  }
+
+  getListAdmin(){
+    return this.order("item.createAt DESC")
+      .select();
   }
 }
