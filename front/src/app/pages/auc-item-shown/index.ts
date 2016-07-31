@@ -2,14 +2,15 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component,OnInit,OnDestroy,ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
+import {Observable} from 'rxjs';
 
 let debug = require('debug')('ng:auc-item-shown');
 let template = require('./template.html');
 let style = require('./style.styl');
-const config = require('./config.json');
+const data = require('./config.json');
 
 @Component({
   selector: 'auc-item-shown',
@@ -18,25 +19,55 @@ const config = require('./config.json');
   directives: [AucItemDetailed, MODAL_DIRECTIVES],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
-export class AucItemShown implements OnInit,OnDestroy{
-  public tabsItems:Array<string>=['拍品描述', '出价记录', '注意事项'];
-  public data=config;
+export class AucItemShown implements OnInit,OnDestroy {
+  public tabsItems:Array<string> = ['拍品描述', '出价记录', '注意事项'];
+  public data:{
+    id:number,
+    name:string,
+    foundTime:string,
+    foundLocation:string,
+    currentPrice:number,
+    startPrice:number,
+    stage:number,
+    bidCount:number,
+    status:number,
+    followCount:number,
+    following:boolean,
+    auctionBeginTime:number,
+    auctionEndTime:number,
+    auctionType:number,
+    images:Array<string>,
+    relatedItems:Array<Object>
+  }
+    = {
+    id: null,
+    name: null,
+    foundTime: null,
+    foundLocation: null,
+    currentPrice: null,
+    startPrice: null,
+    stage: null,
+    bidCount: null,
+    status:null,
+    followCount:null,
+    following:null,
+    auctionBeginTime:null,
+    auctionEndTime:null,
+    auctionType:null,
+    images: [],
+    relatedItems: []
+  };
+
   public auctionPrice;
   public imagesSelectedIdx;
   public tabsSelectedIdx;
-  public relatedItems;
+  public relatedItems = [];
 
   public _currTime:number;
 
   private _currTimer;
 
   constructor() {
-
-    this.relatedItems = config.relatedItems;
-    this._currTimer=setInterval(()=>{
-      this._currTime=this.data.auctionEndTime-new Date().getTime();
-    },1000);
-
   }
 
   @ViewChild('auctionConfirmModal')
@@ -44,16 +75,28 @@ export class AucItemShown implements OnInit,OnDestroy{
 
   @ViewChild('auctionSuccess')
   public auctionSuccess:ModalDirective;
-  
-  ngOnDestroy(){
-     clearInterval(this._currTimer);
-  }
-  ngOnInit(){
-    this.tabsClick(0);
-    this.imagesClick(0);
-    this.auctionPrice=this.data.currentPrice+this.data.stage;
 
+  ngOnDestroy() {
+    if (this._currTimer !== undefined) {
+      clearInterval(this._currTimer);
+    }
   }
+
+  ngOnInit() {
+
+    Observable.of(data).delay(500).subscribe((data)=> {
+      this.data = data;
+      this.relatedItems = data.relatedItems;
+      this._currTimer = setInterval(()=> {
+        this._currTime = this.data.auctionEndTime - new Date().getTime();
+      }, 1000);
+      this.tabsClick(0);
+      this.imagesClick(0);
+      this.auctionPrice = this.data.currentPrice + this.data.stage;
+
+    });
+  }
+
   public imagesClick(idx) {
     this.imagesSelectedIdx = idx;
   }
@@ -70,16 +113,17 @@ export class AucItemShown implements OnInit,OnDestroy{
     }
   }
 
-  public tabsClick(idx){
-    this.tabsSelectedIdx=idx;
+  public tabsClick(idx) {
+    this.tabsSelectedIdx = idx;
   }
 
-  public onAuctionPriceSubmit(){
+  public onAuctionPriceSubmit() {
     this.auctionConfirmModal.show();
     return false;
 
   }
-  public onAuctionPriceConfirm(){
+
+  public onAuctionPriceConfirm() {
     //TODO: update db
 
     this.auctionConfirmModal.hide();

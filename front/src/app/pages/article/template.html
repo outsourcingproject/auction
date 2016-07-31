@@ -8,11 +8,11 @@
       <tabview [data]="rightTabData" [small]="true"></tabview>
     </div>
     <div class="col-md-8">
-      <h1 class="title">{{title}}</h1>
+      <h1 class="title">{{data.title}}</h1>
       <div class="info">
-        <span class="time">发布时间:{{createAt| date}}</span>
+        <span class="time">发布时间:{{data.createAt| date}}</span>
       </div>
-      <div class="content" [innerHTML]="content"></div>
+      <div class="content" [innerHTML]="data.content"></div>
     </div>
   </div>
 </div>

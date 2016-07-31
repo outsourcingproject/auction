@@ -17,24 +17,42 @@ let style = require('./style.styl');
   //lifecycle: [OnInit]
 })
 export class TabView implements OnInit {
+
+  public get data() {
+    return this._data;
+  };
+
   @Input()
-  public data;
+  public set data(val) {
+    debug('Load data:', val);
+    if (this.data) {
+      this.tabs = this.data.tabs;
+      this.details = this.data.details;
+      this.curTab = 0;
+      this.curDetail = 0;
+      this._data = val;
+    }
+
+  }
+
+  private _data;
+
   @Input()
   public small:boolean = false;
   @Input()
-  public imageSrc:string="/assets/img/block.png";
+  public imageSrc:string = "/assets/img/block.png";
 
-  public tabs;
-  public details;
+  public tabs = [];
+  public details = [];
   public curTab;
   public curDetail;
 
   ngOnInit() {
-    debug('Load data:', this.data);
-    this.tabs = this.data.tabs;
-    this.details = this.data.details;
-    this.curTab = 0;
-    this.curDetail = 0;
+
+    setTimeout(()=> {
+      debug(this.tabs);
+      this.tabs = ['aaa', 'bb'];
+    }, 1000);
   }
 
   onTabClick(idx) {

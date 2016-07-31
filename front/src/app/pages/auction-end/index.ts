@@ -31,7 +31,7 @@ export class AuctionEnd implements OnInit {
 
   ngOnInit() {
     Observable.of(data).delay(500).subscribe((data)=> {
-      this.data = data
+      this.data = data;
       console.log(this.data);
     });
   }

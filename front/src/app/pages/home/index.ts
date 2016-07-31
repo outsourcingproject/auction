@@ -15,7 +15,7 @@ let debug = require('debug')('ng:home');
 let template = require('./template.html');
 let style = require('./style.styl');
 
-const config = require('./config.json');
+const data = require('./data.json');
 
 @Component({
   selector: 'home',
@@ -31,9 +31,9 @@ export class Home {
   public serviceData;
 
   constructor() {
-    this.leftTabData = config.lefttab;
-    this.rightTabData = config.righttab;
-    this.sidebarData = config.auctionGroups;
-    this.serviceData = config.service;
+    this.leftTabData = data.lefttab;
+    this.rightTabData = data.righttab;
+    this.sidebarData = data.auctionGroups;
+    this.serviceData = data.service;
   }
 }

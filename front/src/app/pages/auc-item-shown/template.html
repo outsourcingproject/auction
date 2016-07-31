@@ -1,8 +1,7 @@
 <div class="container">
   <div class="header">
     <img src="../../../assets/img/header.png" width="100%">
-    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - <a
-      [routerLink]="['/auc-item',data.id]">{{data.name}}</a></div>
+    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - {{data.name}}</div>
   </div>
   <div class="auc-item-shown">
     <div class="main">
