@@ -25,12 +25,14 @@ export class TabView implements OnInit {
   @Input()
   public set data(val) {
     debug('Load data:', val);
-    if (this.data) {
+
+    if (val) {
+      this._data = val;
       this.tabs = this.data.tabs;
       this.details = this.data.details;
       this.curTab = 0;
       this.curDetail = 0;
-      this._data = val;
+
     }
 
   }
@@ -49,10 +51,6 @@ export class TabView implements OnInit {
 
   ngOnInit() {
 
-    setTimeout(()=> {
-      debug(this.tabs);
-      this.tabs = ['aaa', 'bb'];
-    }, 1000);
   }
 
   onTabClick(idx) {

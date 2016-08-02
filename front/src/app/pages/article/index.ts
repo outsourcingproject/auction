@@ -2,14 +2,16 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component,OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TabView} from "../../components/tabview/index";
 import {Observable} from 'rxjs';
 
 let debug = require('debug')('ng:info-shown');
 let template = require('./template.html');
 let style = require('./style.styl');
-const data = require('./config.json');
+
+const data = require('./data.json');
+const tabData = require('./tab-data.json');
 
 @Component({
   selector: 'article',
@@ -17,11 +19,11 @@ const data = require('./config.json');
   styles: [style],
   directives: [TabView]
 })
-export class ArticleComponent implements OnInit{
+export class ArticleComponent implements OnInit {
 
   public data;
-  public leftTabData;
-  public rightTabData;
+  public leftTab;
+  public rightTab;
 
   constructor() {
     this.data = data;
@@ -30,172 +32,9 @@ export class ArticleComponent implements OnInit{
 
 
   ngOnInit() {
-    Observable.of(1).delay(500).subscribe((data)=>{
-      this.leftTabData = {
-        "tabs": ["系统公告"],
-        "details": [
-          [
-            {
-              "id": 19,
-              "image": "/static/images/block.png",
-              "title": "中国五金具模走...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 20,
-              "image": "/static/images/block.png",
-              "title": "自动化的贴标机...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 21,
-              "image": "/static/images/block.png",
-              "title": "贴标机从落后局...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 22,
-              "link": ["Todo"],
-              "image": "/static/images/block.png",
-              "title": "自动化已成药膜...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 23,
-              "image": "/static/images/block.png",
-              "title": "市场对自动化包...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 24,
-              "image": "/static/images/block.png",
-              "title": "机器人来了, 我...",
-              "date": "2015-10-20"
-            }
-          ]
-        ]
-      };
-      this.rightTabData = {
-        "tabs": ["新闻动态", "行业动态", "知识荟萃"],
-        "details": [
-          [
-            {
-              "id": 1,
-              "image": "/static/images/block1.png",
-              "title": "中国五金具模走...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 2,
-              "image": "/static/images/block2.png",
-              "title": "自动化的贴标机...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 3,
-              "image": "/static/images/block3.png",
-              "title": "贴标机从落后局...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 4,
-              "link": ["Todo"],
-              "image": "/static/images/block4.png",
-              "title": "自动化已成药膜...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 5,
-              "image": "/static/images/block5.png",
-              "title": "市场对自动化包...",
-              "date": "2015-10-20"
-            },
-            {
-              "id": 6,
-              "link": ["Todo"],
-              "image": "/static/images/block6.png",
-              "title": "机器人来了, 我...",
-              "date": "2015-10-20"
-            }
-          ],
-          [
-            {
-              "id": 7,
-              "image": "/static/images/block1.png",
-              "title": "中国五金具模走...",
-              "date": "2015-10-21"
-            },
-            {
-              "id": 8,
-              "image": "/static/images/block2.png",
-              "title": "自动化的贴标机...",
-              "date": "2015-10-21"
-            },
-            {
-              "id": 9,
-              "image": "/static/images/block3.png",
-              "title": "贴标机从落后局...",
-              "date": "2015-10-21"
-            },
-            {
-              "id": 10,
-              "image": "/static/images/block4.png",
-              "title": "自动化已成药膜...",
-              "date": "2015-10-21"
-            },
-            {
-              "id": 11,
-              "image": "/static/images/block5.png",
-              "title": "市场对自动化包...",
-              "date": "2015-10-21"
-            },
-            {
-              "id": 12,
-              "image": "/static/images/block6.png",
-              "title": "机器人来了, 我...",
-              "date": "2015-10-21"
-            }
-          ],
-          [
-            {
-              "id": 13,
-              "image": "/static/images/block1.png",
-              "title": "中国五金具模走...",
-              "date": "2015-10-22"
-            },
-            {
-              "id": 14,
-              "image": "/static/images/block2.png",
-              "title": "自动化的贴标机...",
-              "date": "2015-10-22"
-            },
-            {
-              "id": 15,
-              "image": "/static/images/block3.png",
-              "title": "贴标机从落后局...",
-              "date": "2015-10-22"
-            },
-            {
-              "id": 16,
-              "image": "/static/images/block4.png",
-              "title": "自动化已成药膜...",
-              "date": "2015-10-22"
-            },
-            {
-              "id": 17,
-              "image": "/static/images/block5.png",
-              "title": "市场对自动化包...",
-              "date": "2015-10-22"
-            },
-            {
-              "id": 18,
-              "image": "/static/images/block6.png",
-              "title": "机器人来了, 我...",
-              "date": "2015-10-22"
-            }
-          ]
-        ]
-      };
+    Observable.of(tabData).delay(500).subscribe((data)=> {
+      this.leftTab = data.leftTab;
+      this.rightTab = data.rightTab;
     });
 
   }
