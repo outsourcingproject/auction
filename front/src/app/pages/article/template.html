@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="header">
+    <img src="../../../assets/img/header.png" width="100%">
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <tabview [data]="leftTab" [small]="true"></tabview>
+      <tabview [data]="rightTab" [small]="true"></tabview>
+    </div>
+    <div class="col-md-8">
+      <h1 class="title">{{data.title}}</h1>
+      <div class="info">
+        <span class="time">发布时间:{{data.createAt| date}}</span>
+      </div>
+      <div class="content" [innerHTML]="data.content"></div>
+    </div>
+  </div>
+</div>

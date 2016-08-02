@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th style="width: 23rem; overflow: hidden">物品名称</th>
+    <th>物品状态</th>
+    <th style="width: 9rem">关注时间</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of pagedData;let idx=index">
+    <td><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
+    <td>{{i.status|itemStatus}}</td>
+    <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>

@@ -3,7 +3,7 @@
  * Created by Huxley on 12/9/15.
  */
 import {Component} from '@angular/core';
-import {UEditor} from '../ueditor';
+import {UEditorComponent} from '../ueditor';
 @Component({
   selector: 'todo',
   template: `
@@ -13,7 +13,7 @@ import {UEditor} from '../ueditor';
   // <div [innerHTML]="text"></div>
   // `,
   styles: [`h1 { text-align: center; color: #f08f13; }`],
-  directives:[UEditor]
+  directives:[UEditorComponent]
 })
 export class Todo {
 	public text:string='init data';

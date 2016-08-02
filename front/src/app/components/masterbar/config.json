@@ -10,6 +10,6 @@
     { "link": ["/home"], "text": "首页" },
     { "link": ["/auctioning"], "text": "正在拍卖" },
     { "link": ["/auction-end"], "text": "拍卖结束" },
-    { "link": ["/todo"], "text": "网站简介" }
+    { "link": ["/desc"], "text": "网站简介" }
   ]
 }

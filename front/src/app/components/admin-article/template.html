@@ -1,3 +1,7 @@
+<div class="header">
+  <h2>文章列表</h2>
+  <div><a (click)="onAddArticle()">添加文章</a></div>
+</div>
 <table class="table">
   <thead>
   <tr>
@@ -9,13 +13,102 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let order of orders; let idx=index">
-    <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
+  <tr *ngFor="let i of pagedData; let idx=index">
+    <td><a [routerLink]="['/article',i.id]">{{i.title}}</a></td>
 
-    <td>¥ {{order.price|number:'1.2-2'}}</td>
-    <td>{{order.createAt|date}}</td>
-    <td>{{order.status|orderStatus}}</td>
-    <td><a >修改</a> <a >删除</a></td>
+    <td>{{i.type|num2str:articleType:1}}</td>
+    <td>{{i.createAt|date}}</td>
+    <td>{{i.updateAt|date}}</td>
+    <td><a (click)="onModifyArticle(i)">修改</a> <a (click)="onDeleteArticle(i)">删除</a></td>
   </tr>
   </tbody>
 </table>
+
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+
+<div bsModal #articleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="articleModal.hide()" aria-label="Close">
+          <span aria-hi dden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{selectedArticle?'修改':'添加'}}文章</h4>
+      </div>
+      <div class="modal-body">
+
+        <form (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="title">标题</label>
+                <input id="title" type="text" name="title" class="form-control" [(ngModel)]="currArticle.title">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="type">类别</label>
+                <select id="type" name="type" class="form-control" [(ngModel)]="currArticle.type">
+                  <option *ngFor="let i of articleType" [value]="i.id">{{i.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="content">内容</label>
+            <ueditor id="content" [defaultContent]="currArticle.content" (blur)="onUeditorBlur($event)"></ueditor>
+          </div>
+          <button class="btn btn-success" type="submit">提交</button>
+          <button class="btn btn-default" type="button" (click)="articleModal.hide()">取消</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #delConfirmModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="delConfirmModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">确认删除</h4>
+      </div>
+      <div class="modal-body">
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>标题</th>
+            <th>类型</th>
+            <th>创建时间</th>
+            <th>修改时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngIf="selectedArticle">
+            <td><a [routerLink]="['/info',selectedArticle.id]">{{selectedArticle.title}}</a></td>
+
+            <td>{{selectedArticle.type}}</td>
+            <td>{{selectedArticle.createAt|date}}</td>
+            <td>{{selectedArticle.updateAt|date}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <div>
+          您确定删除吗？
+          <button class="btn btn-danger" (click)="onDeleteArticleSubmit()">删除</button>
+          <button class="btn btn-warning" (click)="delConfirmModal.hide()">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

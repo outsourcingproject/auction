@@ -16,12 +16,82 @@
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>
     <td>
-      <a *ngIf="order.status==0">确认收货地址</a>
-      <a *ngIf="order.status==1">支付</a>
-      <a *ngIf="order.status==4">确认收货</a>
+      <a *ngIf="order.status==0" (click)="onAuctionConfirm(order)">确认收货地址</a>
+      <a *ngIf="order.status==1" (click)="onPay(order)">支付</a>
+      <a *ngIf="order.status==4" (click)="onReceiveConfirm(order)">确认收货</a>
     </td>
   </tr>
   </tbody>
 </table>
 
 <pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+
+<div bsModal #auctionConfirmModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="auctionConfirmModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">订单确认</h4>
+      </div>
+      <div class="modal-body">
+
+        TODO: address select
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #payModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="payModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">支付</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          请汇款至<br/>
+          xxxxxxxxxxxxxxx（中国银行卡，张xx）<br/>
+          xxxxxxxxxxxxxxx（中国银行卡，李xx）<br/>
+          汇款后请点击“已付款”，我会在x个工作日内确认打款，并在x个工作日内发货。
+        </div>
+        <button class="btn btn-success" (click)="onPaySubmit()">已付款</button>
+        <button class="btn btn-worning" (click)="payModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #receiveConfirmModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="receiveConfirmModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">消息详情</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          收到货后确认无误请点击“确认收货”，如有疑问请联系我们：010-00000000
+        </div>
+        <button class="btn btn-success" (click)="onReceiveConfirmSubmit()">确认收货</button>
+        <button class="btn btn-worning" (click)="receiveConfirmModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

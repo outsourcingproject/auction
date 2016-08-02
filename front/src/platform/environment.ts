@@ -1,7 +1,8 @@
 // Angular 2
 // rc2 workaround
-import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
-import { enableProdMode } from '@angular/core';
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {enableDebugTools, disableDebugTools} from '@angular/platform-browser';
+import {enableProdMode} from '@angular/core';
 // Environment Providers
 let PROVIDERS = [
   // common env directives
@@ -9,7 +10,9 @@ let PROVIDERS = [
 
 // Angular debug tools in the dev console
 // https://github.com/angular/angular/blob/86405345b781a9dc2438c0fbe3e9409245647019/TOOLS_JS.md
-let _decorateComponentRef = function identity(value) { return value; };
+let _decorateComponentRef = function identity(value) {
+  return value;
+};
 
 if ('production' === ENV) {
   // Production
@@ -18,7 +21,7 @@ if ('production' === ENV) {
 
   PROVIDERS = [
     ...PROVIDERS,
-    // custom providers in production
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ];
 
 } else {

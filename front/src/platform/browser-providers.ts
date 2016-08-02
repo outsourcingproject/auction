@@ -20,7 +20,7 @@ export const APPLICATION_PROVIDERS = [
   provideForms(),
   ...HTTP_PROVIDERS,
   provideRouter(appRoutes),
-  //{ provide: LocationStrategy, useClass: HashLocationStrategy }
+
 ];
 
 export const PROVIDERS = [

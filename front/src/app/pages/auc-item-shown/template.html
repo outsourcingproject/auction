@@ -1,98 +1,155 @@
 <div class="container">
-    <div class="header">
-        <img src="../../../assets/img/header.png" width="100%">
-        <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - <a [routerLink]="['/auc-item',data.id]">{{data.name}}</a></div>
+  <div class="header">
+    <img src="../../../assets/img/header.png" width="100%">
+    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - {{data.name}}</div>
+  </div>
+  <div class="auc-item-shown">
+    <div class="main">
+      <div class="snapshot">
+        <div class="prev-main">
+          <img [src]="data.images[imagesSelectedIdx]">
+        </div>
+        <div class="gallery">
+          <div class="nav left" (click)="imagesNav(-1)">&lt;</div>
+          <div *ngFor="let image of data.images; let idx=index"
+               class="prev-tiny" (click)="imagesClick(idx)">
+            <img [src]="image">
+          </div>
+          <div class="nav right" (click)="imagesNav(1)">&gt;</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">{{data.name}}</div>
+        <div class="stars pull-right">
+          <div class="eye fa fa-eye">{{data.followCount}}人围观</div>
+          <div *ngIf="!data.following" class="fa fa-heart-o watch" (click)="watchIt(true)">点击关注</div>
+          <div *ngIf="data.following" class="fa fa-heart watching" (click)="watchIt(false)">正在关注</div>
+        </div>
+        <div class="text">
+          <p>开始时间: {{data.auctionBeginTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
+          <p>结束时间: {{data.auctionEndTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
+          <p *ngIf="data.status==1">剩余时间: {{data.auctionEndTime | remainTime }}</p>
+          <p>拍卖状态: {{data.status | itemStatus}}</p>
+          <p>出价次数: {{data.bidCount}}</p>
+          <p>拍卖方式: {{data.auctionType | auctionType}}</p>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+            <tr>
+              <td class="red">当前价</td>
+              <td>起拍价</td>
+              <td>竞价阶梯</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="red">¥ {{data.currentPrice}}</td>
+              <td>¥ {{data.startPrice}}</td>
+              <td>¥ {{data.stage}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <form class="form" (ngSubmit)="onAuctionPriceSubmit()">
+          <lable for="auction-price">竞买价: </lable>
+          <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPrice"
+                      name="auctionPrice" required>
+          <button class="submit" type="submit">竞买</button>
+
+        </form>
+      </div>
     </div>
-    <div class="auc-item-shown">
-        <div class="main">
-            <div class="snapshot">
-                <div class="prev-main">
-                    <img [src]="data.images[snapshotSelectedIdx]">
-                    <div class="plus">+</div>
-                </div>
-                <div class="gallery">
-                    <div class="nav left" (click)="imagesNav(-1)"><</div>
-                    <div *ngFor="let image of data.images; let idx=index"
-                         class="prev-tiny" (click)="imagesClick(idx)">
-                        <img [src]="image">
-                    </div>
-                    <div class="nav right" (click)="imagesNav(1)">></div>
-                </div>
-            </div>
-            <div class="info">
-                <div class="name">{{data.name}}</div>
-                <div class="stars pull-right">
-                    <div class="eye fa fa-eye">{{data.followCount}}人围观</div>
-                    <div *ngIf="!data.following" class="fa fa-heart-o watch" (click)="watchIt(true)">点击关注</div>
-                    <div *ngIf="data.following" class="fa fa-heart watching" (click)="watchIt(false)">正在关注</div>
-                </div>
-                <div class="text">
-                    <p>开始时间: {{data.auctionBeginTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
-                    <p>结束时间: {{data.auctionEndTime | date:'YYYY/MM/DD HH:mm:ss' }}</p>
-                    <p *ngIf="data.status==1">剩余时间: {{data.auctionEndTime | remainTime }}</p>
-                    <p>拍卖状态: {{data.status | itemStatus}}</p>
-                    <p>出价次数: {{data.bidCount}}</p>
-                    <p>拍卖方式: {{data.auctionType | auctionType}}</p>
-                </div>
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td class="red">当前价</td>
-                                <td>起拍价</td>
-                                <td>竞价阶梯</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="red">¥ {{data.currentPrice}}</td>
-                                <td>¥ {{data.startPrice}}</td>
-                                <td>¥ {{data.stage}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="form">
-                    竞买价: <input type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPrice">
+    <div class="detail">
+      <ul class="tabs">
+        <li *ngFor="let item of tabsItems ; let idx = index" [class.active]="tabsSelectedIdx==idx"
+            (click)="tabsClick(idx)">{{item}}
+        </li>
+      </ul>
+      <div class="boxes">
+        <div class="box left">
+          <div class="box-header">{{tabsItems[tabsSelectedIdx]}}</div>
+          <div class="box-body" [class.hidden]="tabsSelectedIdx!=0">
+            <p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>
+            <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
+            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
+              <br>现为国家一 ...... 卢星堂简介</p>
+          </div>
+          <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
+          </div>
+          <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
+            <p style="color: #f60;line-height: 35px;">敬告：您的出价行为表明已经认同了标准古钱币的拍卖规则。不论成功与否，你都承担与之相应的法律行为.</p>
 
-                    <button class="submit">竞买</button>
-                </div>
-            </div>
+            <p>
+              注意：根据《拍卖法》的规定：买受人应当按照约定支付拍卖标的的价款，未按照约定支付价款的，应当承担违约责。通过竞买取得的拍品为特殊属性之商品，属于2014年3月15日起施行的《中华人民共和国消费者权益保护法》规定的“其他根据商品性质并经消费者在购买时确认不宜退货的商品，不适用无理由退货”。为了维护买卖双方的利益，规范网络拍卖市场的行为，如果因实物与描述明显不符，客户对拍品有退货的诉求，请在提货之日起7个工作日之内、物流发货请在签收之日起7个工作日内提出，逾期不予受理。不便之处，敬请谅解。
+            <p>
+          </div>
+
         </div>
-        <div class="detail">
-            <ul class="tabs">
-                <li *ngFor="let item of tabsItems ; let idx = index" [class.active]="tabsSelectedIdx==idx" (click)="tabsClick(idx)">{{item}}</li>
-            </ul>
-            <div class="boxes" >
-                <div class="box left">
-                    <div class="box-header">{{tabsItems[tabsSelectedIdx]}}</div>
-                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=0">
-                        <p>长 :68cm    宽 :36cm    材质: 纸本     形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>
-                        <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
-                        <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
-                            <br>现为国家一 ...... 卢星堂简介</p>
-                    </div>
-                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
-                    </div>
-                    <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
-                        <p style="color: #f60;line-height: 35px;">敬告：您的出价行为表明已经认同了标准古钱币的拍卖规则。不论成功与否，你都承担与之相应的法律行为.</p>
 
-                        <p>注意：根据《拍卖法》的规定：买受人应当按照约定支付拍卖标的的价款，未按照约定支付价款的，应当承担违约责。通过竞买取得的拍品为特殊属性之商品，属于2014年3月15日起施行的《中华人民共和国消费者权益保护法》规定的“其他根据商品性质并经消费者在购买时确认不宜退货的商品，不适用无理由退货”。为了维护买卖双方的利益，规范网络拍卖市场的行为，如果因实物与描述明显不符，客户对拍品有退货的诉求，请在提货之日起7个工作日之内、物流发货请在签收之日起7个工作日内提出，逾期不予受理。不便之处，敬请谅解。<p>
-                    </div>
-
-                </div>
-
-                <div class="box right">
-                    <div class="box-header">浏览过的拍品</div>
-                    <div class="box-body">
-                        <p>浏览过的拍品</p>
-                    </div>
-                </div>
-            </div>
+        <div class="box right">
+          <div class="box-header">浏览过的拍品</div>
+          <div class="box-body">
+            <p>浏览过的拍品</p>
+          </div>
         </div>
-        <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
-        <div class="items">
-            <auc-item-detailed *ngFor="let item of relatedItems" [data]="item"></auc-item-detailed>
-        </div>
+      </div>
     </div>
+    <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
+    <div class="items">
+      <auc-item-detailed *ngFor="let item of relatedItems" [data]="item"></auc-item-detailed>
+    </div>
+  </div>
+</div>
+
+<div bsModal #auctionConfirmModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="auctionConfirmModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">确认竞拍</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>您正在竞拍 {{data.name}}，出价 ¥ {{auctionPrice|number:'1.2-2'}}，您的出价行为代表您已知晓并同意本网站拍卖协议。
+        </p>
+
+        <div>
+          您确定竞拍吗？
+          <button class="btn btn-danger" (click)="onAuctionPriceConfirm()">确定</button>
+          <button class="btn btn-warning" (click)="auctionConfirmModal.hide()">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div bsModal #auctionSuccess="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="auctionSuccess.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">竞拍成功</h4>
+      </div>
+      <div class="modal-body">
+
+        <p>您成功竞拍 {{data.name}}，出价 ¥ {{auctionPrice|number:'1.2-2'}}。在拍卖结束前，请随时关注是否出价被超越。
+        </p>
+
+        <div>
+          <button class="btn btn-warning" (click)="auctionSuccess.hide()">知道了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

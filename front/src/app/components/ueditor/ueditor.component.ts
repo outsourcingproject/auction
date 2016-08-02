@@ -12,7 +12,7 @@ declare var UE:any;
   template: require('./ueditor.html'),
   styles: [require('./ueditor.styl')],
 })
-export class UEditor implements OnDestroy,AfterViewInit {
+export class UEditorComponent implements OnDestroy,AfterViewInit {
 
   private _ue;
   public ueId='ueditor-container-'+parseInt(Math.random()*10000+'');
@@ -20,18 +20,15 @@ export class UEditor implements OnDestroy,AfterViewInit {
   private _content:string='';
 
   @Output()
-  ueModelChange:EventEmitter<string> = new EventEmitter<string>();
+  blur:EventEmitter<string> = new EventEmitter<string>();
+
 
   @Input()
-  public set ueModel(val){
+  public set defaultContent(val){
     this._content=val;
     if(this._ueditorReady){
       this._ue.setContent(val);
     }
-  }
-
-  public get ueModel(){
-    return this._content;
   }
 
   @Input()
@@ -43,19 +40,20 @@ export class UEditor implements OnDestroy,AfterViewInit {
 
   ngAfterViewInit():any {
     this._ue = UE.getEditor(this.ueId);
-    this._ue.addListener('selectionchange', ()=> {
-      this.ueModelChange.emit(this._ue.getContent())
+    this._ue.addListener('blur', ()=> {
+      this.blur.emit(this._ue.getContent())
     });
     this._ue.addListener('ready',()=>{
       this._ueditorReady=true;
-      this._ue.setContent(this.ueModel);
+      this._ue.setContent(this._content);
       this._ue.setHeight(this.height);
     })
   }
 
   ngOnDestroy():any {
-    if (this._ue)
-      this._ue.destroy();
+    // edge destroy ueditor instance may case a run time error
+    // if (this._ue)
+    //   this._ue.destroy();
   }
 
 }

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "系统公告",
+    "desc": "系统公告",
+    "createAt": 0,
+    "updateAt": 0
+  },
+  {
+    "id": 2,
+    "name": "新闻动态",
+    "desc": "新闻动态",
+    "createAt": 0,
+    "updateAt": 0
+  },
+  {
+    "id": 3,
+    "name": "行业动态",
+    "desc": "行业动态",
+    "createAt": 0,
+    "updateAt": 0
+  },
+  {
+    "id": 4,
+    "name": "知识荟萃",
+    "desc": "知识荟萃",
+    "createAt": 0,
+    "updateAt": 0
+  }
+]

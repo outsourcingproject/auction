@@ -3,19 +3,27 @@
   <tr>
     <th>商品名称</th>
     <th>成交价格</th>
+    <th>购买账号</th>
     <th>成交时间</th>
     <th>订单状态</th>
     <th>操作</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let order of orders; let idx=index">
+  <tr *ngFor="let order of pagedData; let idx=index">
     <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
 
     <td>¥ {{order.price|number:'1.2-2'}}</td>
+    <td>zl810881283</td>
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>
-    <td><a *ngIf="order.status==0">确认收货地址</a> <a *ngIf="order.status==1">支付</a></td>
+    <td>
+      <a *ngIf="order.status==0||order.status==1">订单超时处理</a>
+      <a *ngIf="order.status==2">核实付款</a>
+      <a *ngIf="order.status==3">发货</a>
+    </td>
   </tr>
   </tbody>
 </table>
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>

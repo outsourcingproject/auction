@@ -1,0 +1,179 @@
+{
+  "leftTab": {
+    "tabs": [
+      "系统公告"
+    ],
+    "details": [
+      [
+        {
+          "id": 19,
+          "image": "/static/images/block.png",
+          "title": "中国五金具模走...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 20,
+          "image": "/static/images/block.png",
+          "title": "自动化的贴标机...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 21,
+          "image": "/static/images/block.png",
+          "title": "贴标机从落后局...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 22,
+          "link": [
+            "Todo"
+          ],
+          "image": "/static/images/block.png",
+          "title": "自动化已成药膜...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 23,
+          "image": "/static/images/block.png",
+          "title": "市场对自动化包...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 24,
+          "image": "/static/images/block.png",
+          "title": "机器人来了, 我...",
+          "date": "2015-10-20"
+        }
+      ]
+    ]
+  },
+  "rightTab": {
+    "tabs": [
+      "新闻动态",
+      "行业动态",
+      "知识荟萃"
+    ],
+    "details": [
+      [
+        {
+          "id": 1,
+          "image": "/static/images/block1.png",
+          "title": "中国五金具模走...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 2,
+          "image": "/static/images/block2.png",
+          "title": "自动化的贴标机...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 3,
+          "image": "/static/images/block3.png",
+          "title": "贴标机从落后局...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 4,
+          "link": [
+            "Todo"
+          ],
+          "image": "/static/images/block4.png",
+          "title": "自动化已成药膜...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 5,
+          "image": "/static/images/block5.png",
+          "title": "市场对自动化包...",
+          "date": "2015-10-20"
+        },
+        {
+          "id": 6,
+          "link": [
+            "Todo"
+          ],
+          "image": "/static/images/block6.png",
+          "title": "机器人来了, 我...",
+          "date": "2015-10-20"
+        }
+      ],
+      [
+        {
+          "id": 7,
+          "image": "/static/images/block1.png",
+          "title": "中国五金具模走...",
+          "date": "2015-10-21"
+        },
+        {
+          "id": 8,
+          "image": "/static/images/block2.png",
+          "title": "自动化的贴标机...",
+          "date": "2015-10-21"
+        },
+        {
+          "id": 9,
+          "image": "/static/images/block3.png",
+          "title": "贴标机从落后局...",
+          "date": "2015-10-21"
+        },
+        {
+          "id": 10,
+          "image": "/static/images/block4.png",
+          "title": "自动化已成药膜...",
+          "date": "2015-10-21"
+        },
+        {
+          "id": 11,
+          "image": "/static/images/block5.png",
+          "title": "市场对自动化包...",
+          "date": "2015-10-21"
+        },
+        {
+          "id": 12,
+          "image": "/static/images/block6.png",
+          "title": "机器人来了, 我...",
+          "date": "2015-10-21"
+        }
+      ],
+      [
+        {
+          "id": 13,
+          "image": "/static/images/block1.png",
+          "title": "中国五金具模走...",
+          "date": "2015-10-22"
+        },
+        {
+          "id": 14,
+          "image": "/static/images/block2.png",
+          "title": "自动化的贴标机...",
+          "date": "2015-10-22"
+        },
+        {
+          "id": 15,
+          "image": "/static/images/block3.png",
+          "title": "贴标机从落后局...",
+          "date": "2015-10-22"
+        },
+        {
+          "id": 16,
+          "image": "/static/images/block4.png",
+          "title": "自动化已成药膜...",
+          "date": "2015-10-22"
+        },
+        {
+          "id": 17,
+          "image": "/static/images/block5.png",
+          "title": "市场对自动化包...",
+          "date": "2015-10-22"
+        },
+        {
+          "id": 18,
+          "image": "/static/images/block6.png",
+          "title": "机器人来了, 我...",
+          "date": "2015-10-22"
+        }
+      ]
+    ]
+  }
+}

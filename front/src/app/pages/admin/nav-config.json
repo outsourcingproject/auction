@@ -1,7 +1,5 @@
 [
-  { "link": ["/admin/overview"], "text": "概况" },
   { "link": ["/admin/article"], "text": "文章管理" },
   { "link": ["/admin/item"], "text": "拍品管理" },
-  { "link": ["/admin/auction"], "text": "竞拍中心" },
   { "link": ["/admin/order"], "text": "订单中心" }
 ]

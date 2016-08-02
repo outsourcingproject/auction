@@ -17,7 +17,18 @@ let style = require('./style.styl');
 })
 export class Sidebar implements OnInit {
   @Input()
-  public data;
+  public set data(val){
+    if(val&&val.length){
+      this._data=val;
+      debug('Load data', this.data);
+      this.onMouseOver(0);
+    }
+  }
+  public get data(){
+    return this._data;
+  };
+
+  private _data;
 
   @Output()
   public groupChange = new EventEmitter<Object>();
@@ -26,8 +37,7 @@ export class Sidebar implements OnInit {
 
 
   ngOnInit() {
-    debug('Load data', this.data);
-    this.onMouseOver(0);
+
   }
 
   public onMouseOver(idx) {

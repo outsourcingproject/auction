@@ -6,7 +6,6 @@ moment.locale('zh-cn');
 export class RemainTimePipe {
 
   public transform(input:any):string {
-    console.log('call');
     let diff = Math.floor((input - new Date().getTime()) / 1000);
 
     if (diff <= 0) {

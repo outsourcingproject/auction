@@ -1,20 +1,14 @@
 <div class="user-info">
-  <div class="title">我的资料</div>
   <div class="flex-row">
     <div class="message">
       <div class="header">
         我的消息 <i class="fa fa-envelope"></i>
       </div>
       <div class="" *ngIf="!data.messages||!data.messages.length">暂无未读消息</div>
-      <ul class="list-unstyled message-list" *ngIf="data.messages.length">
-        <li class="flex-box" *ngFor="let message of data.messages"><span>{{message.title}}</span><span>{{message.createAt|date}}</span></li>
+      <ul class="list-unstyled message-list" *ngIf="data.messages&&data.messages.length">
+        <li class="flex-box" *ngFor="let message of data.messages"><span><a [routerLink]="['/user/message']">{{message.title}}</a></span><span>{{message.createAt|date}}</span>
+        </li>
       </ul>
-    </div>
-    <div class="site-info">
-      <div>sdafdsaf</div>
-      <div>cxzvzxcv</div>
-      <div>sadfdsaf</div>
-      <div>zxcvzxcv</div>
     </div>
   </div>
   <div class="flex-row">
@@ -22,9 +16,10 @@
       <div class="header">
         价格被超 <i class="fa fa-line-chart"></i>
       </div>
-      <div class="" *ngIf="!data.priseOver||!data.priseOver.length">暂无出价被超</div>
-      <ul class="list-unstyled list" *ngIf="data.priseOver.length">
-        <li class="flex-box" *ngFor="let i of data.priseOver"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
+      <div class="" *ngIf="!data.priceOver||!data.priceOver.length">暂无出价被超</div>
+      <ul class="list-unstyled list" *ngIf="data.priceOver&&data.priceOver.length">
+        <li class="flex-box" *ngFor="let i of data.priceOver">
+          <span><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></span><span>¥ {{i.price|number:'1.2-2'}}</span></li>
       </ul>
     </div>
     <div class="flex-box waiting-confident">
@@ -32,8 +27,10 @@
         得标确认 <i class="fa fa-hand-peace-o"></i>
       </div>
       <div class="" *ngIf="!data.auctionConfirm||!data.auctionConfirm.length">暂无得标商品</div>
-      <ul class="list-unstyled list" *ngIf="data.auctionConfirm.length">
-        <li class="flex-box" *ngFor="let i of data.auctionConfirm"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
+      <ul class="list-unstyled list" *ngIf="data.auctionConfirm&&data.auctionConfirm.length">
+        <li class="flex-box" *ngFor="let i of data.auctionConfirm"><span><a
+          [routerLink]="['/user/order']">{{i.name}}</a></span><span>¥ {{i.price|number:'1.2-2'}}</span>
+        </li>
       </ul>
     </div>
     <div class="flex-box waiting-payment">
@@ -41,8 +38,9 @@
         待支付订单 <i class="fa fa-list"></i>
       </div>
       <div class="" *ngIf="!data.waitPay||!data.waitPay.length">暂无待支付订单</div>
-      <ul class="list-unstyled list" *ngIf="data.waitPay.length">
-        <li class="flex-box" *ngFor="let i of data.waitPay"><span>{{i.name}}</span><span>{{i.prise}}</span></li>
+      <ul class="list-unstyled list" *ngIf="data.waitPay&&data.waitPay.length">
+        <li class="flex-box" *ngFor="let i of data.waitPay">
+          <span><a [routerLink]="['/user/order']">{{i.name}}</a></span><span>¥ {{i.price|number:'1.2-2'}}</span></li>
       </ul>
     </div>
   </div>
