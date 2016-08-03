@@ -19,14 +19,14 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.of(user).delay(500).subscribe((user)=> {
-      this.user = user;
+    this._userService.getUser().subscribe((user)=> {
+      this.user = <User>user;
     });
-
-    // this._userService.getDetail().subscribe((data)=>{
-    //    this.data=data;
-    //    debug(data);
+    // Observable.of(user).delay(500).subscribe().subscribe((user)=> {
+    //   this.user = <User>user;
     // });
+
+
   }
 
 }

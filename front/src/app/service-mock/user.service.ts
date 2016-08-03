@@ -8,21 +8,12 @@ import {IUserService} from "../service-interface";
 import {isEmpty} from '../utils'
 
 
-
-
 @Injectable()
 export class UserService extends BaseService implements IUserService {
   public user:User;
 
   public getUser():Observable<Object> {
-
-    if (!this.user) {
-      return this._http.get('/api/user').flatMap(this._extractData).map((user)=> {
-        this.user = user
-      });
-    } else {
-      return Observable.of(this.user);
-    }
+    return Observable.of({}).delay(500);
   }
 
   public signup(user:User):Observable<Object> {

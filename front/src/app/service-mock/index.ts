@@ -8,7 +8,7 @@ import {AuctionService} from "./auction.service";
 import {AdminService} from "./admin.service";
 import {UploadService} from './upload.service'
 
-export const SERVICE_PROVIDERS = [
+export const MOCK_SERVICE_PROVIDERS = [
   UserService, AdminService, AuctionService, UploadService
 ];
 

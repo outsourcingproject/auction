@@ -9,6 +9,6 @@ export class UserGuard implements CanActivate {
   }
   canActivate() {
     console.log('UserGuard#canActivate called');
-    return this._userService.checkAuth('adsf');
+    return true;
   }
 }

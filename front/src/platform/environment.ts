@@ -21,7 +21,7 @@ if ('production' === ENV) {
 
   PROVIDERS = [
     ...PROVIDERS,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    /*{provide: LocationStrategy, useClass: HashLocationStrategy}*/
   ];
 
 } else {
