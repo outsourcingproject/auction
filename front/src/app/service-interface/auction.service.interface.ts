@@ -1,3 +1,2 @@
-export interface IAuctionService{
-  
+export interface IAuctionService{  
 }
