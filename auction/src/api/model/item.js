@@ -57,16 +57,13 @@ export default class Item extends Base {
         status: ["NOTIN", [AUCTIONING]]
       }).select();
       items_auctioning.map(async(i)=> await itemModel.where({id: i["id"]}).update({status: AUCTIONING}));
-
       await this.commit();
     }
     catch (e) {
       await this.rollback();
     }
   }
-
-  async autoProcessItem() {
-  
+  async autoProcessItem() {  
   }
 
   getListAdmin() {

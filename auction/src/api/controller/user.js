@@ -22,7 +22,6 @@ export default class User extends Base {
     } else {
       // auto login
       return this.success(await this._login(result));
-
     }
 
   }
@@ -54,7 +53,9 @@ export default class User extends Base {
     let authorities = await this.userModel.getUserAuthorities(user.username);
     // console.log(authorities);
     await this.session('authorities', authorities);
-
+    let userId = user.id;
+    user["totalVolume"] = await this.userModel.getTotalVolume(userId);
+    user["totalTurnover"] = await this.userModel.getTotalTurnOver(userId);
     let obj = {user, authorities};
     //删除敏感信息
     delete obj.user.password;
@@ -88,12 +89,8 @@ export default class User extends Base {
     let userDetail = await this.userModel.field("createAt,level,creditLines,lastLogin").where({id:userId}).select();
     if(think.isEmpty(userDetail))
       return this.fail("无此用户");
-    userDetail[0]["totalVolume"] = await this.model("order").where({user:userId}).count();
-    userDetail[0]["totalTurnover"] = await this.model("order").transaction(async()=>{
-      let itemIds = await this.model("order").field("item").where({user:userId}).select();
-      let itemIdArray = itemIds.map((i)=>i["item"]);
-      return this.model("item").where({id:["IN",itemIdArray]}).sum("currentPrice"); 
-    })
+    userDetail[0]["totalVolume"] = await this.userModel.getTotalVolume(userId);
+    userDetail[0]["totalTurnover"] = await this.userModel.getTotalTurnOver(userId);
     return this.success(userDetail[0]);
   }
 

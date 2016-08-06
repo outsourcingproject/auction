@@ -18,7 +18,7 @@ export default class User extends Base {
    * @param role
    * @returns {*} user object if success, otherwise err string
    */
-  async createUser(username, password, email, role = 'registered') {
+  async createUser(username, password, email, role = 1 /* 'registered'*/) {
     let result = await this.where({username}).select();
     if (!think.isEmpty(result)) {
       return 'USER_ALREADY_EXIST';
@@ -29,7 +29,7 @@ export default class User extends Base {
     }
     result = await this.add({username, password, email, role});
 
-    return this.where({_id: result}).find();
+    return this.where({id: result}).find();
   }
 
   /**
@@ -81,5 +81,20 @@ export default class User extends Base {
     let role = await roleModel.where({id: user.role}).find();
     // console.log(role);
     return roleModel.getRoleAuthorities(role.name);
+  }
+
+  getTotalVolume(userId){
+    let orderModel = think.model("order", null, "api");
+    return orderModel.where({user:userId}).count();
+  }
+
+  async getTotalTurnOver(userId){
+    let orderModel = think.model("order", null, "api");
+    let itemModel = think.model("item", null, "api");
+    let itemIds = await orderModel.field("item").where({user:userId}).select();
+    if(think.isEmpty(itemIds))
+      return 0;
+    let itemIdArray = itemIds.map((i)=>i["item"]);
+    return itemModel.where({id:["IN",itemIdArray]}).sum("currentPrice"); 
   }
 }
