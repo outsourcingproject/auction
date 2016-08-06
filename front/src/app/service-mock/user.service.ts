@@ -2,38 +2,66 @@ import {Injectable}       from '@angular/core';
 import {Http, URLSearchParams, Response}             from '@angular/http';
 import {Observable}       from "rxjs";
 import {User}             from "../entities/user";
-import {BaseService} from "./base.service";
+import {MockBaseService} from "./base.service";
 import {IUserService} from "../service-interface";
 
 import {isEmpty} from '../utils'
 
+let debug = require('debug')('sv:user-service');
+let user = require('./data/user.json');
 
 @Injectable()
-export class UserService extends BaseService implements IUserService {
-  public user:User;
+export class MockUserService extends MockBaseService implements IUserService {
 
-  public getUser():Observable<Object> {
-    return Observable.of({}).delay(500);
+  private _user:User;
+
+  private _userObservable;
+  private _userObservers = [];
+
+  public get user() {
+    return this._user;
   }
 
-  public signup(user:User):Observable<Object> {
-    return this._http.post('/api/user/signup', user).flatMap(this._extractData);
+  public set user(val) {
+    this._user = val;
+    this._userObservers.map((i)=> {
+      i.next(val)
+    });
   }
 
-  public login(user:User):Observable<Object> {
-    return this._http.post('/api/user/login', user).flatMap(this._extractData);
+  public getUser():Observable<User> {
+    if (this.user) {
+      return this._userObservable.startWith(this.user);
+    }
+
+    Observable.of(user).delay(500).map((user)=>this.user = <User>user).subscribe();
+
+    return this._userObservable;
   }
 
-  public resetPassword(user:User, pwd:string) {
-
+  public signup(usr:User):Observable<User> {
+    return Observable.of(user).delay(500).map((user)=>this.user = user);
   }
 
-  public checkAuth(path:string):Observable<boolean> {
-    return Observable.of(true).delay(100);
+  public login(usr:User):Observable<User> {
+    return Observable.of(user).delay(500).map((user)=>this.user = user);
+  }
+
+  public logout():Observable<User> {
+    let user = this.user;
+    this.user = <User>{};
+    return Observable.of(user);
+  }
+
+  public resetPassword(user:User):Observable<User> {
+    return Observable.of(user);
   }
 
   constructor(private _http:Http) {
     super();
+    this._userObservable = Observable.create((observer)=> {
+      this._userObservers.push(observer);
+    });
   }
 
 }

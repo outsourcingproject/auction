@@ -1,25 +1,27 @@
-import {Component, Input, OnInit} from '@angular/core'
+import {Component, Input, OnInit, OnDestroy} from '@angular/core'
 import {UserService} from "../../service";
 import {User} from '../../entities/user';
 import {Observable} from "rxjs/Observable";
 
 let debug = require('debug')('ng:user-detail');
-let user = require('./user.json');
+/*let user = require('./user.json');*/
 @Component({
   selector: 'user-detail',
   styles: [require('./style.styl')],
   template: require('./template.html')
 })
-export class UserDetailComponent implements OnInit {
+export class UserDetailComponent implements OnInit,OnDestroy {
 
-  user:User = new User();
+  public user:User = new User();
+  public sub;
 
   constructor(private _userService:UserService) {
 
   }
 
   ngOnInit() {
-    this._userService.getUser().subscribe((user)=> {
+    this.sub = this._userService.getUser().subscribe((user)=> {
+      debug(user);
       this.user = <User>user;
     });
     // Observable.of(user).delay(500).subscribe().subscribe((user)=> {
@@ -29,4 +31,7 @@ export class UserDetailComponent implements OnInit {
 
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

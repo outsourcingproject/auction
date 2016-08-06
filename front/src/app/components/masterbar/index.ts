@@ -2,8 +2,11 @@
  * index.js.js
  * Created by Huxley on 12/9/15.
  */
-import {Component, ContentChildren, QueryList} from '@angular/core';
+import {Component, ContentChildren, QueryList, OnInit} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
+import {UserService} from "../../service/user.service";
+import {User} from "../../entities/User";
+import {isEmpty} from "../../utils";
 
 let debug = require('debug')('ng:masterbar');
 let template = require('./template.html');
@@ -16,12 +19,43 @@ const menus = require('./config.json');
   styles: [style],
   directives: []
 })
-export class MasterBar {
-  public menus;
+export class MasterBar implements OnInit {
 
-  constructor(private _router:Router) {
-    this.menus = menus;
+  public menus = {header: [], main: menus.main};
 
+  constructor(private _router:Router, private _userService:UserService) {
+
+  }
+
+  ngOnInit() {
+    this._userService.getUser().subscribe(
+      (user:User)=> {
+        debug(user);
+        try {
+          if (isEmpty(user)) {
+            this.menus.header = menus.header.filter((i)=> ['登陆', '注册'].includes(i.text))
+          }
+          switch (user.role) {
+            //一般注册用户
+            case 2:
+            {
+              this.menus.header = menus.header.filter((i)=> ['用户中心', '消息', '退出'].includes(i.text));
+              break;
+            }
+            //管理员用户
+            case 3:
+            {
+              this.menus.header = menus.header.filter((i)=> ['用户中心', '消息', '管理', '退出'].includes(i.text));
+              break
+            }
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      (err)=> {
+        debug(err);
+      });
   }
 
   public search(keyword) {

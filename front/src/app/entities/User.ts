@@ -13,6 +13,7 @@ export class User {
               public totalVolume:number = 3,
               public totalTurnover:number = 5000,
               public lastLogin:number = null,
+              public role:number = null,
               public createAt:number = null,
               public updateAt:number = null) {
 

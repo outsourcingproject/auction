@@ -3,7 +3,7 @@ import {Http, Response}   from '@angular/http';
 import {Observable}       from "rxjs";
 
 @Injectable()
-export class BaseService {
+export class MockBaseService {
 
   protected _extractData(res: Response):Observable<Object>{
     let body=res.json();

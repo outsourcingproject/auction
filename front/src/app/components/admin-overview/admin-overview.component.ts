@@ -21,9 +21,6 @@ export class AdminOverviewComponent {
 
 
   constructor(private _http:Http, private _router:Router) {
-    setInterval(()=> {
-      console.log(this.mytime);
-    }, 1000);
   }
 
 }

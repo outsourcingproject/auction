@@ -1,10 +1,11 @@
 {
   "header": [
-    { "link": ["/login"], "text": "登陆/注册" },
+    { "link": ["/login"], "text": "登陆" },
+    { "link": ["/signup"], "text": "注册" },
     { "link": ["/user"], "text": "用户中心" },
-    { "link": ["/logout"], "text": "退出" },
     { "link": ["/user/message"], "text": "消息" },
-    { "link": ["/admin"], "text": "管理" }
+    { "link": ["/admin"], "text": "管理" },
+    { "link": ["/logout"], "text": "退出" }
   ],
   "main": [
     { "link": ["/home"], "text": "首页" },

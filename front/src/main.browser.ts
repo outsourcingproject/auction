@@ -32,9 +32,6 @@ export function main(initialHmrState?: any): Promise<any> {
 }
 
 
-
-
-
 /*
  * Vendors
  * For vendors for example jQuery, Lodash, angular2-jwt just import them anywhere in your app
@@ -49,6 +46,7 @@ export function main(initialHmrState?: any): Promise<any> {
  */
 if ('development' === ENV) {
   debug.enable('ng:*');
+  debug.enable('sv:*');
   document.addEventListener('DOMContentLoaded', () => main());
 } else {
   // bootstrap when document is ready

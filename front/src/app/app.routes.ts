@@ -11,6 +11,10 @@ import {adminRoutes} from "./pages/admin";
 import {AuctionEnd} from "./pages/auction-end";
 import {Search} from "./pages/search";
 import {DescComponent} from "./pages/desc";
+import {LogoutComponent} from "./pages/logout";
+import {LoginSuccessComponent} from "./pages/login-success";
+import {LoginFailComponent} from "./pages/login-fail/login-fail.component";
+import {SignupFailComponent} from "./pages/signup-fail/signup-fail.component";
 
 export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -21,7 +25,13 @@ export const appRoutes:RouterConfig = [
   {path: 'search/:keyword', component: Search},
   {path: 'article/:id', component: ArticleComponent},
   {path: 'login', component: LoginForm},
+  {path: 'login-success', component: LoginSuccessComponent},
+  {path: 'login-fail', component: LoginFailComponent},
   {path: 'signup', component: SignupForm},
+  {path: 'signup-success', component: SignupForm},
+  {path: 'signup-fail', component: SignupFailComponent},
+
+  {path: 'logout', component: LogoutComponent},
   {path: 'desc', component: DescComponent},
   ...userRoutes,
   ...adminRoutes,

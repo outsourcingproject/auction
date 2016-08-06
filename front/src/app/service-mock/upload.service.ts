@@ -1,9 +1,10 @@
 import {Injectable} from 'angular2/core';
 import {Observable, Observer} from 'rxjs';
 import {IUploadService} from "../service-interface";
+import {MockBaseService} from "./base.service";
 
 @Injectable()
-export class UploadService implements IUploadService{
+export class MockUploadService extends MockBaseService implements IUploadService{
 
   public makeFileRequest(url:string, files:File[]):Observable<{complate:number,progress?:number,data?:Object}> {
     return Observable.create(observer => {

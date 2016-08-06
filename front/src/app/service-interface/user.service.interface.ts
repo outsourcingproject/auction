@@ -3,8 +3,9 @@ import {Observable} from "rxjs";
 
 
 export interface  IUserService {
-  getUser():Observable<Object> ;
-  signup(user:User):Observable<Object> ;
-  login(user:User):Observable<Object>;
-  resetPassword(user:User, pwd:string);
+  getUser():Observable<User> ;
+  signup(user:User):Observable<User> ;
+  login(user:User):Observable<User>;
+  logout():Observable<User>;
+  resetPassword(user:User);
 }

@@ -6,7 +6,7 @@
                 <li>在线客服: 400-442-6952</li>
             </ul>
             <ul class="pull-right menu">
-                <li *ngFor="let menu of menus.header" [routerLink]="menu.link">
+                <li *ngFor="let menu of menus.header;let idx=index" [routerLink]="menu.link">
                     {{menu.text}}
                 </li>
             </ul>

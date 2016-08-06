@@ -6,43 +6,62 @@ import {BaseService} from "./base.service";
 import {IUserService} from "../service-interface";
 
 import {isEmpty} from '../utils'
-
-
-
-
 @Injectable()
 export class UserService extends BaseService implements IUserService {
-  public user:User;
 
-  public getUser():Observable<Object> {
+  private _user:User;
 
-    if (!this.user) {
-      return this._http.get('/api/user').flatMap(this._extractData).map((user)=> {
-        this.user = user
-      });
-    } else {
-      return Observable.of(this.user);
+  private _userObservable;
+  private _userObservers = [];
+
+  public redirectUrl:string;
+
+  public get user() {
+    return this._user;
+  }
+
+  public set user(val) {
+    this._user = val;
+    this._userObservers.map((i)=> {
+      i.next(val)
+    });
+  }
+
+  public getUser():Observable<User> {
+    if (this.user) {
+      return this._userObservable.startWith(this.user);
     }
+
+    //Observable.of(user).delay(500).map((user)=>this.user = <User>user).subscribe();
+
+    return this._userObservable;
   }
 
-  public signup(user:User):Observable<Object> {
-    return this._http.post('/api/user/signup', user).flatMap(this._extractData);
+  public signup(usr:User):Observable<User> {
+   // return Observable.of(user).delay(500).map((user)=>this.user = user);
+    return null
   }
 
-  public login(user:User):Observable<Object> {
-    return this._http.post('/api/user/login', user).flatMap(this._extractData);
+  public login(usr:User):Observable<User> {
+    //return Observable.of(user).delay(500).map((user)=>this.user = user);
+    return null;
   }
 
-  public resetPassword(user:User, pwd:string) {
-
+  public logout():Observable<User> {
+    let user = this.user;
+    this.user = <User>{};
+    return Observable.of(user);
   }
 
-  public checkAuth(path:string):Observable<boolean> {
-    return Observable.of(true).delay(100);
+  public resetPassword(user:User):Observable<User> {
+    return Observable.of(user);
   }
 
   constructor(private _http:Http) {
     super();
+    this._userObservable = Observable.create((observer)=> {
+      this._userObservers.push(observer);
+    });
   }
 
 }

@@ -38,7 +38,7 @@
         <div class="pull-right">
           <a class="btn btn-link" [routerLink]="['/login']">登陆</a>
           <button class="btn btn-success"
-                  type="submit">提交
+                  type="submit" [disabled]="submitBtnDisabled">提交
           </button>
         </div>
       </form>
