@@ -13,7 +13,7 @@ export default class ItemGroup extends Base {
     };
   }
 
-  selectData(id)
+  selectData(id,limit)
   {
       id.toString();
       return this.setRelation(true).where("id = "+id).limit(limit).select();

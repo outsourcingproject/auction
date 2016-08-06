@@ -11,10 +11,12 @@ import {Sidebar} from '../../components/sidebar';
 import {AucItem} from '../../components/auc-item';
 import {SplitComponent} from "../../components/split/split.component";
 import {Observable} from 'rxjs';
+import {HomeService} from '../../service/home.service'
 
 let debug = require('debug')('ng:home');
 let template = require('./template.html');
 let style = require('./style.styl');
+
 
 const data = require('./data.json');
 const tabData = require('../article/tab-data.json');
@@ -33,19 +35,32 @@ export class Home implements OnInit {
 
   public auctionItems = [];
 
-  constructor() {
+  constructor(
+    private homeService: HomeService) {
 
 
   }
 
   ngOnInit() {
-    Observable.of(data).delay(500).subscribe((data)=> {
-      this.sidebarData = data.auctionGroups;
-      this.serviceData = data.service;
-    });
-    Observable.of(tabData).delay(500).subscribe((tabData)=> {
-      this.leftTab = tabData.leftTab;
-      this.rightTab = tabData.rightTab;
-    });
+    if ('production' === ENV) {
+      // Application wide providers
+      this.homeService.getData()
+          .then(data => {
+            this.sidebarData = data.auctionGroups;
+            this.serviceData = data.service;
+            this.leftTab = data.lefttab;
+            this.rightTab = data.righttab;
+            });      
+    }else{
+        Observable.of(data).delay(500).subscribe((data)=> {
+        this.sidebarData = data.auctionGroups;
+        this.serviceData = data.service;
+      });
+      Observable.of(tabData).delay(500).subscribe((tabData)=> {
+        this.leftTab = tabData.leftTab;
+        this.rightTab = tabData.rightTab;
+      });
+    }
+
   }
 }
