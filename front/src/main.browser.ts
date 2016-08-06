@@ -1,33 +1,33 @@
 /*
  * Providers provided by Angular
  */
-import { bootstrap } from '@angular/platform-browser-dynamic';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 /*
-* Platform and Environment
-* our providers/directives/pipes
-*/
-import { PLATFORM_PROVIDERS } from './platform/browser';
-import { ENV_PROVIDERS } from './platform/environment';
+ * Platform and Environment
+ * our providers/directives/pipes
+ */
+import {PLATFORM_PROVIDERS} from './platform/browser';
+import {ENV_PROVIDERS} from './platform/environment';
 
 /*
-* App Component
-* our top level component that holds all of our components
-*/
-import { App, APP_PROVIDERS } from './app';
+ * App Component
+ * our top level component that holds all of our components
+ */
+import {App, APP_PROVIDERS} from './app';
 
-let debug = require('debug');
+
 /*
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-export function main(initialHmrState?: any): Promise<any> {
+export function main(initialHmrState?:any):Promise<any> {
 
   return bootstrap(App, [
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...APP_PROVIDERS
   ])
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));
 
 }
 
@@ -40,15 +40,5 @@ export function main(initialHmrState?: any): Promise<any> {
  */
 
 
-/*
- * Hot Module Reload
- * experimental version by @gdi2290
- */
-if ('development' === ENV) {
-  debug.enable('ng:*');
-  debug.enable('sv:*');
-  document.addEventListener('DOMContentLoaded', () => main());
-} else {
-  // bootstrap when document is ready
-  document.addEventListener('DOMContentLoaded', () => main());
-}
+
+document.addEventListener('DOMContentLoaded', () => main());

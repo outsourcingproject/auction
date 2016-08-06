@@ -3,6 +3,11 @@
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {enableDebugTools, disableDebugTools} from '@angular/platform-browser';
 import {enableProdMode} from '@angular/core';
+
+let debug = require('debug');
+
+
+
 // Environment Providers
 let PROVIDERS = [
   // common env directives
@@ -24,6 +29,9 @@ if ('production' === ENV) {
     /*{provide: LocationStrategy, useClass: HashLocationStrategy}*/
   ];
 
+  debug.enable('ng:*');
+  debug.enable('sv:*');
+
 } else {
 
   _decorateComponentRef = (cmpRef) => {
@@ -41,6 +49,9 @@ if ('production' === ENV) {
     // custom providers in development
   ];
 
+
+  debug.enable('ng:*');
+  debug.enable('sv:*');
 }
 
 export const decorateComponentRef = _decorateComponentRef;

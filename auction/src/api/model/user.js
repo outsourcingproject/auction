@@ -18,7 +18,12 @@ export default class User extends Base {
    * @param role
    * @returns {*} user object if success, otherwise err string
    */
-  async createUser(username, password, email, role = 1 /* 'registered'*/) {
+  async createUser(username, password, email, role = 2 /* 'registered'*/) {
+    let creditLines = await think.model('config', null, 'api').get('user.default.creditLines');
+    let desc = await think.model('config', null, 'api').get('user.default.desc');
+    let level = await think.model('config', null, 'api').get('user.default.level');
+    let lastLogin = +new Date();
+
     let result = await this.where({username}).select();
     if (!think.isEmpty(result)) {
       return 'USER_ALREADY_EXIST';
@@ -27,7 +32,7 @@ export default class User extends Base {
     if (!think.isEmpty(result)) {
       return 'EMAIL_ALREADY_USED';
     }
-    result = await this.add({username, password, email, role});
+    result = await this.add({username, password, email, role, creditLines, desc, level, lastLogin});
 
     return this.where({id: result}).find();
   }
@@ -46,6 +51,9 @@ export default class User extends Base {
     if (result.password != password) {
       return 'PASSWORD_WORRY';
     }
+
+    //update last login
+    await this.where({id: result.id}).update({lastLogin: +new Date()});
     return result;
   }
 
@@ -83,18 +91,18 @@ export default class User extends Base {
     return roleModel.getRoleAuthorities(role.name);
   }
 
-  getTotalVolume(userId){
+  getTotalVolume(userId) {
     let orderModel = think.model("order", null, "api");
-    return orderModel.where({user:userId}).count();
+    return orderModel.where({user: userId}).count();
   }
 
-  async getTotalTurnOver(userId){
+  async getTotalTurnover(userId) {
     let orderModel = think.model("order", null, "api");
     let itemModel = think.model("item", null, "api");
-    let itemIds = await orderModel.field("item").where({user:userId}).select();
-    if(think.isEmpty(itemIds))
+    let itemIds = await orderModel.field("item").where({user: userId}).select();
+    if (think.isEmpty(itemIds))
       return 0;
     let itemIdArray = itemIds.map((i)=>i["item"]);
-    return itemModel.where({id:["IN",itemIdArray]}).sum("currentPrice"); 
+    return itemModel.where({id: ["IN", itemIdArray]}).sum("currentPrice");
   }
 }

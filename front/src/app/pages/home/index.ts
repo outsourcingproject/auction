@@ -39,13 +39,22 @@ export class Home implements OnInit {
   }
 
   ngOnInit() {
-    Observable.of(data).delay(500).subscribe((data)=> {
-      this.sidebarData = data.auctionGroups;
-      this.serviceData = data.service;
-    });
-    Observable.of(tabData).delay(500).subscribe((tabData)=> {
-      this.leftTab = tabData.leftTab;
-      this.rightTab = tabData.rightTab;
-    });
+
+    if ('production' === ENV) {
+      // Application wide providers
+
+    } else {
+      Observable.of(data).delay(500).subscribe((data)=> {
+        this.sidebarData = data.auctionGroups;
+        this.serviceData = data.service;
+      });
+      Observable.of(tabData).delay(500).subscribe((tabData)=> {
+        this.leftTab = tabData.leftTab;
+        this.rightTab = tabData.rightTab;
+      });
+    }
+
+
+
   }
 }

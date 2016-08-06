@@ -11,11 +11,22 @@ export default class User extends Base {
   }
 
   //获取当前用户
-  async indexAction(){
+  async indexAction() {
     let user = await this.session('user');
-    if(!think.isEmpty(user))
-      return this.success(user);
-    else return this.fail("未登录",{});
+    if (think.isEmpty(user))
+      return this.fail("未登录", {});
+
+    let userDetail = await this.userModel
+      .field("desc,level,creditLines,lastLogin")
+      .where({id: user.id}).find();
+
+    userDetail = think.extend(user, userDetail, {
+      totalVolume: await this.userModel.getTotalVolume(user.id),
+      totalTurnover: await this.userModel.getTotalTurnover(user.id)
+    });
+
+    return this.success(userDetail);
+
   }
 
   async signupAction() {
@@ -44,6 +55,8 @@ export default class User extends Base {
     if (think.isString(result)) {
       return this.fail(result)
     }
+
+
     //login success
     return this.success(await this._login(result));
 
@@ -52,32 +65,24 @@ export default class User extends Base {
   async logoutAction() {
     //clear session
     await this.session();
-    return this.success();
+    return this.success({});
   }
 
   async _login(user) {
+    delete user.password;
     await this.session('user', user);
-    // console.log(user.username);
-    let authorities = await this.userModel.getUserAuthorities(user.username);
-    // console.log(authorities);
-    await this.session('authorities', authorities);
-    let userId = user.id;
-    user["totalVolume"] = await this.userModel.getTotalVolume(userId);
-    user["totalTurnover"] = await this.userModel.getTotalTurnOver(userId);
-    let obj = {user, authorities};
-    //删除敏感信息
-    delete obj.user.password;
-    return obj;
+
+    return this.indexAction();
   }
 
-  async resetPasswordAction(){
+  async resetPasswordAction() {
     let user = await this.session('user');
     let oldPassword = this.param('oldpassword');
     let newPassword = this.param('newpassword');
-    let truePassword = (await this.model("user").field("password").where({id:user['id']}).select())[0];
-    if( oldPassword == truePassword["password"]){
-      let res = await this.model("user").where({id:user["id"]}).update({password:newPassword});
-      if(!think.isEmpty(res))
+    let truePassword = await this.model("user").field("password").where({id: user['id']}).find();
+    if (oldPassword == truePassword["password"]) {
+      let res = await this.model("user").where({id: user["id"]}).update({password: newPassword});
+      if (!think.isEmpty(res))
         return this.success("修改成功");
       return this.fail("修改失败")
     }
@@ -85,19 +90,7 @@ export default class User extends Base {
   }
 
 
-
-  async detailAction(){
-    let user = await this.session('user');
-    let userId = user.id;
-    let userDetail = await this.userModel.field("createAt,level,creditLines,lastLogin").where({id:userId}).select();
-    if(think.isEmpty(userDetail))
-      return this.fail("无此用户");
-    userDetail[0]["totalVolume"] = await this.userModel.getTotalVolume(userId);
-    userDetail[0]["totalTurnover"] = await this.userModel.getTotalTurnOver(userId);
-    return this.success(userDetail[0]);
-  }
-
-  async infoAction(){
+  async infoAction() {
     let user = await this.session('user');
     let userId = user["id"];
 
@@ -107,35 +100,39 @@ export default class User extends Base {
     let resultPriceOver = await this._getPriceOver(userId);
     //get successful auction items
     let auctionConfirm = await this.model("order").getConfirmedAuction(userId);
-    let resultAuctionConfirm = auctionConfirm.map((r) => {return {"name":r["name"], "id":r["id"], "price":r["currentPrice"]}})
+    let resultAuctionConfirm = auctionConfirm.map((r) => {
+      return {"name": r["name"], "id": r["id"], "price": r["currentPrice"]}
+    })
     //git items waiting paying
-    let waitPay = await this.model("order").getWaitPay(userId);      
-    let resultWaitPay = waitPay.map((w) => {return {"name":w["name"],"id":w["id"],"price":w["currentPrice"]}});
+    let waitPay = await this.model("order").getWaitPay(userId);
+    let resultWaitPay = waitPay.map((w) => {
+      return {"name": w["name"], "id": w["id"], "price": w["currentPrice"]}
+    });
 
     let result = {
-      "messages":resultMessages,
-      "priceOver":resultPriceOver,
-      "auctionConfirm":resultAuctionConfirm, 
-      "waitPay":resultWaitPay
+      "messages": resultMessages,
+      "priceOver": resultPriceOver,
+      "auctionConfirm": resultAuctionConfirm,
+      "waitPay": resultWaitPay
     };
     //
     return this.success(result);
   }
 
-  async _getPriceOver(userId){
+  async _getPriceOver(userId) {
     let items = await this.model("bid").getDistinceList(userId);
-     
+
     let myMaxBids = [];
-    let sql ="select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
-    for (let i of items){
-      let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"],userId);
+    let sql = "select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
+    for (let i of items) {
+      let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"], userId);
       myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
     }
     console.log(myMaxBids);
     let resultPriceOver = [];
-    for(let m of myMaxBids){
-      let r = await this.model("bid").getPriceOver(m["item"],m["value"])
-      if(!think.isEmpty(r))
+    for (let m of myMaxBids) {
+      let r = await this.model("bid").getPriceOver(m["item"], m["value"]);
+      if (!think.isEmpty(r))
         resultPriceOver.push(r);
     }
     return resultPriceOver;

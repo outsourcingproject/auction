@@ -30,7 +30,7 @@ export class LoginForm {
 
   onSubmit() {
     this.submitBtnDisabled=true;
-    this._userService.signup(this.user).subscribe(
+    this._userService.login(this.user).subscribe(
       (user)=> {
         debug(user);
         this._router.navigate(['/login-success']);

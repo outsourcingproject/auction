@@ -33,24 +33,34 @@ export class UserService extends BaseService implements IUserService {
     }
 
     //Observable.of(user).delay(500).map((user)=>this.user = <User>user).subscribe();
+    this._http.get('/api/user').flatMap(this._extractData).subscribe((user:User)=> {
+        this.user = user;
+      },
+      ()=> {
+        this.user = <User>{};
+      });
 
     return this._userObservable;
   }
 
   public signup(usr:User):Observable<User> {
-   // return Observable.of(user).delay(500).map((user)=>this.user = user);
-    return null
+
+    // return Observable.of(user).delay(500).map((user)=>this.user = user);
+    return <Observable<User>> this._http.post('/api/user/signup', usr)
+      .flatMap(this._extractData).map((user:User)=>this.user = user);
   }
 
   public login(usr:User):Observable<User> {
     //return Observable.of(user).delay(500).map((user)=>this.user = user);
-    return null;
+    return <Observable<User>> this._http.post('/api/user/login', usr)
+      .flatMap(this._extractData).map((user:User)=>this.user = user);
   }
 
   public logout():Observable<User> {
     let user = this.user;
     this.user = <User>{};
-    return Observable.of(user);
+    return <Observable<User>> this._http.get('/api/user/logout')
+      .flatMap(this._extractData)
   }
 
   public resetPassword(user:User):Observable<User> {

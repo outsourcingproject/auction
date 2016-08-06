@@ -66,6 +66,16 @@ export default {
     order: 10,
   },
 
+  user: {
+    default: {
+      role: 2,
+      creditLines: 3000,
+      avatar: '/assets/img/avatar.png',
+      desc: '他很懒，什么都没留下',
+      level:1,
+    }
+
+  },
   auction: {
     //拍卖品在各价格时,报价最小增加幅度
     bid_increasment: [
