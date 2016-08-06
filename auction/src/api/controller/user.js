@@ -15,7 +15,7 @@ export default class User extends Base {
     let user = await this.session('user');
     if(!think.isEmpty(user))
       return this.success(user);
-    else return this.fail("未登录");
+    else return this.fail("未登录",{});
   }
 
   async signupAction() {
