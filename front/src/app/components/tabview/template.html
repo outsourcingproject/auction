@@ -11,7 +11,7 @@
         <ul class="right">
             <li *ngFor="let detail of details[curTab]; let idx = index" class="fa fa-arrows">
                 <a  [routerLink]="['/article',detail.id]" (mouseover)="onDetailHover(idx)">{{detail.title}}</a>
-                {{detail.date}}
+                {{detail.date|date}}
             </li>
         </ul>
     </div>

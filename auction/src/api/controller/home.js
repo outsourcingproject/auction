@@ -53,19 +53,19 @@ export default class extends Base {
 
         let resultDetails = [];let resultItems =[]; let resultGroups  =[]; let resultServices = [];
         for (let  a of articles){
-        	a["article"].map((aa)=>resultDetails.push({"id":aa["id"],"image":aa["image"],"title":aa["title"],"date":aa["date"]}));
+        	a["article"].map((aa)=>resultDetails.push({"id":aa["id"],"image":aa["image"],"title":aa["title"],"date":aa["createAt"]}));
         }
         for(let g of groups){
         	g["item"].map((i)=>resultItems.push({"id":i["id"],"name":i["name"], "image":i["image"], "status":i["status"], "price":i["beginPrice"]}));
-        	resultGroups.push({"id":g["id"],"image":g["image"],"title":["name"],"content":["desc"],"items":resultItems});
+        	resultGroups.push({"id":g["id"],"image":g["image"],"title":g["name"],"desc":g["desc"],"auctions":resultItems});
         	resultItems = [];
         }
         services.map((s)=>resultServices.push({"image":s["image"],"title":s["title"],"content":s["content"]}))
 
      	let result ={
      		"lefttab":{
-     			"tabs":articles[0]["name"],
-     			"details":resultDetails.slice(0,1*detailNum)
+     			"tabs":[articles[0]["name"]],
+     			"details":[resultDetails.slice(0,1*detailNum)]
      		},
      		"righttab":{
      			"tabs":[articles[1]["name"],articles[2]["name"],articles[3]["name"]],

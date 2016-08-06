@@ -34,5 +34,4 @@ export default class ItemGroup extends Base {
     return data;
   }
 
-
 }

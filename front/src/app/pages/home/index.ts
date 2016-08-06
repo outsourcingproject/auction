@@ -4,6 +4,8 @@
  */
 
 import {Component, OnInit} from '@angular/core';
+import { Injectable }     from '@angular/core';
+import { Http, Response } from '@angular/http';
 import {Banner} from '../../components/banner';
 import {TabView} from '../../components/tabview';
 import {BlockView} from '../../components/blockview';
@@ -11,7 +13,6 @@ import {Sidebar} from '../../components/sidebar';
 import {AucItem} from '../../components/auc-item';
 import {SplitComponent} from "../../components/split/split.component";
 import {Observable} from 'rxjs';
-import {HomeService} from '../../service/home.service'
 
 let debug = require('debug')('ng:home');
 let template = require('./template.html');
@@ -35,22 +36,28 @@ export class Home implements OnInit {
 
   public auctionItems = [];
 
-  constructor(
-    private homeService: HomeService) {
+  private homeUrl = "/api/home";
 
-
+  constructor(private http: Http) {
   }
 
   ngOnInit() {
     if ('production' === ENV) {
       // Application wide providers
-      this.homeService.getData()
-          .then(data => {
+      this.http.get(this.homeUrl)
+           .toPromise()
+           .then(res => res.json().data)
+           .then(data => {
             this.sidebarData = data.auctionGroups;
             this.serviceData = data.service;
             this.leftTab = data.lefttab;
+             console.log(this.leftTab);
+             console.log(tabData.leftTab);
             this.rightTab = data.righttab;
-            });      
+        // this.leftTab = tabData.leftTab;
+        // this.rightTab = tabData.rightTab;
+            })
+           .catch(this.handleError);                
     }else{
         Observable.of(data).delay(500).subscribe((data)=> {
         this.sidebarData = data.auctionGroups;
@@ -62,5 +69,10 @@ export class Home implements OnInit {
       });
     }
 
+  }
+
+  private handleError(error: any){
+  console.error('An error occurred', error);
+  return Promise.reject(error.message || error);
   }
 }
