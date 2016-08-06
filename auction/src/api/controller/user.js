@@ -10,6 +10,13 @@ export default class User extends Base {
     this.userModel = this.model('user');
   }
 
+  async indexAction(){
+    let user = await this.session('user');
+    if(!think.isEmpty(user))
+      return this.success(user);
+    else return this.fail("未登录");
+  }
+  
   async signupAction() {
     let username = this.param('username');
     let password = this.param('password');
@@ -76,12 +83,7 @@ export default class User extends Base {
     return this.fail("密码错误");
   }
 
-  async getAction(){
-    let user = await this.session('user');
-    if(!think.isEmpty(user))
-      return this.success(user);
-    else return this.fail("未登录");
-  }
+
 
   async detailAction(){
     let user = await this.session('user');

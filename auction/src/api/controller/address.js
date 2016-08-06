@@ -15,14 +15,14 @@ export default class extends Base {
   		return this.fail();
   	return this.success(result);  	
   }
-  updateAction(){
+  async updateAction(){
   	let addr = this.params("address");
   	let result = await this.model("address").updateOne(addr);
   	if(!think.isEmpty(result));
   		return this.fail();
   	return this.success(result);
   }
-  deleteAction(){
+  async deleteAction(){
   	let address = this.params("address");
   	let result = await this.model("address").deleteOne(address.id); 
   	if(!think.isEmpty(result))
