@@ -11,10 +11,6 @@ export default class extends Base {
     super.init(...args);
     this.itemModel = this.model('item');
   }
-  indexAction(){
-    //auto render template file index_index.html
-    return this.display();
-  }
 
   async auctioningAction(){
     let itemModel = this.model("item");

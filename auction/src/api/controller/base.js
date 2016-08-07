@@ -8,17 +8,16 @@ export default class Base extends think.controller.base {
     super.init(...args);
   }
 
-  __before() {
+  async __before() {
+    console.log('in before');
     let method = this.http.method.toLowerCase();
+    this._setCorsHeader();
     if (method === "options") {
-      this.setCorsHeader();
-      this.end();
-      return;
+      return this.end();
     }
-    this.setCorsHeader();
   }
 
-  setCorsHeader() {
+  _setCorsHeader() {
     this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
     this.header("Access-Control-Allow-Headers", "x-requested-with");
     this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");

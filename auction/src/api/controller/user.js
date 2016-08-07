@@ -9,7 +9,6 @@ export default class User extends Base {
     super.init(...args);
     this.userModel = this.model('user');
   }
-
   //获取当前用户
   async indexAction() {
     let user = await this.session('user');

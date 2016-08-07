@@ -18,15 +18,13 @@ export default class Base extends think.controller.rest {
   }
 
   //允许跨域访问
-  __call() {
+  __before() {
     let method = this.http.method.toLowerCase();
-    if (method === "options") {
-      this._setCorsHeader();
-      this.end();
-      return;
-    }
     this._setCorsHeader();
-    return super.__call();
+    if (method === "options") {
+      return this.end();
+    }
+
   }
 
   _setCorsHeader() {

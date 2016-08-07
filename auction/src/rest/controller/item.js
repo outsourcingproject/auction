@@ -8,6 +8,6 @@ export default class Item extends Base {
     this.pageCount =
       await think.model('config', null, 'api').get('pageCount.item')
       || await think.model('config', null, 'api').get('pageCount.default');
-
+    return await super.__before();
   }
 }

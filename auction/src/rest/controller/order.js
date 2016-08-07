@@ -8,6 +8,7 @@ export default class Order extends Base {
     this.pageCount =
       await think.model('config', null, 'api').get('pageCount.order')
       || await think.model('config', null, 'api').get('pageCount.default');
+    return await super.__before();
   }
 
 }

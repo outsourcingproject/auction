@@ -8,6 +8,6 @@ export default class Bid extends Base {
     this.pageCount =
       await think.model('config', null, 'admin').get('pageCount.bid')
       || await think.model('config', null, 'admin').get('pageCount.default');
-
+    return await super.__before();
   }
 }

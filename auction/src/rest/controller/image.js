@@ -16,14 +16,11 @@ export default class extends Base {
    * @return {Promise} []
    */
   async __before() {
+
     this.modelInstance = think.model('image', null, 'api');
     this.modelPk = await this.modelInstance.getPk();
     this.needPaging = false;
-  }
-
-  indexAction() {
-    //auto render template file index_index.html
-    return this.display();
+    return await super.__before();
   }
 
 

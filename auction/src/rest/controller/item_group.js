@@ -6,5 +6,6 @@ export default class ItemGroup extends Base {
     this.modelInstance = think.model('item_group', null, 'api');
     this.modelPk = await this.modelInstance.getPk();
     this.needPaging=false;
+    return await super.__before();
   }
 }

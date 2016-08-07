@@ -8,6 +8,6 @@ export default class User extends Base {
     this.pageCount =
       await think.model('config', null, 'api').get('pageCount.user')
       || await think.model('config', null, 'api').get('pageCount.default');
-
+    return await super.__before();
   }
 }
