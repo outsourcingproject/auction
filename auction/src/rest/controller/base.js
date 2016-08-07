@@ -17,6 +17,25 @@ export default class Base extends think.controller.rest {
     this.listOrder = {'createAt': -1}
   }
 
+  //允许跨域访问
+  __call() {
+    let method = this.http.method.toLowerCase();
+    if (method === "options") {
+      this._setCorsHeader();
+      this.end();
+      return;
+    }
+    this._setCorsHeader();
+    return super.__call();
+  }
+
+  _setCorsHeader() {
+    this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
+    this.header("Access-Control-Allow-Headers", "x-requested-with");
+    this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
+    this.header("Access-Control-Allow-Credentials", "true");
+  }
+
   async getAction() {
     let data;
     if (this.id) {

@@ -3,9 +3,6 @@
 import Base from './base.js';
 
 export default class extends Base {
-  async __before(){
-  	//权限验证统一管理
-  }
   /**
    * index action
    * @return {Promise} []
