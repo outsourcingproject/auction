@@ -38,7 +38,7 @@ export class Home implements OnInit {
 
   private dataUrl ;
 
-  constructor(private _http: Http,@Inject(REQUEST_HOST) private _requestHost:string) {
+  constructor(private _http: Http, @Inject(REQUEST_HOST) private _requestHost:string) {
     this.dataUrl=_requestHost+ "/api/home"
   }
 
