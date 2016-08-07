@@ -4,6 +4,8 @@
  */
 
 import {Component, OnInit} from '@angular/core';
+import { Injectable }     from '@angular/core';
+import { Http, Response } from '@angular/http';
 import {Banner} from '../../components/banner';
 import {TabView} from '../../components/tabview';
 import {BlockView} from '../../components/blockview';
@@ -15,6 +17,7 @@ import {Observable} from 'rxjs';
 let debug = require('debug')('ng:home');
 let template = require('./template.html');
 let style = require('./style.styl');
+
 
 const data = require('./data.json');
 const tabData = require('../article/tab-data.json');
@@ -33,18 +36,26 @@ export class Home implements OnInit {
 
   public auctionItems = [];
 
-  constructor() {
+  private homeUrl = "/api/home";
 
-
+  constructor(private _http: Http) {
   }
 
   ngOnInit() {
-
     if ('production' === ENV) {
       // Application wide providers
-
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
+      this._http.get(this.homeUrl)
+           .toPromise()
+           .then(res => res.json().data)
+           .then(data => {
+            this.sidebarData = data.auctionGroups;
+            this.serviceData = data.service;
+            this.leftTab = data.lefttab;
+            this.rightTab = data.righttab;
+            })
+           .catch(this.handleError);                
+    }else{
+        Observable.of(data).delay(500).subscribe((data)=> {
         this.sidebarData = data.auctionGroups;
         this.serviceData = data.service;
       });
@@ -54,7 +65,10 @@ export class Home implements OnInit {
       });
     }
 
+  }
 
-
+  private handleError(error: any){
+  console.error('An error occurred', error);
+  return Promise.reject(error.message || error);
   }
 }
