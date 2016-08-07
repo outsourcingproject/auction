@@ -11,7 +11,7 @@ export default class extends Base {
      async indexAction(){
 
      	// get article on home page
-     	let detailNum = 4; //每个类别显示的新闻条数
+     	let detailNum = 6; //每个类别显示的新闻条数
      	let itemNum = 8;
      	let articleTypeModel = this.model('article_type',true);
      	let articles = [];
@@ -27,7 +27,6 @@ export default class extends Base {
      	}catch(e){
      		await articleTypeModel.rollback();
      	}
-
      	//get item groups on home page
 
      	let groupModel = this.model('item_group',true);
@@ -73,7 +72,6 @@ export default class extends Base {
      		},
      		"auctionGroups":resultGroups,
      		"service":resultServices
-
      	}
         if(result!=null)
         	return this.success(result);
