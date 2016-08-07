@@ -83,7 +83,6 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-
     Observable.of(data).delay(500).subscribe((data)=> {
       this.data = data;
       this.relatedItems = data.relatedItems;
@@ -93,7 +92,6 @@ export class AucItemShown implements OnInit,OnDestroy {
       this.tabsClick(0);
       this.imagesClick(0);
       this.auctionPrice = this.data.currentPrice + this.data.stage;
-
     });
   }
 

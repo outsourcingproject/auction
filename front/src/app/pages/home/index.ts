@@ -38,24 +38,20 @@ export class Home implements OnInit {
 
   private homeUrl = "/api/home";
 
-  constructor(private http: Http) {
+  constructor(private _http: Http) {
   }
 
   ngOnInit() {
     if ('production' === ENV) {
       // Application wide providers
-      this.http.get(this.homeUrl)
+      this._http.get(this.homeUrl)
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
             this.sidebarData = data.auctionGroups;
             this.serviceData = data.service;
             this.leftTab = data.lefttab;
-             console.log(this.leftTab);
-             console.log(tabData.leftTab);
             this.rightTab = data.righttab;
-        // this.leftTab = tabData.leftTab;
-        // this.rightTab = tabData.rightTab;
             })
            .catch(this.handleError);                
     }else{
