@@ -2,14 +2,14 @@
  * index.js
  * Created by Huxley on 12/21/15.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Injectable ,Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {SplitComponent} from "../../components/split/split.component";
 import {AucListComponent} from "../../components/auc-list";
 import {PagerComponent} from "../../components/pager";
 import {Observable} from "rxjs/Observable";
-
+import {REQUEST_HOST} from "../../app.config";
 
 let debug = require('debug')('ng:auction-end');
 let template = require('./template.html');
@@ -25,15 +25,16 @@ let data = require('../auctioning/data.json');
 })
 export class AuctionEnd implements OnInit {
   public data = [];
-  private homeUrl = "/api/item/auctioned";
+  private dataUrl;
 
-  constructor(private _http:Http) {
+  constructor(private _http:Http, @Inject(REQUEST_HOST) private _requestHost:string) {
+    this.dataUrl = REQUEST_HOST + "/api/item/auctioned";
   }
 
   ngOnInit() {
     if ('production' === ENV) {
       // Application wide providers
-      this._http.get(this.homeUrl)
+      this._http.get(this.dataUrl)
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
