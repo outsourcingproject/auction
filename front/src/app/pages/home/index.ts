@@ -3,8 +3,7 @@
  * Created by Huxley on 12/9/15.
  */
 
-import {Component, OnInit} from '@angular/core';
-import { Injectable }     from '@angular/core';
+import {Component, OnInit, Injectable ,Inject} from '@angular/core';
 import { Http, Response } from '@angular/http';
 import {Banner} from '../../components/banner';
 import {TabView} from '../../components/tabview';
@@ -13,6 +12,7 @@ import {Sidebar} from '../../components/sidebar';
 import {AucItem} from '../../components/auc-item';
 import {SplitComponent} from "../../components/split/split.component";
 import {Observable} from 'rxjs';
+import {REQUEST_HOST} from '../../app.config';
 
 let debug = require('debug')('ng:home');
 let template = require('./template.html');
@@ -36,15 +36,16 @@ export class Home implements OnInit {
 
   public auctionItems = [];
 
-  private homeUrl = "/api/home";
+  private dataUrl ;
 
-  constructor(private _http: Http) {
+  constructor(private _http: Http,@Inject(REQUEST_HOST) private _requestHost:string) {
+    this.dataUrl=_requestHost+ "/api/home"
   }
 
   ngOnInit() {
     if ('production' === ENV) {
       // Application wide providers
-      this._http.get(this.homeUrl)
+      this._http.get(this.dataUrl)
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
