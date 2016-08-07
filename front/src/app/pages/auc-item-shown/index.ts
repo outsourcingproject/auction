@@ -2,15 +2,19 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild,Injectable ,Inject} from '@angular/core';
+import { Http, Response } from '@angular/http';
+import {ActivatedRoute} from '@angular/router'
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {Observable} from 'rxjs';
+import {REQUEST_HOST} from '../../app.config';
 
 let debug = require('debug')('ng:auc-item-shown');
 let template = require('./template.html');
 let style = require('./style.styl');
 const data = require('./config.json');
+
 
 @Component({
   selector: 'auc-item-shown',
@@ -66,8 +70,11 @@ export class AucItemShown implements OnInit,OnDestroy {
   public _currTime:number;
 
   private _currTimer;
+  private dataUrl;
+  private sub;
 
-  constructor() {
+  constructor(private _http: Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost: string) {
+    this.dataUrl = REQUEST_HOST + "/api/item/detail"
   }
 
   @ViewChild('auctionConfirmModal')
@@ -83,16 +90,26 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-    Observable.of(data).delay(500).subscribe((data)=> {
-      this.data = data;
-      this.relatedItems = data.relatedItems;
-      this._currTimer = setInterval(()=> {
-        this._currTime = this.data.auctionEndTime - new Date().getTime();
-      }, 1000);
-      this.tabsClick(0);
-      this.imagesClick(0);
-      this.auctionPrice = this.data.currentPrice + this.data.stage;
-    });
+    if ('production' === ENV){
+      this.sub = this._route.params.subscribe(params=>{
+        if(params["id"]!= undefined){
+
+        }
+      })
+
+    }else{
+      Observable.of(data).delay(500).subscribe((data)=> {
+        this.data = data;
+        this.relatedItems = data.relatedItems;
+        this._currTimer = setInterval(()=> {
+          this._currTime = this.data.auctionEndTime - new Date().getTime();
+        }, 1000);
+        this.tabsClick(0);
+        this.imagesClick(0);
+        this.auctionPrice = this.data.currentPrice + this.data.stage;
+      });      
+    }
+
   }
 
   public imagesClick(idx) {
