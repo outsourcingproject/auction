@@ -118,10 +118,10 @@ export default class User extends Base {
     return this.success(result);
   }
 
-  
+
 
   async _getPriceOver(userId) {
-    let items = await this.model("bid").getDistinceList(userId);
+    let items = await this.model("bid").getDistinctList(userId);
 
     let myMaxBids = [];
     let sql = "select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"

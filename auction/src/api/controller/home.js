@@ -10,68 +10,38 @@ export default class extends Base {
 
      async indexAction(){
 
+        let detailNum = 6; //文章数量
      	// get article on home page
-     	let detailNum = 6; //每个类别显示的新闻条数
-     	let itemNum = 8;
-     	let articleTypeModel = this.model('article_type',true);
-     	let articles = [];
-     	try{
-     		await articleTypeModel.startTrans();
-     		let typeList = await articleTypeModel.getList();
-     		for(var t in typeList){
-     			let a = await articleTypeModel.selectData(typeList[t]["id"])
-     			articles.push(a[0]);
-     		}
-     		await articleTypeModel.commit();
+     	let articles = await this.model('article_type').getArticle();
 
-     	}catch(e){
-     		await articleTypeModel.rollback();
-     	}
      	//get item groups on home page
-
-     	let groupModel = this.model('item_group',true);
-     	let groups = [];
-     	let itemGroup;
-     	try{
-     		await groupModel.startTrans();
-     		itemGroup = await groupModel.getList();
-     		for (let i in itemGroup){
-     			let g = await  groupModel.selectData(itemGroup[i]["id"],itemNum);
-     			groups.push(g[0]);
-     		}
-     		await groupModel.commit();
-     	}catch(e){
-     		await groupModel.rollback();
-     	}
+     	let groups = await this.model('item_group').getGroupItem();
 
      	//get services on home page
-
         let services = await this.model('service').selectData(4);
 
         //format data
-
-        let resultDetails = [];let resultItems =[]; let resultGroups  =[]; let resultServices = [];
         for (let  a of articles){
-        	a["article"].map((aa)=>resultDetails.push({"id":aa["id"],"image":aa["image"],"title":aa["title"],"date":aa["createAt"]}));
+        	a["article"].map((aa)=>{aa["date"] = aa["createAt"],delete aa["createAt"]});
         }
         for(let g of groups){
-        	g["item"].map((i)=>resultItems.push({"id":i["id"],"name":i["name"], "image":i["image"], "status":i["status"], "price":i["beginPrice"]}));
-        	resultGroups.push({"id":g["id"],"image":g["image"],"title":g["name"],"desc":g["desc"],"auctions":resultItems});
-        	resultItems = [];
+        	g["item"].map((i)=>{i["price"]=i["beginPrice"],delete i["beginPrice"]});
+            g["title"] = g["name"]; delete g["name"];
+            g["auctions"] = g["item"]; delete g["item"];
         }
-        services.map((s)=>resultServices.push({"image":s["image"],"title":s["title"],"content":s["content"]}))
-
      	let result ={
      		"lefttab":{
      			"tabs":[articles[0]["name"]],
-     			"details":[resultDetails.slice(0,1*detailNum)]
+     			"details":[articles[0]["article"].slice(0,6)]
      		},
      		"righttab":{
      			"tabs":[articles[1]["name"],articles[2]["name"],articles[3]["name"]],
-     			"details":[resultDetails.slice(1*detailNum,2*detailNum),resultDetails.slice(2*detailNum,3*detailNum),resultDetails.slice(3*detailNum,4*detailNum)] 			
+     			"details":[articles[1]["article"].slice(0,6), 
+                    articles[2]["article"].slice(0,6), 
+                    articles[3]["article"].slice(0,6)] 			
      		},
-     		"auctionGroups":resultGroups,
-     		"service":resultServices
+     		"auctionGroups":groups,
+     		"service":services
      	}
         if(result!=null)
         	return this.success(result);

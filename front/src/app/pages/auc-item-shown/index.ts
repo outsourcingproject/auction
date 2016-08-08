@@ -40,7 +40,8 @@ export class AucItemShown implements OnInit,OnDestroy {
     auctionBeginTime:number,
     auctionEndTime:number,
     auctionType:number,
-    images:Array<string>,
+
+    image:Array<string>,
     relatedItems:Array<Object>
   }
     = {
@@ -58,7 +59,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     auctionBeginTime:null,
     auctionEndTime:null,
     auctionType:null,
-    images: [],
+    image: [],
     relatedItems: []
   };
 
@@ -97,9 +98,9 @@ export class AucItemShown implements OnInit,OnDestroy {
             this._http.post(this.dataUrl, {id:_id})
                       .toPromise()
                       .then(res => res.json().data)
-                      .then(data => {
-                        console.log(data);
+                      .then(data => {                        
                         this.data = data;
+                        console.log(this.data);
                         this.relatedItems = data.relatedItems;
                         this._currTimer = setInterval(()=> {
                           this._currTime = this.data.auctionEndTime - new Date().getTime();
@@ -133,7 +134,7 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public imagesNav(direction) {
-    this.imagesSelectedIdx = (this.imagesSelectedIdx + direction + this.data.images.length) % this.data.images.length;
+    this.imagesSelectedIdx = (this.imagesSelectedIdx + direction + this.data.image.length) % this.data.image.length;
   }
 
   public watchIt(state) {
