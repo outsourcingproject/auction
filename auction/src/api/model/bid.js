@@ -2,7 +2,9 @@ import Base from './base.js'
 
 export default class Bid extends Base {
   getList(userId){
-    return this.where({user:userId}).select();
+    return this.join("item on bid.item=item.id")
+      .field("bid.id as bid,value as price,bid.createAt,item.name as name,item.id as id,item.status as itemStatus")
+      .where({user:userId}).select();
   }
 
   getDistinceList(userId){
@@ -12,10 +14,10 @@ export default class Bid extends Base {
   }
   getPriceOver(itemId, price){
     return this.join("item on bid.item = item.id")
-      .field("bid.createAt, bid.item, bid.value, item.name")
+      .field("bid.createAt as time, bid.item as id, bid.value as price, item.name")
       .where({item:itemId,value:{">":price}})
       .order("bid.createAt DESC")
-      .select();
+      .find();
   }
   // 查询竞标状态：'得标', '失败', '领先', '被超'
   async getStatus(bidId){

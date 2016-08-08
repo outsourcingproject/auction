@@ -3,7 +3,7 @@ import Base from './base.js'
 export default class Order extends Base {
   getList(userId) {
     return this.join("item on order.item = item.id")
-      .field("order.id, item.name,item.currentPrice,order.createAt,order.status")
+      .field("order.id, item.name,item.currentPrice as price,order.createAt,order.status")
       .where({user: userId})
       .order("order.createAt DESC")
       .select();

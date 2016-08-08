@@ -9,9 +9,11 @@ export default class User extends Base {
     super.init(...args);
     this.userModel = this.model('user');
   }
+
   //获取当前用户
   async indexAction() {
     let user = await this.session('user');
+    console.log(user);
     if (think.isEmpty(user))
       return this.fail("未登录", {});
 
@@ -74,10 +76,12 @@ export default class User extends Base {
     return this.indexAction();
   }
 
-  async resetPasswordAction() {
+  async pwdResetAction() {
     let user = await this.session('user');
-    let oldPassword = this.param('oldpassword');
-    let newPassword = this.param('newpassword');
+    let oldPassword = this.param('password');
+    let newPassword = this.param('pwdReset');
+    console.log(oldPassword, ' ', newPassword);
+
     let truePassword = await this.model("user").field("password").where({id: user['id']}).find();
     if (oldPassword == truePassword["password"]) {
       let res = await this.model("user").where({id: user["id"]}).update({password: newPassword});
@@ -85,7 +89,7 @@ export default class User extends Base {
         return this.success("修改成功");
       return this.fail("修改失败")
     }
-    return this.fail("密码错误");
+    return this.fail("PASSWORD_WORRY");
   }
 
 
@@ -117,6 +121,25 @@ export default class User extends Base {
     //
     return this.success(result);
   }
+
+  async orderAction() {
+    let user = await this.session("user");
+    let userId = user["id"];
+    return this.success(await this.model("order").getList(userId));
+
+
+  }
+
+  async bidAction() {
+    let user = await this.session("user");
+    let userId = user["id"];
+    let bids = await this.model("bid").getList(userId);
+    for (let b of bids) {
+      b["bidStatus"] = await this.model("bid").getStatus(b["id"]);
+    }
+    return this.success(bids);
+  }
+
 
   async _getPriceOver(userId) {
     let items = await this.model("bid").getDistinceList(userId);

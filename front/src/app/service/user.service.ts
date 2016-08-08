@@ -1,4 +1,4 @@
-import {Injectable,Inject}       from '@angular/core';
+import {Injectable, Inject}       from '@angular/core';
 import {Http, URLSearchParams, Response}             from '@angular/http';
 import {Observable}       from "rxjs";
 import {User}             from "../entities/user";
@@ -35,12 +35,13 @@ export class UserService extends BaseService implements IUserService {
     }
 
     //Observable.of(user).delay(500).map((user)=>this.user = <User>user).subscribe();
-    this._http.get(this._requestHost + '/api/user').flatMap(this._extractData).subscribe((user:User)=> {
-        this.user = user;
-      },
-      ()=> {
-        this.user = <User>{};
-      });
+    this._http.get(this._requestHost + '/api/user', {withCredentials: true}).flatMap(this._extractData)
+      .subscribe((user:User)=> {
+          this.user = user;
+        },
+        ()=> {
+          this.user = <User>{};
+        });
 
     return this._userObservable;
   }
@@ -48,20 +49,20 @@ export class UserService extends BaseService implements IUserService {
   public signup(usr:User):Observable<User> {
 
     // return Observable.of(user).delay(500).map((user)=>this.user = user);
-    return <Observable<User>> this._http.post(this._requestHost + '/api/user/signup', usr)
+    return <Observable<User>> this._http.post(this._requestHost + '/api/user/signup', usr, {withCredentials: true})
       .flatMap(this._extractData).map((user:User)=>this.user = user);
   }
 
   public login(usr:User):Observable<User> {
     //return Observable.of(user).delay(500).map((user)=>this.user = user);
-    return <Observable<User>> this._http.post(this._requestHost + '/api/user/login', usr)
+    return <Observable<User>> this._http.post(this._requestHost + '/api/user/login', usr, {withCredentials: true})
       .flatMap(this._extractData).map((user:User)=>this.user = user);
   }
 
   public logout():Observable<User> {
     let user = this.user;
     this.user = <User>{};
-    return <Observable<User>> this._http.get(this._requestHost + '/api/user/logout')
+    return <Observable<User>> this._http.get(this._requestHost + '/api/user/logout', {withCredentials: true})
       .flatMap(this._extractData)
   }
 
@@ -69,7 +70,8 @@ export class UserService extends BaseService implements IUserService {
     return Observable.of(user);
   }
 
-  constructor(private _http:Http,@Inject(REQUEST_HOST) private _requestHost:string) {
+  constructor(private _http:Http, @Inject(REQUEST_HOST)
+  private _requestHost:string) {
     super();
     this._userObservable = Observable.create((observer)=> {
       this._userObservers.push(observer);

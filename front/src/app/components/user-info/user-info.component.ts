@@ -1,5 +1,8 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Inject} from '@angular/core'
 import {Observable} from "rxjs/Observable";
+import {Http} from '@angular/http'
+
+import {REQUEST_HOST} from "../../app.config"
 
 let data = require('./config.json');
 @Component({
@@ -12,12 +15,18 @@ export class UserInfoComponent {
 
   public data = {};
 
-  constructor() {
+  constructor(private _http:Http,
+              @Inject(REQUEST_HOST)
+              private _requestHost:string) {
   }
 
   ngOnInit() {
-    Observable.of(data).delay(500).subscribe((data)=> {
-      this.data = data;
-    })
+
+    this._http.get(this._requestHost+'/api/user/info', {withCredentials: true}).map((res)=>res.json().data)
+      .subscribe((data)=>this.data = data);
+
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.data = data;
+    // })
   }
 }

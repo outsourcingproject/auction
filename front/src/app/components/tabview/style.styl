@@ -39,27 +39,45 @@
     ul.right {
       float: right;
       margin: 0 0 0 1rem;
+      max-width 280px;
       padding: 0;
       li {
+
         list-style-type: none;
         border-bottom: 1px dashed $color-default;
         color: $color-default;
         height: 1.35rem;
         font-size: .7rem;
+        overflow hidden
         display block
+        width 270px
+        line-height 1.35rem
         &:before {
+          display inline-block
+          float left
           margin-right: .25rem;
         }
-        a {
-          color: $color-default;
-          margin-right: 1.5rem;
-          line-height: 1.35rem;
-          text-decoration: none;
-          transition: all 200ms ease-in-out;
-          &:hover {
-            color: $color-main;
+        .title {
+          float left
+          display inline-block
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden
+          width 140px;
+          a {
+            color: $color-default;
+            text-decoration: none;
+            transition: all 200ms ease-in-out;
+            &:hover {
+              color: $color-main;
+            }
           }
         }
+        .date {
+          display inline-block
+          float right
+        }
+
       }
     }
   }

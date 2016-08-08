@@ -1,15 +1,15 @@
 import Base from './base';
 
-export default class Message extends Base {
+export default class Address extends Base {
 
   async __before() {
-    this.modelInstance = think.model('message', null, 'api');
+    this.modelInstance = think.model('address', null, 'api');
     this.modelPk = await this.modelInstance.getPk();
     this.pageCount = false;
 
     let user = await this.session('user');
 
-    this.filter = {to: user.id};
+    this.filter = {user: user.id};
 
     return await super.__before();
   }

@@ -7,6 +7,7 @@ export default class Base extends think.controller.rest {
   needPaging;
   pageCount;
   listOrder;
+  filter;
 
   init(...args) {
     super.init(...args);
@@ -15,6 +16,7 @@ export default class Base extends think.controller.rest {
     this.needPaging = 1;
     this.pageCount = think.config('site.defaultPageCount');
     this.listOrder = {'createAt': -1}
+    this.filter = {};
   }
 
   //允许跨域访问
@@ -41,11 +43,12 @@ export default class Base extends think.controller.rest {
         .where({[this.modelPk]: this.id})
         .find();
     } else {
-      let filter = this.param('filter');
+      let filter = this.filter;
       let listOrder = this.param('listOrder');
       let needPaging = +(this.param('needPaging') || this.needPaging);
       let pageNo = +this.param('pageNo') > 0 ? +this.param('pageNo') : 1;
       let pageCount = +(this.param('pageCount') || this.pageCount);
+
 
       if (listOrder && !think.isEmpty(JSON.parse(listOrder))) {
         listOrder = JSON.parse(listOrder);
@@ -53,21 +56,18 @@ export default class Base extends think.controller.rest {
         listOrder = this.listOrder;
       }
 
-      if (filter && !think.isEmpty(JSON.parse(filter))) {
-        filter = JSON.parse(filter);
-      } else {
-        filter = {};
+      if (this.param('filter')) {
+        filter = think.extend(filter, JSON.parse(this.param('filter')));
       }
 
+      let t = this.modelInstance
+        .where(filter)
+        .order(listOrder);
+
       if (needPaging) {
-        data = await this.modelInstance
-          .where(filter)
-          .order(listOrder)
-          .page(pageNo, pageCount)
-          .select();
-      } else {
-        data = await this.modelInstance.where(filter).order(listOrder).select();
+        t.order(listOrder).page(pageNo, pageCount)
       }
+      data = await t.select();
     }
     return this.success(data);
 

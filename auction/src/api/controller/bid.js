@@ -12,13 +12,5 @@ export default class extends Base {
     return this.display();
   }
 
-  async listAction(){
-  	let user = await this.session("user");
-  	let userId = user["id"];
-  	let bids = await this.model("bid").getList(userId);
-  	for (let b of bids){
-  		b["status"] = await this.model("bid").getStatus(b["id"]);
-  	}
-  	return this.success(bids);
-  }
+
 }

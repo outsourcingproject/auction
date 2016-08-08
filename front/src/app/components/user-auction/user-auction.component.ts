@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Inject} from '@angular/core'
+import {Http} from '@angular/http'
 import {PagerComponent} from '../pager'
 import {Observable} from "rxjs/Observable";
+import {REQUEST_HOST} from "../../app.config";
 let config = require('./config.json');
 
 @Component({
@@ -14,16 +16,21 @@ export class UserAuctionComponent implements OnInit {
   public pageSize:number = 12;
   public pagedData;
 
+  constructor(private _http:Http, @Inject(REQUEST_HOST)
+  private _requestHost:string) {
+
+  }
+
   ngOnInit() {
-    Observable
-      .of(config)
+    // Observable
+    //   .of(config)
+    this._http.get(this._requestHost + '/api/user/bid', {withCredentials: true}).map((res)=>res.json().data)
       .map((data)=> {
-        return data.map((i)=>{
-          i.itemStatus=Math.floor(i.bidStatus/2)?1:2;
+        return data.map((i)=> {
+          i.itemStatus = Math.floor(i.bidStatus / 2) ? 1 : 2;
           return i;
         })
       })
-      .delay(500)
       .subscribe((data)=>this.data = data);
   }
 

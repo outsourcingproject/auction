@@ -18,7 +18,7 @@ export default class Base extends think.controller.base {
 
   _setCorsHeader() {
     this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
-    this.header("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With");
+    this.header("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, Set-Cookie,*");
     this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
     this.header("Access-Control-Allow-Credentials", "true");
   }

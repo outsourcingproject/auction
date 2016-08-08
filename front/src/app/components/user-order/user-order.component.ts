@@ -1,7 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core'
+import {Component, OnInit, ViewChild, Inject} from '@angular/core'
+import {Http} from '@angular/http'
 import {PagerComponent} from "../pager";
 import {Observable} from "rxjs/Observable";
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
+import {REQUEST_HOST} from "../../app.config";
 
 let orders = require('./order.json');
 
@@ -21,12 +23,25 @@ export class UserOrderComponent implements OnInit {
 
   public selected = {};
 
-  public onPagedDataChange(data) {
-    this.pagedData = data;
+  constructor(private _http:Http,
+              @Inject(REQUEST_HOST)
+              private _requestHost:string) {
+
   }
 
   ngOnInit() {
-    Observable.of(orders).delay(500).subscribe((data)=>this.data = data);
+
+    this._http.get(this._requestHost + '/api/user/order', {withCredentials: true})
+      .map((res)=>res.json().data)
+      .subscribe((data)=> {
+        this.data = data;
+      });
+
+    //Observable.of(orders).delay(500).subscribe((data)=>this.data = data);
+  }
+
+  public onPagedDataChange(data) {
+    this.pagedData = data;
   }
 
   @ViewChild('auctionConfirmModal')

@@ -2,7 +2,7 @@
   <div class="flex-row">
     <div class="password-change">
       <div class="header">修改密码 <i class="fa fa-key"></i></div>
-      <form (ngSubmit)="onSubmit()" class="form">
+      <form (ngSubmit)="onSubmitPwdReset()" class="form">
         <div class="input-group form-group">
           <label for="password" class="input-group-addon">当前密码：</label>
           <input id="password" type="password" class="form-control"
@@ -18,11 +18,16 @@
           <input id="pwdRepeat" type="password" class="form-control"
                  required [(ngModel)]="user.pwdRepeat" name="pwdRepeat">
         </div>
-        <div class="btn-group pull-right">
-          <button class="btn btn-default"
+        <div class="submit-button-wrapper">
+          <button class="btn btn-default" [disabled]="user.pwdReset!=user.pwdRepeat||!user.password"
                   type="submit">提交
           </button>
         </div>
+
+        <alert [type]="'warning'" [dismissible]="true" *ngIf="showPwdWorn">密码错误，请重试</alert>
+        <alert [type]="'success'" [dismissible]="true" *ngIf="showSuccess">修改成功</alert>
+        <alert [type]="'warning'" *ngIf="user.pwdReset!=user.pwdRepeat">两次输入密码不一致</alert>
+
       </form>
     </div>
     <div class="user-info">
@@ -44,18 +49,21 @@
         </thead>
         <tbody>
         <tr *ngFor="let address of addressList;let idx=index">
-          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)" ></td>
+          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)"></td>
           <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
           <td>{{address.name}}</td>
           <td>{{address.phoneNum}}</td>
           <td (mouseover)="setActiveDefaultAddressIdx(idx)" (mouseleave)="setActiveDefaultAddressIdx(null)">
             <div *ngIf="address.isDefault">默认</div>
-            <a class="" *ngIf="!address.isDefault" [hidden]="activeDefaultAddressIdx!=idx" (click)="setDefaultAddress(idx)">设为默认</a>
+            <a class="" *ngIf="!address.isDefault" [hidden]="activeDefaultAddressIdx!=idx"
+               (click)="setDefaultAddress(idx)">设为默认</a>
           </td>
         </tr>
         </tbody>
       </table>
-      <area-picker [(apModel)]="currAddress" [hidden]="!newAddress&&(selectedAddressIdx===null||selectedAddressIdx===undefined)" (addressSubmit)="onAddressSubmit($event)"></area-picker>
+      <area-picker [(apModel)]="currAddress"
+                   [hidden]="!newAddress&&(selectedAddressIdx===null||selectedAddressIdx===undefined)"
+                   (addressSubmit)="onAddressSubmit($event)"></area-picker>
     </div>
   </div>
 </div>
