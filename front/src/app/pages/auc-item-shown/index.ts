@@ -3,7 +3,7 @@
  * Created by Huxley on 1/10/16.
  */
 import {Component, OnInit, OnDestroy, ViewChild,Injectable ,Inject} from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import {ActivatedRoute} from '@angular/router'
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
@@ -92,11 +92,27 @@ export class AucItemShown implements OnInit,OnDestroy {
   ngOnInit() {
     if ('production' === ENV){
       this.sub = this._route.params.subscribe(params=>{
-        if(params["id"]!= undefined){
-
-        }
+        let _id = params["id"];
+          if(_id!== undefined){
+            this._http.post(this.dataUrl, {id:_id})
+                      .toPromise()
+                      .then(res => res.json().data)
+                      .then(data => {
+                        console.log(data);
+                        this.data = data;
+                        this.relatedItems = data.relatedItems;
+                        this._currTimer = setInterval(()=> {
+                          this._currTime = this.data.auctionEndTime - new Date().getTime();
+                        }, 1000);
+                        this.tabsClick(0);
+                        this.imagesClick(0);
+                        this.auctionPrice = this.data.currentPrice + this.data.stage;
+                      })
+                      .catch(this.handleError);;
+          }else{
+            //to do id doesn't exit;
+          }
       })
-
     }else{
       Observable.of(data).delay(500).subscribe((data)=> {
         this.data = data;
@@ -135,14 +151,17 @@ export class AucItemShown implements OnInit,OnDestroy {
   public onAuctionPriceSubmit() {
     this.auctionConfirmModal.show();
     return false;
-
   }
 
   public onAuctionPriceConfirm() {
     //TODO: update db
-
     this.auctionConfirmModal.hide();
     this.auctionSuccess.show();
 
   }
+  private handleError(error: any){
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
 }

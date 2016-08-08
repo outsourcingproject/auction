@@ -118,6 +118,8 @@ export default class User extends Base {
     return this.success(result);
   }
 
+  
+
   async _getPriceOver(userId) {
     let items = await this.model("bid").getDistinceList(userId);
 

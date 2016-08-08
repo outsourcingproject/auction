@@ -42,10 +42,19 @@ export default class extends Base {
 
   async detailAction(){
   	let itemId = this.param("id"); //获取item id;
+    let resItemInfo = await this._detailHelper(itemId);
+    let resRelatedItems = await this._relatedItemHelper(itemId);
     let user = await this.session("user");
-    let userId = user["id"];
-    let resItemInfo = await this._detailHelper(itemId,userId);
-    let resRelatedItems = await this._relatedItemHelper(itemId,userId);
+    if(user!=null){
+      let userId = user["id"];
+      resItemInfo["following"] = await _followingHelper(userId, itemId);
+      for(let r of resRelatedItems)
+        r["isFollowing"] = await _followingHelper(userId, itemId);
+    }else{
+      resItemInfo["following"] = null;
+      for(let r of resRelatedItems)
+        r["isFollowing"] = null;
+    }
     resItemInfo["relatedItems"] = resRelatedItems;
     return this.success(resItemInfo);
   }
@@ -62,16 +71,18 @@ export default class extends Base {
 
   }
 
-  async _detailHelper(id,userId){
+  async _detailHelper(id){
     let itemInfo = (await this.itemModel.where({"id":id}).select())[0];
+    console.log(itemInfo);
     let imageIds = JSON.parse(itemInfo["image"]) ;
     itemInfo["image"] = await this.model("image").getImages(imageIds);
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
-    itemInfo["following"] = await this.model("follow").isFollowing(userId,id);
     itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);
     return itemInfo;
   }
 
-
+  async _followingHelper(userId, itemId){
+    itemInfo["following"] = await this.model("follow").isFollowing(userId, itemId);    
+  }
 }

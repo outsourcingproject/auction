@@ -93,6 +93,10 @@ export default class extends Base {
         "user":Math.ceil(i/2),
         "isDefault": i%2,
         "content":"这是第"+i+"条地址",
+        "province":"重庆市",
+        "city":"重庆市",
+        "area":"沙坪坝区",
+        "detail":"沙正街1号",
         "createAt": new Date().getTime(),
         "updateAt": new Date().getTime()
       })
@@ -299,7 +303,7 @@ export default class extends Base {
       images.push({
         "uuid": uuid.v1(),
         "originName": "image"+i,
-        "path":"www/pictures/image"+i
+        "path":"file://UPLOAD_PATH/path/79f13390-49a9-11e6-8d82-bbdc9cd18b98-"+i+".JPG"
       })
     }
     let result = await this.model("image").addMany(images);
