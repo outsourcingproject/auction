@@ -14,7 +14,13 @@ export default class extends Base {
 
   async auctioningAction(){
     let itemModel = this.model("item");
-    let items = await this.model("item").where({status:itemModel.AUCTIONING}).limit(10).select();
+    let items = await this.model("item")
+          .setRelation(false)
+          .where({status:itemModel.AUCTIONING})
+          .join("item_type on item.type = item_type.id")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")
+          .limit(10)
+          .select();
     let user = await this.session("user");
     if(!think.isEmpty(user)){ 
       let followingItems =await this.model("follow").field("item").where({user:user["id"]}).select();
@@ -28,7 +34,13 @@ export default class extends Base {
 
   async auctionedAction(){
     let itemModel = this.model("item");
-    let items = await this.model("item").where({status:itemModel.AUCTION_ENDED}).limit(10).select();
+    let items = await this.model("item")
+          .setRelation(false)
+          .where({status:itemModel.AUCTION_ENDED})
+          .join("item_type on item.type = item_type.id")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")          
+          .limit(10)
+          .select();
     let user = await this.session("user");
     if(!think.isEmpty(user)){ 
       let followingItems =await this.model("follow").field("item").where({user:user["id"]}).select();

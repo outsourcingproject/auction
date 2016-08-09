@@ -10,6 +10,7 @@ export default class extends Base {
   async indexAction(){
     //auto render template file index_index.html
     await this.model("item").checkStatus();
+    return this.success({result:"result"});
   }
 
 }

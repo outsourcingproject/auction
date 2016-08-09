@@ -25,7 +25,7 @@ export default class extends Base {
         	a["article"].map((aa)=>{aa["date"] = aa["createAt"],delete aa["createAt"]});
         }
         for(let g of groups){
-        	g["item"].map((i)=>{i["price"]=i["beginPrice"],delete i["beginPrice"]});
+        	g["item"].map((i)=>{i["price"]=i["currentPrice"],delete i["currentPrice"]});
             g["title"] = g["name"]; delete g["name"];
             g["auctions"] = g["item"]; delete g["item"];
         }

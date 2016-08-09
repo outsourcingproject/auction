@@ -60,7 +60,6 @@ export class Home implements OnInit {
               })
             })
             this.sidebarData = data.auctionGroups;
-
             this.leftTab = data.lefttab;
             this.rightTab = data.righttab;
             })

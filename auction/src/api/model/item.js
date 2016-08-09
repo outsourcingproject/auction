@@ -41,6 +41,7 @@ export default class Item extends Base {
     let orderModel = think.model("order",null,"api");
     let itemModel = think.model("item",null,"api");
 
+      console.log("========================")
       let items_end = await this.where({
         auctionEndTime: {"<": currentTime},
         status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
@@ -48,7 +49,6 @@ export default class Item extends Base {
 
       for(let i of items_end)
       {
-
         let boolBid = await bidModel.where({item: i["id"]}).count();
         if (boolBid == 0){
           await this.where({id: i["id"]}).update({status: this.AUCTION_FAILED});
@@ -56,14 +56,16 @@ export default class Item extends Base {
         else{
           try{
             await this.startTrans();
-            await this.where({id: i["id"]}).update({status: this.AUCTION_ENDED});
             await orderModel.addOne(i["currentBidder"],i["id"]);
+            await this.where({id: i["id"]}).update({status:this.AUCTION_ENDED});
             await this.commit();
           }catch(e){
             await this.rollback();
           }
         }
       }
+
+      console.log("========================")
 
       let items_auctioning = await  itemModel.where({
         auctionBeginTime: {"<": currentTime},
@@ -73,6 +75,7 @@ export default class Item extends Base {
       for(let i of items_auctioning){
         await itemModel.where({id: i["id"]}).update({status: this.AUCTIONING})
       }
+      return true;
   }
 
   async autoProcessItem() {  

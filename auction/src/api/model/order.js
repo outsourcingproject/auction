@@ -10,10 +10,9 @@ export default class Order extends Base {
   FINISHED = 5;
   CANCELED = 6;
   //添加新订单 地址为默认地址
-  async addOne(userId, itemId){
-    let addressModel = think.model("address",null,"api");
-    let addressId = addressModel.where({user:userId, isDefault:1}).find();
-    return this.add({user:userId,item:itemId,address:addressId,status:0});
+  addOne(userId, itemId){
+    console.log("order");
+    return this.add({user:userId,item:itemId,status:0});
   }
 
   //确认订单：买家确定地址等信息，订单更新状态
