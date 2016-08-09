@@ -92,7 +92,7 @@ export default class extends Base {
     let imageIds = JSON.parse(itemInfo["image"]) ;
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
-    itemInfo.startPrice=+itemInfo.startPrice;
+    itemInfo.beginPrice=+itemInfo.beginPrice;
     itemInfo.currentPrice=+itemInfo.currentPrice;
     itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);
     return itemInfo;

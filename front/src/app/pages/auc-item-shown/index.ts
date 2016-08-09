@@ -2,8 +2,8 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component, OnInit, OnDestroy, ViewChild,Injectable ,Inject} from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import {Component, OnInit, OnDestroy, ViewChild, Injectable, Inject} from '@angular/core';
+import {Headers, Http, Response} from '@angular/http';
 import {ActivatedRoute} from '@angular/router'
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
@@ -53,12 +53,12 @@ export class AucItemShown implements OnInit,OnDestroy {
     startPrice: null,
     stage: null,
     bidCount: null,
-    status:null,
-    followCount:null,
-    following:null,
-    auctionBeginTime:null,
-    auctionEndTime:null,
-    auctionType:null,
+    status: null,
+    followCount: null,
+    following: null,
+    auctionBeginTime: null,
+    auctionEndTime: null,
+    auctionType: null,
     image: [],
     relatedItems: []
   };
@@ -75,9 +75,10 @@ export class AucItemShown implements OnInit,OnDestroy {
   private sub;
   private imageUrl;
 
-  constructor(private _http: Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost: string) {
+  constructor(private _http:Http, private _route:ActivatedRoute, @Inject(REQUEST_HOST)
+  private _requestHost:string) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
-    this.imageUrl = REQUEST_HOST + "/rest/image/"
+    this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
   }
 
   @ViewChild('auctionConfirmModal')
@@ -93,37 +94,35 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-    if ('production' === ENV){
-      this.sub = this._route.params.subscribe(params=>{
+    if ('production' === ENV) {
+      this.sub = this._route.params.subscribe(params=> {
         let _id = params["id"];
-          if(_id!== undefined){
-            this._http.post(this.dataUrl, {id:_id})
-                      .toPromise()
-                      .then(res => res.json().data)
-                      .then(data => {   
-                        data["image"] = JSON.parse(data["image"]);
-                        data["image"] = this.imageUrl + data["image"][0];
-                        data["relatedItems"].map(r=>{
-                          r["image"] = JSON.parse(r["image"]);
-                          r["image"] = this.imageUrl + r["image"][0];
-                        })                     
-                        this.data = data;
-                        console.log(this.data);
-                        this.relatedItems = data.relatedItems;
-                        this._currTimer = setInterval(()=> {
-                          this._currTime = this.data.auctionEndTime - new Date().getTime();
-                        }, 1000);
-                        this.tabsClick(0);
-                        this.imagesClick(0);
-                        this.auctionPrice = this.data.currentPrice + this.data.stage;
+        if (_id !== undefined) {
+          this._http.post(this.dataUrl, {id: _id})
+            .toPromise()
+            .then(res => res.json().data)
+            .then(data => {
+              data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl+i);
+              data["relatedItems"].map(r=> {
+                r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl+i);
+              });
+              this.data = data;
+              console.log(this.data);
+              this.relatedItems = data.relatedItems;
+              this._currTimer = setInterval(()=> {
+                this._currTime = this.data.auctionEndTime - new Date().getTime();
+              }, 1000);
+              this.tabsClick(0);
+              this.imagesClick(0);
+              this.auctionPrice = this.data.currentPrice + this.data.stage;
 
-                      })
-                      .catch(this.handleError);
-          }else{
-            //to do id doesn't exit;
-          }
+            })
+            .catch(this.handleError);
+        } else {
+          //to do id doesn't exit;
+        }
       })
-    }else{
+    } else {
       Observable.of(data).delay(500).subscribe((data)=> {
         this.data = data;
         this.relatedItems = data.relatedItems;
@@ -133,7 +132,7 @@ export class AucItemShown implements OnInit,OnDestroy {
         this.tabsClick(0);
         this.imagesClick(0);
         this.auctionPrice = this.data.currentPrice + this.data.stage;
-      });      
+      });
     }
 
   }
@@ -169,7 +168,8 @@ export class AucItemShown implements OnInit,OnDestroy {
     this.auctionSuccess.show();
 
   }
-  private handleError(error: any){
+
+  private handleError(error:any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

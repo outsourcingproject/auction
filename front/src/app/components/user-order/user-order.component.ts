@@ -4,6 +4,7 @@ import {PagerComponent} from "../pager";
 import {Observable} from "rxjs/Observable";
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from 'ng2-bootstrap/ng2-bootstrap';
 import {REQUEST_HOST} from "../../app.config";
+import {Order} from "../../entities/order";
 
 let orders = require('./order.json');
 
@@ -21,7 +22,7 @@ export class UserOrderComponent implements OnInit {
 
   public pagedData;
 
-  public selected = {};
+  public selected:Order = <Order>{};
 
   constructor(private _http:Http,
               @Inject(REQUEST_HOST)
@@ -31,13 +32,17 @@ export class UserOrderComponent implements OnInit {
 
   ngOnInit() {
 
-    this._http.get(this._requestHost + '/api/user/order', {withCredentials: true})
-      .map((res)=>res.json().data)
+    this._getData()
       .subscribe((data)=> {
         this.data = data;
       });
 
     //Observable.of(orders).delay(500).subscribe((data)=>this.data = data);
+  }
+
+  private _getData() {
+    return this._http.get(this._requestHost + '/api/user/order', {withCredentials: true})
+      .map((res)=>res.json().data)
   }
 
   public onPagedDataChange(data) {
@@ -54,7 +59,7 @@ export class UserOrderComponent implements OnInit {
 
   public onAuctionConfirmSubmit() {
     //TODO:Submit Auction Confirm
-    this.selected = {};
+    this.selected = <Order> {};
     this.auctionConfirmModal.hide();
   }
 
@@ -67,9 +72,14 @@ export class UserOrderComponent implements OnInit {
   }
 
   public onPaySubmit() {
-    //TODO:Submit Pay
-    this.selected = {};
-    this.payModal.hide();
+    //put
+    this._http.post(this._requestHost + '/rest/order/' + this.selected.id + "?_method=put", {status: 2}, {withCredentials: true})
+      .subscribe(()=> {
+        this.selected = <Order> {};
+        this.payModal.hide();
+        this._getData().subscribe(data=>this.data = data);
+      });
+
   }
 
   @ViewChild('receiveConfirmModal')
@@ -82,7 +92,11 @@ export class UserOrderComponent implements OnInit {
 
   public onReceiveConfirmSubmit() {
     //TODO:Submit Receive Confirm
-    this.selected = {};
-    this.receiveConfirmModal.hide();
+    this._http.post(this._requestHost + '/rest/order/' + this.selected.id + "?_method=put", {status: 5}, {withCredentials: true})
+      .subscribe(()=> {
+        this.selected = <Order> {};
+        this.receiveConfirmModal.hide();
+        this._getData().subscribe(data=>this.data = data);
+      });
   }
 }

@@ -7,7 +7,7 @@
     <div class="main">
       <div class="snapshot">
         <div class="prev-main">
-          <img [src]="data.image[imagesSelectedIdx]">
+          <img [src]="data.images?data.images[imagesSelectedIdx]:''">
         </div>
         <div class="gallery">
           <div class="nav left" (click)="imagesNav(-1)">&lt;</div>
@@ -45,7 +45,7 @@
             <tbody>
             <tr>
               <td class="red">¥ {{data.currentPrice}}</td>
-              <td>¥ {{data.startPrice}}</td>
+              <td>¥ {{data.beginPrice}}</td>
               <td>¥ {{data.stage}}</td>
             </tr>
             </tbody>

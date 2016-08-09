@@ -38,8 +38,8 @@ export class AdminAuctionComponent implements OnInit {
   }
 
   ngOnInit() {
-    Observable.of(itemGroup).delay(400).subscribe((data)=>this.auctionType = data);
-    Observable.of(auctionType).delay(400).subscribe((data)=>this.itemGroup = data);
+    Observable.of(auctionType).delay(400).subscribe((data)=>this.auctionType = data);
+    Observable.of(itemGroup).delay(400).subscribe((data)=>this.itemGroup = data);
     Observable.of(data).delay(500).subscribe((data)=>this.data = data);
   }
 }

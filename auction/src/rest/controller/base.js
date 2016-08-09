@@ -8,6 +8,8 @@ export default class Base extends think.controller.rest {
   pageCount;
   listOrder;
   filter;
+  join;
+  field;
 
   init(...args) {
     super.init(...args);
@@ -15,8 +17,12 @@ export default class Base extends think.controller.rest {
     this.modelPk = null;
     this.needPaging = 1;
     this.pageCount = think.config('site.defaultPageCount');
-    this.listOrder = {'createAt': -1}
+    this.listOrder = {'createAt': 'desc'}
     this.filter = {};
+    this.join = '';
+    this.field = '';
+    //允许rest API使用post访问
+    this._method = '_method';
   }
 
   //允许跨域访问
@@ -60,8 +66,14 @@ export default class Base extends think.controller.rest {
         filter = think.extend(filter, JSON.parse(this.param('filter')));
       }
 
-      let t = this.modelInstance
-        .where(filter)
+      let t = this.modelInstance;
+      if (this.join) {
+        t = t.join(this.join);
+      }
+      if (this.field) {
+        t = t.field(this.field);
+      }
+      t = t.where(filter)
         .order(listOrder);
 
       if (needPaging) {
@@ -76,6 +88,7 @@ export default class Base extends think.controller.rest {
   async postAction() {
 
     let data = this.post();
+    console.log(data);
     delete data[this.modelPk];
     if (think.isEmpty(data)) {
       return this.fail("data is empty");
@@ -83,7 +96,10 @@ export default class Base extends think.controller.rest {
     let user = await this.session('user');
     if (!think.isEmpty(user)) {
       data.user = user.id;
+      data.author = user.id;
+      data.publisher = user.id;
     }
+
     let insertId = await this.modelInstance.add(data);
     return this.success({id: insertId});
   }

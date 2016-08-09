@@ -41,7 +41,7 @@ export class Home implements OnInit {
 
   constructor(private _http: Http, @Inject(REQUEST_HOST) private _requestHost:string) {
     this.dataUrl=_requestHost+ "/api/home";
-    this.imageUrl = _requestHost + "/rest/image/"
+    this.imageUrl = _requestHost.replace('http:','') + "/rest/image/"
   }
 
   ngOnInit() {
@@ -59,12 +59,13 @@ export class Home implements OnInit {
                 aa["image"] = this.imageUrl + aa["image"][0];
               })
             })
+             console.log(data);
             this.sidebarData = data.auctionGroups;
 
             this.leftTab = data.lefttab;
             this.rightTab = data.righttab;
             })
-           .catch(this.handleError);                
+           .catch(this.handleError);
     }else{
         Observable.of(data).delay(500).subscribe((data)=> {
         this.sidebarData = data.auctionGroups;
