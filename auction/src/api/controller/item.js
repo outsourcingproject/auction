@@ -53,7 +53,7 @@ export default class extends Base {
   }
 
   //返回某个拍品的所有竞拍记录
-  async getBidAction(){
+  async bidAction(){
     let itemId = this.param("id");
     let res = await this.model("bid").getItemBids(itemId);
     return this.success(res);
