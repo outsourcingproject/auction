@@ -24,7 +24,7 @@ export class UserAuctionComponent implements OnInit {
   ngOnInit() {
     // Observable
     //   .of(config)
-    this._http.get(this._requestHost + '/api/user/bid', {withCredentials: true}).map((res)=>res.json().data)
+    this._http.get(this._requestHost + '/api/user/get_bid', {withCredentials: true}).map((res)=>res.json().data)
       .map((data)=> {
         return data.map((i)=> {
           i.itemStatus = Math.floor(i.bidStatus / 2) ? 1 : 2;

@@ -74,10 +74,13 @@ export class AucItemShown implements OnInit,OnDestroy {
   private dataUrl;
   private sub;
   private imageUrl;
+  private bidUrl;
+  private itemId;
 
   constructor(private _http: Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost: string) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
-    this.imageUrl = REQUEST_HOST + "/rest/image/"
+    this.imageUrl = REQUEST_HOST + "/rest/image/";
+    this.bidUrl = REQUEST_HOST + "/api/item/bid";
   }
 
   @ViewChild('auctionConfirmModal')
@@ -97,6 +100,7 @@ export class AucItemShown implements OnInit,OnDestroy {
       this.sub = this._route.params.subscribe(params=>{
         let _id = params["id"];
           if(_id!== undefined){
+            this.itemId = _id;
             this._http.post(this.dataUrl, {id:_id})
                       .toPromise()
                       .then(res => res.json().data)
@@ -106,7 +110,6 @@ export class AucItemShown implements OnInit,OnDestroy {
                         {
                           data["image"][i] = this.imageUrl + data["image"][i];
                         }
-
                         // data["image"] = data["image"].map((i)=>{this.imageUrl + i;});
                         console.log(data["image"]);
                         data["relatedItems"].map(r=>{
@@ -165,15 +168,25 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public onAuctionPriceSubmit() {
-    this.auctionConfirmModal.show();
-    return false;
+      this.auctionConfirmModal.show();
+      return false;
   }
 
   public onAuctionPriceConfirm() {
     //TODO: update db
-    this.auctionConfirmModal.hide();
-    this.auctionSuccess.show();
-
+    this._http.post(this.bidUrl,{itemId: this.itemId, auctionPrice:this.auctionPrice}, {withCredentials: true})
+           .toPromise()
+           .then((res)=> res.json().data)
+           .then(data=> {
+             if(data !== undefined){
+              this.data.currentPrice = data.newPrice;
+              this.data.stage = data.newStage;
+              this.auctionPrice = this.data.currentPrice + this.data.stage;
+              this.auctionConfirmModal.hide();
+              this.auctionSuccess.show();
+             }
+             else return false; //this.auctionFail.show();
+           });
   }
   private handleError(error: any){
     console.error('An error occurred', error);

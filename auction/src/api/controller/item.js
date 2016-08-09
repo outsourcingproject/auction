@@ -40,19 +40,26 @@ export default class extends Base {
     return this.success(items);
   }
 
-  //返回所有拍品的列表，按照正在拍卖，即将拍卖，拍卖结束排序，搜索内容从此地址获取
-  async listAction(){
-    let itemModel = this.model("item");
-    let auctioningItem = await itemModel.where({status:itemModel.AUCTIONING}).select();
-    let auctionedItem = await itemModel.where({status:itemModel.AUCTION_ENDED}).select();
-    let unstartItem = await itemModel.where({status:itemModel.AUCTION_NOT_STARTED}).select();
-    return this.success(auctioningItem.concat(auctionedItem).concat(unstartItem));
-  }
   //返回某个拍品的所有竞拍记录
-  async bidAction(){
+  async getBidAction(){
     let itemId = this.param("id");
     let res = await this.model("bid").getItemBids(itemId);
     return this.success(res);
+  }
+
+  //竞拍某样物品
+  //传入参数 auctionPrice：竞拍价格，itemId: 竞拍物品；
+  async bidAction(){
+    let user = await this.session("user");
+    let userId = user["id"];
+    let value = this.param("auctionPrice");
+    let item = this.param("itemId");
+    let res = await this.model("bid").add({user:userId, item:item, value:value, status:this.model("item").AUCTIONING});
+    //将新的价格数据返回给前端。
+    console.log(res);
+    let newPrice = await this.model("item").setRelation(false).where({id:item}).field("currentPrice").find();
+    let newStage = await this.model("item").getStage(newPrice["currentPrice"]);
+    return this.success({id:res, newPrice: newPrice["currentPrice"], newStage: newStage});
   }
 
   async detailAction(){

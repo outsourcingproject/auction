@@ -27,6 +27,7 @@ export default class Item extends Base {
   }
 
   async getStage(currPrice) {
+    console.log(currPrice);
     let configModel = think.model("config", null, "api");
     let configStage = await configModel.get("auction.bid_increasment");
     let res = configStage.filter((i)=>i[0] <= currPrice).sort((i, j)=>i[0] < j[0])[0][1];
