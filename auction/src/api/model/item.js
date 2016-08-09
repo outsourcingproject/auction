@@ -36,34 +36,45 @@ export default class Item extends Base {
 
   //check and change item status
   async checkStatus() {
-    let currentTime = new date().getTime();
-    try {
-      await this.startTrans();
+    let currentTime = new Date().getTime();
+    let bidModel = think.model("bid",null,"api");
+    let orderModel = think.model("order",null,"api");
+    let itemModel = think.model("item",null,"api");
 
       let items_end = await this.where({
         auctionEndTime: {"<": currentTime},
-        status: ["NOTIN", [AUCTION_FAILED, AUCTION_ENDED]]
+        status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
       }).select();
-      items_end.map(async(i)=> {
-        let boolBid = await this.where({item: i["id"]}).count();
-        if (boolBid == 0)
-          await this.where({id: i["id"]}).update({status: AUCTION_FAILED});
-        else
-          await this.where({id: i["id"]}).update({status: AUCTION_ENDED});
-      })
+
+      for(let i of items_end)
+      {
+
+        let boolBid = await bidModel.where({item: i["id"]}).count();
+        if (boolBid == 0){
+          await this.where({id: i["id"]}).update({status: this.AUCTION_FAILED});
+        }
+        else{
+          try{
+            await this.startTrans();
+            await this.where({id: i["id"]}).update({status: this.AUCTION_ENDED});
+            await orderModel.addOne(i["currentBidder"],i["id"]);
+            await this.commit();
+          }catch(e){
+            await this.rollback();
+          }
+        }
+      }
 
       let items_auctioning = await  itemModel.where({
         auctionBeginTime: {"<": currentTime},
         auctionEndTime: {">": currentTime},
-        status: ["NOTIN", [AUCTIONING]]
+        status: ["NOTIN", [this.AUCTIONING]]
       }).select();
-      items_auctioning.map(async(i)=> await itemModel.where({id: i["id"]}).update({status: AUCTIONING}));
-      await this.commit();
-    }
-    catch (e) {
-      await this.rollback();
-    }
+      for(let i of items_auctioning){
+        await itemModel.where({id: i["id"]}).update({status: this.AUCTIONING})
+      }
   }
+
   async autoProcessItem() {  
   }
 

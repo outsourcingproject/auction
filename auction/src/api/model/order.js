@@ -1,6 +1,50 @@
 import Base from './base.js'
 
 export default class Order extends Base {
+
+  WAIT_CONFIRM = 0;
+  WAIT_PAY = 1;
+  WAIT_CHECK = 2;
+  WAIT_DELIEVER = 3;
+  DELIEVERED = 4;
+  FINISHED = 5;
+  CANCELED = 6;
+  //添加新订单 地址为默认地址
+  async addOne(userId, itemId){
+    let addressModel = think.model("address",null,"api");
+    let addressId = addressModel.where({user:userId, isDefault:1}).find();
+    return this.add({user:userId,item:itemId,address:addressId,status:0});
+  }
+
+  //确认订单：买家确定地址等信息，订单更新状态
+  //未测试
+  confirmOrder(order){
+    order.status = 1;
+    return this.where({id:order.id}).update(order);
+  }
+  //更改订单状态
+  async changeStatus(orderId){
+    let status = (await this.where({id:orderId}).find())["status"];
+    switch(status){
+      case WAIT_CONFIRM:
+        return this.where({id:orderId}).update({status:WAIT_PAY});
+      case  WAIT_PAY:
+        return this.where({id:orderId}).update({status:WAIT_CHECK});
+      case WAIT_CHECK:
+        return this.where({id:orderId}).update({status:WAIT_DELIEVER});
+      case WAIT_DELIEVER:
+        return this.where({id:orderId}).update({status:DELIEVERED});
+      case DELIEVERED:
+        return this.where({id:orderId}).update({status:FINISHED});
+      default:
+        return this.where({id:orderId}).update();
+    }
+  }
+  //取消订单，改变订单状态为取消
+  cancelOne(orderId){
+    return this.where({id:orderId}).update({status:CANCELED});
+  }
+
   getList(userId) {
     return this.join("item on order.item = item.id")
       .field("order.id, item.name,item.currentPrice as price,order.createAt,order.status")
