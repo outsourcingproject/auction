@@ -24,7 +24,7 @@
     <td>{{i.auctionBeginTime|date}}</td>
     <td>{{i.createAt|date}}</td>
 
-    <td><a (click)="onModify(i)">修改</a> <a (click)="onDelete(i)">删除</a></td>
+    <td><a (click)="onModify(idx)">修改</a> <a (click)="onDelete(idx)">删除</a></td>
   </tr>
   </tbody>
 </table>
@@ -48,13 +48,13 @@
 
         <form (ngSubmit)="onSubmit()">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="form-group">
                 <label for="name">名称</label>
                 <input id="name" type="text" name="name" class="form-control" [(ngModel)]="curr.name" required>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="begin-price">起拍价</label>
                 <input id="begin-price" type="number" name="beginPrice" class="form-control"
@@ -62,7 +62,7 @@
                        required>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="tag">发货标记</label>
                 <input id="tag" type="text" name="tag" class="form-control" [(ngModel)]="curr.tag" required>
@@ -71,13 +71,15 @@
           </div>
 
           <div class="row">
-            <div class="col-md-3">
+
+
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="found-time">物品年代</label>
                 <input id="found-time" type="text" name="foundTime" class="form-control" [(ngModel)]="curr.foundTime">
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="found-location">物品地域</label>
                 <input id="found-location" type="text" name="foundLocation" class="form-control"
@@ -86,8 +88,17 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
+                <label for="type">分类</label>
+                <select id="type" name="desc" class="form-control" [(ngModel)]="curr.type" required>
+                  <option *ngFor="let i of itemType" [value]="i.id">{{i.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="form-group">
                 <label for="group">专场</label>
-                <select id="group" name="desc" class="form-control" [(ngModel)]="curr.group">
+                <select id="group" name="desc" class="form-control" [(ngModel)]="curr.group" required>
                   <option *ngFor="let i of itemGroup" [value]="i.id">{{i.name}}</option>
                 </select>
               </div>
@@ -95,8 +106,8 @@
             <div class="col-md-3">
               <div class="form-group">
                 <label for="auction-type">拍卖类型</label>
-                <select id="auction-type"  name="auctionType" class="form-control"
-                        [(ngModel)]="curr.auctionType">
+                <select id="auction-type" name="auctionType" class="form-control" [(ngModel)]="curr.auctionType"
+                        required>
                   <option *ngFor="let i of auctionType;let idx=index" [value]="idx">{{i}}</option>
                 </select>
               </div>

@@ -15,6 +15,7 @@ import {LogoutComponent} from "./pages/logout";
 import {LoginSuccessComponent} from "./pages/login-success";
 import {LoginFailComponent} from "./pages/login-fail/login-fail.component";
 import {SignupFailComponent} from "./pages/signup-fail/signup-fail.component";
+import {SignupSuccessComponent} from "./pages/signup-success/signup-success.component";
 
 export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -28,7 +29,7 @@ export const appRoutes:RouterConfig = [
   {path: 'login-success', component: LoginSuccessComponent},
   {path: 'login-fail', component: LoginFailComponent},
   {path: 'signup', component: SignupForm},
-  {path: 'signup-success', component: SignupForm},
+  {path: 'signup-success', component: SignupSuccessComponent},
   {path: 'signup-fail', component: SignupFailComponent},
 
   {path: 'logout', component: LogoutComponent},

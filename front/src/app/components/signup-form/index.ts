@@ -4,11 +4,11 @@
  */
 
 import {Component, Inject} from '@angular/core';
-import {FORM_DIRECTIVES} from '@angular/common';
 import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import {User} from "../../entities/user";
 import {UserService} from "../../service/user.service";
+import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 
 let style = require('./style.styl');
 let template = require('./template.html');
@@ -19,12 +19,12 @@ let debug = require('debug')('ng:signup-form');
   selector: 'signup-form',
   template: template,
   styles: [style],
-  directives: []
+  directives: [AlertComponent]
 })
 export class SignupForm {
   public user;
   public submitBtnDisabled:boolean = false;
-  
+
   constructor(private _router:Router, private _userService:UserService) {
     this.user = new User();
   }
@@ -33,10 +33,10 @@ export class SignupForm {
     this.submitBtnDisabled=true;
     this._userService.signup(this.user).subscribe(
       (user)=> {
-        debug(user);
+        this._router.navigate(['/signup-success']);
       },
       (err)=> {
-        debug(err);
+        this._router.navigate(['/signup-fail']);
       });
   }
 }

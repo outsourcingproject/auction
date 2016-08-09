@@ -11,10 +11,10 @@
   </thead>
   <tbody>
   <tr *ngFor="let order of pagedData; let idx=index">
-    <td><a [routerLink]="['/auc-item',order.id]">{{order.name}}</a></td>
+    <td><a [routerLink]="['/auc-item',order.iid]">{{order.name}}</a></td>
 
     <td>¥ {{order.price|number:'1.2-2'}}</td>
-    <td>zl810881283</td>
+    <td>{{order.username}}</td>
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>
     <td>

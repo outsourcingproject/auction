@@ -1,4 +1,4 @@
-import {Component, ViewChild, OnInit} from '@angular/core';
+import {Component, ViewChild, OnInit, Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
@@ -10,6 +10,7 @@ import {
 
 import {Article} from "../../entities/article";
 import {UEditorComponent} from "../ueditor/ueditor.component";
+import {REQUEST_HOST} from "../../app.config";
 
 
 let data = require('./data.json');
@@ -41,14 +42,29 @@ export class AdminArticleComponent implements OnInit {
   @ViewChild('delConfirmModal')
   public delConfirmModal:ModalDirective;
 
-  constructor(private _http:Http, private _router:Router) {
+  constructor(private _http:Http, private _router:Router, @Inject(REQUEST_HOST)
+  private _requestHost:string) {
 
   }
 
   ngOnInit() {
-    Observable.of(articleType).delay(400).subscribe((data)=>this.articleType = data);
-    Observable.of(data).delay(500).subscribe((data)=>this.data = data);
 
+
+    this._getArticle().subscribe((data)=> {
+      this.data = data;
+    });
+    // Observable.of(articleType).delay(400).subscribe((data)=>this.articleType = data);
+    // Observable.of(data).delay(500).subscribe((data)=>this.data = data);
+
+  }
+
+  private _getArticle() {
+    return this._http.get(this._requestHost + '/rest/article_type')
+      .map((res)=>res.json().data)
+      .flatMap((data)=> {
+        this.articleType = data;
+        return this._http.get(this._requestHost + '/rest/article', {withCredentials: true}).map((res)=>res.json().data);
+      })
   }
 
   public onPagedDataChange(data) {
@@ -61,8 +77,16 @@ export class AdminArticleComponent implements OnInit {
   }
 
   public onDeleteArticleSubmit() {
-    //TODO: delete the article
-    this.delConfirmModal.hide();
+    //delete
+    this._http.post(this._requestHost + '/rest/article/' + this.selectedArticle.id + '?_method=delete', {}, {withCredentials: true})
+      .flatMap(()=> {
+        return this._getArticle();
+      })
+      .subscribe((data)=> {
+        this.delConfirmModal.hide();
+        this.data = data
+      });
+
   }
 
 
@@ -85,16 +109,22 @@ export class AdminArticleComponent implements OnInit {
 
     if (this.selectedArticle) {
       //修改文章
-      //TODO:put article : currArticle
+      //put
+      this._http.post(this._requestHost + '/rest/article/' + this.selectedArticle.id + '?_method=put', this.selectedArticle, {withCredentials: true}
+        )
+        .subscribe(()=> {
+          this.articleModal.hide();
+        });
 
     }
     else {
       //添加文章
-      //TODO:post article : currArticle
+      this._http.post(this._requestHost + '/rest/article', this.currArticle, {withCredentials: true}
+      ).subscribe(()=> {
+        this.articleModal.hide();
+      });
     }
 
-    this.articleModal.hide();
 
-    debug(this.currArticle);
   }
 }

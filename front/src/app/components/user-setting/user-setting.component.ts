@@ -79,21 +79,32 @@ export class UserSettingComponent implements OnInit {
   }
 
   public setDefaultAddress(idx) {
-    let oldDefault = this.addressList.filter((i)=>i.isDefault == 1)[0];
-    oldDefault.isDefault = 0;
+    let oldDefaults = this.addressList.filter((i)=>i.isDefault == 1).map((i)=> {
+      i.isDefault = 0;
+      return i;
+    });
 
     this.addressList[idx].isDefault = 1;
 
-    this._http.put(this._requestHost + '/rest/address/' + this.addressList[idx].id, this.addressList[idx], {withCredentials: true})
+
+    //put
+    this._http.post(this._requestHost + '/rest/address/' + this.addressList[idx].id + "?_method=put", this.addressList[idx], {withCredentials: true})
       .map((res)=>res.json())
       .subscribe();
-    this._http.put(this._requestHost + '/rest/address/' + oldDefault.id, oldDefault, {withCredentials: true})
-      .map((res)=>res.json())
-      .subscribe();
+
+    oldDefaults.map((oldDefault)=> {
+      this._http.post(this._requestHost + '/rest/address/' + oldDefault.id + "?_method=put", oldDefault, {withCredentials: true})
+        .map((res)=>res.json())
+        .subscribe();
+    })
+    //put
+
   }
 
   public removeAddress(idx) {
-    this._http.delete(this._requestHost + '/rest/address/' + this.addressList[idx].id, {withCredentials: true})
+    console.log(this.addressList[idx]);
+    //delete
+    this._http.post(this._requestHost + '/rest/address/' + this.addressList[idx].id + "?_method=delete", {withCredentials: true})
       .subscribe(()=> {
         this.addressList.splice(idx, 1);
       });
@@ -116,7 +127,8 @@ export class UserSettingComponent implements OnInit {
         }, (err)=>console.log(err));
     } else {
       console.log(data);
-      this._http.put(this._requestHost + '/rest/address/' + data.id, data, {withCredentials: true})
+      //put
+      this._http.post(this._requestHost + '/rest/address/' + data.id + "?_method=put", data, {withCredentials: true})
         .subscribe();
     }
 

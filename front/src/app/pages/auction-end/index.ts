@@ -30,7 +30,7 @@ export class AuctionEnd implements OnInit {
 
   constructor(private _http:Http, @Inject(REQUEST_HOST) private _requestHost:string) {
     this.dataUrl = REQUEST_HOST + "/api/item/auctioned";
-    this.imageUrl = REQUEST_HOST + "/rest/image/"
+    this.imageUrl = REQUEST_HOST.replace('http:','') + "/rest/image/"
   }
 
   ngOnInit() {
@@ -41,18 +41,18 @@ export class AuctionEnd implements OnInit {
            .then(res => res.json().data)
            .then(data => {
              data.map(d =>{
-               d["image"] = JSON.parse(d["image"]);
-               d["image"] = this.imageUrl + d["image"][0];
+               d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl+i);
+               //d["image"] = this.imageUrl + d["image"][0];
              });
              console.log(data);
               this.data = data;
             })
-           .catch(this.handleError);                
+           .catch(this.handleError);
     }else{
       Observable.of(data).delay(500).subscribe((data)=> {
         this.data = data
         console.log(this.data);
-      });      
+      });
     }
   }
   private handleError(error: any){

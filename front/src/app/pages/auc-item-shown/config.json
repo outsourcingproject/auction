@@ -4,7 +4,7 @@
   "foundTime": "1901-08",
   "foundLocation": "四川省",
   "currentPrice":6000.00,
-  "startPrice": 6000.00,
+  "beginPrice": 6000.00,
   "stage": 100.00,
   "bidCount": 0,
   "status":1,
