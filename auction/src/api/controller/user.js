@@ -41,7 +41,6 @@ export default class User extends Base {
       // auto login
       return this.success(await this._login(result));
     }
-
   }
 
   async loginAction() {

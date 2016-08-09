@@ -73,9 +73,11 @@ export class AucItemShown implements OnInit,OnDestroy {
   private _currTimer;
   private dataUrl;
   private sub;
+  private imageUrl;
 
   constructor(private _http: Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost: string) {
-    this.dataUrl = REQUEST_HOST + "/api/item/detail"
+    this.dataUrl = REQUEST_HOST + "/api/item/detail";
+    this.imageUrl = REQUEST_HOST + "/rest/image/"
   }
 
   @ViewChild('auctionConfirmModal')
@@ -98,7 +100,13 @@ export class AucItemShown implements OnInit,OnDestroy {
             this._http.post(this.dataUrl, {id:_id})
                       .toPromise()
                       .then(res => res.json().data)
-                      .then(data => {                        
+                      .then(data => {   
+                        data["image"] = JSON.parse(data["image"]);
+                        data["image"] = this.imageUrl + data["image"][0];
+                        data["relatedItems"].map(r=>{
+                          r["image"] = JSON.parse(r["image"]);
+                          r["image"] = this.imageUrl + r["image"][0];
+                        })                     
                         this.data = data;
                         console.log(this.data);
                         this.relatedItems = data.relatedItems;
@@ -108,8 +116,9 @@ export class AucItemShown implements OnInit,OnDestroy {
                         this.tabsClick(0);
                         this.imagesClick(0);
                         this.auctionPrice = this.data.currentPrice + this.data.stage;
+
                       })
-                      .catch(this.handleError);;
+                      .catch(this.handleError);
           }else{
             //to do id doesn't exit;
           }

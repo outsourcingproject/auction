@@ -44,14 +44,14 @@ export class ArticleComponent implements OnInit, OnDestroy {
       .subscribe((data)=>{
         this.data = data;
       })
-      this._http.get(this.tabUrl)
-           .toPromise()
-           .then(res => res.json().data)
-           .then(data => {
-              this.leftTab = data.lefttab;
-              this.rightTab = data.righttab;
-            })
-           .catch(this.handleError); 
+    this._http.get(this.tabUrl)
+         .toPromise()
+         .then(res => res.json().data)
+         .then(data => {
+            this.leftTab = data.lefttab;
+            this.rightTab = data.righttab;
+          })
+         .catch(this.handleError); 
 
     }else{
       Observable.of(tabData).delay(500).subscribe((data)=> {

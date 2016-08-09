@@ -40,6 +40,15 @@ export default class extends Base {
     return this.success(items);
   }
 
+  //返回所有拍品的列表，按照正在拍卖，即将拍卖，拍卖结束排序，搜索内容从此地址获取
+  async listAction(){
+    let itemModel = this.model("item");
+    let auctioningItem = await itemModel.where({status:itemModel.AUCTIONING}).select();
+    let auctionedItem = await itemModel.where({status:itemModel.AUCTION_ENDED}).select();
+    let unstartItem = await itemModel.where({status:itemModel.AUCTION_NOT_STARTED}).select();
+    return this.success(auctioningItem.concat(auctionedItem).concat(unstartItem));
+  }
+  //返回某个拍品的所有竞拍记录
   async bidAction(){
     let itemId = this.param("id");
     let res = await this.model("bid").getItemBids(itemId);
@@ -83,7 +92,7 @@ export default class extends Base {
     let imageIds = JSON.parse(itemInfo["image"]) ;
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
-    itemInfo.beginPrice=+itemInfo.beginPrice;
+    itemInfo.startPrice=+itemInfo.startPrice;
     itemInfo.currentPrice=+itemInfo.currentPrice;
     itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);
     return itemInfo;
