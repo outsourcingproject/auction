@@ -69,13 +69,26 @@
       <div class="boxes">
         <div class="box left">
           <div class="box-header">{{tabsItems[tabsSelectedIdx]}}</div>
-          <div class="box-body" [class.hidden]="tabsSelectedIdx!=0">
-            <p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>
-            <p style="color: red">※ 本公司欢迎您亲临查看拍品。</p>
-            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。
-              <br>现为国家一 ...... 卢星堂简介</p>
+          <div class="box-body" [class.hidden]="tabsSelectedIdx!=0" [innerHTML]="data.desc">
+
           </div>
           <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
+            <table class="table">
+              <thead>
+              <tr>
+                <th style="width: 15rem; overflow: hidden">用户名</th>
+                <th>出价</th>
+                <th style="width: 9rem">出价时间</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let i of itemBids">
+                <td >{{i.username}}</td>
+                <td>¥ {{i.price | number:'1.2-2'}}</td>
+                <td >{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
+              </tr>
+              </tbody>
+            </table>
           </div>
           <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
             <p style="color: #f60;line-height: 35px;">敬告：您的出价行为表明已经认同了标准古钱币的拍卖规则。不论成功与否，你都承担与之相应的法律行为.</p>

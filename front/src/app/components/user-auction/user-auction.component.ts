@@ -12,7 +12,9 @@ let config = require('./config.json');
   directives: [PagerComponent]
 })
 export class UserAuctionComponent implements OnInit {
+
   public data = [];
+  
   public pageSize:number = 12;
   public pagedData;
 
@@ -32,6 +34,7 @@ export class UserAuctionComponent implements OnInit {
         })
       })
       .subscribe((data)=>this.data = data);
+
   }
 
   public onPagedDataChange(data) {

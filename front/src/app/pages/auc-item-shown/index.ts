@@ -25,6 +25,9 @@ const data = require('./config.json');
 })
 export class AucItemShown implements OnInit,OnDestroy {
   public tabsItems:Array<string> = ['拍品描述', '出价记录', '注意事项'];
+
+  public itemBids = [];
+
   public data:{
     id:number,
     name:string,
@@ -105,9 +108,9 @@ export class AucItemShown implements OnInit,OnDestroy {
             .toPromise()
             .then(res => res.json().data)
             .then(data => {
-              data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl+i);
+              data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl + i);
               data["relatedItems"].map(r=> {
-                r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl+i);
+                r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
               });
               this.data = data;
               console.log(this.data);
@@ -121,6 +124,11 @@ export class AucItemShown implements OnInit,OnDestroy {
 
             })
             .catch(this.handleError);
+
+          this._http.get(this._requestHost + '/api/item/get_bid?id=' + _id, {withCredentials: true}).map((res)=>res.json().data)
+            .subscribe((itemBids)=> {
+              this.itemBids = itemBids;
+            })
         } else {
           //to do id doesn't exit;
         }
@@ -161,25 +169,25 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public onAuctionPriceSubmit() {
-      this.auctionConfirmModal.show();
-      return false;
+    this.auctionConfirmModal.show();
+    return false;
   }
 
   public onAuctionPriceConfirm() {
     //TODO: update db
-    this._http.post(this.bidUrl,{itemId: this.itemId, auctionPrice:this.auctionPrice}, {withCredentials: true})
-           .toPromise()
-           .then((res)=> res.json().data)
-           .then(data=> {
-             if(data !== undefined){
-              this.data.currentPrice = data.newPrice;
-              this.data.stage = data.newStage;
-              this.auctionPrice = this.data.currentPrice + this.data.stage;
-              this.auctionConfirmModal.hide();
-              this.auctionSuccess.show();
-             }
-             else return false; //this.auctionFail.show();
-           });
+    this._http.post(this.bidUrl, {itemId: this.itemId, auctionPrice: this.auctionPrice}, {withCredentials: true})
+      .toPromise()
+      .then((res)=> res.json().data)
+      .then(data=> {
+        if (data !== undefined) {
+          this.data.currentPrice = data.newPrice;
+          this.data.stage = data.newStage;
+          this.auctionPrice = this.data.currentPrice + this.data.stage;
+          this.auctionConfirmModal.hide();
+          this.auctionSuccess.show();
+        }
+        else return false; //this.auctionFail.show();
+      });
   }
 
   private handleError(error:any) {

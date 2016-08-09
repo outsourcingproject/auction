@@ -24,7 +24,7 @@ export default class Bid extends Base {
   getItemBids(itemId){
     return this.model("bid")
       .join("user on bid.user = user.id")
-      .field("bid.id as id, bid.user as userId, user.username as username, bid.value as value, bid.status as status")
+      .field("bid.id as id, bid.user as userId, user.username as username, bid.value as price, bid.status as status,bid.createAt")
       .where("bid.item = " + itemId)
       .select();
   }
