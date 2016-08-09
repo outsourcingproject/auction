@@ -5,7 +5,7 @@
  */
 export default {
   name: 'thinkjs',
-  type: 'redis',
+  type: 'db',
   secret: '~W86ZG^M',
   timeout: 24 * 3600,
   cookie: { // cookie options

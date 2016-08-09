@@ -62,6 +62,7 @@ global.removeHTMLTag = (str)=> {
 
 
 global.checkAuction = async() =>{
-  let itemModel = this.model("item");
+  let itemModel = think.model("item",null,"api");
   await itemModel.checkAuction();
-}
+};
+checkAuction().then();
