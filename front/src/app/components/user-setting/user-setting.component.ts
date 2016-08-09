@@ -79,15 +79,24 @@ export class UserSettingComponent implements OnInit {
   }
 
   public setDefaultAddress(idx) {
-    let oldDefault:Address = this.addressList.filter((i)=><boolean>i.isDefault)[0];
+    let oldDefault = this.addressList.filter((i)=>i.isDefault == 1)[0];
     oldDefault.isDefault = 0;
 
     this.addressList[idx].isDefault = 1;
 
     this._http.put(this._requestHost + '/rest/address/' + this.addressList[idx].id, this.addressList[idx], {withCredentials: true})
+      .map((res)=>res.json())
       .subscribe();
     this._http.put(this._requestHost + '/rest/address/' + oldDefault.id, oldDefault, {withCredentials: true})
+      .map((res)=>res.json())
       .subscribe();
+  }
+
+  public removeAddress(idx) {
+    this._http.delete(this._requestHost + '/rest/address/' + this.addressList[idx].id, {withCredentials: true})
+      .subscribe(()=> {
+        this.addressList.splice(idx, 1);
+      });
   }
 
   public setSelectedAddressIdx(idx) {
@@ -101,7 +110,10 @@ export class UserSettingComponent implements OnInit {
     if (this.newAddress) {
       this.addressList.push(data);
       this._http.post(this._requestHost + '/rest/address', data, {withCredentials: true})
-        .subscribe();
+        .map((res)=>res.json().data)
+        .subscribe((d)=> {
+          data.id = d.id;
+        }, (err)=>console.log(err));
     } else {
       console.log(data);
       this._http.put(this._requestHost + '/rest/address/' + data.id, data, {withCredentials: true})

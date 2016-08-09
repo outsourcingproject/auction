@@ -9,7 +9,10 @@ export default class Address extends Base {
 
     let user = await this.session('user');
 
-    this.filter = {user: user.id};
+    if (!think.isEmpty(user)) {
+      this.filter = {user: user.id};
+    }
+
 
     return await super.__before();
   }

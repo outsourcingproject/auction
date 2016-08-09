@@ -45,6 +45,7 @@
           <th>收货人</th>
           <th>收货电话</th>
           <th class="default">默认收货地址</th>
+          <th >操作</th>
         </tr>
         </thead>
         <tbody>
@@ -58,6 +59,7 @@
             <a class="" *ngIf="!address.isDefault" [hidden]="activeDefaultAddressIdx!=idx"
                (click)="setDefaultAddress(idx)">设为默认</a>
           </td>
+          <td><a (click)="removeAddress(idx)">删除</a></td>
         </tr>
         </tbody>
       </table>

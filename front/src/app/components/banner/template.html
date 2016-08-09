@@ -1,7 +1,7 @@
 <div class="banner container">
   <ul class="content">
     <li *ngFor="let slide of slides;let idx=index" [class.onshow]="idx === showIdx">
-      <a [routerLink]="slide.link"><img [src]="slide.image"></a>
+      <img [src]="slide.image">
     </li>
   </ul>
   <ul class="monitor">

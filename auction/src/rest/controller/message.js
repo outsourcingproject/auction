@@ -9,7 +9,10 @@ export default class Message extends Base {
 
     let user = await this.session('user');
 
-    this.filter = {to: user.id};
+    if (!think.isEmpty(user)) {
+      this.filter = {to: user.id};
+    }
+
 
     return await super.__before();
   }

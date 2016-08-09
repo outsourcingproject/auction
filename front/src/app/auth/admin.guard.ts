@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
         this._router.navigate(['/login']);
         this._userService.redirectUrl = state.url;
         return false;
-      }else if(user.role!=3){
+      } else if (user.role != 3) {
         console.log('not have authority ');
         this._router.navigate(['/login']);
         this._userService.redirectUrl = state.url;

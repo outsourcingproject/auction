@@ -31,7 +31,7 @@ export default class Base extends think.controller.rest {
 
   _setCorsHeader() {
     this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
-    this.header("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, X-E4M-With");
+    this.header("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type, Set-Cookie,*");
     this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
     this.header("Access-Control-Allow-Credentials", "true");
   }
@@ -79,6 +79,10 @@ export default class Base extends think.controller.rest {
     delete data[this.modelPk];
     if (think.isEmpty(data)) {
       return this.fail("data is empty");
+    }
+    let user = await this.session('user');
+    if (!think.isEmpty(user)) {
+      data.user = user.id;
     }
     let insertId = await this.modelInstance.add(data);
     return this.success({id: insertId});

@@ -1,7 +1,8 @@
-import {Component, Input, OnInit, OnDestroy} from '@angular/core'
+import {Component, Input, OnInit, OnDestroy, Inject} from '@angular/core'
 import {UserService} from "../../service";
 import {User} from '../../entities/user';
 import {Observable} from "rxjs/Observable";
+import {REQUEST_HOST} from "../../app.config";
 
 let debug = require('debug')('ng:user-detail');
 /*let user = require('./user.json');*/
@@ -15,15 +16,22 @@ export class UserDetailComponent implements OnInit,OnDestroy {
   public user:User = new User();
   public sub;
 
-  constructor(private _userService:UserService) {
+  constructor(private _userService:UserService,
+              @Inject(REQUEST_HOST)
+              private _requestHost:string) {
 
   }
 
   ngOnInit() {
-    this.sub = this._userService.getUser().subscribe((user)=> {
-      debug(user);
-      this.user = <User>user;
-    });
+    this.sub = this._userService.getUser()
+      .map((user)=> {
+        user.avatarUrl = this._requestHost + '/rest/image/' + user.avatar;
+        return user;
+      })
+      .subscribe((user)=> {
+        debug(user);
+        this.user = <User>user;
+      });
     // Observable.of(user).delay(500).subscribe().subscribe((user)=> {
     //   this.user = <User>user;
     // });
