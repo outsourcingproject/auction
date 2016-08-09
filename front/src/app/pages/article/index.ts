@@ -30,20 +30,28 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   private dataUrl;
   private sub;
+  private tabUrl;
   constructor(private _http:Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost:string) {
-    this.dataUrl = REQUEST_HOST + "/rest/article/"
+    this.dataUrl = REQUEST_HOST + "/rest/article/";
+    this.tabUrl = REQUEST_HOST + "/api/article_type/tab";
   }
 
 
   ngOnInit() {
     if ('production' === ENV) {
     this.sub = this._route.params.flatMap((params)=>this._http.get(this.dataUrl + params["id"]))
-      .map((res)=>res.json())
-      .subscribe((json)=>{
-        this.data = json.data;
-        // this.leftTab = this.data.leftTab;
-        // this.rightTab = this.data.rightTab;
+      .map((res)=>res.json().data)
+      .subscribe((data)=>{
+        this.data = data;
       })
+    this._http.get(this.tabUrl)
+         .toPromise()
+         .then(res => res.json().data)
+         .then(data => {
+            this.leftTab = data.lefttab;
+            this.rightTab = data.righttab;
+          })
+         .catch(this.handleError); 
 
     }else{
       Observable.of(tabData).delay(500).subscribe((data)=> {

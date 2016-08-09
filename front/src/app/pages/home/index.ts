@@ -37,20 +37,30 @@ export class Home implements OnInit {
   public auctionItems = [];
 
   private dataUrl ;
+  private imageUrl;
 
   constructor(private _http: Http, @Inject(REQUEST_HOST) private _requestHost:string) {
-    this.dataUrl=_requestHost+ "/api/home"
+    this.dataUrl=_requestHost+ "/api/home";
+    this.imageUrl = _requestHost + "/rest/image/"
   }
 
   ngOnInit() {
+    this.serviceData = data.service;
     if ('production' === ENV) {
       // Application wide providers
       this._http.get(this.dataUrl)
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
+            let groups = data.auctionGroups;
+            groups.map((a)=>{
+              a.auctions.map(aa=>{
+                aa["image"] = JSON.parse(aa["image"]);
+                aa["image"] = this.imageUrl + aa["image"][0];
+              })
+            })
             this.sidebarData = data.auctionGroups;
-            this.serviceData = data.service;
+
             this.leftTab = data.lefttab;
             this.rightTab = data.righttab;
             })

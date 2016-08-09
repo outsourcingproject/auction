@@ -28,9 +28,11 @@ export class Auctioning implements OnInit {
 
   public data = [];
   private dataUrl ;
+  private imageUrl;
 
   constructor(private _http:Http, @Inject(REQUEST_HOST) private _requestHost:string) {
-    this.dataUrl = REQUEST_HOST + "/api/item/auctioning"
+    this.dataUrl = REQUEST_HOST + "/api/item/auctioning";
+    this.imageUrl = REQUEST_HOST + "/rest/image/"
   }
 
   ngOnInit() {
@@ -40,6 +42,11 @@ export class Auctioning implements OnInit {
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
+             data.map(d =>{
+               d["image"] = JSON.parse(d["image"]);
+               d["image"] = this.imageUrl + d["image"][0];
+             });
+             console.log(data);
               this.data = data;
             })
            .catch(this.handleError);                

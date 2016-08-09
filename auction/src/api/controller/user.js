@@ -9,11 +9,9 @@ export default class User extends Base {
     super.init(...args);
     this.userModel = this.model('user');
   }
-
   //获取当前用户
   async indexAction() {
     let user = await this.session('user');
-    console.log(user);
     if (think.isEmpty(user))
       return this.fail("未登录", {});
 
@@ -43,7 +41,6 @@ export default class User extends Base {
       // auto login
       return this.success(await this._login(result));
     }
-
   }
 
   async loginAction() {
@@ -142,7 +139,7 @@ export default class User extends Base {
 
 
   async _getPriceOver(userId) {
-    let items = await this.model("bid").getDistinceList(userId);
+    let items = await this.model("bid").getDistinctList(userId);
 
     let myMaxBids = [];
     let sql = "select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"

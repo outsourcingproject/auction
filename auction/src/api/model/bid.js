@@ -7,7 +7,7 @@ export default class Bid extends Base {
       .where({user:userId}).select();
   }
 
-  getDistinceList(userId){
+  getDistinctList(userId){
     return this.where({user:userId})
       .distinct("item")
       .select();
@@ -18,6 +18,15 @@ export default class Bid extends Base {
       .where({item:itemId,value:{">":price}})
       .order("bid.createAt DESC")
       .find();
+  }
+  // 查询某件物品的所有竞标记录
+  // 返回值 id, userId, username, value, status
+  getItemBids(itemId){
+    return this.model("bid")
+      .join("user on bid.user = user.id")
+      .field("bid.id as id, bid.user as userId, user.username as username, bid.value as value, bid.status as status")
+      .where("bid.item = " + itemId)
+      .select();
   }
   // 查询竞标状态：'得标', '失败', '领先', '被超'
   async getStatus(bidId){

@@ -26,9 +26,11 @@ let data = require('../auctioning/data.json');
 export class AuctionEnd implements OnInit {
   public data = [];
   private dataUrl;
+  private imageUrl;
 
   constructor(private _http:Http, @Inject(REQUEST_HOST) private _requestHost:string) {
     this.dataUrl = REQUEST_HOST + "/api/item/auctioned";
+    this.imageUrl = REQUEST_HOST + "/rest/image/"
   }
 
   ngOnInit() {
@@ -38,6 +40,11 @@ export class AuctionEnd implements OnInit {
            .toPromise()
            .then(res => res.json().data)
            .then(data => {
+             data.map(d =>{
+               d["image"] = JSON.parse(d["image"]);
+               d["image"] = this.imageUrl + d["image"][0];
+             });
+             console.log(data);
               this.data = data;
             })
            .catch(this.handleError);                
