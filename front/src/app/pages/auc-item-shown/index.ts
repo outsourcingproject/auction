@@ -102,7 +102,13 @@ export class AucItemShown implements OnInit,OnDestroy {
                       .then(res => res.json().data)
                       .then(data => {   
                         data["image"] = JSON.parse(data["image"]);
-                        data["image"] = this.imageUrl + data["image"][0];
+                        for(let i in data["image"])
+                        {
+                          data["image"][i] = this.imageUrl + data["image"][i];
+                        }
+
+                        // data["image"] = data["image"].map((i)=>{this.imageUrl + i;});
+                        console.log(data["image"]);
                         data["relatedItems"].map(r=>{
                           r["image"] = JSON.parse(r["image"]);
                           r["image"] = this.imageUrl + r["image"][0];

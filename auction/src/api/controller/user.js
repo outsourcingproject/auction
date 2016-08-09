@@ -54,7 +54,6 @@ export default class User extends Base {
       return this.fail(result)
     }
 
-
     //login success
     return this.success(await this._login(result));
 
@@ -116,6 +115,7 @@ export default class User extends Base {
       "waitPay": resultWaitPay
     };
     //
+    console.log(result);
     return this.success(result);
   }
 
@@ -123,8 +123,6 @@ export default class User extends Base {
     let user = await this.session("user");
     let userId = user["id"];
     return this.success(await this.model("order").getList(userId));
-
-
   }
 
   async bidAction() {
@@ -137,6 +135,14 @@ export default class User extends Base {
     return this.success(bids);
   }
 
+  //get following items
+  async followAction(){
+    let user = await this.session("user");
+    console.log(user);
+    let userId = user["id"];
+    let followings = await this.model("follow").getFollowing(userId);
+    return this.success(followings); 
+  }
 
   async _getPriceOver(userId) {
     let items = await this.model("bid").getDistinctList(userId);
