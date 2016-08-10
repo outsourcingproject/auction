@@ -23,9 +23,9 @@ export class AdminOrderComponent implements OnInit {
 
   public selected:Order = null;
 
-  constructor(private _http:Http, private _router:Router,
-              @Inject(REQUEST_HOST)
-              public _requestHost:string) {
+  public _requestHost:string = REQUEST_HOST;
+
+  constructor(private _http:Http, private _router:Router) {
 
   }
 

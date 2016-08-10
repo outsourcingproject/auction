@@ -8,7 +8,7 @@ export default class Main extends Base {
   indexAction() {
     let options = this.config('tpl');
     options = think.extend({}, options, {type: 'ejs'});
-    let file = path.resolve(think.ROOT_PATH, '../front/dist/index.html');
+    let file = path.resolve(think.ROOT_PATH, 'www/static/index.html');
     return this.display(file, options);
   }
 }

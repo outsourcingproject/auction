@@ -2,7 +2,7 @@
  * index.js
  * Created by Huxley on 1/10/16.
  */
-import {Component, OnInit, Injectable ,Inject, OnDestroy} from '@angular/core';
+import {Component, OnInit, Injectable, Inject, OnDestroy} from '@angular/core';
 import {Http} from '@angular/http';
 import {ActivatedRoute} from '@angular/router'
 import {TabView} from "../../components/tabview/index";
@@ -31,7 +31,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
   private dataUrl;
   private sub;
   private tabUrl;
-  constructor(private _http:Http, private _route: ActivatedRoute, @Inject(REQUEST_HOST) private _requestHost:string) {
+
+  private _requestHost:string = REQUEST_HOST;
+
+  constructor(private _http:Http, private _route:ActivatedRoute) {
     this.dataUrl = REQUEST_HOST + "/rest/article/";
     this.tabUrl = REQUEST_HOST + "/api/article_type/tab";
   }
@@ -39,34 +42,34 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if ('production' === ENV) {
-    this.sub = this._route.params.flatMap((params)=>this._http.get(this.dataUrl + params["id"]))
-      .map((res)=>res.json().data)
-      .subscribe((data)=>{
-        this.data = data;
-      })
-    this._http.get(this.tabUrl)
-         .toPromise()
-         .then(res => res.json().data)
-         .then(data => {
-            this.leftTab = data.lefttab;
-            this.rightTab = data.righttab;
-          })
-         .catch(this.handleError); 
+      this.sub = this._route.params.flatMap((params)=>this._http.get(this.dataUrl + params["id"]))
+        .map((res)=>res.json().data)
+        .subscribe((data)=> {
+          this.data = data;
+        })
+      this._http.get(this.tabUrl)
+        .toPromise()
+        .then(res => res.json().data)
+        .then(data => {
+          this.leftTab = data.lefttab;
+          this.rightTab = data.righttab;
+        })
+        .catch(this.handleError);
 
-    }else{
+    } else {
       Observable.of(tabData).delay(500).subscribe((data)=> {
         this.data = data;
         this.leftTab = data.leftTab;
         this.rightTab = data.rightTab;
-      });      
+      });
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  private handleError(error: any){
+  private handleError(error:any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

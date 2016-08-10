@@ -24,6 +24,8 @@ export class UserMessageComponent implements OnInit {
 
   public pagedData;
 
+  private _requestHost:string = REQUEST_HOST;
+
   @ViewChild('detailModal')
   public detailModal:ModalDirective;
 
@@ -36,8 +38,7 @@ export class UserMessageComponent implements OnInit {
     this.pagedData = pagedData;
   }
 
-  constructor(private _http:Http, @Inject(REQUEST_HOST)
-  private _requestHost:string, private _userServer:UserService) {
+  constructor(private _http:Http, private _userServer:UserService) {
   }
 
   ngOnInit() {

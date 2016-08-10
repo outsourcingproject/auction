@@ -30,10 +30,11 @@ export class Search implements OnInit {
   private sub;
   private imageUrl;
 
-  constructor(private _http:Http, private _route:ActivatedRoute, @Inject(REQUEST_HOST)
-  private _requestHost:string) {
+  private _requestHost:string = REQUEST_HOST
+
+  constructor(private _http:Http, private _route:ActivatedRoute) {
     this.searchUrl = REQUEST_HOST + "/api/service/search";
-    this.imageUrl=REQUEST_HOST.replace('http:','')+'/rest/image/';
+    this.imageUrl = REQUEST_HOST.replace('http:', '') + '/rest/image/';
   }
 
   ngOnInit() {

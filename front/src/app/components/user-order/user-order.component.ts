@@ -24,9 +24,9 @@ export class UserOrderComponent implements OnInit {
 
   public selected:Order = <Order>{};
 
-  constructor(private _http:Http,
-              @Inject(REQUEST_HOST)
-              private _requestHost:string) {
+  private _requestHost:string = REQUEST_HOST;
+
+  constructor(private _http:Http) {
 
   }
 

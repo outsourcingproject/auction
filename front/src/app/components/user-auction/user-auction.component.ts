@@ -14,12 +14,13 @@ let config = require('./config.json');
 export class UserAuctionComponent implements OnInit {
 
   public data = [];
-  
+
   public pageSize:number = 12;
   public pagedData;
 
-  constructor(private _http:Http, @Inject(REQUEST_HOST)
-  private _requestHost:string) {
+  private _requestHost:string = REQUEST_HOST;
+
+  constructor(private _http:Http) {
 
   }
 

@@ -5,11 +5,11 @@
  */
 export default {
   type: 'mysql',
-  host: '127.0.0.1',
-  port: '3306',
-  database: 'auction',
-  user: 'root',
-  password: '888888',
+  host: process.env.OPENSHIFT_MYSQL_DB_HOST || '127.0.0.1',
+  port: process.env.OPENSHIFT_MYSQL_DB_PORT || '3306',
+  database: process.env.OPENSHIFT_APP_NAME || 'auction',
+  user: process.env.OPENSHIFT_MYSQL_DB_USERNAME || 'root',
+  password: process.env.OPENSHIFT_MYSQL_DB_PASSWORD || '888888',
   prefix: '',
   encoding: 'utf8',
   nums_per_page: 10,
@@ -22,7 +22,6 @@ export default {
     timeout: 3600
   },
   adapter: {
-    mysql: {},
-    mongo: {}
+    mysql: {}
   }
 };

@@ -79,11 +79,11 @@ export default class extends Base {
     let resItemInfo = await this._detailHelper(itemId);
     let resRelatedItems = await this._relatedItemHelper(itemId);
     let user = await this.session("user");
-    if(user!=null){
+    if(!think.isEmpty(user)){
       let userId = user["id"];
-      resItemInfo["following"] = await _followingHelper(userId, itemId);
+      resItemInfo["following"] = await this._followingHelper(userId, itemId);
       for(let r of resRelatedItems)
-        r["isFollowing"] = await _followingHelper(userId, itemId);
+        r["isFollowing"] = await this._followingHelper(userId, itemId);
     }else{
       resItemInfo["following"] = null;
       for(let r of resRelatedItems)
@@ -107,7 +107,6 @@ export default class extends Base {
 
   async _detailHelper(id){
     let itemInfo = await this.itemModel.setRelation(false).where({"id":id}).find();
-    console.log(itemInfo);
     let imageIds = JSON.parse(itemInfo["image"]) ;
     itemInfo["bidCount"] = await this.model("bid").where({"item":id}).count();
     itemInfo["followCount"] = await this.model("follow").where({"item":id}).count();
@@ -118,6 +117,6 @@ export default class extends Base {
   }
 
   async _followingHelper(userId, itemId){
-    itemInfo["following"] = await this.model("follow").isFollowing(userId, itemId);    
+    return await this.model("follow").isFollowing(userId, itemId);
   }
 }

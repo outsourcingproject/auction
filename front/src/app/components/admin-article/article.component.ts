@@ -36,14 +36,15 @@ export class AdminArticleComponent implements OnInit {
   public selectedArticle = null;
   public currArticle = new Article();
 
+  private _requestHost:string = REQUEST_HOST;
+
   @ViewChild('articleModal')
   public articleModal:ModalDirective;
 
   @ViewChild('delConfirmModal')
   public delConfirmModal:ModalDirective;
 
-  constructor(private _http:Http, private _router:Router, @Inject(REQUEST_HOST)
-  private _requestHost:string) {
+  constructor(private _http:Http, private _router:Router) {
 
   }
 

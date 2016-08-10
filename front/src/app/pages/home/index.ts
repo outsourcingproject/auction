@@ -3,8 +3,8 @@
  * Created by Huxley on 12/9/15.
  */
 
-import {Component, OnInit, Injectable ,Inject} from '@angular/core';
-import { Http, Response } from '@angular/http';
+import {Component, OnInit, Injectable, Inject} from '@angular/core';
+import {Http, Response} from '@angular/http';
 import {Banner} from '../../components/banner';
 import {TabView} from '../../components/tabview';
 import {BlockView} from '../../components/blockview';
@@ -36,12 +36,13 @@ export class Home implements OnInit {
 
   public auctionItems = [];
 
-  private dataUrl ;
+  private dataUrl;
   private imageUrl;
+  private _requestHost:string = REQUEST_HOST;
 
-  constructor(private _http: Http, @Inject(REQUEST_HOST) private _requestHost:string) {
-    this.dataUrl=_requestHost+ "/api/home";
-    this.imageUrl = _requestHost.replace('http:','') + "/rest/image/"
+  constructor(private _http:Http) {
+    this.dataUrl = this._requestHost + "/api/home";
+    this.imageUrl = this._requestHost.replace('http:', '') + "/rest/image/"
   }
 
   ngOnInit() {
@@ -49,24 +50,24 @@ export class Home implements OnInit {
     if ('production' === ENV) {
       // Application wide providers
       this._http.get(this.dataUrl)
-           .toPromise()
-           .then(res => res.json().data)
-           .then(data => {
-            let groups = data.auctionGroups;
-            groups.map((a)=>{
-              a.auctions.map(aa=>{
-                aa["image"] = JSON.parse(aa["image"]);
-                aa["image"] = this.imageUrl + aa["image"][0];
-              })
+        .toPromise()
+        .then(res => res.json().data)
+        .then(data => {
+          let groups = data.auctionGroups;
+          groups.map((a)=> {
+            a.auctions.map(aa=> {
+              aa["image"] = JSON.parse(aa["image"]);
+              aa["image"] = this.imageUrl + aa["image"][0];
             })
-             console.log(data);
-            this.sidebarData = data.auctionGroups;
-            this.leftTab = data.lefttab;
-            this.rightTab = data.righttab;
-            })
-           .catch(this.handleError);
-    }else{
-        Observable.of(data).delay(500).subscribe((data)=> {
+          })
+          console.log(data);
+          this.sidebarData = data.auctionGroups;
+          this.leftTab = data.lefttab;
+          this.rightTab = data.righttab;
+        })
+        .catch(this.handleError);
+    } else {
+      Observable.of(data).delay(500).subscribe((data)=> {
         this.sidebarData = data.auctionGroups;
         this.serviceData = data.service;
       });
@@ -78,8 +79,8 @@ export class Home implements OnInit {
 
   }
 
-  private handleError(error: any){
-  console.error('An error occurred', error);
-  return Promise.reject(error.message || error);
+  private handleError(error:any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

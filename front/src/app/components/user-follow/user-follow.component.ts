@@ -1,4 +1,4 @@
-import {Component, OnInit, Injectable ,Inject} from '@angular/core';
+import {Component, OnInit, Injectable, Inject} from '@angular/core';
 import {Http} from '@angular/http';
 import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
@@ -16,35 +16,36 @@ let data = require('./data.json');
 export class UserFollowComponent implements OnInit {
 
   public data = [];
-  public pageSize:number=15;
+  public pageSize:number = 15;
   public pagedData;
-  private dataUrl ;
-
-  constructor(private _http:Http, private _router:Router, @Inject(REQUEST_HOST) private _requestHost:string) {
+  private dataUrl;
+  private _requestHost:string = REQUEST_HOST;
+  
+  constructor(private _http:Http, private _router:Router) {
     this.dataUrl = REQUEST_HOST + "/api/user/follow";
   }
 
   ngOnInit() {
-    if ('production' === ENV){
-      this._http.get(this.dataUrl,{withCredentials: true})
-           .toPromise()
-           .then(res => this.data = res.json().data)
-           .catch(this.handleError); 
+    if ('production' === ENV) {
+      this._http.get(this.dataUrl, {withCredentials: true})
+        .toPromise()
+        .then(res => this.data = res.json().data)
+        .catch(this.handleError);
       // console.log(this.data)
-    }else{
+    } else {
       Observable.of(data).delay(500).subscribe((data)=> {
         this.data = data;
-      });      
+      });
     }
   }
 
   onPagedDataChange(data) {
     this.pagedData = data;
     console.log(data);
-    
+
   }
 
-  private handleError(error: any){
+  private handleError(error:any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

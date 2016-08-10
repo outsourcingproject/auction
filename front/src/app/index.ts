@@ -8,7 +8,6 @@ export * from './app.config'
 import {AUTH_PROVIDERS} from './auth';
 import {SERVICE_PROVIDERS} from './service'
 import {MOCK_SERVICE_PROVIDERS} from './service-mock'
-import {REQUEST_HOST} from "./app.config";
 
 let PROVIDERS = [];
 
@@ -17,8 +16,7 @@ if ('production' === ENV) {
   // Application wide providers
   PROVIDERS = [
     ...AUTH_PROVIDERS,
-    ...SERVICE_PROVIDERS,
-    {provide:REQUEST_HOST,useValue:REQUEST_HOST}
+    ...SERVICE_PROVIDERS
   ];
 } else {
   PROVIDERS = [

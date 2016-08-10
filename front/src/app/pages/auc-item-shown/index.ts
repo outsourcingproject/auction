@@ -80,8 +80,9 @@ export class AucItemShown implements OnInit,OnDestroy {
   private bidUrl;
   private itemId;
 
-  constructor(private _http:Http, private _route:ActivatedRoute, @Inject(REQUEST_HOST)
-  private _requestHost:string) {
+  private _requestHost:string = REQUEST_HOST;
+
+  constructor(private _http:Http, private _route:ActivatedRoute) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
@@ -103,8 +104,9 @@ export class AucItemShown implements OnInit,OnDestroy {
     if ('production' === ENV) {
       this.sub = this._route.params.subscribe(params=> {
         let _id = params["id"];
+        this.itemId = _id;
         if (_id !== undefined) {
-          this._http.post(this.dataUrl, {id: _id})
+          this._http.post(this.dataUrl, {id: _id}, {withCredentials: true})
             .toPromise()
             .then(res => res.json().data)
             .then(data => {

@@ -45,10 +45,10 @@ export class AdminItemComponent implements OnInit {
   @ViewChild('delConfirmModal')
   public delConfirmModal:ModalDirective;
 
+  private _requestUrl:string = REQUEST_HOST;
+
   constructor(private _http:Http,
-              private _router:Router,
-              @Inject(REQUEST_HOST)
-              private _requestUrl:string) {
+              private _router:Router) {
 
   }
 

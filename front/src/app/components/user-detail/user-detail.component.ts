@@ -15,10 +15,9 @@ export class UserDetailComponent implements OnInit,OnDestroy {
 
   public user:User = new User();
   public sub;
+  private _requestHost:string = REQUEST_HOST;
 
-  constructor(private _userService:UserService,
-              @Inject(REQUEST_HOST)
-              private _requestHost:string) {
+  constructor(private _userService:UserService) {
 
   }
 

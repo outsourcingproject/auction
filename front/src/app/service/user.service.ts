@@ -70,8 +70,9 @@ export class UserService extends BaseService implements IUserService {
     return Observable.of(user);
   }
 
-  constructor(private _http:Http, @Inject(REQUEST_HOST)
-  private _requestHost:string) {
+  private _requestHost = REQUEST_HOST;
+
+  constructor(private _http:Http) {
     super();
     this._userObservable = Observable.create((observer)=> {
       this._userObservers.push(observer);
