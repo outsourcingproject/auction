@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2016-08-09 22:38:38
+Date: 2016-08-10 21:57:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,7 @@ CREATE TABLE `address` (
   PRIMARY KEY (`id`),
   KEY `address_ibfk_1` (`user`),
   CONSTRAINT `address_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of address
@@ -166,7 +166,7 @@ CREATE TABLE `bid` (
   KEY `user` (`user`),
   CONSTRAINT `bid_ibfk_1` FOREIGN KEY (`item`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `bid_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bid
@@ -201,6 +201,10 @@ INSERT INTO `bid` VALUES ('27', '8', '8', '1400', '3', '1468489587187', '1468489
 INSERT INTO `bid` VALUES ('28', '9', '9', '1450', '0', '1468489587187', '1468489587187');
 INSERT INTO `bid` VALUES ('29', '10', '10', '1500', '1', '1468489587187', '1468489587187');
 INSERT INTO `bid` VALUES ('30', '1', '1', '1550', '2', '1468489587187', '1468489587187');
+INSERT INTO `bid` VALUES ('31', '23', '2', '62', '1', '1470758231249', '1470758231249');
+INSERT INTO `bid` VALUES ('32', '23', '2', '112', '1', '1470758256712', '1470758256712');
+INSERT INTO `bid` VALUES ('33', '23', '2', '162', '1', '1470758261166', '1470758261166');
+INSERT INTO `bid` VALUES ('34', '23', '2', '212', '1', '1470758269708', '1470758269708');
 
 -- ----------------------------
 -- Table structure for config
@@ -373,7 +377,7 @@ INSERT INTO `item` VALUES ('17', 'item17', 'Thu Jul 14 2016 17:46:27 GMT+0800 (�
 INSERT INTO `item` VALUES ('18', 'item18', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', null, '赵国国宝', '[28,29,30]', '2', '9', '9', '6', '50', '900', '0', '1468489587023', '1468489587023', '1800', '1468489587041', '1468489587041', '3');
 INSERT INTO `item` VALUES ('19', 'item19', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', null, '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[29,30,31]', '3', '10', '10', '4', '50', '950', '1', '1468489587023', '1468489587023', '1900', '1468489587041', '1468489587041', '4');
 INSERT INTO `item` VALUES ('20', 'item20', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', null, '赵国国宝', '[30,31,32]', '0', '1', '1', '2', '50', '1000', '0', '1468489587023', '1468489587023', '2000', '1468489587042', '1468489587042', '1');
-INSERT INTO `item` VALUES ('23', '121', '12', '12', '12', '<p>12</p>', '[21,21,21]', '0', '2', null, '2', '12', '12', '0', '1470730978580', '1470730978580', '0', '1470730988540', '1470730988540', '1');
+INSERT INTO `item` VALUES ('23', '121', '12', '12', '12', '<p>12</p>', '[21,21,21]', '0', '2', null, '2', '12', '212', '0', '1470730978580', '1470730978580', '0', '1470730988540', '1470730988540', '1');
 
 -- ----------------------------
 -- Table structure for item_group
@@ -584,12 +588,12 @@ CREATE TABLE `session` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `cookie` (`cookie`),
   KEY `expire` (`expire`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of session
 -- ----------------------------
-INSERT INTO `session` VALUES ('1', 'ZvHgReqiUa7_eH5PuqyGxHcx1LzUS_6b', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":1,\"level\":2,\"role\":3,\"lastLogin\":1470748073288,\"createAt\":1468489586719,\"updateAt\":1470742842706,\"totalVolume\":1,\"totalTurnover\":1100}}', '1470835517797');
+INSERT INTO `session` VALUES ('1', 'ZvHgReqiUa7_eH5PuqyGxHcx1LzUS_6b', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":1,\"level\":2,\"role\":3,\"lastLogin\":1470748073288,\"createAt\":1468489586719,\"updateAt\":1470742842706,\"totalVolume\":1,\"totalTurnover\":1100}}', '1470842495883');
 INSERT INTO `session` VALUES ('2', 'YDZwLEQm43KPMcU_EOfXUBDvAEuVlVjP', null, '1470834086749');
 INSERT INTO `session` VALUES ('3', 'uKmRlPIsxxZuSd2KYkd_UCwtW9zVrdGL', null, '1470834088534');
 INSERT INTO `session` VALUES ('4', '7YkTGT4UaH2HajumQvT2lALwImnhLNl0', null, '1470834098816');
@@ -597,6 +601,39 @@ INSERT INTO `session` VALUES ('5', 'N5wyflD9H_NNtC3ZiP2fzJCWfxAOBuMI', null, '14
 INSERT INTO `session` VALUES ('6', '0SB_k8l_LV_5Nxz7TFOnHq4ct8d2LjeM', null, '1470834149271');
 INSERT INTO `session` VALUES ('7', 'aOu_TBOcMHzpS2eE8D2ZNuMZ_leyYQ03', null, '1470834264414');
 INSERT INTO `session` VALUES ('8', 'STEYUpRpPa5IXdmuHayr_nQplFH9vKhq', null, '1470834791323');
+INSERT INTO `session` VALUES ('9', 'nY0UazCjqRMWDEu4KyR7zEYoOcFgvtQP', null, '1470840641875');
+INSERT INTO `session` VALUES ('10', 'bQPUPwm3uesNm8dKI3IPbHla_3SIchfX', null, '1470840664970');
+INSERT INTO `session` VALUES ('11', 'AKFrjDhry0El4IwQuxitWl6wGlYy_XGO', null, '1470840706131');
+INSERT INTO `session` VALUES ('12', 'AmuOVDRQcFprsKr_Aik3XPaF9_s8L7Bd', null, '1470840749814');
+INSERT INTO `session` VALUES ('13', 'LUVRevf3p_G9_jFejlVsViqYv1J10zbr', null, '1470840792246');
+INSERT INTO `session` VALUES ('14', 'byBO89gXPiFr79i661v2OCGsJZlvl4FB', null, '1470840835058');
+INSERT INTO `session` VALUES ('15', 'a_2YZnq6a8ZeD_KZGLAL_u16_gTNNYo_', null, '1470840878313');
+INSERT INTO `session` VALUES ('16', 'BbFFsCngGfG1XM5uGcY0Du8dOPdr1uGX', null, '1470842104652');
+INSERT INTO `session` VALUES ('17', '8JANYVxxwlDEOs_bGjQMljCJm69ZHhRN', null, '1470842141272');
+INSERT INTO `session` VALUES ('18', 'pUXmvHY4TFsyZB_MuoT8Us_Va54I7m6j', null, '1470842179912');
+INSERT INTO `session` VALUES ('19', 'ixSSUNAFNVMjST4VKQA58x7luc_v6gkc', null, '1470842228957');
+INSERT INTO `session` VALUES ('20', 'bkYusUHMJpC05rlYli6eMHijODTnoBWd', null, '1470842266580');
+INSERT INTO `session` VALUES ('21', 'tHtOCljAvXLFRabrYYNn1Ikx61SQkwBX', null, '1470842305933');
+INSERT INTO `session` VALUES ('22', 'Dg9FDGoLHfhkulV_tLJortIHT3zrvwi2', null, '1470842344408');
+INSERT INTO `session` VALUES ('23', 'jS2zUbr75tS0aL7E62HLk4fZK86uXhpi', null, '1470842382332');
+INSERT INTO `session` VALUES ('24', 'MyoAtN5pP55ppk5mKy_kVoWv30SAehOP', null, '1470842420957');
+INSERT INTO `session` VALUES ('25', 'ERSm8YJaR9gWmRTBlPvfrHsarmAmf0ah', null, '1470842459587');
+INSERT INTO `session` VALUES ('26', 'bqOezgexI0biN_azY0TOoGgk6209St5q', null, '1470842466405');
+INSERT INTO `session` VALUES ('27', 'SuGLe0f9luXcb_1XnyWWMg7iGa1Q8cuN', null, '1470842498626');
+INSERT INTO `session` VALUES ('28', 'EC72ZDjX9EsCRO3Qb_eWA5sW_aDYioCw', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":1,\"level\":2,\"role\":3,\"lastLogin\":1470756561637,\"createAt\":1468489586719,\"updateAt\":1470748073332,\"totalVolume\":1,\"totalTurnover\":1100}}', '1470844669759');
+INSERT INTO `session` VALUES ('29', 'nzRdv30LD1XxCwnU2e2MABljX2REnn9S', null, '1470842761416');
+INSERT INTO `session` VALUES ('30', 'rEhFQ2IgUb0k35_HNkOFoRdVSvuMMGq3', null, '1470842796940');
+INSERT INTO `session` VALUES ('31', 'tLljF2RSSmod8w0xvhAjiMtkpnCxeXit', null, '1470842835666');
+INSERT INTO `session` VALUES ('32', 'cJP8eW9hAkyI25yyT9nWkNXGlVjdEUJu', null, '1470842837441');
+INSERT INTO `session` VALUES ('33', 'TJuVe0VrB8WRRDCspfLp4BGcBsKwhVjT', null, '1470842875164');
+INSERT INTO `session` VALUES ('34', 'ZzaQeT2_vTjUGdJodozDE_XC9OKor_AL', null, '1470842914139');
+INSERT INTO `session` VALUES ('35', 'VCZUtjlqMfglkzaFw9Rw7_w6HtQHsE_m', null, '1470842950748');
+INSERT INTO `session` VALUES ('36', 'GVU_A6TZKcDXZB5VRNoNb6tUCayxFTO_', null, '1470842972072');
+INSERT INTO `session` VALUES ('37', 'Bxozz_OvqZ5JMXznf6QJH98ng9fXnfeI', null, '1470842989110');
+INSERT INTO `session` VALUES ('38', 'I9brX6huTTm4t4ipdvQ7qj0EnU0IquTU', null, '1470843026961');
+INSERT INTO `session` VALUES ('39', 'ice0CUyQM1OJS5tuMmEGJf0DxIHDFcxL', null, '1470843064899');
+INSERT INTO `session` VALUES ('40', 'CVUf6AM_vWyDCNyV4vLTrBRyXCp7JsP_', null, '1470843075442');
+INSERT INTO `session` VALUES ('41', 'PMHcvPX8m2VliXf1x0lRvpXHV7_h8d5w', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":1,\"level\":2,\"role\":3,\"lastLogin\":1470756947538,\"createAt\":1468489586719,\"updateAt\":1470756561658,\"totalVolume\":1,\"totalTurnover\":1100}}', '1470843385413');
 
 -- ----------------------------
 -- Table structure for user
@@ -629,7 +666,7 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'zl810881283', 'zl7112585', '0573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '1', '2', '1470745571641', '1468489586718', '1470745571683');
-INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '1', '2', '3', '1470748073288', '1468489586719', '1470748073332');
+INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '1', '2', '3', '1470756947538', '1468489586719', '1470756947550');
 INSERT INTO `user` VALUES ('3', 'zhangle2', 'zlpwd2', '2573328344@qq.com', '1', 'I\'m zhangle', '1', '2', '3', '1', '1468489586704', '1468489586719', '1468489586719');
 INSERT INTO `user` VALUES ('4', 'zhangle3', 'zlpwd3', '3573328344@qq.com', '1', 'I\'m zhangle', '1', '3', '4', '1', '1468489586704', '1468489586719', '1468489586719');
 INSERT INTO `user` VALUES ('5', 'zhangle4', 'zlpwd4', '4573328344@qq.com', '1', 'I\'m zhangle', '1', '4', '5', '1', '1468489586704', '1468489586719', '1468489586719');
