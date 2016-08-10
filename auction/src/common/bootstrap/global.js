@@ -59,10 +59,9 @@ global.removeHTMLTag = (str)=> {
   return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
 };
 
-
-
 global.checkAuction = async() =>{
   let itemModel = think.model("item",null,"api");
-  await itemModel.checkAuction();
+  await itemModel.checkStatus();
 };
+
 checkAuction().then();

@@ -41,17 +41,20 @@ export default class Item extends Base {
     let orderModel = think.model("order",null,"api");
     let itemModel = think.model("item",null,"api");
 
-      console.log("========================")
-      let items_end = await this.where({
-        auctionEndTime: {"<": currentTime},
-        status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
-      }).select();
+    let items_end = await this.where({
+      auctionEndTime: {"<": currentTime},
+      status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
+    }).select();
 
-      for(let i of items_end)
-      {
-        let boolBid = await bidModel.where({item: i["id"]}).count();
-        if (boolBid == 0){
-          await this.where({id: i["id"]}).update({status: this.AUCTION_FAILED});
+    for(let i of items_end)
+    {
+      let boolBid = await bidModel.where({item: i["id"]}).count();
+      if (boolBid == 0){
+        await this.where({id: i["id"]}).update({status: this.AUCTION_FAILED});
+      }
+      else{
+        if(think.isEmpty(i["currentBidder"])){
+          await this.where({id: i["id"]}).update({status:this.AUCTION_FAILED});
         }
         else{
           try{
@@ -64,22 +67,21 @@ export default class Item extends Base {
           }
         }
       }
+    }
 
-      console.log("========================")
-
-      let items_auctioning = await  itemModel.where({
-        auctionBeginTime: {"<": currentTime},
-        auctionEndTime: {">": currentTime},
-        status: ["NOTIN", [this.AUCTIONING]]
-      }).select();
-      for(let i of items_auctioning){
-        await itemModel.where({id: i["id"]}).update({status: this.AUCTIONING})
-      }
-      return true;
+    let items_auctioning = await  itemModel.where({
+      auctionBeginTime: {"<": currentTime},
+      auctionEndTime: {">": currentTime},
+      status: ["NOTIN", [this.AUCTIONING]]
+    }).select();
+    for(let i of items_auctioning){
+      await itemModel.where({id: i["id"]}).update({status: this.AUCTIONING})
+    }
+    return true; //返回值有问题。
   }
 
-  async autoProcessItem() {  
-  }
+  // async autoProcessItem() {  
+  // }
 
   getListAdmin() {
     return this.order("item.createAt DESC")

@@ -63,12 +63,13 @@ export default class extends Base {
   //传入参数 auctionPrice：竞拍价格，itemId: 竞拍物品；
   async bidAction(){
     let user = await this.session("user");
+    if(think.isEmpty(user))
+      return this.fail();
     let userId = user["id"];
     let value = this.param("auctionPrice");
     let item = this.param("itemId");
     let res = await this.model("bid").add({user:userId, item:item, value:value, status:this.model("item").AUCTIONING});
     //将新的价格数据返回给前端。
-    console.log(res);
     let newPrice = await this.model("item").setRelation(false).where({id:item}).field("currentPrice").find();
     let newStage = await this.model("item").getStage(newPrice["currentPrice"]);
     return this.success({id:res, newPrice: newPrice["currentPrice"], newStage: newStage});
