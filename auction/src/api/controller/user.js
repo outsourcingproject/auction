@@ -129,9 +129,9 @@ export default class User extends Base {
     let user = await this.session("user");
     let userId = user["id"];
     let bids = await this.model("bid").getList(userId);
-    for (let b of bids) {
-      b["bidStatus"] = await this.model("bid").getStatus(b["id"]);
-    }
+    // for (let b of bids) {
+    //   b["bidStatus"] = await this.model("bid").getStatus(b["id"]);
+    // }
     return this.success(bids);
   }
 

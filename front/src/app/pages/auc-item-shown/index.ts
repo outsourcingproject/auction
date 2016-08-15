@@ -4,7 +4,7 @@
  */
 import {Component, OnInit, OnDestroy, ViewChild, Injectable, Inject} from '@angular/core';
 import {Headers, Http, Response} from '@angular/http';
-import {ActivatedRoute} from '@angular/router'
+import {Router, ActivatedRoute} from '@angular/router'
 import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {Observable} from 'rxjs';
@@ -82,7 +82,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   private _requestHost:string = REQUEST_HOST;
 
-  constructor(private _http:Http, private _route:ActivatedRoute) {
+  constructor(private _http:Http, private _router:Router, private _arouter: ActivatedRoute) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
@@ -102,7 +102,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   ngOnInit() {
     if ('production' === ENV) {
-      this.sub = this._route.params.subscribe(params=> {
+      this.sub = this._arouter.params.subscribe(params=> {
         let _id = params["id"];
         this.itemId = _id;
         if (_id !== undefined) {
@@ -179,13 +179,18 @@ export class AucItemShown implements OnInit,OnDestroy {
     //TODO: update db
     this._http.post(this.bidUrl, {itemId: this.itemId, auctionPrice: this.auctionPrice}, {withCredentials: true})
       .toPromise()
-      .then((res)=> res.json().data)
-      .then(data=> {
-        if (data !== undefined) {
+      .then((res)=> res.json())
+      .then(res=> {
+        if (res.errno != 0){
+          //转到登录页          
+          this.auctionConfirmModal.hide();
+          this._router.navigate(['/login']);
+        }else if (res.data !== undefined) {
+          let data = res.data;
           this.data.currentPrice = data.newPrice;
           this.data.stage = data.newStage;
           this.auctionPrice = this.data.currentPrice + this.data.stage;
-          this.auctionConfirmModal.hide();
+
           this.auctionSuccess.show();
         }
         else return false; //this.auctionFail.show();

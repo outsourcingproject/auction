@@ -61,6 +61,9 @@ export default class Item extends Base {
             await this.startTrans();
             await orderModel.addOne(i["currentBidder"],i["id"]);
             await this.where({id: i["id"]}).update({status:this.AUCTION_ENDED});
+            //更新bid 状态
+            await bidModel.where({item:i["id"],user:i["currentBidder"]}).update({status:bidModel.WINNING});
+            await bidModel.where({item:i["id"],user:["!=",i["currentBidder"]]}).update({status:bidModel.FAILING});
             await this.commit();
           }catch(e){
             await this.rollback();
