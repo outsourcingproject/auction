@@ -190,7 +190,7 @@ export class AucItemShown implements OnInit,OnDestroy {
           this.data.currentPrice = data.newPrice;
           this.data.stage = data.newStage;
           this.auctionPrice = this.data.currentPrice + this.data.stage;
-
+          this.auctionConfirmModal.hide();
           this.auctionSuccess.show();
         }
         else return false; //this.auctionFail.show();

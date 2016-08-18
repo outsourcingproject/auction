@@ -33,32 +33,32 @@
           <p>出价次数: {{data.bidCount}}</p>
           <p>拍卖方式: {{data.auctionType | auctionType}}</p>
         </div>
-        <div *ngIf="data.status==1">
-          <div class="table">
-            <table>
-              <thead>
-              <tr>
-                <td class="red">当前价</td>
-                <td>起拍价</td>
-                <td>竞价阶梯</td>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td class="red">¥ {{data.currentPrice}}</td>
-                <td>¥ {{data.beginPrice}}</td>
-                <td>¥ {{data.stage}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <form class="form" (ngSubmit)="onAuctionPriceSubmit()">
-            <lable for="auction-price">竞买价: </lable>
-            <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPrice"
-                        name="auctionPrice" required>
-            <button class="submit" type="submit">竞买</button>
-          </form>
+        <div *ngIf="data.status<=1" class="table">
+          <table>
+            <thead>
+            <tr>
+              <td class="red">当前价</td>
+              <td>起拍价</td>
+              <td>竞价阶梯</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="red">¥ {{data.currentPrice}}</td>
+              <td>¥ {{data.beginPrice}}</td>
+              <td>¥ {{data.stage}}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
+        <form *ngIf="data.status==1" class="form" (ngSubmit)="onAuctionPriceSubmit()">
+          <lable for="auction-price">竞买价: </lable>
+          <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPrice"
+                      name="auctionPrice" required>
+          <button class="submit" type="submit">竞买</button>
+        </form>
+        <div *ngIf="data.status==2">拍卖结束了！！</div>
+        <div *ngIf="data.status==3">可惜流拍了！！</div>
       </div>
     </div>
     <div class="detail">

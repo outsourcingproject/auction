@@ -5,4 +5,9 @@ export default class Message extends Base {
 	      .field("title,createAt,id")
 	      .select();
 	}
+
+	//messages: an array of message object
+	sendSystemMessage(messages){
+		return this.addMany(messages);
+	}
 }

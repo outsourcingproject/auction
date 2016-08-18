@@ -10,6 +10,8 @@ import Base from './base.js'
  * 如果没有当前需要的失败字符串,请在该文件中定义
  */
 export default class User extends Base {
+
+  systemUser = 1;
   /**
    *
    * @param username

@@ -6,6 +6,13 @@ export default class Bid extends Base {
   LEADING = 2; //领先
   FALLING = 3; //落后
 
+  STATUS = ["得标","竞标失败","暂时领先","被超越"];
+
+  // init(...args){
+  //   super.init(...args);
+  //   this.systemUser = User.systemUser;
+  // }
+
 
 
   getList(userId){
@@ -37,16 +44,29 @@ export default class Bid extends Base {
   }
 //Object:{user:userId, item:item, value:value, status:this.model("bid").LEADING}
   async addOne(bid){
+    let userModel = think.model("user",null,"api");
+    let messageModel = think.model("message",null,"api");
+    let itemModel = think.model("item",null,"api");
     try{
       await this.startTrans();
       let bidId = await this.add(bid);
+      let item = await itemModel.where({id:bid.item}).find();
+      //发送暂时领先系统消息
+      await messageModel.sendSystemMessage([{from:userModel.systemUser, to:bid.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[bid.status], read:0}])
+
+      //更新被超越竞标记录的状态
       await this.where({value:{"<":bid.value},item:bid.item})
-                .update({status:this.FALLING})
+                .update({status:this.FALLING});
+      let bids = await this.where({value:{"<":bid.value},item:bid.item}).select();
+      //给被超越竞标记录的用户发送消息
+      let messages = bids.map((b)=>{return {from:userModel.systemUser, to:b.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[b.status], read:0}});
+      await messageModel.sendSystemMessage(messages);
       await this.commit();
     }catch(e){
       await this.rollback();
     }  
   }
+
   // 查询竞标状态：'得标', '失败', '领先', '被超'
   // async getStatus(bidId){
   //   console.log(bidId);

@@ -11,7 +11,6 @@ export default class Order extends Base {
   CANCELED = 6;
   //添加新订单 地址为默认地址
   addOne(userId, itemId){
-    console.log("order");
     return this.add({user:userId,item:itemId,status:0});
   }
 
