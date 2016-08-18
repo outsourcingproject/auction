@@ -75,6 +75,19 @@ export default class extends Base {
     return this.success({id:res, newPrice: newPrice["currentPrice"], newStage: newStage});
   }
 
+  async followAction(){
+    let user = await this.session("user");
+    if(think.isEmpty(user))
+      return this.fail();
+    let userId = user.id;
+    let itemId = this.param("itemId");
+    let state = this.param("state");
+    if(state)
+      return this.success(await this.model("follow").add({user:userId, item:itemId}));
+    else
+      return this.success(await this.model("follow").delete({user:userId, item:itemId}));
+  }
+
   async detailAction(){
   	let itemId = this.param("id"); //获取item id;
     let resItemInfo = await this._detailHelper(itemId);
