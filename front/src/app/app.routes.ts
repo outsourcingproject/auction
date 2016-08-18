@@ -1,6 +1,7 @@
 import {RouterConfig}          from '@angular/router';
 import {Todo} from './components/todo';
 import {Home} from './pages/home';
+import {AuctionNotStart} from './pages/auction-not-start';
 import {Auctioning} from './pages/auctioning';
 import {AucItemShown} from './pages/auc-item-shown';
 import {ArticleComponent} from './pages/article'
@@ -21,6 +22,7 @@ export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: Home},
   {path: 'auc-item/:id', component: AucItemShown},
+  {path: 'auction-not-start', component:AuctionNotStart},
   {path: 'auctioning', component: Auctioning},
   {path: 'auction-end', component: AuctionEnd},
   {path: 'search/:keyword', component: Search},

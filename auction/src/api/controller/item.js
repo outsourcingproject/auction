@@ -52,6 +52,27 @@ export default class extends Base {
     return this.success(items);
   }
 
+  async auctionNotStartAction(){
+    let itemModel = this.model("item");
+    let items = await this.model("item")
+          .setRelation(false)
+          .where({status:itemModel.AUCTION_NOT_STARTED })
+          .join("item_type on item.type = item_type.id")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")          
+          .limit(10)
+          .select();
+    let user = await this.session("user");
+    if(!think.isEmpty(user)){ 
+      let followingItems =await this.model("follow").field("item").where({user:user["id"]}).select();
+      let itemIds = followingItems.map((f)=>f["item"]);
+      items.map((i)=>{return (itemIds.indexOf(i["id"])!==-1)?i["following"]=true:i["following"]=false});
+    }else{
+      items.map((i)=>{return i["following"] = null});
+    }
+    return this.success(items);
+
+  }
+
   //返回某个拍品的所有竞拍记录
   async getBidAction(){
     let itemId = this.param("id");
