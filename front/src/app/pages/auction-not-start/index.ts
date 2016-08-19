@@ -24,7 +24,7 @@ let data = require('./data.json');
   styles: [style],
   directives: [AucItemDetailed, SplitComponent, AucListComponent, PagerComponent]
 })
-export class AuctionNotStart implements OnInit {
+export class Auctioning implements OnInit {
 
   public data = [];
   private dataUrl;

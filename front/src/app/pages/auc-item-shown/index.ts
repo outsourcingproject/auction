@@ -10,6 +10,7 @@ import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap
 import {Observable} from 'rxjs';
 import {REQUEST_HOST} from '../../app.config';
 
+
 let debug = require('debug')('ng:auc-item-shown');
 let template = require('./template.html');
 let style = require('./style.styl');
@@ -25,9 +26,7 @@ const data = require('./config.json');
 })
 export class AucItemShown implements OnInit,OnDestroy {
   public tabsItems:Array<string> = ['拍品描述', '出价记录', '注意事项'];
-
   public itemBids = [];
-
   public data:{
     id:number,
     name:string,
@@ -79,13 +78,14 @@ export class AucItemShown implements OnInit,OnDestroy {
   private imageUrl;
   private bidUrl;
   private itemId;
-
+  private followUrl;
   private _requestHost:string = REQUEST_HOST;
 
   constructor(private _http:Http, private _router:Router, private _arouter: ActivatedRoute) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
+    this.followUrl = REQUEST_HOST + "/api/item/follow";
   }
 
   @ViewChild('auctionConfirmModal')
@@ -159,10 +159,25 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public watchIt(state) {
-    if (state !== this.data.following) {
-      this.data.following = state;
-      if (state) ++this.data.followCount;
-      else --this.data.followCount;
+    if ('production' === ENV){
+      if(state!==this.data.following){
+          this._http.post(this.followUrl, {itemId:this.itemId, state:state}, {withCredentials: true})
+            .toPromise()
+            .then(res => res.json())
+            .then(res => {
+              if(res.errno == 0){
+                this.data.following = state;
+                if(state) ++this.data.followCount;
+                else --this.data.followCount;
+              }
+              });
+            }
+    }else{
+      if (state !== this.data.following) {
+        this.data.following = state;
+        if (state) ++this.data.followCount;
+        else --this.data.followCount;
+      }      
     }
   }
 

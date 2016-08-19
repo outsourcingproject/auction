@@ -106,7 +106,7 @@ export default class extends Base {
     if(state)
       return this.success(await this.model("follow").add({user:userId, item:itemId}));
     else
-      return this.success(await this.model("follow").delete({user:userId, item:itemId}));
+      return this.success(await this.model("follow").where({user:userId, item:itemId}).delete());
   }
 
   async detailAction(){
@@ -114,15 +114,16 @@ export default class extends Base {
     let resItemInfo = await this._detailHelper(itemId);
     let resRelatedItems = await this._relatedItemHelper(itemId);
     let user = await this.session("user");
+    console.log(user);
     if(!think.isEmpty(user)){
       let userId = user["id"];
       resItemInfo["following"] = await this._followingHelper(userId, itemId);
       for(let r of resRelatedItems)
-        r["isFollowing"] = await this._followingHelper(userId, itemId);
+        r["following"] = await this._followingHelper(userId, r["id"]);
     }else{
       resItemInfo["following"] = null;
       for(let r of resRelatedItems)
-        r["isFollowing"] = null;
+        r["following"] = null;
     }
     resItemInfo["relatedItems"] = resRelatedItems;
     return this.success(resItemInfo);

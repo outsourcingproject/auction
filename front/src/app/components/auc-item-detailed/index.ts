@@ -37,7 +37,7 @@ export class AucItemDetailed implements OnInit {
   private _requestHost:string = REQUEST_HOST;
 
   constructor(private _http:Http, private _router:Router) {
-    this.followUrl = this._requestHost + "api/item/follow"
+    this.followUrl = this._requestHost + "/api/item/follow";
   }
 
   ngOnInit() {
@@ -61,6 +61,7 @@ export class AucItemDetailed implements OnInit {
             .then(res => res.json())
             .then(res => {
               if(res.errno == 0){
+                this.following = state;
                 if(state) ++this.followCount;
                 else --this.followCount;
               }
@@ -73,7 +74,6 @@ export class AucItemDetailed implements OnInit {
         else --this.followCount;
       }      
     }
-
   }
 }
 
