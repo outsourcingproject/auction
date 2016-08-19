@@ -24,7 +24,7 @@ let data = require('./data.json');
   styles: [style],
   directives: [AucItemDetailed, SplitComponent, AucListComponent, PagerComponent]
 })
-export class Auctioning implements OnInit {
+export class AuctionNotStart implements OnInit {
 
   public data = [];
   private dataUrl;
@@ -46,7 +46,6 @@ export class Auctioning implements OnInit {
         .then(data => {
           data.map(d => {
             d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
-            //d["image"] = this.imageUrl + d["image"][0];
           });
           console.log(data);
           this.data = data;

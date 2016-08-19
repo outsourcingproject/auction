@@ -9,6 +9,7 @@ import {AucItemDetailed} from '../../components/auc-item-detailed';
 import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {Observable} from 'rxjs';
 import {REQUEST_HOST} from '../../app.config';
+import {isEmpty} from "../../utils/utils";
 
 
 let debug = require('debug')('ng:auc-item-shown');
@@ -79,6 +80,7 @@ export class AucItemShown implements OnInit,OnDestroy {
   private bidUrl;
   private itemId;
   private followUrl;
+  private userUrl;
   private _requestHost:string = REQUEST_HOST;
 
   constructor(private _http:Http, private _router:Router, private _arouter: ActivatedRoute) {
@@ -86,6 +88,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
     this.followUrl = REQUEST_HOST + "/api/item/follow";
+    this.userUrl = REQUEST_HOST + "/api/user";
   }
 
   @ViewChild('auctionConfirmModal')
@@ -160,18 +163,27 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   public watchIt(state) {
     if ('production' === ENV){
-      if(state!==this.data.following){
-          this._http.post(this.followUrl, {itemId:this.itemId, state:state}, {withCredentials: true})
-            .toPromise()
-            .then(res => res.json())
-            .then(res => {
-              if(res.errno == 0){
-                this.data.following = state;
-                if(state) ++this.data.followCount;
-                else --this.data.followCount;
-              }
-              });
+      this._http.get(this.userUrl, {withCredentials: true})
+        .toPromise()
+        .then(res=>res.json())
+        .then(res=>{
+          if(isEmpty(res.data))
+              this._router.navigate(['/login']);
+          else{
+            if(state!==this.data.following){
+              this._http.post(this.followUrl, {itemId:this.itemId, state:state}, {withCredentials: true})
+                .toPromise()
+                .then(res => res.json())
+                .then(res => {
+                  if(res.errno == 0){
+                    this.data.following = state;
+                    if(state) ++this.data.followCount;
+                    else --this.data.followCount;
+                  }
+                });
             }
+          }
+        })      
     }else{
       if (state !== this.data.following) {
         this.data.following = state;

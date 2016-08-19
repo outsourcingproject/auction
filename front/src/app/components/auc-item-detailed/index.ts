@@ -6,6 +6,8 @@ import {Component, OnInit, Inject, Input} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Router, ActivatedRoute} from '@angular/router'
 import {REQUEST_HOST} from '../../app.config';
+import {isEmpty} from "../../utils/utils";
+
 
 let debug = require('debug')('ng:auc-item-detailed');
 let template = require('./template.html');
@@ -34,10 +36,12 @@ export class AucItemDetailed implements OnInit {
   public type:string;
 
   private followUrl;
+  private userUrl;
   private _requestHost:string = REQUEST_HOST;
 
   constructor(private _http:Http, private _router:Router) {
     this.followUrl = this._requestHost + "/api/item/follow";
+    this.userUrl = this._requestHost + "/api/user";
   }
 
   ngOnInit() {
@@ -56,18 +60,28 @@ export class AucItemDetailed implements OnInit {
   watchIt(state) {
     if ('production' === ENV){
       if(state!==this.following){
-          this._http.post(this.followUrl, {itemId:this.id, state:state}, {withCredentials: true})
-            .toPromise()
-            .then(res => res.json())
-            .then(res => {
-              if(res.errno == 0){
-                this.following = state;
-                if(state) ++this.followCount;
-                else --this.followCount;
-              }
-              });
-            }
-    }else{
+        this._http.get(this.userUrl, {withCredentials: true})
+          .toPromise()
+          .then(res=>res.json())
+          .then(res=>{
+            if(isEmpty(res.data))
+                this._router.navigate(['/login']);
+            else{
+              this._http.post(this.followUrl, {itemId:this.id, state:state}, {withCredentials: true})
+                .toPromise()
+                .then(res => res.json())
+                .then(res => {
+                  if(res.errno == 0){
+                    this.following = state;
+                    if(state) ++this.followCount;
+                    else --this.followCount;
+                  }
+                  });
+                }
+            });
+      }
+    }
+    else{
       if (state !== this.following) {
         this.following = state;
         if (state) ++this.followCount;

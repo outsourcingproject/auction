@@ -23,9 +23,7 @@ export default class User extends Base {
       totalVolume: await this.userModel.getTotalVolume(user.id),
       totalTurnover: await this.userModel.getTotalTurnover(user.id)
     });
-
     return this.success(userDetail);
-
   }
 
   async signupAction() {
