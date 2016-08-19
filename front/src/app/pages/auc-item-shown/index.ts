@@ -150,7 +150,6 @@ export class AucItemShown implements OnInit,OnDestroy {
         this.auctionPrice = this.data.currentPrice + this.data.stage;
       });
     }
-
   }
 
   public imagesClick(idx) {

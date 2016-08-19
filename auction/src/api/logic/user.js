@@ -19,7 +19,7 @@ export default class User extends think.logic.base {
   //     }
   //   }
   // }
-  //
+  
   // loginAction() {
   //   //this.allowMethods = 'post';
   //   this.rules = {
@@ -33,7 +33,7 @@ export default class User extends think.logic.base {
   //     }
   //   }
   // }
-  //
+  
   // logoutAction() {
   //   this.allowMethods = 'get';
   // }

@@ -112,16 +112,16 @@ export class AdminArticleComponent implements OnInit {
       //修改文章
       //put
       this._http.post(this._requestHost + '/rest/article/' + this.selectedArticle.id + '?_method=put', this.selectedArticle, {withCredentials: true}
-        )
-        .subscribe(()=> {
+        ).subscribe(()=> {
+          this._getArticle().subscribe(data=>this.data = data);
           this.articleModal.hide();
         });
-
     }
     else {
       //添加文章
       this._http.post(this._requestHost + '/rest/article', this.currArticle, {withCredentials: true}
       ).subscribe(()=> {
+        this._getArticle().subscribe(data=>this.data = data);
         this.articleModal.hide();
       });
     }
