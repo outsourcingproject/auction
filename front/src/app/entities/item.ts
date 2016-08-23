@@ -1,7 +1,8 @@
 export class Item {
   constructor(public id:number = null,
               public name:string = '',
-              public images:string = '[21,21,21]',
+              public image:string = '[null,null,null]',
+              public images:Array<number> = [null, null, null],
               public desc:string = "",
               public tag:string = "",
               public foundTime:string = "",
