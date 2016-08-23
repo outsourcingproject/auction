@@ -4,7 +4,6 @@ import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import {PagerComponent} from "../pager";
 
-
 import {
   ModalDirective, MODAL_DIRECTIVES, TimepickerComponent,
   DATEPICKER_DIRECTIVES, BS_VIEW_PROVIDERS
@@ -137,9 +136,9 @@ export class AdminItemComponent implements OnInit {
     this.curr.auctionBeginTime = +this.curr.auctionBeginTime;
     this.curr.auctionEndTime = +this.curr.auctionEndTime;
 
-    this.curr.image=JSON.stringify(this.curr.images);
-    
-    if (this.selected) {
+    this.curr.image = JSON.stringify(this.curr.images);
+
+    if (this.selected!=null) {
       //修改物品
       //put
       this._http.post(this._requestUrl + '/rest/item/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
