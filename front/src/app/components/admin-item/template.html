@@ -122,46 +122,65 @@
           <div class="form-group">
 
           </div>
-          <div class="form-group">
-            <label for="begin-date">竞拍开始</label>
-            <div class="date-time-wrapper">
-              <div class="date">
-                <label for="begin-date">日期</label>
-                <div id="begin-date">
-                  <datepicker [(ngModel)]="curr.auctionBeginTime" [minDate]="minDate" [showWeeks]="true"
-                              style="display:inline-block;" name="begin-date"></datepicker>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="form-group">
+                <label for="begin-date">竞拍开始</label>
+                <div class="date-time-wrapper">
+                  <div class="date">
+                    <label for="begin-date">日期</label>
+                    <div id="begin-date">
+                      <datepicker [(ngModel)]="curr.auctionBeginTime" [minDate]="minDate" [showWeeks]="true"
+                                  style="display:inline-block;" name="begin-date"></datepicker>
+                    </div>
+                  </div>
+                  <div class="time">
+                    <label for="begin-time">时间</label>
+                    <div id="begin-time">
+                      <timepicker [(ngModel)]="curr.auctionBeginTime" style="display:inline-block;" name="begin-time"
+                                  [showMeridian]="false"></timepicker>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="time">
-                <label for="begin-time">时间</label>
-                <div id="begin-time">
-                  <timepicker [(ngModel)]="curr.auctionBeginTime" style="display:inline-block;" name="begin-time"
-                              [showMeridian]="false"></timepicker>
+
+              <div class="form-group">
+                <label for="begin-date">竞拍结束</label>
+                <div class="date-time-wrapper">
+                  <div class="date">
+                    <label for="end-date">日期</label>
+                    <div id="end-date">
+                      <datepicker [(ngModel)]="curr.auctionEndTime" [minDate]="minDate" [showWeeks]="true"
+                                  style="display:inline-block;" name="end-date"></datepicker>
+                    </div>
+                  </div>
+                  <div class="time">
+                    <label for="end-time">时间</label>
+                    <div id="end-time">
+                      <timepicker [(ngModel)]="curr.auctionEndTime" style="display:inline-block;" name="end-time"
+                                  [showMeridian]="false"></timepicker>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="begin-date">竞拍结束</label>
-            <div class="date-time-wrapper">
-              <div class="date">
-                <label for="end-date">日期</label>
-                <div id="end-date">
-                  <datepicker [(ngModel)]="curr.auctionEndTime" [minDate]="minDate" [showWeeks]="true"
-                              style="display:inline-block;" name="end-date"></datepicker>
-                </div>
+            <div class="col-md-5">
+              <div class="img-group">
+                <image-preview [imgId]="curr.images[0]"></image-preview>
+                <image-uploader (complete)="curr.images[0]=$event"></image-uploader>
               </div>
-              <div class="time">
-                <label for="end-time">时间</label>
-                <div id="end-time">
-                  <timepicker [(ngModel)]="curr.auctionEndTime" style="display:inline-block;" name="end-time"
-                              [showMeridian]="false"></timepicker>
-                </div>
+
+              <div class="img-group">
+                <image-preview [imgId]="curr.images[1]"></image-preview>
+                <image-uploader (complete)="curr.images[1]=$event"></image-uploader>
+              </div>
+
+              <div class="img-group">
+                <image-preview [imgId]="curr.images[2]"></image-preview>
+                <image-uploader (complete)="curr.images[2]=$event"></image-uploader>
               </div>
             </div>
           </div>
-
           <button class="btn btn-success" type="submit">提交</button>
           <button class="btn btn-default" type="button" (click)="addOrUpdateModal.hide()">取消</button>
         </form>

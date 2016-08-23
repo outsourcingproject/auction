@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Observable} from "rxjs/Observable";
 import {PagerComponent} from "../pager";
 
+
 import {
   ModalDirective, MODAL_DIRECTIVES, TimepickerComponent,
   DATEPICKER_DIRECTIVES, BS_VIEW_PROVIDERS
@@ -11,6 +12,9 @@ import {
 
 import {UEditorComponent} from "../ueditor/ueditor.component";
 import {Item} from "../../entities/item";
+
+import {ImagePreviewComponent} from "../image-preview"
+import {ImageUploaderComponent} from "../image-uploader"
 import {REQUEST_HOST} from "../../app.config";
 
 let data = require('./data.json');
@@ -23,7 +27,7 @@ let auctionType = require('../admin-auction/auction-type.json');
   selector: 'admin-item',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent],
+  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent, ImagePreviewComponent, ImageUploaderComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminItemComponent implements OnInit {
@@ -38,6 +42,8 @@ export class AdminItemComponent implements OnInit {
 
   public selected = null;
   public curr = new Item();
+
+  public images = [];
 
   @ViewChild('addOrUpdateModal')
   public addOrUpdateModal:ModalDirective;
@@ -75,6 +81,14 @@ export class AdminItemComponent implements OnInit {
             this.itemType = data;
             return this._http.get(this._requestUrl + '/rest/item', {withCredentials: true})
               .map(res=>res.json().data)
+              .map(data=> {
+                let d = data.map(i=> {
+                  i.images = JSON.parse(i.image)
+                  return i
+                })
+                console.log(d)
+                return d;
+              })
 
           })
 
@@ -123,6 +137,8 @@ export class AdminItemComponent implements OnInit {
     this.curr.auctionBeginTime = +this.curr.auctionBeginTime;
     this.curr.auctionEndTime = +this.curr.auctionEndTime;
 
+    this.curr.image=JSON.stringify(this.curr.images);
+    
     if (this.selected) {
       //修改物品
       //put
@@ -135,7 +151,6 @@ export class AdminItemComponent implements OnInit {
     }
     else {
       //添加物品
-
       this._http.post(this._requestUrl + '/rest/item', this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData().subscribe(data=>this.data = data);
@@ -144,5 +159,6 @@ export class AdminItemComponent implements OnInit {
     }
 
   }
+
 
 }
