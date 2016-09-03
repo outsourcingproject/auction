@@ -5,7 +5,7 @@ export default class Message extends Base {
   async __before() {
     this.modelInstance = think.model('message', null, 'api');
     this.modelPk = await this.modelInstance.getPk();
-    this.pageCount = false;
+    this.needPaging = false;
 
     let user = await this.session('user');
 

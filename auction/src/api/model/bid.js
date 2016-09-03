@@ -55,12 +55,16 @@ export default class Bid extends Base {
       await messageModel.sendSystemMessage([{from:userModel.systemUser, to:bid.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[bid.status], read:0}])
 
       //更新被超越竞标记录的状态
+
+      let bids = await this.where({value:{"<":bid.value},item:bid.item,user:{"!=":bid.user},status:{"!=":this.FALLING}}).distinct("user").select();
+      console.log(bids);
       await this.where({value:{"<":bid.value},item:bid.item})
                 .update({status:this.FALLING});
-      let bids = await this.where({value:{"<":bid.value},item:bid.item}).select();
       //给被超越竞标记录的用户发送消息
-      let messages = bids.map((b)=>{return {from:userModel.systemUser, to:b.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[b.status], read:0}});
-      await messageModel.sendSystemMessage(messages);
+      let messages = bids.map((b)=>{return {from:userModel.systemUser, to:b.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[3], read:0}});
+      if(!think.isEmpty(messages)){
+          await messageModel.sendSystemMessage(messages);   
+      }
       await this.commit();
     }catch(e){
       await this.rollback();
