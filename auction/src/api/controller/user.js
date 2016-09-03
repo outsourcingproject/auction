@@ -143,21 +143,23 @@ export default class User extends Base {
   }
 
   async _getPriceOver(userId) {
-    let items = await this.model("bid").getDistinctList(userId);
+    return await this.model("bid").getPriceOver(userId);
 
-    let myMaxBids = [];
-    let sql = "select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
-    for (let i of items) {
-      let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"], userId);
-      myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
-    }
-    console.log(myMaxBids);
-    let resultPriceOver = [];
-    for (let m of myMaxBids) {
-      let r = await this.model("bid").getPriceOver(m["item"], m["value"]);
-      if (!think.isEmpty(r))
-        resultPriceOver.push(r);
-    }
-    return resultPriceOver;
+    // let items = await this.model("bid").getDistinctList(userId);
+
+    // let myMaxBids = [];
+    // let sql = "select * from bid where item = %d and user=%d and value =(select max(value) from bid where item = %d and user=%d)"
+    // for (let i of items) {
+    //   let parsedSql = this.model("bid").parseSql(sql, i["item"], userId, i["item"], userId);
+    //   myMaxBids.push((await this.model("bid").query(parsedSql))[0]);
+    // }
+    // console.log(myMaxBids);
+    // let resultPriceOver = [];
+    // for (let m of myMaxBids) {
+    //   let r = await this.model("bid").getPriceOver(m["item"], m["value"]);
+    //   if (!think.isEmpty(r))
+    //     resultPriceOver.push(r);
+    // }
+    // return resultPriceOver;
   }
 }

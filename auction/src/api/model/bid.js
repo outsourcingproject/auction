@@ -26,10 +26,10 @@ export default class Bid extends Base {
       .distinct("item")
       .select();
   }
-  getPriceOver(itemId, price){
+  getPriceOver(userId){
     return this.join("item on bid.item = item.id")
       .field("bid.createAt as time, bid.item as id, bid.value as price, item.name")
-      .where({item:itemId,value:{">":price}})
+      .where("user =" + userId +" and bid.status = " + this.FALLING)
       .order("bid.createAt DESC")
       .find();
   }

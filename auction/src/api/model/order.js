@@ -74,7 +74,7 @@ export default class Order extends Base {
 
   getWaitPay(userId) {
     return this.where({user: userId})
-      .where("order.status = 1")
+      .where("order.status = " + this.WAIT_PAY)
       .field("item.name, order.id, item.currentPrice")
       .join("item on order.item = item.id")
       .order("order.createAt DESC")
