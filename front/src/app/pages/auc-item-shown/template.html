@@ -1,7 +1,9 @@
 <div class="container">
   <div class="header">
     <img src="../../../assets/img/header.png" width="100%">
-    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> - {{data.name}}</div>
+    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> -
+      {{data.name}}
+    </div>
   </div>
   <div class="auc-item-shown">
     <div class="main">
@@ -52,13 +54,14 @@
           </table>
         </div>
         <form *ngIf="data.status==1" class="form" (ngSubmit)="onAuctionPriceSubmit()">
-          <lable for="auction-price">竞买价: </lable>
-          <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage" [(ngModel)]="auctionPrice"
-                      name="auctionPrice" required>
+          <lable for="auction-price">竞买价:</lable>
+          <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage"
+                 [(ngModel)]="auctionPrice"
+                 name="auctionPrice" required>
           <button class="submit" type="submit">竞买</button>
         </form>
-        <div *ngIf="data.status==2">拍卖结束了！！</div>
-        <div *ngIf="data.status==3">可惜流拍了！！</div>
+        <div class="item-msg" *ngIf="data.status==2">您的速度慢了，拍卖结束了！</div>
+        <div class="item-msg" *ngIf="data.status==3">很可惜，流拍了！</div>
       </div>
     </div>
     <div class="detail">
@@ -74,7 +77,7 @@
 
           </div>
           <div class="box-body" [class.hidden]="tabsSelectedIdx!=1">
-            <table class="table">
+            <table class="table" *ngIf="itemBids.length">
               <thead>
               <tr>
                 <th style="width: 15rem; overflow: hidden">用户名</th>
@@ -84,12 +87,15 @@
               </thead>
               <tbody>
               <tr *ngFor="let i of itemBids">
-                <td >{{i.username}}</td>
+                <td>{{i.username}}</td>
                 <td>¥ {{i.price | number:'1.2-2'}}</td>
-                <td >{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
+                <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
               </tr>
               </tbody>
             </table>
+            <div *ngIf="!itemBids.length">
+              暂无出价记录
+            </div>
           </div>
           <div class="box-body" [class.hidden]="tabsSelectedIdx!=2">
             <p style="color: #f60;line-height: 35px;">敬告：您的出价行为表明已经认同了标准古钱币的拍卖规则。不论成功与否，你都承担与之相应的法律行为.</p>
@@ -101,12 +107,12 @@
 
         </div>
 
-        <div class="box right">
-          <div class="box-header">浏览过的拍品</div>
-          <div class="box-body">
-            <p>浏览过的拍品</p>
-          </div>
-        </div>
+        <!--<div class="box right">-->
+        <!--<div class="box-header">浏览过的拍品</div>-->
+        <!--<div class="box-body">-->
+        <!--<p>浏览过的拍品</p>-->
+        <!--</div>-->
+        <!--</div>-->
       </div>
     </div>
     <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
@@ -129,8 +135,8 @@
       </div>
       <div class="modal-body">
 
-        <p>您正在竞拍 {{data.name}}，出价 ¥ {{auctionPrice|number:'1.2-2'}}，您的出价行为代表您已知晓并同意本网站拍卖协议。
-        </p>
+        <p>您正在竞拍 {{data.name}}，出价 ¥ {{auctionPrice|number:'1.2-2'}} </p>
+        <p>您的出价行为代表您已知晓并同意本网站拍卖协议。</p>
 
         <div>
           您确定竞拍吗？
@@ -141,7 +147,6 @@
     </div>
   </div>
 </div>
-
 
 
 <div bsModal #auctionSuccess="bs-modal" class="modal fade" tabindex="-1" role="dialog"

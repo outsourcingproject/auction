@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {Router} from '@angular/router';
 import {PagerComponent} from "../pager";
@@ -7,6 +7,7 @@ import {
   DATEPICKER_DIRECTIVES, BS_VIEW_PROVIDERS
 } from "ng2-bootstrap/ng2-bootstrap";
 import {ItemGroup} from "../../entities/itemGroup";
+import {REQUEST_HOST} from "../../app.config";
 
 let data = require('./data.json');
 
@@ -17,9 +18,9 @@ let data = require('./data.json');
   directives: [PagerComponent, MODAL_DIRECTIVES],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
-export class AdminItemGroupComponent {
+export class AdminItemGroupComponent implements OnInit {
 
-  public data = data;
+  public data = []//data;
   public pagedData;
 
   public pageSize = 10;
@@ -27,6 +28,7 @@ export class AdminItemGroupComponent {
   public selected = null;
   public curr = new ItemGroup();
 
+  private _requestUrl:string = REQUEST_HOST;
 
   @ViewChild('addOrUpdateModal')
   public addOrUpdateModal:ModalDirective;
@@ -36,6 +38,18 @@ export class AdminItemGroupComponent {
 
   public onPagedDataChange(data) {
     this.pagedData = data;
+  }
+
+  private _getData() {
+    this._http.get(this._requestUrl + '/rest/item_group' , {withCredentials: true})
+      .map(res=>res.json().data)
+      .subscribe((data)=> {
+        this.data = data;
+      })
+  }
+
+  ngOnInit() {
+    this._getData();
   }
 
   public onModify(idx) {
@@ -56,16 +70,27 @@ export class AdminItemGroupComponent {
 
     this.curr.isOpen = this.curr.isOpen ? 0 : 1;
 
-    //TODO: put data
+    //put
+    this._http.post(this._requestUrl + '/rest/item_group/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
+      .subscribe(()=> {
+        this._getData();
+      })
   }
 
   public onSubmit() {
     if (this.selected != null) {
-
-      //TODO: put
+      //put
+      this._http.post(this._requestUrl + '/rest/item_group/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
+        .subscribe(()=> {
+          this._getData();
+        });
     } else {
+      //post
+      this._http.post(this._requestUrl + '/rest/item_group' , this.curr, {withCredentials: true})
+        .subscribe(()=> {
+          this._getData();
+        });
 
-      //TODO: post
     }
   }
 

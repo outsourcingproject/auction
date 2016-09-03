@@ -182,13 +182,13 @@ export class AucItemShown implements OnInit,OnDestroy {
                 });
             }
           }
-        })      
+        })
     }else{
       if (state !== this.data.following) {
         this.data.following = state;
         if (state) ++this.data.followCount;
         else --this.data.followCount;
-      }      
+      }
     }
   }
 
@@ -202,13 +202,13 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public onAuctionPriceConfirm() {
-    //TODO: update db
+    //
     this._http.post(this.bidUrl, {itemId: this.itemId, auctionPrice: this.auctionPrice}, {withCredentials: true})
       .toPromise()
       .then((res)=> res.json())
       .then(res=> {
         if (res.errno != 0){
-          //转到登录页          
+          //转到登录页
           this.auctionConfirmModal.hide();
           this._router.navigate(['/login']);
         }else if (res.data !== undefined) {

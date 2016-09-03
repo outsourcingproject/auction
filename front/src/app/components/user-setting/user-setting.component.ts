@@ -35,7 +35,7 @@ export class UserSettingComponent implements OnInit {
 
 
   private _requestHost:string = REQUEST_HOST;
-  
+
   constructor(private _http:Http) {
 
   }
@@ -115,6 +115,7 @@ export class UserSettingComponent implements OnInit {
     if (idx !== null && idx !== undefined) {
       this.currAddress = this.addressList[idx];
     }
+    return false;
   }
 
   public onAddressSubmit(data) {

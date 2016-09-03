@@ -50,7 +50,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let address of addressList;let idx=index">
-          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)"></td>
+          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)" [attr.checked]="selectedAddressIdx===idx?true:null" ></td>
           <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
           <td>{{address.name}}</td>
           <td>{{address.phoneNum}}</td>
