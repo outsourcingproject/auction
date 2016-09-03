@@ -31,6 +31,9 @@ export class UserMessageComponent implements OnInit {
 
   public onMessageClick(idx:number) {
     this.selected = this.data[idx];
+    this._http.post(this._requestHost+"/rest/message/" + this.data[idx].id + '?_method=delete',{read:1},{withCredentials: true})
+        .toPromise()
+        .then();
     this.detailModal.show();
   }
 
@@ -43,14 +46,9 @@ export class UserMessageComponent implements OnInit {
 
   ngOnInit() {
     this._userServer.getUser().flatMap((user)=> {
-      console.log(user);
       return this._http.get(this._requestHost + '/rest/message?filter=' + JSON.stringify({to: user.id}), {withCredentials: true})
         .map((res)=>res.json().data);
     }).subscribe((data)=>this.data = data);
 
-
-    // Observable.of(config).delay(500).subscribe((data)=> {
-    //   this.data = data;
-    // })
   }
 }
