@@ -3,13 +3,12 @@ import {Http, URLSearchParams, Response}             from '@angular/http';
 import {Observable}       from "rxjs";
 import {User}             from "../entities/user";
 import {BaseService} from "./base.service";
-import {IUserService} from "../service-interface";
 
 import {REQUEST_HOST} from "../app.config"
 
 import {isEmpty} from '../utils'
 @Injectable()
-export class UserService extends BaseService implements IUserService {
+export class UserService extends BaseService {
 
   private _user:User;
 

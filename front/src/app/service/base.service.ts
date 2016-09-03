@@ -5,12 +5,12 @@ import {Observable}       from "rxjs";
 @Injectable()
 export class BaseService {
 
-  protected _extractData(res: Response):Observable<Object>{
-    let body=res.json();
-    if(body.errno){
+  protected _extractData(res:Response):Observable<Object> {
+    let body = res.json();
+    if (body.errno) {
       return Observable.throw(body);
     }
     return Observable.of(body.data);
   }
-  
+
 }

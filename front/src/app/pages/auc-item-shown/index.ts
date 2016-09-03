@@ -113,52 +113,49 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   ngOnInit() {
-    if ('production' === ENV) {
 
-      this.sub = this._arouter.params.subscribe(params=> {
-        let _id = params["id"];
-        this.itemId = _id;
-        if (_id !== undefined) {
-          this._http.post(this.dataUrl, {id: _id}, {withCredentials: true})
-            .toPromise()
-            .then(res => res.json().data)
-            .then(data => {
-              data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl + i);
-              data["relatedItems"].map(r=> {
-                r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
-              });
-              this.data = data;
-              this.relatedItems = data.relatedItems;
-              this._currTimer = setInterval(()=> {
-                this._currTime = this.data.auctionEndTime - new Date().getTime();
-              }, 1000);
-              this.tabsClick(0);
-              this.imagesClick(0);
-              this.auctionPrice = this.data.currentPrice + this.data.stage;
+    this.sub = this._arouter.params.subscribe(params=> {
+      let _id = params["id"];
+      this.itemId = _id;
+      if (_id !== undefined) {
+        this._http.post(this.dataUrl, {id: _id}, {withCredentials: true})
+          .toPromise()
+          .then(res => res.json().data)
+          .then(data => {
+            data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl + i);
+            data["relatedItems"].map(r=> {
+              r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
+            });
+            this.data = data;
+            this.relatedItems = data.relatedItems;
+            this._currTimer = setInterval(()=> {
+              this._currTime = this.data.auctionEndTime - new Date().getTime();
+            }, 1000);
+            this.tabsClick(0);
+            this.imagesClick(0);
+            this.auctionPrice = this.data.currentPrice + this.data.stage;
 
-            })
-            .catch(this.handleError);
+          })
+          .catch(this.handleError);
 
-          this._http.get(this._requestHost + '/api/item/get_bid?id=' + _id, {withCredentials: true}).map((res)=>res.json().data)
-            .subscribe((itemBids)=> {
-              this.itemBids = itemBids;
-            })
-        } else {
-          //to do id doesn't exit;
-        }
-      })
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.data = data;
-        this.relatedItems = data.relatedItems;
-        this._currTimer = setInterval(()=> {
-          this._currTime = this.data.auctionEndTime - new Date().getTime();
-        }, 1000);
-        this.tabsClick(0);
-        this.imagesClick(0);
-        this.auctionPrice = this.data.currentPrice + this.data.stage;
-      });
-    }
+        this._http.get(this._requestHost + '/api/item/get_bid?id=' + _id, {withCredentials: true}).map((res)=>res.json().data)
+          .subscribe((itemBids)=> {
+            this.itemBids = itemBids;
+          })
+      } else {
+        //to do id doesn't exit;
+      }
+    });
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.data = data;
+    //   this.relatedItems = data.relatedItems;
+    //   this._currTimer = setInterval(()=> {
+    //     this._currTime = this.data.auctionEndTime - new Date().getTime();
+    //   }, 1000);
+    //   this.tabsClick(0);
+    //   this.imagesClick(0);
+    //   this.auctionPrice = this.data.currentPrice + this.data.stage;
+    // });
   }
 
   public imagesClick(idx) {
@@ -170,35 +167,32 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public watchIt(state) {
-    if ('production' === ENV) {
-      this._http.get(this.userUrl, {withCredentials: true})
-        .toPromise()
-        .then(res=>res.json())
-        .then(res=> {
-          if (isEmpty(res.data))
-            this._router.navigate(['/login']);
-          else {
-            if (state !== this.data.following) {
-              this._http.post(this.followUrl, {itemId: this.itemId, state: state}, {withCredentials: true})
-                .toPromise()
-                .then(res => res.json())
-                .then(res => {
-                  if (res.errno == 0) {
-                    this.data.following = state;
-                    if (state) ++this.data.followCount;
-                    else --this.data.followCount;
-                  }
-                });
-            }
+    this._http.get(this.userUrl, {withCredentials: true})
+      .toPromise()
+      .then(res=>res.json())
+      .then(res=> {
+        if (isEmpty(res.data))
+          this._router.navigate(['/login']);
+        else {
+          if (state !== this.data.following) {
+            this._http.post(this.followUrl, {itemId: this.itemId, state: state}, {withCredentials: true})
+              .toPromise()
+              .then(res => res.json())
+              .then(res => {
+                if (res.errno == 0) {
+                  this.data.following = state;
+                  if (state) ++this.data.followCount;
+                  else --this.data.followCount;
+                }
+              });
           }
-        })
-    } else {
-      if (state !== this.data.following) {
-        this.data.following = state;
-        if (state) ++this.data.followCount;
-        else --this.data.followCount;
-      }
-    }
+        }
+      })
+    // if (state !== this.data.following) {
+    //   this.data.following = state;
+    //   if (state) ++this.data.followCount;
+    //   else --this.data.followCount;
+    // }
   }
 
   public tabsClick(idx) {
@@ -231,13 +225,13 @@ export class AucItemShown implements OnInit,OnDestroy {
           this._router.navigate(['/login']);
         } else if (res.data !== undefined) {
           let data = res.data;
-          if(data.id!=0){
+          if (data.id != 0) {
             this.data.currentPrice = data.newPrice;
             this.data.stage = data.newStage;
             this.auctionPrice = this.data.currentPrice + this.data.stage;
             this.auctionConfirmModal.hide();
             this.auctionSuccess.show();
-          }else{
+          } else {
             this.auctionConfirmModal.hide();
             this.auctionFail.show();
           }

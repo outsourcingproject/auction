@@ -14,9 +14,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 /**
  * Webpack Constants
  */
-//const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-//用dev模拟production环境实现实时更新
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig.metadata, {

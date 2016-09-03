@@ -38,31 +38,28 @@ export class Search implements OnInit {
   }
 
   ngOnInit() {
-    if ('production' === ENV) {
-      this.sub = this._route.params.subscribe((params)=> {
-        let _keyword = params["keyword"];
-        if (_keyword != null) {
-          this._http.post(this.searchUrl, {keyword: _keyword})
-            .toPromise()
-            .then(res => res.json().data)
-            .then(data => {
-              data.map(d => {
-                d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
-                //d["image"] = this.imageUrl + d["image"][0];
-              });
-              console.log(data);
-              return this.data = data;
-            })
-            .then(data => this.data = data)
-            .catch(this.handleError);
-        }
-      });
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.data = data;
-        console.log(this.data);
-      });
-    }
+    this.sub = this._route.params.subscribe((params)=> {
+      let _keyword = params["keyword"];
+      if (_keyword != null) {
+        this._http.post(this.searchUrl, {keyword: _keyword})
+          .toPromise()
+          .then(res => res.json().data)
+          .then(data => {
+            data.map(d => {
+              d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
+              //d["image"] = this.imageUrl + d["image"][0];
+            });
+            console.log(data);
+            return this.data = data;
+          })
+          .then(data => this.data = data)
+          .catch(this.handleError);
+      }
+    });
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.data = data;
+    //   console.log(this.data);
+    // });
   }
 
 
