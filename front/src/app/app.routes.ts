@@ -1,6 +1,7 @@
 import {RouterConfig}          from '@angular/router';
 import {Todo} from './components/todo';
 import {Home} from './pages/home';
+import {ItemGroup} from './pages/item-group';
 import {AuctionNotStart} from './pages/auction-not-start';
 import {Auctioning} from './pages/auctioning';
 import {AucItemShown} from './pages/auc-item-shown';
@@ -21,6 +22,7 @@ import {SignupSuccessComponent} from "./pages/signup-success/signup-success.comp
 export const appRoutes:RouterConfig = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: Home},
+  {path: 'item-group/:id',component:ItemGroup},
   {path: 'auc-item/:id', component: AucItemShown},
   {path: 'auction-not-start', component:AuctionNotStart},
   {path: 'auctioning', component: Auctioning},
@@ -33,7 +35,6 @@ export const appRoutes:RouterConfig = [
   {path: 'signup', component: SignupForm},
   {path: 'signup-success', component: SignupSuccessComponent},
   {path: 'signup-fail', component: SignupFailComponent},
-
   {path: 'logout', component: LogoutComponent},
   {path: 'desc', component: DescComponent},
   ...userRoutes,

@@ -1,8 +1,8 @@
 <aside class="sidebar">
     <div *ngFor="let i of data; let idx = index" (mouseover)="onMouseOver(idx)" class="group">
-        <div class="title">{{i.id}}F&nbsp;{{i.title}}</div>
+        <div class="title" [routerLink]="['/item-group',i.id]">{{i.id}}F&nbsp;{{i.title}}</div>
         <div class="content" [class.show]="curIdx === idx">
-            <a [routerLink]="['',i.id]">{{i.desc}}</a>
+            <a [routerLink]="['/item-group',i.id]">{{i.desc}}</a>
         </div>
     </div>
 </aside>

@@ -109,6 +109,13 @@ export default class extends Base {
       return this.success(await this.model("follow").where({user:userId, item:itemId}).delete());
   }
 
+  async groupAction(){
+    let groupId = this.param("id");
+    console.log(groupId);
+    let data = await this.model("item_group").selectData(groupId);
+    return this.success(data);
+  }
+
   async detailAction(){
   	let itemId = this.param("id"); //获取item id;
     let resItemInfo = await this._detailHelper(itemId);
