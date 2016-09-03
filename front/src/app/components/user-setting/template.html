@@ -32,6 +32,9 @@
     </div>
     <div class="user-info">
       <div class="header">用户信息 <i class="fa fa-cog"></i></div>
+      <div class="content">
+        <p>绑定邮箱：{{user.email}}</p>
+      </div>
     </div>
   </div>
   <div class="flex-row">
@@ -45,12 +48,13 @@
           <th>收货人</th>
           <th>收货电话</th>
           <th class="default">默认收货地址</th>
-          <th >操作</th>
+          <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let address of addressList;let idx=index">
-          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)" [attr.checked]="selectedAddressIdx===idx?true:null" ></td>
+          <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)"
+                     [attr.checked]="selectedAddressIdx===idx?true:null"></td>
           <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
           <td>{{address.name}}</td>
           <td>{{address.phoneNum}}</td>

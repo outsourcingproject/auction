@@ -22,12 +22,118 @@
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>
     <td>
-      <a *ngIf="order.status==0||order.status==1">订单超时处理</a>
-      <a *ngIf="order.status==2">核实付款</a>
-      <a *ngIf="order.status==3">发货</a>
+      <a *ngIf="order.status==0||order.status==1" (click)="orderTimeout(idx)">订单超时处理</a>
+      <a *ngIf="order.status==2" (click)="confirmPay(idx)">核实付款</a>
+      <a *ngIf="order.status==3" (click)="deliveryGood(idx)">发货</a>
+      <a *ngIf="order.status==4" (click)="orderDetail(idx)">详细</a>
     </td>
   </tr>
   </tbody>
 </table>
 
 <pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+<div bsModal #orderTimeoutModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="orderTimeoutModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">订单超时处理</h4>
+      </div>
+      <div class="modal-body">
+        <p>你确定要对此订单进行超时取消订单处理吗？该过程不可逆。</p>
+        <button class="btn btn-success" (click)="orderTimeoutSubmit()">确定</button>
+        <button class="btn btn-default" (click)="orderTimeoutModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #confirmPayModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="confirmPayModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">核实付款</h4>
+      </div>
+      <div class="modal-body">
+        <p>你确定已收到此订单款项？</p>
+        <button class="btn btn-success" (click)="confirmPaySubmit()">确定</button>
+        <button class="btn btn-default" (click)="confirmPayModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #deliveryGoodModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="deliveryGoodModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">发货</h4>
+      </div>
+      <div class="modal-body">
+        <p>您需要发货的物品名称为： {{selected&&selected.name}}</p>
+        <p>发货标记为： {{selected&&selected.tag}}</p>
+        <p>发货信息 <br/> {{selected&&selected.address}}</p>
+
+
+        <form (ngSubmit)="deliveryGoodSubmit()" class="form">
+          <div class="form-group">
+            <label for="type">快递名称</label>
+            <select id="type" name="type" class="form-control" [(ngModel)]="expressName" required>
+              <option *ngFor="let i of expressNames" [value]="i">{{i}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="expressNo">单号</label>
+            <input id="expressNo" type="text" name="expressNo" class="form-control" [(ngModel)]="expressNo" required>
+          </div>
+
+          <button class="btn btn-success" (click)="deliveryGoodSubmit()" type="submit">确定</button>
+          <button class="btn btn-default" (click)="deliveryGoodModal.hide()" type="button">取消</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #orderDetailModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="orderDetailModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">订单详情</h4>
+      </div>
+      <div class="modal-body">
+        <p>快递名称：{{selected&&selected.expressName}}</p>
+        <p>运单号：{{selected&&selected.expressNo}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

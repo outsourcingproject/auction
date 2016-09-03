@@ -8,6 +8,7 @@ import {AreaPickerComponent} from "../area-picker";
 import {Address} from "../../entities/address";
 import {Observable} from "rxjs";
 import {REQUEST_HOST} from "../../app.config";
+import {UserService} from "../../service/user.service";
 
 let addressList = require('./address-list.json');
 let debug = require('debug')('ng:user-setting');
@@ -22,7 +23,7 @@ export class UserSettingComponent implements OnInit {
 
   public date = new Date();
   public time = new Date();
-  public user = new User();
+  public user;
 
   public showPwdWorn:boolean;
   public showSuccess:boolean;
@@ -36,8 +37,10 @@ export class UserSettingComponent implements OnInit {
 
   private _requestHost:string = REQUEST_HOST;
 
-  constructor(private _http:Http) {
-
+  constructor(private _http:Http, private _userService:UserService) {
+    this._userService.getUser().subscribe(user=> {
+      this.user = user;
+    })
   }
 
   ngOnInit() {

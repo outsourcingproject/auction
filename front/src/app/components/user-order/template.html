@@ -19,6 +19,7 @@
       <a *ngIf="order.status==0" (click)="onAuctionConfirm(order)">确认收货地址</a>
       <a *ngIf="order.status==1" (click)="onPay(order)">支付</a>
       <a *ngIf="order.status==4" (click)="onReceiveConfirm(order)">确认收货</a>
+      <a *ngIf="order.status==4" (click)="orderDetail(idx)">详细</a>
     </td>
   </tr>
   </tbody>
@@ -40,8 +41,38 @@
       </div>
       <div class="modal-body">
 
-        TODO: address select
+        <div class="address-management">
+          <div class="header">选择收货地址 <i class="fa fa-bicycle"></i></div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th class="edit-selected">选择</th>
+              <th>详细地址</th>
+              <th>收货人</th>
+              <th>收货电话</th>
+              <th class="default">默认收货地址</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let address of addressList;let idx=index">
+              <td><input type="radio" name="radioGroup" (click)="setSelectedAddressIdx(idx)"
+                         [attr.checked]="address.isDefault?true:null"></td>
+              <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
+              <td>{{address.name}}</td>
+              <td>{{address.phoneNum}}</td>
+              <td>
+                <div *ngIf="address.isDefault">默认</div>
+              </td>
 
+            </tr>
+            </tbody>
+          </table>
+
+          <button class="btn btn-success" (click)="onAuctionConfirmSubmit()" [attr.disabled]="selectedAddressIdx==null?true:null">确定</button>
+          <button class="btn btn-default" (click)="auctionConfirmModal.hide()">取消</button>
+          <button class="btn btn-warning" (click)="addOrModifyAddress()">添加/修改收货地址</button>
+
+        </div>
       </div>
     </div>
   </div>
@@ -91,6 +122,25 @@
         </div>
         <button class="btn btn-success" (click)="onReceiveConfirmSubmit()">确认收货</button>
         <button class="btn btn-worning" (click)="receiveConfirmModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #orderDetailModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="orderDetailModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">订单详情</h4>
+      </div>
+      <div class="modal-body">
+        <p>快递名称：{{selected&&selected.expressName}}</p>
+        <p>运单号：{{selected&&selected.expressNo}}</p>
       </div>
     </div>
   </div>

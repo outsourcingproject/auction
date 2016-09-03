@@ -37,15 +37,14 @@ export class UserService extends BaseService implements IUserService {
     }
     else {
       //请求后端
-      this.flushUser();
+      return this.flushUser();
     }
     //Observable.of(user).delay(500).map((user)=>this.user = <User>user).subscribe();
 
 
-    return this._userObservable;
   }
 
-  public flushUser() {
+  public flushUser():Observable<User> {
     this._http.get(this._requestHost + '/api/user', {withCredentials: true}).flatMap(this._extractData)
       .subscribe((user:User)=> {
           this.user = user;
@@ -53,6 +52,7 @@ export class UserService extends BaseService implements IUserService {
         ()=> {
           this.user = <User>{};
         });
+    return this._userObservable;
   }
 
   public signup(usr:User):Observable<User> {

@@ -8,17 +8,17 @@
         <div class="form-group">
           <label for="username">用户名</label>
           <input id="username" type="text" class="form-control"
-                 required [(ngModel)]="user.username" name="username">
+                 required [(ngModel)]="user.username" name="username" pattern="^[a-zA-Z]\S{3,15}$" title="用户名要求以字母开头，长度为4-16个字符">
         </div>
         <div class="form-group">
           <label for="password">密码</label>
           <input id="password" type="password" class="form-control" name="password"
-                 required [(ngModel)]="user.password">
+                 required [(ngModel)]="user.password" pattern="^(?=.*\d)(?=.*[a-zA-Z])\S{4,16}$" title="密码要求至少包含一个数字和一个字母，长度为4-16个字符">
         </div>
         <div class="form-group">
           <label for="pwd-repeat">重复密码</label>
           <input id="pwd-repeat" type="password" class="form-control"
-                 required [(ngModel)]="user.pwdRepeat" name="pwdRepeat">
+                 required [(ngModel)]="user.pwdRepeat" name="pwdRepeat" pattern="^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z]\S{4,16}$">
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>
