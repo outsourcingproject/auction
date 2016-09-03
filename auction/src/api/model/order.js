@@ -67,7 +67,7 @@ export default class Order extends Base {
   getConfirmedAuction(userId) {
     return this.join("item on order.item = item.id")
       .field("item.name, order.id, item.currentPrice")
-      .where({user: userId})
+      .where("user = " + userId +" and order.status = " + this.WAIT_CONFIRM)
       .order("order.createAt DESC")
       .select();
   }
