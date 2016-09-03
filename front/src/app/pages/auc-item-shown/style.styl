@@ -112,6 +112,9 @@ $dark-yellow = #91793f;
         font-size 1.8em
         color #777
         text-align center
+        .start-price,.end-price{
+          color $color-main
+        }
       }
       .table {
         display: inline-block;
@@ -150,6 +153,9 @@ $dark-yellow = #91793f;
             background: $color-main;
             width: 5rem;
             line-height 24px
+            &[disabled]{
+              background: #777;
+            }
           }
         }
       }
@@ -201,4 +207,10 @@ $dark-yellow = #91793f;
       }
     }
   }
+}
+.items{
+  border-bottom: 1px dotted $items-border;
+  display flex
+  justify-content space-around
+  flex-wrap wrap
 }

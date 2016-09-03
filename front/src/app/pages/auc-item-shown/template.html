@@ -58,10 +58,16 @@
           <input id="auction-price" type="number" [min]="data.currentPrice+data.stage" [step]="data.stage"
                  [(ngModel)]="auctionPrice"
                  name="auctionPrice" required>
-          <button class="submit" type="submit">竞买</button>
+          <button class="submit" type="submit" [attr.disabled]="auctionPriceSubmitButtonDisable">竞买</button>
         </form>
-        <div class="item-msg" *ngIf="data.status==2">您的速度慢了，拍卖结束了！</div>
-        <div class="item-msg" *ngIf="data.status==3">很可惜，流拍了！</div>
+        <div class="item-msg" *ngIf="data.status==2">
+          您的速度慢了，拍卖结束了！
+          <div class="end-price">成交价格：¥ {{data.currentPrice}}</div>
+        </div>
+        <div class="item-msg" *ngIf="data.status==3">
+          很可惜，流拍了！
+          <div class="start-price">起拍价：¥ {{data.currentPrice}}</div>
+        </div>
       </div>
     </div>
     <div class="detail">
@@ -115,7 +121,7 @@
         <!--</div>-->
       </div>
     </div>
-    <h5 style="margin-left: .5rem; color: red;">特色拍品</h5>
+    <h3 style="margin-left: .5rem; color: red;">相关拍品</h3>
     <div class="items">
       <auc-item-detailed *ngFor="let item of relatedItems" [data]="item"></auc-item-detailed>
     </div>

@@ -15,7 +15,7 @@ export class UserInfoComponent {
 
   public data = {};
 
-  private _requestHost:string = REQUEST_HOST
+  private _requestHost:string = REQUEST_HOST;
 
   constructor(private _http:Http) {
   }

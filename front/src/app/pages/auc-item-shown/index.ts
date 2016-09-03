@@ -10,6 +10,8 @@ import {MODAL_DIRECTIVES, BS_VIEW_PROVIDERS, ModalDirective} from "ng2-bootstrap
 import {Observable} from 'rxjs';
 import {REQUEST_HOST} from '../../app.config';
 import {isEmpty} from "../../utils/utils";
+import {UserService} from "../../service/user.service";
+import {User} from "../../entities/User";
 
 
 let debug = require('debug')('ng:auc-item-shown');
@@ -72,6 +74,8 @@ export class AucItemShown implements OnInit,OnDestroy {
   public relatedItems = [];
 
   public _currTime:number;
+  public auctionPriceSubmitButtonDisable = null;
+
 
   private _currTimer;
   private dataUrl;
@@ -83,7 +87,8 @@ export class AucItemShown implements OnInit,OnDestroy {
   private userUrl;
   private _requestHost:string = REQUEST_HOST;
 
-  constructor(private _http:Http, private _router:Router, private _arouter: ActivatedRoute) {
+
+  constructor(private _http:Http, private _router:Router, private _arouter:ActivatedRoute, private _userService:UserService) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
@@ -101,6 +106,7 @@ export class AucItemShown implements OnInit,OnDestroy {
   public auctionFail:ModalDirective;
 
   ngOnDestroy() {
+    this.sub.unsubscribe();
     if (this._currTimer !== undefined) {
       clearInterval(this._currTimer);
     }
@@ -108,6 +114,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   ngOnInit() {
     if ('production' === ENV) {
+
       this.sub = this._arouter.params.subscribe(params=> {
         let _id = params["id"];
         this.itemId = _id;
@@ -163,29 +170,29 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public watchIt(state) {
-    if ('production' === ENV){
+    if ('production' === ENV) {
       this._http.get(this.userUrl, {withCredentials: true})
         .toPromise()
         .then(res=>res.json())
-        .then(res=>{
-          if(isEmpty(res.data))
-              this._router.navigate(['/login']);
-          else{
-            if(state!==this.data.following){
-              this._http.post(this.followUrl, {itemId:this.itemId, state:state}, {withCredentials: true})
+        .then(res=> {
+          if (isEmpty(res.data))
+            this._router.navigate(['/login']);
+          else {
+            if (state !== this.data.following) {
+              this._http.post(this.followUrl, {itemId: this.itemId, state: state}, {withCredentials: true})
                 .toPromise()
                 .then(res => res.json())
                 .then(res => {
-                  if(res.errno == 0){
+                  if (res.errno == 0) {
                     this.data.following = state;
-                    if(state) ++this.data.followCount;
+                    if (state) ++this.data.followCount;
                     else --this.data.followCount;
                   }
                 });
             }
           }
         })
-    }else{
+    } else {
       if (state !== this.data.following) {
         this.data.following = state;
         if (state) ++this.data.followCount;
@@ -199,7 +206,16 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   public onAuctionPriceSubmit() {
-    this.auctionConfirmModal.show();
+    this.auctionPriceSubmitButtonDisable = true;
+    this._userService.flushUser().take(1).subscribe(user=> {
+      this.auctionPriceSubmitButtonDisable = null;
+      console.log(user);
+      if (user.creditLines >= this.auctionPrice) {
+        this.auctionConfirmModal.show();
+      } else {
+        alert(`您的信用额度不足以进行此次竞拍\n` + `您的信用额度为 ${user.creditLines} 元，当前出价为 ${this.auctionPrice} 元`);
+      }
+    });
     return false;
   }
 
@@ -209,11 +225,11 @@ export class AucItemShown implements OnInit,OnDestroy {
       .toPromise()
       .then((res)=> res.json())
       .then(res=> {
-        if (res.errno != 0){
+        if (res.errno != 0) {
           //转到登录页
           this.auctionConfirmModal.hide();
           this._router.navigate(['/login']);
-        }else if (res.data !== undefined) {
+        } else if (res.data !== undefined) {
           let data = res.data;
           if(data.id!=0){
             this.data.currentPrice = data.newPrice;

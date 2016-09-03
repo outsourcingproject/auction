@@ -8,7 +8,7 @@ export class BaseService {
   protected _extractData(res: Response):Observable<Object>{
     let body=res.json();
     if(body.errno){
-      return Observable.throw(new Error(body.errmsg));
+      return Observable.throw(body);
     }
     return Observable.of(body.data);
   }
