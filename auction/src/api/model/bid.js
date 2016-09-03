@@ -66,8 +66,10 @@ export default class Bid extends Base {
           await messageModel.sendSystemMessage(messages);   
       }
       await this.commit();
+      return bidId;
     }catch(e){
       await this.rollback();
+      return 0;
     }  
   }
 

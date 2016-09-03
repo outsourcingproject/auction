@@ -89,7 +89,7 @@ export default class extends Base {
     let userId = user["id"];
     let value = this.param("auctionPrice");
     let item = this.param("itemId");
-    let res = await this.model("bid").addOne({user:userId, item:item, value:value, status:this.model("bid").LEADING});
+    let res = await this.model("bid").addOne({user:userId, item:item, value:value, status:this.model("bid").LEADING});//res=0 if failed
     //将新的价格数据返回给前端。
     let newPrice = await this.model("item").setRelation(false).where({id:item}).field("currentPrice").find();
     let newStage = await this.model("item").getStage(newPrice["currentPrice"]);

@@ -20,24 +20,37 @@ export default class Order extends Base {
     order.status = 1;
     return this.where({id:order.id}).update(order);
   }
-  //更改订单状态
-  async changeStatus(orderId){
-    let status = (await this.where({id:orderId}).find())["status"];
-    switch(status){
-      case WAIT_CONFIRM:
-        return this.where({id:orderId}).update({status:WAIT_PAY});
-      case  WAIT_PAY:
-        return this.where({id:orderId}).update({status:WAIT_CHECK});
-      case WAIT_CHECK:
-        return this.where({id:orderId}).update({status:WAIT_DELIEVER});
-      case WAIT_DELIEVER:
-        return this.where({id:orderId}).update({status:DELIEVERED});
-      case DELIEVERED:
-        return this.where({id:orderId}).update({status:FINISHED});
-      default:
-        return this.where({id:orderId}).update();
+  async finishOrder(order){
+    let userModel = think.model("user",null,"api"); 
+    try{
+      await this.startTrans();
+      this.where({id:order}).update({status:this.FINISHED});
+      let data = this.where({id:order}).field("user","price").find();
+      //更新信用值
+      // await userModel.where({id:data.user}).increment("creditLines",data.price);
+      await this.commit();
+    }catch(e){
+      await this.rollback();
     }
   }
+  //更改订单状态
+  // async changeStatus(orderId){
+  //   let status = (await this.where({id:orderId}).find())["status"];
+  //   switch(status){
+  //     case WAIT_CONFIRM:
+  //       return this.where({id:orderId}).update({status:WAIT_PAY});
+  //     case  WAIT_PAY:
+  //       return this.where({id:orderId}).update({status:WAIT_CHECK});
+  //     case WAIT_CHECK:
+  //       return this.where({id:orderId}).update({status:WAIT_DELIEVER});
+  //     case WAIT_DELIEVER:
+  //       return this.where({id:orderId}).update({status:DELIEVERED});
+  //     case DELIEVERED:
+  //       return this.where({id:orderId}).update({status:FINISHED});
+  //     default:
+  //       return this.where({id:orderId}).update();
+  //   }
+  // }
   //取消订单，改变订单状态为取消
   cancelOne(orderId){
     return this.where({id:orderId}).update({status:CANCELED});

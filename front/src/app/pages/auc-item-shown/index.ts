@@ -97,6 +97,9 @@ export class AucItemShown implements OnInit,OnDestroy {
   @ViewChild('auctionSuccess')
   public auctionSuccess:ModalDirective;
 
+  @ViewChild('auctionFail')
+  public auctionFail:ModalDirective;
+
   ngOnDestroy() {
     if (this._currTimer !== undefined) {
       clearInterval(this._currTimer);
@@ -118,7 +121,6 @@ export class AucItemShown implements OnInit,OnDestroy {
                 r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
               });
               this.data = data;
-              console.log(this.data);
               this.relatedItems = data.relatedItems;
               this._currTimer = setInterval(()=> {
                 this._currTime = this.data.auctionEndTime - new Date().getTime();
@@ -213,11 +215,17 @@ export class AucItemShown implements OnInit,OnDestroy {
           this._router.navigate(['/login']);
         }else if (res.data !== undefined) {
           let data = res.data;
-          this.data.currentPrice = data.newPrice;
-          this.data.stage = data.newStage;
-          this.auctionPrice = this.data.currentPrice + this.data.stage;
-          this.auctionConfirmModal.hide();
-          this.auctionSuccess.show();
+          if(data.id!=0){
+            this.data.currentPrice = data.newPrice;
+            this.data.stage = data.newStage;
+            this.auctionPrice = this.data.currentPrice + this.data.stage;
+            this.auctionConfirmModal.hide();
+            this.auctionSuccess.show();
+          }else{
+            this.auctionConfirmModal.hide();
+            this.auctionFail.show();
+          }
+
         }
         else return false; //this.auctionFail.show();
       });
