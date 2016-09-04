@@ -10,7 +10,10 @@ export default class Service extends Base {
       stripPunctuation: true
     });
     let itemModel = think.model('item', null, 'api');
-    let allItems = await itemModel.select();
+    let allItems = await itemModel
+      .join("item_type on item.type = item_type.id")
+      .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type,item.createAt as createAt")
+      .select();
     let result = allItems
       .map((item)=> {
         let titleHint = 0;
@@ -29,9 +32,9 @@ export default class Service extends Base {
   }
 
   async testAction() {
-    await this.session('test',{test:'ok'});
-    let config=think.model('config',null,'api');
-    await config.set('auction.bid_increasment',[{'0':50},{'1000':100},{'5000':200}]);
+    await this.session('test', {test: 'ok'});
+    let config = think.model('config', null, 'api');
+    await config.set('auction.bid_increasment', [{'0': 50}, {'1000': 100}, {'5000': 200}]);
 
     return this.json(await this.session('test'));
   }

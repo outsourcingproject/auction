@@ -28,6 +28,7 @@ const data = require('./config.json');
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AucItemShown implements OnInit,OnDestroy {
+  public id;
   public tabsItems:Array<string> = ['拍品描述', '出价记录', '注意事项'];
   public itemBids = [];
   public data:{
@@ -118,34 +119,14 @@ export class AucItemShown implements OnInit,OnDestroy {
       let _id = params["id"];
       this.itemId = _id;
       if (_id !== undefined) {
-        this._http.post(this.dataUrl, {id: _id}, {withCredentials: true})
-          .toPromise()
-          .then(res => res.json().data)
-          .then(data => {
-            data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl + i);
-            data["relatedItems"].map(r=> {
-              r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
-            });
-            this.data = data;
-            this.relatedItems = data.relatedItems;
-            this._currTimer = setInterval(()=> {
-              this._currTime = this.data.auctionEndTime - new Date().getTime();
-            }, 1000);
-            this.tabsClick(0);
-            this.imagesClick(0);
-            this.auctionPrice = this.data.currentPrice + this.data.stage;
-
-          })
-          .catch(this.handleError);
-
-        this._http.get(this._requestHost + '/api/item/get_bid?id=' + _id, {withCredentials: true}).map((res)=>res.json().data)
-          .subscribe((itemBids)=> {
-            this.itemBids = itemBids;
-          })
+        this.id = _id;
+        this._getData();
       } else {
         //to do id doesn't exit;
       }
     });
+
+
     // Observable.of(data).delay(500).subscribe((data)=> {
     //   this.data = data;
     //   this.relatedItems = data.relatedItems;
@@ -156,6 +137,44 @@ export class AucItemShown implements OnInit,OnDestroy {
     //   this.imagesClick(0);
     //   this.auctionPrice = this.data.currentPrice + this.data.stage;
     // });
+  }
+
+  private _getData() {
+    this._http.post(this.dataUrl, {id: this.id}, {withCredentials: true})
+      .toPromise()
+      .then(res => res.json().data)
+      .then(data => {
+        data["images"] = JSON.parse(data["image"]).map(i=>this.imageUrl + i);
+        data["relatedItems"].map(r=> {
+          r["images"] = JSON.parse(r["image"]).map(i=>this.imageUrl + i);
+        });
+        this.data = data;
+        this.relatedItems = data.relatedItems;
+        this._currTimer = setInterval(()=> {
+          this._currTime = this.data.auctionEndTime - new Date().getTime();
+        }, 1000);
+        this.tabsClick(0);
+        this.imagesClick(0);
+        this.auctionPrice = this.data.currentPrice + this.data.stage;
+
+        if (this.data.auctionEndTime > +new Date()) {
+          let timer = setInterval(()=> {
+            if (this.data && this.data.auctionEndTime <= +new Date()) {
+              this._getData();
+              clearInterval(timer);
+            }
+          }, 1000);
+        }
+
+      })
+      .catch(this.handleError);
+
+    this._http.get(this._requestHost + '/api/item/get_bid?id=' + this.id, {withCredentials: true}).map((res)=>res.json().data)
+      .subscribe((itemBids)=> {
+        this.itemBids = itemBids;
+      });
+
+
   }
 
   public imagesClick(idx) {
@@ -202,8 +221,12 @@ export class AucItemShown implements OnInit,OnDestroy {
   public onAuctionPriceSubmit() {
     this.auctionPriceSubmitButtonDisable = true;
     this._userService.flushUser().take(1).subscribe(user=> {
+      if (isEmpty(user)) {
+        alert('登录后才能竞拍，请登录后再试！即将将为您转到登录页');
+        this._router.navigate(['/login']);
+        return;
+      }
       this.auctionPriceSubmitButtonDisable = null;
-      console.log(user);
       if (user.creditLines >= this.auctionPrice) {
         this.auctionConfirmModal.show();
       } else {
@@ -235,7 +258,7 @@ export class AucItemShown implements OnInit,OnDestroy {
             this.auctionConfirmModal.hide();
             this.auctionFail.show();
           }
-
+          this._getData();
         }
         else return false; //this.auctionFail.show();
       });

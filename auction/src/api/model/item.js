@@ -37,53 +37,101 @@ export default class Item extends Base {
   //check and change item status
   async checkStatus() {
     let currentTime = new Date().getTime();
-    let bidModel = think.model("bid",null,"api");
-    let orderModel = think.model("order",null,"api");
-    let itemModel = think.model("item",null,"api");
-    let messageModel = think.model("message",null,"api");
-    let userModel = think.model("user",null,"api");
+    let bidModel = think.model("bid", null, "api");
+    let orderModel = think.model("order", null, "api");
+    let itemModel = think.model("item", null, "api");
+    let messageModel = think.model("message", null, "api");
+    let userModel = think.model("user", null, "api");
+
+    console.log('----------------------start----------------------');
 
     let items_end = await this.where({
       auctionEndTime: {"<": currentTime},
       status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
     }).select();
 
-    for(let i of items_end)
-    {
+    console.log('----------------------items_end----------------------');
+    
+    for (let i of items_end) {
       let boolBid = await bidModel.where({item: i["id"]}).count();
-      if (boolBid == 0 || think.isEmpty(i["currentBidder"])){
+      if (boolBid == 0 || think.isEmpty(i["currentBidder"])) {
         await this.where({id: i["id"]}).update({status: this.AUCTION_FAILED});
       }
-      else{
-          // #comment：用事务处理出错
-          // try{
-          //   await this.startTrans();
-            await this.where({id: i["id"]}).update({status:this.AUCTION_ENDED});
-            await orderModel.addOne(i["currentBidder"],i["id"]);
-            //更新bid 状态
-            await bidModel.where({item:i["id"],value:i["currentPrice"]}).update({status:bidModel.WINNING});
-            await bidModel.where({item:i["id"],value:["!=",i["currentPrice"]]}).update({status:bidModel.FAILING});
-            //发送成功和失败的系统消息
-            await messageModel.sendSystemMessage([{from:userModel.systemUser, to:i["currentBidder"], title:"系统消息", content:"您的商品"+i["name"]+bidModel.STATUS[0], read:0}]);
-            let userIds = bidModel.where({item:i["id"],status:bidModel.FAILING,user:{"!=":i["currentBidder"]}}).distinct("id").select();
-            let messages = userIds.map((u)=>{return {from:userModel.systemUser, to:u.user, title:"系统消息", content:"您的商品"+i["name"]+bidModel.STATUS[1], read:0}});
-            await messageModel.sendSystemMessage(messages);
-          //   await this.commit();
-          // }catch(e){
-          //   await this.rollback();
-          // }
+      else {
+        // #comment：用事务处理出错
+        // try{
+        //   await this.startTrans();
+        await this.where({id: i["id"]}).update({status: this.AUCTION_ENDED});
+        await orderModel.addOne(i["currentBidder"], i["id"]);
+        //更新bid 状态
+        await bidModel.where({item: i["id"], value: i["currentPrice"]}).update({status: bidModel.WINNING});
+        await bidModel.where({item: i["id"], value: ["!=", i["currentPrice"]]}).update({status: bidModel.FAILING});
+        //发送成功和失败的系统消息
+        await messageModel.sendSystemMessage([{
+          from: userModel.systemUser,
+          to: i["currentBidder"],
+          title: "系统消息",
+          content: "您的商品" + i["name"] + bidModel.STATUS[0],
+          read: 0
+        }]);
+        let userIds = bidModel.where({
+          item: i["id"],
+          status: bidModel.FAILING,
+          user: {"!=": i["currentBidder"]}
+        }).distinct("id").select();
+        let messages = userIds.map((u)=> {
+          return {
+            from: userModel.systemUser,
+            to: u.user,
+            title: "系统消息",
+            content: "您的商品" + i["name"] + bidModel.STATUS[1],
+            read: 0
+          }
+        });
+        await messageModel.sendSystemMessage(messages);
+        //   await this.commit();
+        // }catch(e){
+        //   await this.rollback();
+        // }
       }
     }
+
+    console.log('----------------------for----------------------');
 
     let items_auctioning = await  itemModel.where({
       auctionBeginTime: {"<": currentTime},
       auctionEndTime: {">": currentTime},
       status: ["NOTIN", [this.AUCTIONING]]
     }).select();
-    for(let i of items_auctioning){
+    console.log('----------------------items_auctioning----------------------');
+    for (let i of items_auctioning) {
       await itemModel.where({id: i["id"]}).update({status: this.AUCTIONING})
     }
+    console.log('----------------------return----------------------');
     return true; //返回值有问题。
+  }
+
+  setCheckStatusTimer(time) {
+    console.log('-----------------------set-----------------timer----------------------');
+    setTimeout(()=> {
+      console.log('----------------------------------------timer----------------------');
+      this.checkStatus().then();
+    }, time);
+  }
+
+  async initCheckStatusTimer() {
+    let now = +new Date();
+    let items = await this.where({
+      status: ["NOTIN", [this.AUCTION_FAILED, this.AUCTION_ENDED]]
+    }).select();
+    for (let i in items) {
+      if (i.auctionBeginTime > now) {
+        this.setCheckStatusTimer(i.auctionBeginTime - now);
+        this.setCheckStatusTimer(i.auctionEndTime - now);
+      } else if (i.auctionEndTime > now) {
+        this.setCheckStatusTimer(i.auctionEndTime - now);
+      }
+    }
   }
 
   getListAdmin() {

@@ -21,7 +21,7 @@ segment.useDefault();
 
 let initAuthority = async()=> {
   "use strict";
-  
+
   let defaultAuthorities = think.config('site.defaultAuthorities');
   let authorityModel = think.model('authority', null, 'api');
 
@@ -49,7 +49,7 @@ let initRole = async()=> {
 think.isStringExpReg = (string)=> {
   return think.isRegExp(string) || string.match(/^\/[\w\W]+\/$/);
 };
-think.segment=segment;
+think.segment = segment;
 
 //Promise.all([initAuthority(), initRole()]).then();
 //initAuthority().then();
@@ -59,9 +59,10 @@ global.removeHTMLTag = (str)=> {
   return str.replace(/<[^>]+>/g, "");//去掉所有的html标记
 };
 
-global.checkAuction = async() =>{
-  let itemModel = think.model("item",null,"api");
+global.checkAuction = async() => {
+  let itemModel = think.model("item", null, "api");
   await itemModel.checkStatus();
+  await itemModel.initCheckStatusTimer();
 };
 
 checkAuction().then();
