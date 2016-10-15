@@ -16,9 +16,11 @@ export default class extends Base {
     let itemModel = this.model("item");
     let items = await this.model("item")
           .setRelation(false)
-          .where({status:itemModel.AUCTIONING})
+          .join("item_group on item.group = item_group.id")
           .join("item_type on item.type = item_type.id")
-          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")
+          .where({status:itemModel.AUCTIONING})
+          .where("item_group.isOpen = 1")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")
           .limit(10)
           .select();
     let user = await this.session("user");
@@ -36,9 +38,11 @@ export default class extends Base {
     let itemModel = this.model("item");
     let items = await this.model("item")
           .setRelation(false)
-          .where({status:itemModel.AUCTION_ENDED})
+          .join("item_group on item.group = item_group.id")
           .join("item_type on item.type = item_type.id")
-          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")          
+          .where({status:itemModel.AUCTION_ENDED})          
+          .where("item_group.isOpen = 1")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")          
           .limit(10)
           .select();
     let user = await this.session("user");
@@ -56,9 +60,11 @@ export default class extends Base {
     let itemModel = this.model("item");
     let items = await this.model("item")
           .setRelation(false)
-          .where({status:itemModel.AUCTION_NOT_STARTED })
+          .join("item_group on item.group = item_group.id")
           .join("item_type on item.type = item_type.id")
-          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, image, item_type.name as type")          
+          .where({status:itemModel.AUCTION_NOT_STARTED })          
+          .where("item_group.isOpen = 1")
+          .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")          
           .limit(10)
           .select();
     let user = await this.session("user");
