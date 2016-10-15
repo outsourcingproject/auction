@@ -9,6 +9,7 @@ export default class ItemGroup extends Base {
         key:"id",
         fKey:"group",
         order: "createAt DESC",
+        limit:[16],
         relation: false
       }
     };
@@ -17,7 +18,7 @@ export default class ItemGroup extends Base {
   selectData(id)
   {
       id.toString();
-      return this.setRelation(true).where("id = "+id).limit(8).find();
+      return this.setRelation(true).where("id = "+id).find();
   }
 
   //获取首页显示的列表
