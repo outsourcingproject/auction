@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50528
+Source Server Version : 100117
 Source Host           : localhost:3306
 Source Database       : auction
 
 Target Server Type    : MYSQL
-Target Server Version : 50528
+Target Server Version : 100117
 File Encoding         : 65001
 
-Date: 2016-09-04 23:31:51
+Date: 2016-10-19 02:40:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -47,10 +47,6 @@ INSERT INTO `address` VALUES ('7', '4', '1', '', '', '', '', '这是第7条地�
 INSERT INTO `address` VALUES ('8', '4', '0', '', '', '', '', '这是第8条地址', '1468489586809', '1468489586809', null);
 INSERT INTO `address` VALUES ('9', '5', '1', '', '', '', '', '这是第9条地址', '1468489586809', '1468489586809', null);
 INSERT INTO `address` VALUES ('10', '5', '0', '', '', '', '', '这是第10条地址', '1468489586809', '1468489586809', null);
-INSERT INTO `address` VALUES ('11', '6', '1', '', '', '', '', '这是第11条地址', '1468489586809', '1468489586809', null);
-INSERT INTO `address` VALUES ('12', '6', '0', '', '', '', '', '这是第12条地址', '1468489586809', '1468489586809', null);
-INSERT INTO `address` VALUES ('13', '7', '1', '', '', '', '', '这是第13条地址', '1468489586809', '1468489586809', null);
-INSERT INTO `address` VALUES ('14', '7', '0', '', '', '', '', '这是第14条地址', '1468489586809', '1468489586809', null);
 INSERT INTO `address` VALUES ('15', '8', '1', '', '', '', '', '这是第15条地址', '1468489586809', '1468489586809', null);
 INSERT INTO `address` VALUES ('16', '8', '0', '', '', '', '', '这是第16条地址', '1468489586809', '1468489586809', null);
 INSERT INTO `address` VALUES ('17', '9', '1', '', '', '', '', '这是第17条地址', '1468489586809', '1468489586809', null);
@@ -101,9 +97,7 @@ INSERT INTO `article` VALUES ('21', '这是第21篇文章的题目', '2', '这�
 INSERT INTO `article` VALUES ('22', '这是第22篇文章的题目', '3', '这是第22篇文章的内容，写的真精彩', '5', '1', '1468489586792', '1468489586792');
 INSERT INTO `article` VALUES ('23', '这是第23篇文章的题目', '4', '这是第23篇文章的内容，写的真精彩', '5', '1', '1468489586792', '1468489586792');
 INSERT INTO `article` VALUES ('25', '这是第25篇文章的题目', '6', '这是第25篇文章的内容，写的真精彩', '5', '2', '1468489586792', '1468489586792');
-INSERT INTO `article` VALUES ('26', '这是第26篇文章的题目', '7', '这是第26篇文章的内容，写的真精彩', '6', '3', '1468489586792', '1468489586792');
-INSERT INTO `article` VALUES ('27', '这是第27篇文章的题目', '8', '这是第27篇文章的内容，写的真精彩', '6', '1', '1468489586792', '1468489586792');
-INSERT INTO `article` VALUES ('38', 'asdfads', '0', '<p>fasdf</p>', '2', '1', '1470725003585', '1470725003585');
+INSERT INTO `article` VALUES ('38', 'asdfads', '0', '<p>fasdfaaaaaaaa</p>', '2', '1', '1470725003585', '1476814136818');
 
 -- ----------------------------
 -- Table structure for article_type
@@ -174,9 +168,6 @@ CREATE TABLE `bid` (
 INSERT INTO `bid` VALUES ('1', '2', '2', '100', '1', '1468489587185', '1468489587185');
 INSERT INTO `bid` VALUES ('2', '3', '3', '150', '2', '1468489587185', '1468489587185');
 INSERT INTO `bid` VALUES ('3', '4', '4', '200', '1', '1468489587185', '1471973625608');
-INSERT INTO `bid` VALUES ('4', '5', '5', '250', '1', '1468489587185', '1471977866892');
-INSERT INTO `bid` VALUES ('5', '6', '6', '300', '1', '1468489587185', '1468489587185');
-INSERT INTO `bid` VALUES ('6', '7', '7', '350', '2', '1468489587185', '1468489587185');
 INSERT INTO `bid` VALUES ('7', '8', '8', '400', '1', '1468489587185', '1471977880617');
 INSERT INTO `bid` VALUES ('8', '9', '9', '450', '1', '1468489587185', '1471977883291');
 INSERT INTO `bid` VALUES ('9', '10', '10', '500', '1', '1468489587185', '1468489587185');
@@ -184,9 +175,6 @@ INSERT INTO `bid` VALUES ('10', '1', '1', '550', '1', '1468489587185', '14719605
 INSERT INTO `bid` VALUES ('11', '2', '1', '600', '3', '1468489587185', '1468489587185');
 INSERT INTO `bid` VALUES ('12', '3', '1', '650', '0', '1468489587185', '1468489587185');
 INSERT INTO `bid` VALUES ('13', '4', '1', '700', '1', '1468489587186', '1471973625608');
-INSERT INTO `bid` VALUES ('14', '5', '5', '750', '1', '1468489587186', '1471977866892');
-INSERT INTO `bid` VALUES ('15', '6', '6', '800', '3', '1468489587186', '1468489587186');
-INSERT INTO `bid` VALUES ('16', '7', '7', '850', '0', '1468489587186', '1468489587186');
 INSERT INTO `bid` VALUES ('17', '8', '8', '900', '1', '1468489587186', '1471977880617');
 INSERT INTO `bid` VALUES ('18', '9', '9', '950', '1', '1468489587186', '1471977883291');
 INSERT INTO `bid` VALUES ('19', '10', '10', '1000', '3', '1468489587186', '1468489587186');
@@ -194,9 +182,6 @@ INSERT INTO `bid` VALUES ('20', '2', '1', '1050', '0', '1468489587186', '1468489
 INSERT INTO `bid` VALUES ('21', '2', '2', '1100', '1', '1468489587186', '1468489587186');
 INSERT INTO `bid` VALUES ('22', '3', '3', '1150', '2', '1468489587186', '1468489587186');
 INSERT INTO `bid` VALUES ('23', '4', '4', '1200', '1', '1468489587186', '1471973625608');
-INSERT INTO `bid` VALUES ('24', '5', '5', '1250', '1', '1468489587187', '1471977866892');
-INSERT INTO `bid` VALUES ('25', '6', '6', '1300', '1', '1468489587187', '1468489587187');
-INSERT INTO `bid` VALUES ('26', '7', '7', '1350', '2', '1468489587187', '1468489587187');
 INSERT INTO `bid` VALUES ('27', '8', '8', '1400', '1', '1468489587187', '1471977880617');
 INSERT INTO `bid` VALUES ('28', '9', '9', '1450', '1', '1468489587187', '1471977883291');
 INSERT INTO `bid` VALUES ('29', '10', '10', '1500', '1', '1468489587187', '1468489587187');
@@ -216,12 +201,12 @@ CREATE TABLE `config` (
   `createAt` bigint(20) NOT NULL,
   `updateAt` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of config
 -- ----------------------------
-INSERT INTO `config` VALUES ('1', '{\"defaultRoles\":[{\"name\":\"anonymous\",\"desc\":\"user which has not signed up yet\",\"extend\":[],\"authorities\":[\"index\",\"page\",\"home\",\"restAPI\"]},{\"name\":\"registered\",\"extend\":[\"anonymous\"],\"desc\":\"user which has already signed up and not assigned to other role\",\"authorities\":[\"admin\"]}],\"defaultAuthorities\":[{\"name\":\"index\",\"desc\":\"can visit index\",\"paths\":[\"/\"]},{\"name\":\"page\",\"desc\":\"can visit static page\",\"paths\":[\"/^page\\\\//\"]},{\"name\":\"home\",\"desc\":\"can use home module\",\"paths\":[\"/^home\\\\//\"]},{\"name\":\"restAPI\",\"desc\":\"can use rest API\",\"paths\":[\"/^rest\\\\//\"]},{\"name\":\"admin\",\"desc\":\"can admin the site\",\"paths\":[\"/^admin\\\\//\"]}],\"pageCount\":{\"default\":10,\"article\":5,\"item\":20,\"bid\":10,\"order\":10},\"auction\":{\"bid_increasment\":[[0,50],[1000,100],[5000,200],[10000,500],[20000,1000]],\"ahead_time\":{\"time\":1440},\"fix_time\":{\"need_delay_time\":5,\"auto_delay_time\":5}}}', '1468473580040', '1468473580040');
+INSERT INTO `config` VALUES ('2', '{\"defaultRoles\":[{\"name\":\"anonymous\",\"desc\":\"user which has not signed up yet\",\"extend\":[],\"authorities\":[\"index\",\"page\",\"home\",\"restAPI\"]},{\"name\":\"registered\",\"extend\":[\"anonymous\"],\"desc\":\"user which has already signed up and not assigned to other role\",\"authorities\":[\"admin\"]}],\"defaultAuthorities\":[{\"name\":\"index\",\"desc\":\"can visit index\",\"paths\":[\"/\"]},{\"name\":\"page\",\"desc\":\"can visit static page\",\"paths\":[\"/^page\\\\//\"]},{\"name\":\"home\",\"desc\":\"can use home module\",\"paths\":[\"/^home\\\\//\"]},{\"name\":\"restAPI\",\"desc\":\"can use rest API\",\"paths\":[\"/^rest\\\\//\"]},{\"name\":\"admin\",\"desc\":\"can admin the site\",\"paths\":[\"/^admin\\\\//\"]}],\"pageCount\":{\"default\":10,\"article\":5,\"item\":20,\"bid\":10,\"order\":10},\"user\":{\"default\":{\"role\":2,\"creditLines\":1000,\"avatar\":\"/assets/img/avatar.png\",\"desc\":\"他很懒，什么都没留下\",\"level\":1}},\"auction\":{\"bid_increasment\":[[0,50],[1000,100],[5000,200],[10000,500],[20000,1000]],\"ahead_time\":{\"time\":86400},\"fix_time\":{\"need_delay_time\":5,\"auto_delay_time\":5}}}', '1476503053161', '1476503053161');
 
 -- ----------------------------
 -- Table structure for follow
@@ -247,9 +232,6 @@ INSERT INTO `follow` VALUES ('1', '1', '1', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('2', '2', '2', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('3', '3', '3', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('4', '4', '4', '1468489587088', '1468489587088');
-INSERT INTO `follow` VALUES ('5', '5', '5', '1468489587088', '1468489587088');
-INSERT INTO `follow` VALUES ('6', '6', '6', '1468489587088', '1468489587088');
-INSERT INTO `follow` VALUES ('7', '7', '7', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('8', '8', '8', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('9', '9', '9', '1468489587088', '1468489587088');
 INSERT INTO `follow` VALUES ('10', '10', '10', '1468489587088', '1468489587088');
@@ -257,14 +239,10 @@ INSERT INTO `follow` VALUES ('11', '1', '11', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('12', '2', '12', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('13', '3', '13', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('14', '4', '14', '1468489587089', '1468489587089');
-INSERT INTO `follow` VALUES ('15', '5', '15', '1468489587089', '1468489587089');
-INSERT INTO `follow` VALUES ('16', '6', '16', '1468489587089', '1468489587089');
-INSERT INTO `follow` VALUES ('17', '7', '17', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('18', '8', '18', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('19', '9', '19', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('20', '10', '20', '1468489587089', '1468489587089');
 INSERT INTO `follow` VALUES ('21', '2', '14', '1471960734893', '1471960734893');
-INSERT INTO `follow` VALUES ('22', '15', '29', '1472891458061', '1472891458061');
 
 -- ----------------------------
 -- Table structure for image
@@ -278,12 +256,11 @@ CREATE TABLE `image` (
   `updateAt` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of image
 -- ----------------------------
-INSERT INTO `image` VALUES ('0', 'null', 'null', '0', '0');
 INSERT INTO `image` VALUES ('1', 'avatar.png', 'file://UPLOAD_PATH/images/1e301a70-5891-11e6-b2e7-b3fd5b9adfa3.png', '1468489586529', '1468489586529');
 INSERT INTO `image` VALUES ('2', 'image2', 'www/pictures/image2', '1468489586529', '1468489586529');
 INSERT INTO `image` VALUES ('3', 'image3', 'www/pictures/image3', '1468489586529', '1468489586529');
@@ -357,6 +334,15 @@ INSERT INTO `image` VALUES ('70', 'avatar.png', 'file://UPLOAD_PATH/images/ad7da
 INSERT INTO `image` VALUES ('71', 'avatar.png', 'file://UPLOAD_PATH/images/04119310-72b0-11e6-9bc0-032001d10bc4.png', '1473001098961', '1473001098961');
 INSERT INTO `image` VALUES ('72', 'avatar.png', 'file://UPLOAD_PATH/images/a3810110-72b0-11e6-9bc0-032001d10bc4.png', '1473001366446', '1473001366446');
 INSERT INTO `image` VALUES ('73', 'avatar.png', 'file://UPLOAD_PATH/images/3beb8f10-72b1-11e6-9bc0-032001d10bc4.png', '1473001622156', '1473001622156');
+INSERT INTO `image` VALUES ('74', 'null', 'null', '0', '0');
+INSERT INTO `image` VALUES ('75', 'QQ图片20161003115007.png', 'file://UPLOAD_PATH/images/bcddd7d0-92b5-11e6-8476-73a454fe86e2.png', '1476521993683', '1476521993683');
+INSERT INTO `image` VALUES ('76', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/c54f8e40-92b5-11e6-8476-73a454fe86e2.jpg', '1476522007849', '1476522007849');
+INSERT INTO `image` VALUES ('77', 'QQ图片20161003115007.png', 'file://UPLOAD_PATH/images/c72363e0-92b5-11e6-8476-73a454fe86e2.png', '1476522010915', '1476522010915');
+INSERT INTO `image` VALUES ('78', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/dc772dc0-92b6-11e6-8476-73a454fe86e2.jpg', '1476522476194', '1476522476194');
+INSERT INTO `image` VALUES ('79', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/cc2cec40-92b9-11e6-8476-73a454fe86e2.jpg', '1476523737354', '1476523737354');
+INSERT INTO `image` VALUES ('80', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/a624c9e0-92ba-11e6-8476-73a454fe86e2.jpg', '1476524103043', '1476524103043');
+INSERT INTO `image` VALUES ('81', 'QQ图片20161003115007.png', 'file://UPLOAD_PATH/images/aaebae80-92bf-11e6-8476-73a454fe86e2.png', '1476526258542', '1476526258542');
+INSERT INTO `image` VALUES ('82', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/ac5e0330-92bf-11e6-8476-73a454fe86e2.jpg', '1476526260968', '1476526260968');
 
 -- ----------------------------
 -- Table structure for item
@@ -392,7 +378,7 @@ CREATE TABLE `item` (
   CONSTRAINT `item_ibfk_2` FOREIGN KEY (`group`) REFERENCES `item_group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `item_ibfk_3` FOREIGN KEY (`type`) REFERENCES `item_type` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `item_ibfk_4` FOREIGN KEY (`currentBidder`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of item
@@ -401,8 +387,6 @@ INSERT INTO `item` VALUES ('1', 'item1', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中
 INSERT INTO `item` VALUES ('2', 'item2', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[22,23,24]', '2', '3', '3', '2', '50', '1100', '0', '1468489587023', '1468489587023', '200', '1468489587037', '1468489587037', '3');
 INSERT INTO `item` VALUES ('3', 'item3', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[23,24,25]', '3', '4', '4', '4', '50', '1150', '1', '1468489587023', '1468489587023', '300', '1468489587037', '1468489587037', '4');
 INSERT INTO `item` VALUES ('4', 'item4', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[24,25,26]', '2', '5', '5', '2', '50', '1200', '0', '1468489587023', '1468489587023', '400', '1468489587037', '1471973625517', '1');
-INSERT INTO `item` VALUES ('5', 'item5', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[25,26,27]', '2', '6', '6', '6', '50', '1250', '1', '1468489587023', '1468489587023', '500', '1468489587037', '1471977866802', '2');
-INSERT INTO `item` VALUES ('6', 'item6', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[26,27,28]', '2', '7', '7', '2', '50', '1300', '0', '1468489587023', '1468489587023', '600', '1468489587038', '1468489587038', '3');
 INSERT INTO `item` VALUES ('7', 'item7', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[27,28,29]', '3', '8', '8', '8', '50', '1350', '1', '1468489587023', '1468489587023', '700', '1468489587038', '1468489587038', '4');
 INSERT INTO `item` VALUES ('8', 'item8', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[28,29,30]', '2', '9', '9', '6', '50', '1400', '0', '1468489587023', '1468489587023', '800', '1468489587038', '1471977880562', '1');
 INSERT INTO `item` VALUES ('9', 'item9', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[29,30,31]', '2', '10', '10', '2', '50', '1450', '1', '1468489587023', '1468489587023', '900', '1468489587038', '1471977883236', '2');
@@ -411,8 +395,6 @@ INSERT INTO `item` VALUES ('11', 'item11', 'Thu Jul 14 2016 17:46:27 GMT+0800 (�
 INSERT INTO `item` VALUES ('12', 'item12', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[32,33,34]', '3', '3', '3', '6', '50', '600', '0', '1468489587023', '1468489587023', '1200', '1468489587041', '1471977894501', '1');
 INSERT INTO `item` VALUES ('13', 'item13', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[23,24,25]', '3', '4', '4', '6', '50', '650', '1', '1468489587023', '1468489587023', '1300', '1468489587041', '1471977894574', '2');
 INSERT INTO `item` VALUES ('14', 'item14', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[24,25,26]', '2', '5', '5', '4', '50', '700', '0', '1468489587023', '1468489587023', '1400', '1468489587041', '1468489587041', '3');
-INSERT INTO `item` VALUES ('15', 'item15', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[25,26,27]', '3', '6', '6', '8', '50', '750', '1', '1468489587023', '1468489587023', '1500', '1468489587041', '1468489587041', '4');
-INSERT INTO `item` VALUES ('16', 'item16', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[26,27,28]', '3', '7', '7', '8', '50', '800', '0', '1468489587023', '1468489587023', '1600', '1468489587041', '1471977894624', '1');
 INSERT INTO `item` VALUES ('17', 'item17', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[27,28,29]', '3', '8', '8', '8', '50', '850', '1', '1468489587023', '1468489587023', '1700', '1468489587041', '1471977894725', '2');
 INSERT INTO `item` VALUES ('18', 'item18', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '赵国国宝', '[28,29,30]', '2', '9', '9', '6', '50', '900', '0', '1468489587023', '1468489587023', '1800', '1468489587041', '1468489587041', '3');
 INSERT INTO `item` VALUES ('19', 'item19', 'Thu Jul 14 2016 17:46:27 GMT+0800 (中国标准时间)', '河北省邯郸市', 'tag', '<p>长 :68cm 宽 :36cm 材质: 纸本 形式: 画心<br>完残状况：黄斑、污痕、折痕、边有撕口、缺肉</p>\r\n            <p style=\"color: red\">※ 本公司欢迎您亲临查看拍品。</p>\r\n            <p>物品描述<br>注：此拍品约为2.20平尺<br>卢星堂，1938年11月生于常熟，家学渊远。1959年进江苏省国画院深造，得到傅抱石、钱松岩、亚明等当代山水大师真传。\r\n              <br>现为国家一 ...... 卢星堂简介</p>', '[29,30,31]', '3', '10', '10', '4', '50', '950', '1', '1468489587023', '1468489587023', '1900', '1468489587041', '1468489587041', '4');
@@ -424,9 +406,9 @@ INSERT INTO `item` VALUES ('26', 'asdfasd', 'asdfasd', 'asdf', 'tag', '<p>sdafad
 INSERT INTO `item` VALUES ('27', 'etasw', 'asdf', 'sadf', 'tag', '<p>adsfasdf</p>', '[null,null,null]', '3', '2', null, '2', '1000', '1000', '0', '1472725789088', '1472725789088', '0', '1472725804156', '1472802250270', '1');
 INSERT INTO `item` VALUES ('28', 'dsfa', '12', '12', 'tag', '<p>dsafdsf</p>', '[58,null,null]', '3', '2', null, '2', '12', '12', '0', '1472725875156', '1472725875156', '0', '1472725888390', '1472802250338', '2');
 INSERT INTO `item` VALUES ('29', 'asdfsd', '12', '12', 'tag', '', '[59,null,null]', '1', '2', null, '2', '123', '123', '0', '1472803629558', '1479813629558', '0', '1472803646328', '1472803646328', '2');
-INSERT INTO `item` VALUES ('30', 'testss', '12', '12', '121', '<p>dsfadsaf</p>', '[60,null,null]', '1', '2', null, '1', '12', '12', '0', '1472989592239', '1473177600000', '0', '1472989617619', '1472989637515', '1');
-INSERT INTO `item` VALUES ('31', 'DSf', 'adsf', 'dasf', '12', '<p>sadf</p>', '[null,null,null]', '1', '2', null, '1', '12', '12', '0', '1472989773505', '1473782400000', '0', '1472989784735', '1472990170137', '1');
-INSERT INTO `item` VALUES ('32', '123', '213', '213', '123', '<p>sadf</p>', '[61,null,null]', '3', '2', null, '1', '12', '12', '0', '1472998033191', '1472998153191', '0', '1472998054742', '1472998301070', '1');
+INSERT INTO `item` VALUES ('30', 'testss', '12', '12', '121', '<p>dsfadsaf</p>', '[60,null,null]', '3', '2', null, '1', '12', '12', '0', '1472989592239', '1473177600000', '0', '1472989617619', '1476500348478', '1');
+INSERT INTO `item` VALUES ('31', 'DSf', 'adsf', 'dasf', '12', '<p>sadf</p>', '[null,null,null]', '3', '2', null, '1', '12', '12', '0', '1472989773505', '1473782400000', '0', '1472989784735', '1476500348566', '1');
+INSERT INTO `item` VALUES ('49', '12321312121', '12', '12', '123', '<p>asdfdas</p>', '[75,80,81,82]', '3', '2', null, '9', '0', '0', '0', '1476502776579', '1476502776579', '0', '1476502786128', '1476804928021', '2');
 
 -- ----------------------------
 -- Table structure for item_group
@@ -437,25 +419,27 @@ CREATE TABLE `item_group` (
   `name` varchar(255) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `desc` varchar(255) DEFAULT NULL,
-  `no` int(11) NOT NULL DEFAULT '0' COMMENT '第几个专场',
+  `no` int(11) DEFAULT '0' COMMENT '第几个专场',
   `isOpen` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否在首页显示',
   `createAt` bigint(20) NOT NULL DEFAULT '0',
   `updateAt` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of item_group
 -- ----------------------------
-INSERT INTO `item_group` VALUES ('1', 'aa专场', '[0]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1472727503672');
-INSERT INTO `item_group` VALUES ('2', 'bb专场', '[1]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1468489586896');
-INSERT INTO `item_group` VALUES ('3', 'cc专场', '[2]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '0', '1468489586896', '1468489586896');
-INSERT INTO `item_group` VALUES ('4', 'dd专场', '[3]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1468489586896');
+INSERT INTO `item_group` VALUES ('1', 'aa专场', '[0]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1476806880258');
+INSERT INTO `item_group` VALUES ('2', 'bb专场', '[1]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1476786134243');
+INSERT INTO `item_group` VALUES ('3', 'cc专场', '[2]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1476786134671');
+INSERT INTO `item_group` VALUES ('4', 'dd专场', '[3]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1476806941373');
 INSERT INTO `item_group` VALUES ('5', 'ee专场', '[4]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '0', '1468489586896', '1468489586896');
-INSERT INTO `item_group` VALUES ('6', 'ff专场', '[5]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1468489586896');
+INSERT INTO `item_group` VALUES ('6', 'ff专场', '[5]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '0', '1468489586896', '1476786117043');
 INSERT INTO `item_group` VALUES ('7', 'gg专场', '[6]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '0', '1468489586896', '1468489586896');
 INSERT INTO `item_group` VALUES ('8', 'hh专场', '[7]', ' 这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长   这是第i个专场 ，专场介绍要长  ', '1', '1', '1468489586896', '1468489586896');
+INSERT INTO `item_group` VALUES ('9', '1231', null, '123', null, '0', '1476501535503', '1476806826135');
+INSERT INTO `item_group` VALUES ('10', '121', null, '213', null, '0', '1476501570699', '1476807195428');
 
 -- ----------------------------
 -- Table structure for item_type
@@ -502,21 +486,14 @@ CREATE TABLE `message` (
 -- ----------------------------
 -- Records of message
 -- ----------------------------
-INSERT INTO `message` VALUES ('1', '1', '2', '这是user1发给user2的消息', 'Hello, user1, I\'m user 2', '1', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('2', '2', '3', '这是user2发给user3的消息', 'Hello, user2, I\'m user 3', '0', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('3', '3', '4', '这是user3发给user4的消息', 'Hello, user3, I\'m user 4', '1', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('4', '4', '5', '这是user4发给user5的消息', 'Hello, user4, I\'m user 5', '0', '1468489586858', '1468489586858');
-INSERT INTO `message` VALUES ('5', '5', '6', '这是user5发给user6的消息', 'Hello, user5, I\'m user 6', '1', '1468489586858', '1468489586858');
-INSERT INTO `message` VALUES ('6', '6', '7', '这是user6发给user7的消息', 'Hello, user6, I\'m user 7', '0', '1468489586858', '1468489586858');
-INSERT INTO `message` VALUES ('7', '7', '8', '这是user7发给user8的消息', 'Hello, user7, I\'m user 8', '1', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('8', '8', '9', '这是user8发给user9的消息', 'Hello, user8, I\'m user 9', '0', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('9', '9', '10', '这是user9发给user10的消息', 'Hello, user9, I\'m user 10', '1', '1468489586858', '1468489586858');
 INSERT INTO `message` VALUES ('10', '10', '1', '这是user10发给user1的消息', 'Hello, user1, I\'m user 10', '0', '1468489586858', '1468489586858');
-INSERT INTO `message` VALUES ('11', '1', '2', '系统消息', '您的商品item1得标', '0', '1471960530952', '1471960530952');
-INSERT INTO `message` VALUES ('12', '1', '2', '系统消息', '您的商品item1得标', '0', '1471960530954', '1471960530954');
 INSERT INTO `message` VALUES ('13', '1', '5', '系统消息', '您的商品item4得标', '0', '1471973625652', '1471973625652');
 INSERT INTO `message` VALUES ('14', '1', '5', '系统消息', '您的商品item4得标', '0', '1471973625689', '1471973625689');
-INSERT INTO `message` VALUES ('15', '1', '6', '系统消息', '您的商品item5得标', '0', '1471977866910', '1471977866910');
 INSERT INTO `message` VALUES ('16', '1', '9', '系统消息', '您的商品item8得标', '0', '1471977880629', '1471977880629');
 INSERT INTO `message` VALUES ('17', '1', '10', '系统消息', '您的商品item9得标', '0', '1471977883304', '1471977883304');
 
@@ -549,9 +526,6 @@ INSERT INTO `order` VALUES ('1', '1', '1', '1', '0', '1000', null, null, '146848
 INSERT INTO `order` VALUES ('2', '2', '2', '收货地址：天津 天津 和平区 aaaaa 收货人：这是第4条地址  电话：18530268149', '2', '1100', null, null, '1468489587100', '1472911257794');
 INSERT INTO `order` VALUES ('3', '3', '3', '3', '2', '3000', null, null, '1468489587100', '1468489587100');
 INSERT INTO `order` VALUES ('4', '4', '4', '4', '3', '4000', null, null, '1468489587100', '1468489587100');
-INSERT INTO `order` VALUES ('5', '5', '5', '5', '4', '5000', null, null, '1468489587100', '1470733905021');
-INSERT INTO `order` VALUES ('6', '6', '6', '6', '0', '6000', null, null, '1468489587100', '1468489587100');
-INSERT INTO `order` VALUES ('7', '7', '7', '7', '1', '700', null, null, '1468489587100', '1468489587100');
 INSERT INTO `order` VALUES ('8', '8', '8', '8', '2', '800', null, null, '1468489587100', '1468489587100');
 INSERT INTO `order` VALUES ('9', '9', '9', '9', '3', '900', null, null, '1468489587100', '1468489587100');
 INSERT INTO `order` VALUES ('10', '10', '10', '10', '4', '100', null, null, '1468489587100', '1468489587100');
@@ -559,7 +533,6 @@ INSERT INTO `order` VALUES ('11', '2', '1', '收货地址：北京 北京 东城
 INSERT INTO `order` VALUES ('12', '2', '1', '收货地址：天津 天津 和平区 aaaaa 收货人：这是第4条地址  电话：18530268149', '4', '1550', '申通快递', '123', '1471960530858', '1472918161557');
 INSERT INTO `order` VALUES ('13', '5', '4', null, '0', '0', null, null, '1471973625566', '1471973625566');
 INSERT INTO `order` VALUES ('14', '5', '4', null, '0', '0', null, null, '1471973625568', '1471973625568');
-INSERT INTO `order` VALUES ('15', '6', '5', null, '0', '0', null, null, '1471977866854', '1471977866854');
 INSERT INTO `order` VALUES ('16', '9', '8', null, '6', '0', null, null, '1471977880592', '1472915133229');
 INSERT INTO `order` VALUES ('17', '10', '9', null, '6', '0', null, null, '1471977883266', '1472915129689');
 
@@ -653,7 +626,7 @@ CREATE TABLE `session` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `cookie` (`cookie`),
   KEY `expire` (`expire`)
-) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of session
@@ -869,6 +842,93 @@ INSERT INTO `session` VALUES ('208', 'ROK2jF6xkiIUp8REmld6JKrnMypJaVK_', '{\"use
 INSERT INTO `session` VALUES ('209', 'ag8qLQQj31STyp8cDE9HOCDExDvCzwKs', null, '1473086882959');
 INSERT INTO `session` VALUES ('210', 'd8q2NAQVwmGURxTSZDhlIEkCdR8Pi3Yc', null, '1473086884254');
 INSERT INTO `session` VALUES ('211', 'OhF9ZHBOknKQL6FFdCZJf1KEGglkalQE', null, '1473086887820');
+INSERT INTO `session` VALUES ('212', 'cNuIqTIB_ZBGD_C9cunqKK2ZhM4MUdwC', '{\"user\":{\"id\":17,\"username\":\"test11\",\"email\":\"81088128321@qq.com\",\"emailValidate\":0,\"desc\":\"他很懒，什么都没留下\",\"avatar\":1,\"creditLines\":1000,\"level\":1,\"role\":2,\"lastLogin\":1476503053189,\"createAt\":1476503053206,\"updateAt\":1476503053206,\"totalVolume\":0,\"totalTurnover\":0}}', '1476593437658');
+INSERT INTO `session` VALUES ('213', 'OGS3kQVdiX2tsWc0kc5J5K3JNs0qOv_C', null, '1476586858753');
+INSERT INTO `session` VALUES ('214', 'J0QxwOJ8iY9IDBdF6j9d5gh_2wk8_6oa', null, '1476586859310');
+INSERT INTO `session` VALUES ('215', 'MlQ1OdDG5VIsBhubLEbalsB2B2zyXsUD', null, '1476586870997');
+INSERT INTO `session` VALUES ('216', 'bNLsIthl8sJBzTt6I5PeOP_Du8pQcvTe', null, '1476586871647');
+INSERT INTO `session` VALUES ('217', 'IAJWHEbcb6UXuHMPZYOoWqvvIwycHj_n', null, '1476586872192');
+INSERT INTO `session` VALUES ('218', 'lrGfG1is9udS700UPxNQ7NdkaGPPx_XH', null, '1476586875585');
+INSERT INTO `session` VALUES ('219', '_fur_fKCT3BjVfnZpjeLCw_9ZrUE73WE', null, '1476586882926');
+INSERT INTO `session` VALUES ('220', 'MjXypDHwMWpD_awV71l3r5tfuY6drcrs', null, '1476586890752');
+INSERT INTO `session` VALUES ('221', '55QmUwNRf_9sJPR2tzRNDucCQObqAZoN', null, '1476588155942');
+INSERT INTO `session` VALUES ('222', 'SalUOvNuNQBDavxzakAbjD2OVxweLsAf', null, '1476588160640');
+INSERT INTO `session` VALUES ('223', 'kvydqO0XtuO_19zxKkqmc_yccKLMHGqI', null, '1476588286554');
+INSERT INTO `session` VALUES ('224', '7dCei6hV0EH3GkeYppkhOc01BgQcxVb3', null, '1476588288488');
+INSERT INTO `session` VALUES ('225', 'MQBykxGaapdNaMULzwImP4hBCqWTgLb8', null, '1476588290073');
+INSERT INTO `session` VALUES ('226', 'Sdb0Bjq_phsSHpJFdA6Nh06lzEQ_uooN', null, '1476588303769');
+INSERT INTO `session` VALUES ('227', 'NvRwWXceXn_Bnzm9CSGttWFOIY72aJTc', null, '1476588305264');
+INSERT INTO `session` VALUES ('228', 'AWPJTek47V5N4OVjoVGJmMmZQgp1IRCn', null, '1476588306543');
+INSERT INTO `session` VALUES ('229', 'Uv6zVPkfeFm1Snx8k2L9zwi1kDRQdn5R', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":5000,\"level\":2,\"role\":3,\"remark\":null,\"lastLogin\":1476534906500,\"createAt\":1468489586719,\"updateAt\":1476534880062,\"totalVolume\":3,\"totalTurnover\":2650}}', '1476621311710');
+INSERT INTO `session` VALUES ('230', 'ncxRXE7Ye9hfqeRvy2I3_2DVyiyqu8RW', null, '1476610587909');
+INSERT INTO `session` VALUES ('231', 'hjQBAHFABz5AMD2MLtilEPJ1iNWuhdvB', null, '1476610588628');
+INSERT INTO `session` VALUES ('232', 'PcfxqPc5767XtdQNZZkHybJBX5JmrSMK', null, '1476610589631');
+INSERT INTO `session` VALUES ('233', 'aD9nwAGGPhkP8imBLUFatPJUq8d5_6_W', null, '1476610592037');
+INSERT INTO `session` VALUES ('234', 'IkQNiIG2GsIO0wj5no8EJaYwm9u_1oD6', null, '1476610592528');
+INSERT INTO `session` VALUES ('235', '3ckb2hTRzbfUR4YkwsJVkCy5CA0YfFjW', null, '1476619727631');
+INSERT INTO `session` VALUES ('236', 'V_QfNa4ukv2FuZg_qTlHAJNO_xm6VmgT', null, '1476619729024');
+INSERT INTO `session` VALUES ('237', '3N4UCgBPILpK7jU_0OoV3ferOq7iKCK6', null, '1476619730231');
+INSERT INTO `session` VALUES ('238', 'Q6RU60iLeWF1uZj6QvA2aB9MOk7a8qcM', null, '1476620444754');
+INSERT INTO `session` VALUES ('239', 'QD8rdiuqoeWVuSOSb64wcFHTJwGi8dso', null, '1476620445541');
+INSERT INTO `session` VALUES ('240', '8Pz7f5SO4YgMalX36kEbd5OpXEpUlBFf', null, '1476620446859');
+INSERT INTO `session` VALUES ('241', 'CQVWS_vbD1sJqc1BEqS4gjDuai3XaZ6F', '{}', '1476901592168');
+INSERT INTO `session` VALUES ('242', 'uv_qy_R17TpqxWTZI43NCK1a0uBYj_Rt', null, '1476872411051');
+INSERT INTO `session` VALUES ('243', '9VgrrCt8f2n5Gv9gdymQX2p0TH_Wz5BA', null, '1476872412394');
+INSERT INTO `session` VALUES ('244', '_HqlYDpiHA9O3TxTvf6DmpnLzcahDrSr', null, '1476872524501');
+INSERT INTO `session` VALUES ('245', 'BY8qMMWbyAbivcKi_AthA_NZHGtYH4IZ', null, '1476872525040');
+INSERT INTO `session` VALUES ('246', '7PnBwj47RSKzrVn7LFStdYLCGQpcz8Fl', null, '1476872525553');
+INSERT INTO `session` VALUES ('247', 'HhRqvVHpD4FYTbZftOmx6VMYw9f5qHYb', null, '1476872536858');
+INSERT INTO `session` VALUES ('248', '6i5znESYpPejrDkohuwfK2Fme_JPTWD1', null, '1476872539765');
+INSERT INTO `session` VALUES ('249', 'eYWkYoVZCJ9jHCZg4BEMq1c__iRy6muA', null, '1476872540729');
+INSERT INTO `session` VALUES ('250', 'F30L7WzF9tfaHqIXsPXZKiW6p0PFlW15', null, '1476872541936');
+INSERT INTO `session` VALUES ('251', 'LSEaOKjeHpsS9_f_6bfcpEy8wzU5MGc2', null, '1476872553866');
+INSERT INTO `session` VALUES ('252', 'CCOmk_qm4fGZ_OgtjeiqqtLrOBzGrKFP', null, '1476872554314');
+INSERT INTO `session` VALUES ('253', 'RZLqeGrcc_TTlatSZHTPw_WgUHHDtnS7', null, '1476872554849');
+INSERT INTO `session` VALUES ('254', '98m65RVnSZbr0ysb_GNhDwGAODT9vN5G', null, '1476892690728');
+INSERT INTO `session` VALUES ('255', 'rsQwiWGRGJtro2BdvJgwMAqskPEe29O3', null, '1476892692274');
+INSERT INTO `session` VALUES ('256', 'W8umTnVCNknYhBFXlkxjlVuB5p65L5yi', null, '1476892693194');
+INSERT INTO `session` VALUES ('257', 'YEOwBsTINhzwb3UucBYXw29t9YBo8Csc', null, '1476892728537');
+INSERT INTO `session` VALUES ('258', 'uEiwuGJOSq4vb9ilxdNQgB_Msh79cJSd', null, '1476892728852');
+INSERT INTO `session` VALUES ('259', 'un8DMWs20yWujZmXmqVqhPncjxBtHPRx', null, '1476892731867');
+INSERT INTO `session` VALUES ('260', 'okqbVL8kv4T6zGKNbRNKCqHyf_l_IA1d', null, '1476892732695');
+INSERT INTO `session` VALUES ('261', 'iUDI4qHFCSY_3J5R974alXbWnh6QfQiJ', null, '1476892782600');
+INSERT INTO `session` VALUES ('262', 'Xo6gFdfZjq20dD2BZ5yy7t_iTwHu5Pzp', null, '1476892823151');
+INSERT INTO `session` VALUES ('263', '361XSLiuucWlTQBSv3qxf0zytaYGmymk', null, '1476892823719');
+INSERT INTO `session` VALUES ('264', 'ogEFTcLmAictnWjhAvcHIMHJsZcJaRsC', null, '1476892824553');
+INSERT INTO `session` VALUES ('265', '3szc520sLIWNIES3QvfxHufZ8CtX3Gep', null, '1476892824866');
+INSERT INTO `session` VALUES ('266', 'ZyKRrY1JvwCbRG_MeUsy_y4lOSBRv04X', null, '1476893011221');
+INSERT INTO `session` VALUES ('267', 'mPaTjJ_bC8hOPo03cXDPGSS8_6klb1Il', null, '1476893011893');
+INSERT INTO `session` VALUES ('268', 'VFuMOOLewMYB0IH_Oxwla310ekAbRpba', null, '1476893021065');
+INSERT INTO `session` VALUES ('269', 'XDRWPeEvDrS_yh4WK7O73Okwy6r_6Jz2', null, '1476893024301');
+INSERT INTO `session` VALUES ('270', 'Ml6HoujwcOApnTPsPE5G8UgfIMSOrM6C', null, '1476893034328');
+INSERT INTO `session` VALUES ('271', '0Ln_7_TqEpHC1fsybrNlVE5DeNgEhgyL', null, '1476893036970');
+INSERT INTO `session` VALUES ('272', '_X7SuL2_KKP2OnZGvKoDnHzG4LKP0XYD', null, '1476893041406');
+INSERT INTO `session` VALUES ('273', 'pB_EFlg_3CocbI00yAsTqtXspVfiS6Dq', null, '1476893072888');
+INSERT INTO `session` VALUES ('274', 'DEnhXBBjMV3a2wTruZeY2wB2uhH3YFjc', null, '1476893074355');
+INSERT INTO `session` VALUES ('275', '6wbboWsQP4GMfYS2UXdSrTxQ9xoy9BXE', null, '1476893092622');
+INSERT INTO `session` VALUES ('276', 'ZS2WoAJFj7HJKjCA7GW7DdPzm14BvlSG', null, '1476893217002');
+INSERT INTO `session` VALUES ('277', 'Fx66a5j0v4xz2f_8NXfAsKCd1hLoBkOH', null, '1476893802397');
+INSERT INTO `session` VALUES ('278', 's3aLid9Y1OTPrEyfJ9gDcZGkDnH7XyC0', null, '1476893804200');
+INSERT INTO `session` VALUES ('279', 'QJQYn5ZmSIVw9fIARNxO0pSEbhe7V5b4', null, '1476893804780');
+INSERT INTO `session` VALUES ('280', 'Q_Y0frhSX0fMlU_jjTuec11G_0ZNS9GE', null, '1476893829280');
+INSERT INTO `session` VALUES ('281', 'Clk10ehcsKMI6wBGGi95ztO44AZEhlar', null, '1476894543533');
+INSERT INTO `session` VALUES ('282', '7ehub52yuoAmW83NhAmqguhFXvCCmXbF', null, '1476894804627');
+INSERT INTO `session` VALUES ('283', 'cFDZYAN1MrO_xgkHB5ichgTJhqZky2eb', null, '1476894826669');
+INSERT INTO `session` VALUES ('284', 'vs4A6WJZChYF7S3A7oXdg7OXUe_Iv4ge', null, '1476894830481');
+INSERT INTO `session` VALUES ('285', 'lvWnd9wjwugoLt3vGosyNsCn3nppPSzU', null, '1476894832556');
+INSERT INTO `session` VALUES ('286', 'Un8j_TTu7IXvEPq2bOO0GDId_H7ciZds', null, '1476894838447');
+INSERT INTO `session` VALUES ('287', 'CfmuiU6WKn6MLS6dkIkNjVbZsWhGJXPb', null, '1476894840312');
+INSERT INTO `session` VALUES ('288', 'pbz_NzDy0kQ60FQQsioKS5JauWHtWk1l', null, '1476896349329');
+INSERT INTO `session` VALUES ('289', 'hjZQLOReEYtjFto_yl0S5pBafOTl6HrL', null, '1476896353888');
+INSERT INTO `session` VALUES ('290', 'hDg_Kym4ggz3AS0LyPutbAfIVxvu_bXs', null, '1476896355924');
+INSERT INTO `session` VALUES ('291', '6fSLPl38S4yFB0lABG04RpvsxG_Lhs1Y', null, '1476896358386');
+INSERT INTO `session` VALUES ('292', 'mtLwanMHyvC3TBncd304GCmHPh6q_HVv', null, '1476897014718');
+INSERT INTO `session` VALUES ('293', '_FMpB8H_YocM7E6VeuAA92xa5AFsbTOR', null, '1476897015293');
+INSERT INTO `session` VALUES ('294', 'PS1D2_XEHCfF9y4VOnxawJERlUTD3AdS', null, '1476897016339');
+INSERT INTO `session` VALUES ('295', '44OtwtEc0okedfnH7H_KtmcXjKQ_Vlu5', null, '1476901581248');
+INSERT INTO `session` VALUES ('296', '77nYQQAmNIKZhPgUmTIRfUI_YZ8C0Jnd', null, '1476901583154');
+INSERT INTO `session` VALUES ('297', 'PnEcfbu4L5CzuBmk0ylIosdvyoUWP24T', null, '1476901583697');
+INSERT INTO `session` VALUES ('298', 'NQP8MhcEGU5hRRz1SK1PKlPgp2wJTc3r', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":5000,\"level\":2,\"role\":3,\"mark\":null,\"lastLogin\":1476815720911,\"createAt\":1468489586719,\"updateAt\":1476786081960,\"totalVolume\":3,\"totalTurnover\":2650}}', '1476902147526');
 
 -- ----------------------------
 -- Table structure for user
@@ -885,6 +945,7 @@ CREATE TABLE `user` (
   `creditLines` decimal(10,0) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '0',
   `role` int(11) NOT NULL,
+  `mark` text,
   `lastLogin` bigint(11) DEFAULT NULL,
   `createAt` bigint(20) NOT NULL DEFAULT '0',
   `updateAt` bigint(20) NOT NULL DEFAULT '0',
@@ -895,23 +956,20 @@ CREATE TABLE `user` (
   KEY `user_ibfk_2` (`avatar`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_ibfk_2` FOREIGN KEY (`avatar`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'zl810881283', 'zl7112585', '0573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '1', '2', '1472891876059', '1468489586718', '1472891876071');
-INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '2', '3', '1472999234550', '1468489586719', '1472999234563');
-INSERT INTO `user` VALUES ('3', 'zhangle2', 'zlpwd2', '2573328344@qq.com', '1', 'I\'m zhangle', '1', '2', '3', '1', '1468489586704', '1468489586719', '1468489586719');
-INSERT INTO `user` VALUES ('4', 'zhangle3', 'zlpwd3', '3573328344@qq.com', '1', 'I\'m zhangle', '1', '3', '4', '1', '1468489586704', '1468489586719', '1468489586719');
-INSERT INTO `user` VALUES ('5', 'zhangle4', 'zlpwd4', '4573328344@qq.com', '1', 'I\'m zhangle', '1', '4', '5', '1', '1468489586704', '1468489586719', '1468489586719');
-INSERT INTO `user` VALUES ('6', 'zhangle5', 'zlpwd5', '5573328344@qq.com', '1', 'I\'m zhangle', '1', '5', '6', '1', '1468489586704', '1468489586720', '1468489586720');
-INSERT INTO `user` VALUES ('7', 'zhangle6', 'zlpwd6', '6573328344@qq.com', '1', 'I\'m zhangle', '1', '6', '7', '1', '1468489586704', '1468489586720', '1468489586720');
-INSERT INTO `user` VALUES ('8', 'zhangle7', 'zlpwd7', '7573328344@qq.com', '1', 'I\'m zhangle', '1', '7', '8', '1', '1468489586704', '1468489586720', '1468489586720');
-INSERT INTO `user` VALUES ('9', 'zhangle8', 'zlpwd8', '8573328344@qq.com', '1', 'I\'m zhangle', '1', '8', '9', '1', '1468489586704', '1468489586720', '1468489586720');
-INSERT INTO `user` VALUES ('10', 'zhangle9', 'zlpwd9', '9573328344@qq.com', '1', 'I\'m zhangle', '1', '9', '10', '1', '1468489586704', '1468489586720', '1468489586720');
-INSERT INTO `user` VALUES ('12', 'zhangle10', 'zlpwd10', '57332@qq.com', '0', null, '1', '0', '0', '2', '1470724024364', '1470224426225', '1470724024383');
-INSERT INTO `user` VALUES ('15', 'test2', 'zl7112585', '8108812831@qq.com', '0', null, '1', '0', '0', '2', '1472890687960', '1470741990519', '1472890687972');
+INSERT INTO `user` VALUES ('1', 'zl810881283', 'zl7112585', '0573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '1', '2', null, '1472891876059', '1468489586718', '1472891876071');
+INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '2', '3', null, '1476815720911', '1468489586719', '1476815720916');
+INSERT INTO `user` VALUES ('3', 'zhangle2', 'zlpwd2', '2573328344@qq.com', '1', 'I\'m zhangle', '1', '2', '3', '1', null, '1468489586704', '1468489586719', '1468489586719');
+INSERT INTO `user` VALUES ('4', 'zhangle3', 'zlpwd3', '3573328344@qq.com', '1', 'I\'m zhangle', '1', '3', '4', '1', null, '1468489586704', '1468489586719', '1468489586719');
+INSERT INTO `user` VALUES ('5', 'zhangle4', 'zlpwd4', '4573328344@qq.com', '1', 'I\'m zhangle', '1', '4', '5', '1', null, '1468489586704', '1468489586719', '1468489586719');
+INSERT INTO `user` VALUES ('8', 'zhangle7', 'zlpwd7', '7573328344@qq.com', '1', 'I\'m zhangle', '1', '7', '8', '1', null, '1468489586704', '1468489586720', '1468489586720');
+INSERT INTO `user` VALUES ('9', 'zhangle8', 'zlpwd8', '8573328344@qq.com', '1', 'I\'m zhangle', '1', '8', '9', '1', null, '1468489586704', '1468489586720', '1468489586720');
+INSERT INTO `user` VALUES ('10', 'zhangle9', 'zlpwd9', '9573328344@qq.com', '1', 'I\'m zhangle', '1', '9', '10', '1', null, '1468489586704', '1468489586720', '1468489586720');
+INSERT INTO `user` VALUES ('17', 'test11', 'test11', '81088128321@qq.com', '0', '他很懒，什么都没留下', '1', '1000', '1', '2', '111adsf', '1476503053189', '1476503053206', '1476806126169');
 DROP TRIGGER IF EXISTS `updateCurrentPrice`;
 DELIMITER ;;
 CREATE TRIGGER `updateCurrentPrice` AFTER INSERT ON `bid` FOR EACH ROW BEGIN
