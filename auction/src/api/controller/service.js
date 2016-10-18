@@ -27,7 +27,7 @@ export default class Service extends Base {
         return item;
       })
       .filter((i)=>i.hintTimes)
-      .sort((x, y)=>y.hintTimes - x.hintTimes || y.createAt.valueOf() - x.createAt.valueOf());
+      .sort((x, y)=>y.hintTimes - x.hintTimes || +y.createAt - +x.createAt);
     return this.success(result);
   }
 

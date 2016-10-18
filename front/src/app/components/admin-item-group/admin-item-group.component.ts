@@ -8,6 +8,7 @@ import {
 } from "ng2-bootstrap/ng2-bootstrap";
 import {ItemGroup} from "../../entities/itemGroup";
 import {REQUEST_HOST} from "../../app.config";
+import {AdminSearchComponent} from "../admin-search/admin-search.component";
 
 let data = require('./data.json');
 
@@ -15,25 +16,26 @@ let data = require('./data.json');
   selector: 'admin-item-group',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES],
+  directives: [PagerComponent, MODAL_DIRECTIVES,AdminSearchComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminItemGroupComponent implements OnInit {
 
   public data = []//data;
+  public searchedDate;
   public pagedData;
 
-  public pageSize = 10;
+  public pageSize = 15;
 
   public selected = null;
   public curr = new ItemGroup();
 
-  private _requestHost:string = REQUEST_HOST;
+  private _requestHost: string = REQUEST_HOST;
 
   @ViewChild('addOrUpdateModal')
-  public addOrUpdateModal:ModalDirective;
+  public addOrUpdateModal: ModalDirective;
 
-  constructor(private _http:Http, private _router:Router) {
+  constructor(private _http: Http, private _router: Router) {
   }
 
   public onPagedDataChange(data) {
@@ -41,8 +43,13 @@ export class AdminItemGroupComponent implements OnInit {
   }
 
   private _getData() {
-    this._http.get(this._requestHost + '/rest/item_group' , {withCredentials: true})
-      .map(res=>res.json().data)
+    this._http.get(this._requestHost + '/rest/item_group', {withCredentials: true})
+      .map((res)=> {
+        let data = res.json().data;
+        delete data.item;
+        console.log(data);
+        return data;
+      })
       .subscribe((data)=> {
         this.data = data;
       })
@@ -54,7 +61,7 @@ export class AdminItemGroupComponent implements OnInit {
 
   public onModify(idx) {
     this.selected = idx;
-    this.curr = this.data[idx];
+    this.curr = JSON.parse(JSON.stringify(this.searchedDate[idx]));
     this.addOrUpdateModal.show();
   }
 
@@ -66,7 +73,7 @@ export class AdminItemGroupComponent implements OnInit {
 
   public onToggle(idx) {
     this.selected = idx;
-    this.curr = this.data[idx];
+    this.curr = this.searchedDate[idx];
 
     this.curr.isOpen = this.curr.isOpen ? 0 : 1;
 
@@ -87,7 +94,7 @@ export class AdminItemGroupComponent implements OnInit {
         });
     } else {
       //post
-      this._http.post(this._requestHost + '/rest/item_group' , this.curr, {withCredentials: true})
+      this._http.post(this._requestHost + '/rest/item_group', this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData();
           this.addOrUpdateModal.hide();

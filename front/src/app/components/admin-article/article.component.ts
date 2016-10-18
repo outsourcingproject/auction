@@ -11,6 +11,7 @@ import {
 import {Article} from "../../entities/article";
 import {UEditorComponent} from "../ueditor/ueditor.component";
 import {REQUEST_HOST} from "../../app.config";
+import {AdminSearchComponent} from "../admin-search/admin-search.component";
 
 
 let data = require('./data.json');
@@ -22,7 +23,7 @@ let debug = require('debug')('ng:admin-article');
   selector: 'admin-article',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent],
+  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent, AdminSearchComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminArticleComponent implements OnInit {
@@ -30,21 +31,22 @@ export class AdminArticleComponent implements OnInit {
   public articleType = [];
   public data = [];
 
-  public pageSize:number = 15;
+  public pageSize: number = 15;
+  public searchedData;
   public pagedData;
 
   public selectedArticle = null;
   public currArticle = new Article();
 
-  private _requestHost:string = REQUEST_HOST;
+  private _requestHost: string = REQUEST_HOST;
 
   @ViewChild('articleModal')
-  public articleModal:ModalDirective;
+  public articleModal: ModalDirective;
 
   @ViewChild('delConfirmModal')
-  public delConfirmModal:ModalDirective;
+  public delConfirmModal: ModalDirective;
 
-  constructor(private _http:Http, private _router:Router) {
+  constructor(private _http: Http, private _router: Router) {
 
   }
 
@@ -63,7 +65,9 @@ export class AdminArticleComponent implements OnInit {
     return this._http.get(this._requestHost + '/rest/article_type')
       .map((res)=>res.json().data)
       .flatMap((data)=> {
-        this.articleType = data;
+        this.articleType = data.sort((a, b)=> {
+          return a.id - b.id
+        });
         return this._http.get(this._requestHost + '/rest/article', {withCredentials: true}).map((res)=>res.json().data);
       })
   }
@@ -92,7 +96,7 @@ export class AdminArticleComponent implements OnInit {
 
 
   public onModifyArticle(article) {
-    this.currArticle = this.selectedArticle = article;
+    this.currArticle = this.selectedArticle = JSON.parse(JSON.stringify(article));
     this.articleModal.show();
   }
 
@@ -112,10 +116,10 @@ export class AdminArticleComponent implements OnInit {
       //修改文章
       //put
       this._http.post(this._requestHost + '/rest/article/' + this.selectedArticle.id + '?_method=put', this.selectedArticle, {withCredentials: true}
-        ).subscribe(()=> {
-          this._getArticle().subscribe(data=>this.data = data);
-          this.articleModal.hide();
-        });
+      ).subscribe(()=> {
+        this._getArticle().subscribe(data=>this.data = data);
+        this.articleModal.hide();
+      });
     }
     else {
       //添加文章

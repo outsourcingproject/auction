@@ -1,6 +1,7 @@
 <div class="header">
   <h2>用户列表</h2>
 </div>
+<admin-search (result)="searchedData=$event" [data]="data" [config]="{'username':1,'email':1}"></admin-search>
 <table class="table">
   <thead>
   <tr>
@@ -8,6 +9,7 @@
     <th>简介</th>
     <th>邮箱</th>
     <th>信用额度</th>
+    <th>创建时间</th>
     <th>操作</th>
   </tr>
   </thead>
@@ -17,12 +19,13 @@
     <td>{{i.desc}}</td>
     <td>{{i.email}}</td>
     <td>¥ {{i.creditLines}}</td>
-    <td><a (click)="onModify(idx)">修改</a> <a (click)="onToggle(idx)">{{i.isOpen|num2str:['开启','隐藏']}}</a></td>
+    <td>{{i.createAt|date}}</td>
+    <td><a (click)="onModify(idx)">修改</a> <a (click)="onDel(idx)">删除</a></td>
   </tr>
   </tbody>
 </table>
 
-<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+<pager *ngIf="data.length" [data]="searchedData" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
 
 
 <div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
@@ -41,31 +44,20 @@
         <form (ngSubmit)="onSubmit()">
 
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="form-group">
-                <label for="name">名称</label>
-                <input id="name" name="name" class="form-control" [(ngModel)]="curr.name" required>
+                <label for="creditLines">信用额度</label>
+                <input id="creditLines" name="creditLines" class="form-control" [(ngModel)]="curr.creditLines" required type="number">
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="form-group">
-                <label for="isOpen">专场状态</label>
-                <select id="isOpen" name="isOpen" class="form-control" [(ngModel)]="curr.isOpen"
-                        required>
-                  <option value="1">开启</option>
-                  <option value="0">隐藏</option>
-                </select>
+                <label for="mark">备注</label>
+                <input id="mark" name="mark" class="form-control" [(ngModel)]="curr.mark" >
               </div>
             </div>
           </div>
-
-          <div class="form-group">
-            <label for="desc">介绍</label>
-            <textarea id="desc" name="desc" class="form-control" [(ngModel)]="curr.desc" required>
-              </textarea>
-          </div>
-
 
           <button class="btn btn-success" type="submit">提交</button>
           <button class="btn btn-default" type="button" (click)="addOrUpdateModal.hide()">取消</button>
@@ -77,3 +69,42 @@
 </div>
 
 
+<div bsModal #delModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="delModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">删除用户</h4>
+      </div>
+      <div class="modal-body">
+        <p>您确定删除该用户？该过程不可逆</p>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>用户名</th>
+            <th>简介</th>
+            <th>邮箱</th>
+            <th>信用额度</th>
+            <th>创建时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{curr.username}}</td>
+            <td>{{curr.desc}}</td>
+            <td>{{curr.email}}</td>
+            <td>¥ {{curr.creditLines}}</td>
+            <td>{{curr.createAt|date}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" (click)="delSubmit()">确定</button>
+        <button class="btn btn-default" (click)="delModal.hide()">取消</button>
+      </div>
+    </div>
+  </div>
+</div>

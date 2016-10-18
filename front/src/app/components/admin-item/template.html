@@ -2,6 +2,7 @@
   <h2>物品列表</h2>
   <div><a (click)="onAdd()">添加物品</a></div>
 </div>
+<admin-search (result)="searchedDate=$event" [data]="data" [config]="{'name':2,'desc':1}"></admin-search>
 <table class="table">
   <thead>
   <tr>
@@ -30,7 +31,7 @@
 </table>
 
 
-<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+<pager *ngIf="data.length" [data]="searchedDate" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
 
 
 <div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"

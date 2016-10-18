@@ -8,6 +8,7 @@ import {
 } from "ng2-bootstrap/ng2-bootstrap";
 import {ItemGroup} from "../../entities/itemGroup";
 import {REQUEST_HOST} from "../../app.config";
+import {AdminSearchComponent} from "../admin-search/admin-search.component";
 
 let data = require('./data.json');
 
@@ -15,25 +16,29 @@ let data = require('./data.json');
   selector: 'admin-item-group',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES],
+  directives: [PagerComponent, MODAL_DIRECTIVES,AdminSearchComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminUserComponent implements OnInit {
 
   public data = []//data;
+  public searchedData;
   public pagedData;
 
-  public pageSize = 10;
+  public pageSize = 15;
 
   public selected = null;
   public curr = new ItemGroup();
 
-  private _requestUrl:string = REQUEST_HOST;
+  private _requestUrl: string = REQUEST_HOST;
 
   @ViewChild('addOrUpdateModal')
-  public addOrUpdateModal:ModalDirective;
+  public addOrUpdateModal: ModalDirective;
 
-  constructor(private _http:Http, private _router:Router) {
+  @ViewChild('delModal')
+  public delModal: ModalDirective;
+
+  constructor(private _http: Http, private _router: Router) {
   }
 
   public onPagedDataChange(data) {
@@ -41,7 +46,7 @@ export class AdminUserComponent implements OnInit {
   }
 
   private _getData() {
-    this._http.get(this._requestUrl + '/rest/user' , {withCredentials: true})
+    this._http.get(this._requestUrl + '/rest/user', {withCredentials: true})
       .map(res=>res.json().data)
       .subscribe((data)=> {
         this.data = data;
@@ -54,27 +59,22 @@ export class AdminUserComponent implements OnInit {
 
   public onModify(idx) {
     this.selected = idx;
-    this.curr = this.data[idx];
+    this.curr = JSON.parse(JSON.stringify(this.searchedData[idx]));
     this.addOrUpdateModal.show();
   }
 
-  public onAdd() {
-    this.selected = null;
-    this.addOrUpdateModal.show();
-    this.curr = new ItemGroup();
-  }
-
-  public onToggle(idx) {
+  public onDel(idx) {
     this.selected = idx;
-    this.curr = this.data[idx];
+    this.curr = JSON.parse(JSON.stringify(this.searchedData[idx]));
+    this.delModal.show();
+  }
 
-    this.curr.isOpen = this.curr.isOpen ? 0 : 1;
-
-    //put
-    this._http.post(this._requestUrl + '/rest/user/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
+  public delSubmit() {
+    this._http.post(this._requestUrl + '/rest/user/' + this.curr.id + '?_method=delete', this.curr, {withCredentials: true})
       .subscribe(()=> {
         this._getData();
-      })
+        this.delModal.hide();
+      });
   }
 
   public onSubmit() {
@@ -83,12 +83,14 @@ export class AdminUserComponent implements OnInit {
       this._http.post(this._requestUrl + '/rest/user/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData();
+          this.addOrUpdateModal.hide();
         });
     } else {
       //post
-      this._http.post(this._requestUrl + '/rest/user' , this.curr, {withCredentials: true})
+      this._http.post(this._requestUrl + '/rest/user', this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData();
+          this.addOrUpdateModal.hide();
         });
 
     }

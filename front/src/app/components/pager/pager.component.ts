@@ -12,8 +12,11 @@ export class PagerComponent {
   public currPageIdx:number;
   public currPageRange:Array<number>;
   public pageNum:number;
-  
+
   private _data:Array<Object>;
+
+  private _pageSize:number=15;
+
   public get data() {
     return this._data;
   }
@@ -28,12 +31,18 @@ export class PagerComponent {
     this.pageIdxClick(this.currPageIdx || 1);
   }
 
+  public get pageSize(){
+    return this._pageSize;
+  }
+
   @Input()
-  public pageSize:number = 15;
+  public set pageSize(val){
+    this._pageSize=val;
+    this.pageIdxClick(this.currPageIdx || 1)
+  }
 
   @Output()
   public pagedDataChange = new EventEmitter<Array<Object>>();
-
 
   constructor() {
   }
@@ -51,7 +60,6 @@ export class PagerComponent {
       let end = begin + this.pageSize;
       this.pagedDataChange.emit(this.data.slice(begin, end));
     }, 0);
-
 
     this.currPageRange = [];
     for (let i = (idx - 2 > 0 ? idx - 2 : 1); i <= (idx + 2 <= pageNum ? idx + 2 : pageNum); ++i)

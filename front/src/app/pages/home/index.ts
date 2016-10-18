@@ -59,7 +59,6 @@ export class Home implements OnInit {
               aa["image"] = this.imageUrl + aa["image"][0];
             })
           })
-          console.log(data);
           this.sidebarData = data.auctionGroups;
           this.leftTab = data.lefttab;
           this.rightTab = data.righttab;

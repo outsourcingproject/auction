@@ -10,6 +10,7 @@ import {
   ModalDirective, MODAL_DIRECTIVES, TimepickerComponent,
   DATEPICKER_DIRECTIVES, BS_VIEW_PROVIDERS
 } from "ng2-bootstrap/ng2-bootstrap";
+import {AdminSearchComponent} from "../admin-search/admin-search.component";
 
 let data = require('./data.json');
 let expressNames = require('./expressNames.json');
@@ -17,7 +18,7 @@ let expressNames = require('./expressNames.json');
   selector: 'admin-order',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES],
+  directives: [PagerComponent, MODAL_DIRECTIVES,AdminSearchComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminOrderComponent implements OnInit {
@@ -26,6 +27,7 @@ export class AdminOrderComponent implements OnInit {
   public expressNames:Array<string> = expressNames;
 
   public pageSize:number = 15;
+  public searchedData;
   public pagedData;
 
   public selected:Order = null;
@@ -34,11 +36,6 @@ export class AdminOrderComponent implements OnInit {
 
   public expressName = null;
   public expressNo = null;
-
-
-
-
-
 
 
   constructor(private _http:Http, private _router:Router) {
@@ -66,9 +63,9 @@ export class AdminOrderComponent implements OnInit {
 
   @ViewChild('orderTimeoutModal')
   public orderTimeoutModal:ModalDirective;
-  
+
   public orderTimeout(idx) {
-    this.selected = this.data[idx];
+    this.selected = this.searchedData[idx];
     this.orderTimeoutModal.show();
   }
 
@@ -85,7 +82,7 @@ export class AdminOrderComponent implements OnInit {
   public confirmPayModal:ModalDirective;
 
   public confirmPay(idx) {
-    this.selected = this.data[idx];
+    this.selected = this.searchedData[idx];
     this.confirmPayModal.show();
   }
 
@@ -102,7 +99,7 @@ export class AdminOrderComponent implements OnInit {
   public deliveryGoodModal:ModalDirective;
 
   public deliveryGood(idx) {
-    this.selected = this.data[idx];
+    this.selected = this.searchedData[idx];
     this.deliveryGoodModal.show();
   }
 
@@ -116,12 +113,12 @@ export class AdminOrderComponent implements OnInit {
         this.deliveryGoodModal.hide();
       })
   }
-  
+
   @ViewChild('orderDetailModal')
   public orderDetailModal:ModalDirective;
-  
+
   public orderDetail(idx) {
-    this.selected = this.data[idx];
+    this.selected = this.searchedData[idx];
     this.orderDetailModal.show();
   }
 }

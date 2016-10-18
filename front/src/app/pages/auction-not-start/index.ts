@@ -46,7 +46,6 @@ export class AuctionNotStart implements OnInit {
         data.map(d => {
           d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
         });
-        console.log(data);
         this.data = data;
       })
       .catch(this.handleError);

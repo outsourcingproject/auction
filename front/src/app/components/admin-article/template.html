@@ -2,6 +2,7 @@
   <h2>文章列表</h2>
   <div><a (click)="onAddArticle()">添加文章</a></div>
 </div>
+<admin-search (result)="searchedData=$event" [data]="data" [config]="{'title':2,'content':1}"></admin-search>
 <table class="table">
   <thead>
   <tr>
@@ -25,7 +26,7 @@
 </table>
 
 
-<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+<pager *ngIf="data.length" [data]="searchedData" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
 
 
 <div bsModal #articleModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -96,7 +97,7 @@
           <tr *ngIf="selectedArticle">
             <td><a [routerLink]="['/info',selectedArticle.id]">{{selectedArticle.title}}</a></td>
 
-            <td>{{selectedArticle.type}}</td>
+            <td>{{selectedArticle.type|num2str:articleType:1}}</td>
             <td>{{selectedArticle.createAt|date}}</td>
             <td>{{selectedArticle.updateAt|date}}</td>
           </tr>

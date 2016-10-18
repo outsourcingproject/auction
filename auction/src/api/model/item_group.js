@@ -17,7 +17,6 @@ export default class ItemGroup extends Base {
 
   selectData(id)
   {
-      id.toString();
       return this.setRelation(true).where("id = "+id).find();
   }
 

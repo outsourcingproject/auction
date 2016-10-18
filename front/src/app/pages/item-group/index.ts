@@ -43,11 +43,13 @@ export class ItemGroup implements OnInit {
     this._route.params.flatMap((params)=>this._http.post(this.dataUrl, {id: params["id"]}, {withCredentials: true}))
       .map((res)=>res.json().data)
       .subscribe((data)=> {
-        data.item.map(d => {
+        console.log(data);
+        this.data = data.items.map(d => {
           d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
+          return d;
         });
-        this.data = data.item;
-        this.groupName = data.name;
+        console.log(this.data);
+        this.groupName = data.group.name;
       });
     // Observable.of(data).delay(500).subscribe((data)=> {
     //   this.data = data

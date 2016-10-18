@@ -15,18 +15,19 @@ import {Item} from "../../entities/item";
 import {ImagePreviewComponent} from "../image-preview"
 import {ImageUploaderComponent} from "../image-uploader"
 import {REQUEST_HOST} from "../../app.config";
+import {AdminSearchComponent} from "../admin-search/admin-search.component";
 
 let data = require('./data.json');
 
 let debug = require('debug')('ng:admin-item');
 let itemGroup = require('./item-group.json');
-let auctionType = require('../admin-auction/auction-type.json');
+let auctionType = require('./auction-type.json');
 
 @Component({
   selector: 'admin-item',
   template: require('./template.html'),
   styles: [require('./style.styl')],
-  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent, ImagePreviewComponent, ImageUploaderComponent],
+  directives: [PagerComponent, MODAL_DIRECTIVES, TimepickerComponent, DATEPICKER_DIRECTIVES, UEditorComponent, ImagePreviewComponent, ImageUploaderComponent,AdminSearchComponent],
   viewProviders: [BS_VIEW_PROVIDERS]
 })
 export class AdminItemComponent implements OnInit {
@@ -37,6 +38,7 @@ export class AdminItemComponent implements OnInit {
   public data = [];
 
   public pageSize: number = 15;
+  public searchedDate;
   public pagedData;
 
   public selected = null;
@@ -109,7 +111,7 @@ export class AdminItemComponent implements OnInit {
 
   public onDelete(i) {
     this.selected = i;
-    this.curr = this.data[i];
+    this.curr = this.searchedDate[i];
     this.delConfirmModal.show();
   }
 
@@ -128,7 +130,7 @@ export class AdminItemComponent implements OnInit {
 
   public onModify(idx) {
     this.selected = idx;
-    this.curr = this.data[idx];
+    this.curr =  JSON.parse(JSON.stringify(this.searchedDate[idx]));
     this.addOrUpdateModal.show();
     console.log(this.curr);
   }
