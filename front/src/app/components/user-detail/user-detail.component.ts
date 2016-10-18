@@ -34,7 +34,7 @@ export class UserDetailComponent implements OnInit,OnDestroy {
     // Observable.of(user).delay(500).subscribe().subscribe((user)=> {
     //   this.user = <User>user;
     // });
-
+    this._userService.flushUser();
 
   }
 

@@ -88,7 +88,6 @@ export default class Base extends think.controller.rest {
   async postAction() {
 
     let data = this.post();
-    console.log(data);
     delete data[this.modelPk];
     if (think.isEmpty(data)) {
       return this.fail("data is empty");

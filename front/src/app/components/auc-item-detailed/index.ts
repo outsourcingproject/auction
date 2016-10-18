@@ -46,11 +46,11 @@ export class AucItemDetailed implements OnInit {
 
   ngOnInit() {
     debug(this.data);
-    this.id=this.data.id;
-    this.image = this.data.images?this.data.images[0]:'';
+    this.id = this.data.id;
+    this.image = this.data.images ? this.data.images[0] : '';
     this.name = this.data.name;
     this.currentPrice = this.data.currentPrice;
-    this.bidCount=this.data.bidCount;
+    this.bidCount = this.data.bidCount;
     //this.end_time = this.data.end_time;
     this.auctionEndTime = this.data.auctionEndTime;
     this.followCount = this.data.followCount;
@@ -58,35 +58,27 @@ export class AucItemDetailed implements OnInit {
   }
 
   watchIt(state) {
-    if ('production' === ENV){
-      if(state!==this.following){
-        this._http.get(this.userUrl, {withCredentials: true})
-          .toPromise()
-          .then(res=>res.json())
-          .then(res=>{
-            if(isEmpty(res.data))
-                this._router.navigate(['/login']);
-            else{
-              this._http.post(this.followUrl, {itemId:this.id, state:state}, {withCredentials: true})
-                .toPromise()
-                .then(res => res.json())
-                .then(res => {
-                  if(res.errno == 0){
-                    this.following = state;
-                    if(state) ++this.followCount;
-                    else --this.followCount;
-                  }
-                  });
+
+    if (state !== this.following) {
+      this._http.get(this.userUrl, {withCredentials: true})
+        .toPromise()
+        .then(res=>res.json())
+        .then(res=> {
+          if (isEmpty(res.data))
+            this._router.navigate(['/login']);
+          else {
+            this._http.post(this.followUrl, {itemId: this.id, state: state}, {withCredentials: true})
+              .toPromise()
+              .then(res => res.json())
+              .then(res => {
+                if (res.errno == 0) {
+                  this.following = state;
+                  if (state) ++this.followCount;
+                  else --this.followCount;
                 }
-            });
-      }
-    }
-    else{
-      if (state !== this.following) {
-        this.following = state;
-        if (state) ++this.followCount;
-        else --this.followCount;
-      }      
+              });
+          }
+        });
     }
   }
 }

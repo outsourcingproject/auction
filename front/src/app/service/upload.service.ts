@@ -1,9 +1,8 @@
 import {Injectable} from 'angular2/core';
 import {Observable, Observer} from 'rxjs';
-import {IUploadService} from "../service-interface";
 
 @Injectable()
-export class UploadService implements IUploadService{
+export class UploadService {
 
   public makeFileRequest(url:string, files:File[]):Observable<{complate:number,progress?:number,data?:Object}> {
     return Observable.create(observer => {
@@ -17,7 +16,7 @@ export class UploadService implements IUploadService{
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            observer.next({complate:1,progress:100,data:JSON.parse(xhr.response)});
+            observer.next({complate: 1, progress: 100, data: JSON.parse(xhr.response)});
             observer.complete();
           } else {
             observer.error(xhr.response);
@@ -26,7 +25,7 @@ export class UploadService implements IUploadService{
       };
 
       xhr.upload.onprogress = (event) => {
-        observer.next({complate:0,progress:Math.round(event.loaded / event.total * 100)});
+        observer.next({complate: 0, progress: Math.round(event.loaded / event.total * 100)});
       };
 
       xhr.open('POST', url, true);

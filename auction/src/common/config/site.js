@@ -72,7 +72,7 @@ export default {
       creditLines: 3000,
       avatar: '/assets/img/avatar.png',
       desc: '他很懒，什么都没留下',
-      level:1,
+      level: 1,
     }
 
   },
@@ -86,8 +86,8 @@ export default {
       [20000, 1000]
     ],
     ahead_time: {
-      //领先时间(单位:分钟)
-      time: 24 * 60,
+      //领先时间(单位:秒)
+      time: 24 * 60 * 60
     },
     fix_time: {
       //当拍卖结束前多长时间,被出价,需要延长拍卖时间(单位:分钟)

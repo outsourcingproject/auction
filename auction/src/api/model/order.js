@@ -10,15 +10,15 @@ export default class Order extends Base {
   FINISHED = 5;
   CANCELED = 6;
   //添加新订单 地址为默认地址
-  addOne(userId, itemId){
-    return this.add({user:userId,item:itemId,status:0});
+  addOne(userId, itemId) {
+    return this.add({user: userId, item: itemId, status: 0});
   }
 
   //确认订单：买家确定地址等信息，订单更新状态
   //未测试
-  confirmOrder(order){
+  confirmOrder(order) {
     order.status = 1;
-    return this.where({id:order.id}).update(order);
+    return this.where({id: order.id}).update(order);
   }
   async finishOrder(order){
     let userModel = think.model("user",null,"api"); 
@@ -52,13 +52,13 @@ export default class Order extends Base {
   //   }
   // }
   //取消订单，改变订单状态为取消
-  cancelOne(orderId){
-    return this.where({id:orderId}).update({status:CANCELED});
+  cancelOne(orderId) {
+    return this.where({id: orderId}).update({status: CANCELED});
   }
 
   getList(userId) {
     return this.join("item on order.item = item.id")
-      .field("order.id, item.name,item.currentPrice as price,order.createAt,order.status")
+      .field("order.id, item.name,item.currentPrice as price,order.createAt,order.status,expressName,expressNo")
       .where({user: userId})
       .order("order.createAt DESC")
       .select();

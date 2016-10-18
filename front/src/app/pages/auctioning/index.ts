@@ -38,26 +38,23 @@ export class Auctioning implements OnInit {
   }
 
   ngOnInit() {
-    if ('production' === ENV) {
-      // Application wide providers
-      this._http.get(this.dataUrl)
-        .toPromise()
-        .then(res => res.json().data)
-        .then(data => {
-          data.map(d => {
-            d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
-            //d["image"] = this.imageUrl + d["image"][0];
-          });
-          console.log(data);
-          this.data = data;
-        })
-        .catch(this.handleError);
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.data = data
-        console.log(this.data);
-      });
-    }
+    // Application wide providers
+    this._http.get(this.dataUrl)
+      .toPromise()
+      .then(res => res.json().data)
+      .then(data => {
+        data.map(d => {
+          d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
+          //d["image"] = this.imageUrl + d["image"][0];
+        });
+        console.log(data);
+        this.data = data;
+      })
+      .catch(this.handleError);
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.data = data
+    //   console.log(this.data);
+    // });
   }
 
   private handleError(error:any) {

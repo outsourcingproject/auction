@@ -41,7 +41,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    if ('production' === ENV) {
       this.sub = this._route.params.flatMap((params)=>this._http.get(this.dataUrl + params["id"]))
         .map((res)=>res.json().data)
         .subscribe((data)=> {
@@ -56,13 +55,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
         })
         .catch(this.handleError);
 
-    } else {
-      Observable.of(tabData).delay(500).subscribe((data)=> {
-        this.data = data;
-        this.leftTab = data.leftTab;
-        this.rightTab = data.rightTab;
-      });
-    }
   }
 
   ngOnDestroy() {

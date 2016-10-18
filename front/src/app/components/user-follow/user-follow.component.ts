@@ -20,23 +20,16 @@ export class UserFollowComponent implements OnInit {
   public pagedData;
   private dataUrl;
   private _requestHost:string = REQUEST_HOST;
-  
+
   constructor(private _http:Http, private _router:Router) {
     this.dataUrl = REQUEST_HOST + "/api/user/follow";
   }
 
   ngOnInit() {
-    if ('production' === ENV) {
-      this._http.get(this.dataUrl, {withCredentials: true})
-        .toPromise()
-        .then(res => this.data = res.json().data)
-        .catch(this.handleError);
-      // console.log(this.data)
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.data = data;
-      });
-    }
+    this._http.get(this.dataUrl, {withCredentials: true})
+      .toPromise()
+      .then(res => this.data = res.json().data)
+      .catch(this.handleError);
   }
 
   onPagedDataChange(data) {

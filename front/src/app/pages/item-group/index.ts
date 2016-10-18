@@ -39,23 +39,20 @@ export class ItemGroup implements OnInit {
   }
 
   ngOnInit() {
-    if ('production' === ENV) {
-      // Application wide providers
-      this._route.params.flatMap((params)=>this._http.post(this.dataUrl,{id:params["id"]},{withCredentials: true}))
-        .map((res)=>res.json().data)
-        .subscribe((data)=> {
-          data.item.map(d => {
-            d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
-          });
-          this.data = data.item;
-          this.groupName = data.name;
-        })
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.data = data
-        console.log(this.data);
+    // Application wide providers
+    this._route.params.flatMap((params)=>this._http.post(this.dataUrl, {id: params["id"]}, {withCredentials: true}))
+      .map((res)=>res.json().data)
+      .subscribe((data)=> {
+        data.item.map(d => {
+          d["images"] = JSON.parse(d["image"]).map((i)=>this.imageUrl + i);
+        });
+        this.data = data.item;
+        this.groupName = data.name;
       });
-    }
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.data = data
+    //   console.log(this.data);
+    // });
   }
 
   private handleError(error:any) {

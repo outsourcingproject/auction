@@ -47,7 +47,6 @@ export class Home implements OnInit {
 
   ngOnInit() {
     this.serviceData = data.service;
-    if ('production' === ENV) {
       // Application wide providers
       this._http.get(this.dataUrl)
         .toPromise()
@@ -66,16 +65,14 @@ export class Home implements OnInit {
           this.rightTab = data.righttab;
         })
         .catch(this.handleError);
-    } else {
-      Observable.of(data).delay(500).subscribe((data)=> {
-        this.sidebarData = data.auctionGroups;
-        this.serviceData = data.service;
-      });
-      Observable.of(tabData).delay(500).subscribe((tabData)=> {
-        this.leftTab = tabData.leftTab;
-        this.rightTab = tabData.rightTab;
-      });
-    }
+    // Observable.of(data).delay(500).subscribe((data)=> {
+    //   this.sidebarData = data.auctionGroups;
+    //   this.serviceData = data.service;
+    // });
+    // Observable.of(tabData).delay(500).subscribe((tabData)=> {
+    //   this.leftTab = tabData.leftTab;
+    //   this.rightTab = tabData.rightTab;
+    // });
 
   }
 

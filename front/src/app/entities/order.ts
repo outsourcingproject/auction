@@ -6,9 +6,11 @@ export class Order {
               public item:number = null,
               public iid:number = null,
               public name:string = null,
-              public address:string = "",
+              public address:string = null,
               public status:number = null,
+              public expressName:string = null,
+              public expressNo:string = null,
               public createAt:number = +new Date(),
-              public  updateAt = +new Date()) {
+              public updateAt = +new Date()) {
   }
 }
