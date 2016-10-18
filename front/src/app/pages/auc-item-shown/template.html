@@ -9,15 +9,17 @@
     <div class="main">
       <div class="snapshot">
         <div class="prev-main">
-          <img [src]="data.images?data.images[imagesSelectedIdx]:''">
+          <div class="img-wrapper">
+            <img [src]="data.images?data.images[imagesSelectedIdx]:''">
+          </div>
         </div>
         <div class="gallery">
-          <div class="nav left" (click)="imagesNav(-1)">&lt;</div>
+          <button class="nav left" (click)="imagesNav(-1)" type="button">&lt;</button>
           <div *ngFor="let image of data.images; let idx=index"
-               class="prev-tiny" (click)="imagesClick(idx)">
-            <img [src]="image">
+               class="prev-tiny" [class.active]="imagesSelectedIdx==idx" (click)="imagesClick(idx)">
+            <img [src]="image" *ngIf="idx>=imagesRangeBegin&&imagesRangeEnd>=idx">
           </div>
-          <div class="nav right" (click)="imagesNav(1)">&gt;</div>
+          <button class="nav right" (click)="imagesNav(1)" type="button">&gt;</button>
         </div>
       </div>
       <div class="info">

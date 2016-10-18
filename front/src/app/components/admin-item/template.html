@@ -165,20 +165,13 @@
               </div>
             </div>
             <div class="col-md-5">
-              <div class="img-group">
-                <image-preview [imgId]="curr.images[0]"></image-preview>
-                <image-uploader (complete)="curr.images[0]=$event"></image-uploader>
+              <button class="btn btn-success" type="button" (click)="onAddImg()">添加图片</button>
+              <div class="img-group" *ngFor="let image of curr.images;let i=index">
+                <image-preview [imgId]="image"></image-preview>
+                <image-uploader (complete)="curr.images[i]=$event"></image-uploader>
+                <button class="btn btn-danger" type="button" (click)="onDelImg(i)">删除</button>
               </div>
 
-              <div class="img-group">
-                <image-preview [imgId]="curr.images[1]"></image-preview>
-                <image-uploader (complete)="curr.images[1]=$event"></image-uploader>
-              </div>
-
-              <div class="img-group">
-                <image-preview [imgId]="curr.images[2]"></image-preview>
-                <image-uploader (complete)="curr.images[2]=$event"></image-uploader>
-              </div>
             </div>
           </div>
           <button class="btn btn-success" type="submit">提交</button>
@@ -215,14 +208,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngIf="selected">
-            <td><a [routerLink]="['/auc-item',selected.id]">{{selected.name}}</a></td>
 
-            <td>{{selected.group}}</td>
-            <td>{{selected.beginPrice|number:'1.2-2'}}</td>
-            <td>{{selected.auctionType}}</td>
-            <td>{{selected.auctionBeginTime|date}}</td>
-            <td>{{selected.createAt|date}}</td>
+          <tr >
+            <td><a *ngIf="curr.id" [routerLink]="['/auc-item',curr.id]">{{curr.name}}</a></td>
+
+            <td>{{curr.group}}</td>
+            <td>{{curr.beginPrice|number:'1.2-2'}}</td>
+            <td>{{curr.auctionType}}</td>
+            <td>{{curr.auctionBeginTime|date}}</td>
+            <td>{{curr.createAt|date}}</td>
           </tr>
           </tbody>
         </table>

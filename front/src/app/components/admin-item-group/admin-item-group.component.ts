@@ -83,12 +83,14 @@ export class AdminItemGroupComponent implements OnInit {
       this._http.post(this._requestHost + '/rest/item_group/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData();
+          this.addOrUpdateModal.hide();
         });
     } else {
       //post
       this._http.post(this._requestHost + '/rest/item_group' , this.curr, {withCredentials: true})
         .subscribe(()=> {
           this._getData();
+          this.addOrUpdateModal.hide();
         });
 
     }

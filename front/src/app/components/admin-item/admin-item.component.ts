@@ -36,24 +36,24 @@ export class AdminItemComponent implements OnInit {
   public itemType = [];
   public data = [];
 
-  public pageSize:number = 15;
+  public pageSize: number = 15;
   public pagedData;
 
   public selected = null;
   public curr = new Item();
 
-  public images = [];
+  public images = ['', '', ''];
 
   @ViewChild('addOrUpdateModal')
-  public addOrUpdateModal:ModalDirective;
+  public addOrUpdateModal: ModalDirective;
 
   @ViewChild('delConfirmModal')
-  public delConfirmModal:ModalDirective;
+  public delConfirmModal: ModalDirective;
 
-  private _requestUrl:string = REQUEST_HOST;
+  private _requestUrl: string = REQUEST_HOST;
 
-  constructor(private _http:Http,
-              private _router:Router) {
+  constructor(private _http: Http,
+              private _router: Router) {
 
   }
 
@@ -82,10 +82,10 @@ export class AdminItemComponent implements OnInit {
               .map(res=>res.json().data)
               .map(data=> {
                 let d = data.map(i=> {
-                  i.images = JSON.parse(i.image)
+                  i.images = JSON.parse(i.image);
                   return i
-                })
-                console.log(d)
+                });
+                console.log(d);
                 return d;
               })
 
@@ -98,14 +98,25 @@ export class AdminItemComponent implements OnInit {
     this.pagedData = data;
   }
 
+
+  public onAddImg() {
+    this.curr.images.length++;
+  }
+
+  public onDelImg(i) {
+    this.curr.images.splice(i, 1);
+  }
+
   public onDelete(i) {
     this.selected = i;
+    this.curr = this.data[i];
     this.delConfirmModal.show();
   }
 
   public onDeleteSubmit() {
+
     //delete
-    this._http.post(this._requestUrl + '/rest/item/' + this.data[this.selected].id + '?_method=delete', {}, {withCredentials: true})
+    this._http.post(this._requestUrl + '/rest/item/' + this.curr.id + '?_method=delete', {}, {withCredentials: true})
       .subscribe(()=> {
         this.delConfirmModal.hide();
         this._getData().subscribe(data=> {
@@ -119,6 +130,7 @@ export class AdminItemComponent implements OnInit {
     this.selected = idx;
     this.curr = this.data[idx];
     this.addOrUpdateModal.show();
+    console.log(this.curr);
   }
 
   public onAdd() {
@@ -138,7 +150,7 @@ export class AdminItemComponent implements OnInit {
 
     this.curr.image = JSON.stringify(this.curr.images);
 
-    if (this.selected!=null) {
+    if (this.selected != null) {
       //修改物品
       //put
       this._http.post(this._requestUrl + '/rest/item/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})

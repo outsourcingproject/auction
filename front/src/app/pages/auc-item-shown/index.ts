@@ -29,26 +29,27 @@ const data = require('./config.json');
 })
 export class AucItemShown implements OnInit,OnDestroy {
   public id;
-  public tabsItems:Array<string> = ['拍品描述', '出价记录', '注意事项'];
+  public tabsItems: Array<string> = ['拍品描述', '出价记录', '注意事项'];
   public itemBids = [];
-  public data:{
-    id:number,
-    name:string,
-    foundTime:string,
-    foundLocation:string,
-    currentPrice:number,
-    startPrice:number,
-    stage:number,
-    bidCount:number,
-    status:number,
-    followCount:number,
-    following:boolean,
-    auctionBeginTime:number,
-    auctionEndTime:number,
-    auctionType:number,
+  public data: {
+    id: number,
+    name: string,
+    foundTime: string,
+    foundLocation: string,
+    currentPrice: number,
+    startPrice: number,
+    stage: number,
+    bidCount: number,
+    status: number,
+    followCount: number,
+    following: boolean,
+    auctionBeginTime: number,
+    auctionEndTime: number,
+    auctionType: number,
 
-    image:Array<string>,
-    relatedItems:Array<Object>
+    image: Array<string>,
+    images: Array<number>,
+    relatedItems: Array<Object>
   }
     = {
     id: null,
@@ -66,6 +67,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     auctionEndTime: null,
     auctionType: null,
     image: [],
+    images: [],
     relatedItems: []
   };
 
@@ -74,7 +76,11 @@ export class AucItemShown implements OnInit,OnDestroy {
   public tabsSelectedIdx;
   public relatedItems = [];
 
-  public _currTime:number;
+  public imagesRangeBegin = 0;
+  public imagesRangeEnd = 0;
+  public imagesRangeSize = 3;
+
+  public _currTime: number;
   public auctionPriceSubmitButtonDisable = null;
 
 
@@ -86,10 +92,10 @@ export class AucItemShown implements OnInit,OnDestroy {
   private itemId;
   private followUrl;
   private userUrl;
-  private _requestHost:string = REQUEST_HOST;
+  private _requestHost: string = REQUEST_HOST;
 
 
-  constructor(private _http:Http, private _router:Router, private _arouter:ActivatedRoute, private _userService:UserService) {
+  constructor(private _http: Http, private _router: Router, private _arouter: ActivatedRoute, private _userService: UserService) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
@@ -98,13 +104,13 @@ export class AucItemShown implements OnInit,OnDestroy {
   }
 
   @ViewChild('auctionConfirmModal')
-  public auctionConfirmModal:ModalDirective;
+  public auctionConfirmModal: ModalDirective;
 
   @ViewChild('auctionSuccess')
-  public auctionSuccess:ModalDirective;
+  public auctionSuccess: ModalDirective;
 
   @ViewChild('auctionFail')
-  public auctionFail:ModalDirective;
+  public auctionFail: ModalDirective;
 
   ngOnDestroy() {
     this.sub.unsubscribe();
@@ -179,10 +185,22 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   public imagesClick(idx) {
     this.imagesSelectedIdx = idx;
+    this.imagesRangeBegin = this.imagesSelectedIdx - 1;
+    this.imagesRangeEnd = this.imagesSelectedIdx + 1;
+    if(this.imagesRangeBegin<0){
+      this.imagesRangeEnd++;
+    }
   }
 
   public imagesNav(direction) {
-    this.imagesSelectedIdx = (this.imagesSelectedIdx + direction + this.data.image.length) % this.data.image.length;
+
+    this.imagesSelectedIdx = (this.imagesSelectedIdx + direction + this.data.images.length) % this.data.images.length;
+
+    this.imagesRangeBegin = this.imagesSelectedIdx - 1;
+    this.imagesRangeEnd = this.imagesSelectedIdx + 1;
+    if(this.imagesRangeBegin<0){
+      this.imagesRangeEnd++;
+    }
   }
 
   public watchIt(state) {
@@ -264,7 +282,7 @@ export class AucItemShown implements OnInit,OnDestroy {
       });
   }
 
-  private handleError(error:any) {
+  private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }

@@ -6,7 +6,7 @@ export default class ItemGroup extends Base {
     this.modelInstance = think.model('item_group', null, 'api');
     this.modelPk = await this.modelInstance.getPk();
     this.needPaging = false;
-    this.listOrder = {'createAt': 'desc'};
+    this.listOrder = {'isOpen':'desc','createAt': 'desc'};
     return await super.__before();
   }
 }
