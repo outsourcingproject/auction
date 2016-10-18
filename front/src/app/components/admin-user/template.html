@@ -1,0 +1,79 @@
+<div class="header">
+  <h2>用户列表</h2>
+</div>
+<table class="table">
+  <thead>
+  <tr>
+    <th>用户名</th>
+    <th>简介</th>
+    <th>邮箱</th>
+    <th>信用额度</th>
+    <th>操作</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of pagedData; let idx=index">
+    <td>{{i.username}}</td>
+    <td>{{i.desc}}</td>
+    <td>{{i.email}}</td>
+    <td>¥ {{i.creditLines}}</td>
+    <td><a (click)="onModify(idx)">修改</a> <a (click)="onToggle(idx)">{{i.isOpen|num2str:['开启','隐藏']}}</a></td>
+  </tr>
+  </tbody>
+</table>
+
+<pager *ngIf="data.length" [data]="data" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+
+<div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="addOrUpdateModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">{{selected?'修改':'添加'}}专场</h4>
+      </div>
+      <div class="modal-body">
+
+        <form (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group">
+                <label for="name">名称</label>
+                <input id="name" name="name" class="form-control" [(ngModel)]="curr.name" required>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="isOpen">专场状态</label>
+                <select id="isOpen" name="isOpen" class="form-control" [(ngModel)]="curr.isOpen"
+                        required>
+                  <option value="1">开启</option>
+                  <option value="0">隐藏</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="desc">介绍</label>
+            <textarea id="desc" name="desc" class="form-control" [(ngModel)]="curr.desc" required>
+              </textarea>
+          </div>
+
+
+          <button class="btn btn-success" type="submit">提交</button>
+          <button class="btn btn-default" type="button" (click)="addOrUpdateModal.hide()">取消</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
