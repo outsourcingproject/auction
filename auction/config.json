@@ -1,0 +1,100 @@
+{
+  "defaultRoles": [
+    {
+      "name": "anonymous",
+      "desc": "user which has not signed up yet",
+      "extend": [],
+      "authorities": [
+        "index",
+        "page",
+        "home",
+        "restAPI"
+      ]
+    },
+    {
+      "name": "registered",
+      "extend": [
+        "anonymous"
+      ],
+      "desc": "user which has already signed up and not assigned to other role",
+      "authorities": [
+        "admin"
+      ]
+    }
+  ],
+  "defaultAuthorities": [
+    {
+      "name": "index",
+      "desc": "can visit index",
+      "paths": [
+        "/"
+      ]
+    },
+    {
+      "name": "page",
+      "desc": "can visit static page",
+      "paths": [
+        "/^page\\//"
+      ]
+    },
+    {
+      "name": "home",
+      "desc": "can use home module",
+      "paths": [
+        "/^home\\//"
+      ]
+    },
+    {
+      "name": "restAPI",
+      "desc": "can use rest API",
+      "paths": [
+        "/^rest\\//"
+      ]
+    },
+    {
+      "name": "admin",
+      "desc": "can admin the site",
+      "paths": [
+        "/^admin\\//"
+      ]
+    }
+  ],
+  "pageCount": {
+    "default": 10,
+    "article": 5,
+    "item": 20,
+    "bid": 10,
+    "order": 10
+  },
+  "auction": {
+    "bid_increasment": [
+      [
+        0,
+        50
+      ],
+      [
+        1000,
+        100
+      ],
+      [
+        5000,
+        200
+      ],
+      [
+        10000,
+        500
+      ],
+      [
+        20000,
+        1000
+      ]
+    ],
+    "ahead_time": {
+      "time": 1440
+    },
+    "fix_time": {
+      "need_delay_time": 5,
+      "auto_delay_time": 5
+    }
+  }
+}
