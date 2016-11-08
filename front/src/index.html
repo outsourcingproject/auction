@@ -21,160 +21,182 @@
   <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
   <style>
     @media all and (min-width: 1201px) {
-      html { font-size: 20px; }
+      html {
+        font-size: 20px;
+      }
     }
+
     @media all and (min-width: 1001px) and (max-width: 1200px) {
-      html { font-size: 16px; }
+      html {
+        font-size: 16px;
+      }
     }
+
     @media all and (max-width: 1000px) {
-      html { font-size: 12px; }
+      html {
+        font-size: 12px;
+      }
     }
-    *{
-      font-family: "Microsoft YaHei", "Helvetica Neue", Arial,verdana, sans-serif;
+
+    * {
+      font-family: "Microsoft YaHei", "Helvetica Neue", Arial, verdana, sans-serif;
     }
-            @keyframes rotate-animation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        @keyframes move-animation {
-            0% {
-                transform: translate(0, 0);
-            }
-            25% {
-                transform: translate(-64px, 0);
-            }
-            75% {
-                transform: translate(32px, 0);
-            }
-            100% {
-                transform: translate(0, 0);
-            }
-        }
-        body {
-            background-color: #F5F5F5;
-        }
-        .circle-loader {
-            display: block;
-            width: 64px;
-            height: 64px;
-            margin-left: -32px;
-            margin-top: -32px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform-origin: 16px 16px;
-            animation: rotate-animation 5s linear infinite;
-        }
-        .circle-loader .circle {
-            animation: move-animation 2.5s linear infinite;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-        }
-        .circle-loader .circle-line {
-            width: 64px;
-            height: 24px;
-            position: absolute;
-            top: 4px;
-            left: 0;
-            transform-origin: 4px 4px;
-        }
-        .circle-loader .circle-line:nth-child(1) {
-            transform: rotate(0deg);
-        }
-        .circle-loader .circle-line:nth-child(2) {
-            transform: rotate(90deg);
-        }
-        .circle-loader .circle-line:nth-child(3) {
-            transform: rotate(180deg);
-        }
-        .circle-loader .circle-line:nth-child(4) {
-            transform: rotate(270deg);
-        }
-        .circle-loader .circle-line .circle:nth-child(1) {
-            width: 8px;
-            height: 8px;
-            top: 50%;
-            left: 50%;
-            margin-top: -4px;
-            margin-left: -4px;
-            border-radius: 4px;
-            animation-delay: -0.3s;
-        }
-        .circle-loader .circle-line .circle:nth-child(2) {
-            width: 16px;
-            height: 16px;
-            top: 50%;
-            left: 50%;
-            margin-top: -8px;
-            margin-left: -8px;
-            border-radius: 8px;
-            animation-delay: -0.6s;
-        }
-        .circle-loader .circle-line .circle:nth-child(3) {
-            width: 24px;
-            height: 24px;
-            top: 50%;
-            left: 50%;
-            margin-top: -12px;
-            margin-left: -12px;
-            border-radius: 12px;
-            animation-delay: -0.9s;
-        }
-        .circle-loader .circle-blue {
-            background-color: #1f4e5a;
-        }
-        .circle-loader .circle-red {
-            background-color: #ff5955;
-        }
-        .circle-loader .circle-yellow {
-            background-color: #ffb265;
-        }
-        .circle-loader .circle-green {
-            background-color: #00a691;
-        }
+
+    @keyframes rotate-animation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes move-animation {
+      0% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(-64px, 0);
+      }
+      75% {
+        transform: translate(32px, 0);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    .circle-loader {
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin-left: -32px;
+      margin-top: -32px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: 16px 16px;
+      animation: rotate-animation 5s linear infinite;
+    }
+
+    .circle-loader .circle {
+      animation: move-animation 2.5s linear infinite;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+    }
+
+    .circle-loader .circle-line {
+      width: 64px;
+      height: 24px;
+      position: absolute;
+      top: 4px;
+      left: 0;
+      transform-origin: 4px 4px;
+    }
+
+    .circle-loader .circle-line:nth-child(1) {
+      transform: rotate(0deg);
+    }
+
+    .circle-loader .circle-line:nth-child(2) {
+      transform: rotate(90deg);
+    }
+
+    .circle-loader .circle-line:nth-child(3) {
+      transform: rotate(180deg);
+    }
+
+    .circle-loader .circle-line:nth-child(4) {
+      transform: rotate(270deg);
+    }
+
+    .circle-loader .circle-line .circle:nth-child(1) {
+      width: 8px;
+      height: 8px;
+      top: 50%;
+      left: 50%;
+      margin-top: -4px;
+      margin-left: -4px;
+      border-radius: 4px;
+      animation-delay: -0.3s;
+    }
+
+    .circle-loader .circle-line .circle:nth-child(2) {
+      width: 16px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      margin-top: -8px;
+      margin-left: -8px;
+      border-radius: 8px;
+      animation-delay: -0.6s;
+    }
+
+    .circle-loader .circle-line .circle:nth-child(3) {
+      width: 24px;
+      height: 24px;
+      top: 50%;
+      left: 50%;
+      margin-top: -12px;
+      margin-left: -12px;
+      border-radius: 12px;
+      animation-delay: -0.9s;
+    }
+
+    .circle-loader .circle-blue {
+      background-color: #1f4e5a;
+    }
+
+    .circle-loader .circle-red {
+      background-color: #ff5955;
+    }
+
+    .circle-loader .circle-yellow {
+      background-color: #ffb265;
+    }
+
+    .circle-loader .circle-green {
+      background-color: #00a691;
+    }
 
   </style>
 </head>
 
 <body>
 
-  <app>
+<app>
 
-    <div class="page">
-        <div class="circle-loader">
-            <div class="circle-line">
-                <div class="circle circle-blue"></div>
-                <div class="circle circle-blue"></div>
-                <div class="circle circle-blue"></div>
-            </div>
-            <div class="circle-line">
-                <div class="circle circle-yellow"></div>
-                <div class="circle circle-yellow"></div>
-                <div class="circle circle-yellow"></div>
-            </div>
-            <div class="circle-line">
-                <div class="circle circle-red"></div>
-                <div class="circle circle-red"></div>
-                <div class="circle circle-red"></div>
-            </div>
-            <div class="circle-line">
-                <div class="circle circle-green"></div>
-                <div class="circle circle-green"></div>
-                <div class="circle circle-green"></div>
-            </div>
-        </div>
+  <div class="page">
+    <div class="circle-loader">
+      <div class="circle-line">
+        <div class="circle circle-blue"></div>
+        <div class="circle circle-blue"></div>
+        <div class="circle circle-blue"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-yellow"></div>
+        <div class="circle circle-yellow"></div>
+        <div class="circle circle-yellow"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-red"></div>
+        <div class="circle circle-red"></div>
+        <div class="circle circle-red"></div>
+      </div>
+      <div class="circle-line">
+        <div class="circle circle-green"></div>
+        <div class="circle circle-green"></div>
+        <div class="circle circle-green"></div>
+      </div>
     </div>
-  </app>
+  </div>
+</app>
 
-  <% if (webpackConfig.metadata.isDevServer) { %>
-  <!-- Webpack Dev Server reload -->
-  <script src="/webpack-dev-server.js"></script>
-  <% } %>
+<% if (webpackConfig.metadata.isDevServer) { %>
+<!-- Webpack Dev Server reload -->
+<script src="/webpack-dev-server.js"></script>
+<% } %>
 
 
 </body>

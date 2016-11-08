@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100117
 File Encoding         : 65001
 
-Date: 2016-10-19 02:40:24
+Date: 2016-11-09 00:13:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -223,7 +223,7 @@ CREATE TABLE `follow` (
   KEY `watching_ibfk_2` (`item`) USING BTREE,
   CONSTRAINT `follow_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `follow_ibfk_2` FOREIGN KEY (`item`) REFERENCES `item` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of follow
@@ -342,7 +342,6 @@ INSERT INTO `image` VALUES ('78', 'QQ图片20161003115550.jpg', 'file://UPLOAD_P
 INSERT INTO `image` VALUES ('79', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/cc2cec40-92b9-11e6-8476-73a454fe86e2.jpg', '1476523737354', '1476523737354');
 INSERT INTO `image` VALUES ('80', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/a624c9e0-92ba-11e6-8476-73a454fe86e2.jpg', '1476524103043', '1476524103043');
 INSERT INTO `image` VALUES ('81', 'QQ图片20161003115007.png', 'file://UPLOAD_PATH/images/aaebae80-92bf-11e6-8476-73a454fe86e2.png', '1476526258542', '1476526258542');
-INSERT INTO `image` VALUES ('82', 'QQ图片20161003115550.jpg', 'file://UPLOAD_PATH/images/ac5e0330-92bf-11e6-8476-73a454fe86e2.jpg', '1476526260968', '1476526260968');
 
 -- ----------------------------
 -- Table structure for item
@@ -409,6 +408,7 @@ INSERT INTO `item` VALUES ('29', 'asdfsd', '12', '12', 'tag', '', '[59,null,null
 INSERT INTO `item` VALUES ('30', 'testss', '12', '12', '121', '<p>dsfadsaf</p>', '[60,null,null]', '3', '2', null, '1', '12', '12', '0', '1472989592239', '1473177600000', '0', '1472989617619', '1476500348478', '1');
 INSERT INTO `item` VALUES ('31', 'DSf', 'adsf', 'dasf', '12', '<p>sadf</p>', '[null,null,null]', '3', '2', null, '1', '12', '12', '0', '1472989773505', '1473782400000', '0', '1472989784735', '1476500348566', '1');
 INSERT INTO `item` VALUES ('49', '12321312121', '12', '12', '123', '<p>asdfdas</p>', '[75,80,81,82]', '3', '2', null, '9', '0', '0', '0', '1476502776579', '1476502776579', '0', '1476502786128', '1476804928021', '2');
+INSERT INTO `item` VALUES ('50', '111', '', '', '', '<p>11</p>', '[null,null,null]', '3', '2', null, '2', '0', '0', '0', '1478571777348', '1478571777348', '0', '1478571784969', '1478571785024', '2');
 
 -- ----------------------------
 -- Table structure for item_group
@@ -626,7 +626,7 @@ CREATE TABLE `session` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `cookie` (`cookie`),
   KEY `expire` (`expire`)
-) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of session
@@ -929,6 +929,14 @@ INSERT INTO `session` VALUES ('295', '44OtwtEc0okedfnH7H_KtmcXjKQ_Vlu5', null, '
 INSERT INTO `session` VALUES ('296', '77nYQQAmNIKZhPgUmTIRfUI_YZ8C0Jnd', null, '1476901583154');
 INSERT INTO `session` VALUES ('297', 'PnEcfbu4L5CzuBmk0ylIosdvyoUWP24T', null, '1476901583697');
 INSERT INTO `session` VALUES ('298', 'NQP8MhcEGU5hRRz1SK1PKlPgp2wJTc3r', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":5000,\"level\":2,\"role\":3,\"mark\":null,\"lastLogin\":1476815720911,\"createAt\":1468489586719,\"updateAt\":1476786081960,\"totalVolume\":3,\"totalTurnover\":2650}}', '1476902147526');
+INSERT INTO `session` VALUES ('299', '6fyy_NJJJ3_S_UJdHDJGQBr4Yp2uH_df', '{\"user\":{\"id\":2,\"username\":\"admin\",\"email\":\"1573328344@qq.com\",\"emailValidate\":1,\"desc\":\"I\'m zhangle\",\"avatar\":1,\"creditLines\":5000,\"level\":2,\"role\":3,\"mark\":null,\"lastLogin\":1478573622410,\"createAt\":1468489586719,\"updateAt\":1478571665851,\"totalVolume\":3,\"totalTurnover\":2650}}', '1478707977849');
+INSERT INTO `session` VALUES ('300', '9ZMgf07NCPGBaPHF0BgZcVtHpSTDwdzI', null, '1478657856842');
+INSERT INTO `session` VALUES ('301', 'SeEXMwkJ2I82es8PHXidMdDKJo8kbJBP', null, '1478664336393');
+INSERT INTO `session` VALUES ('302', '8tg2trqiRBwWG4wK6zmkYUkGNElejyT_', null, '1478707984572');
+INSERT INTO `session` VALUES ('303', 'hIzMUVz0FKz3WagIdjKtz15RjVnnQH6s', null, '1478707985110');
+INSERT INTO `session` VALUES ('304', '1pI93CPXuq_7_WXSyWBGMrcuvw5ABOJb', null, '1478707986097');
+INSERT INTO `session` VALUES ('305', 'C_iqfQ2kH2_kqlmJiPX6OREFuLXhFg7c', null, '1478707987207');
+INSERT INTO `session` VALUES ('306', 'sBDuhcq_0Dzi80BE4N_mt16Q6rzojQMW', null, '1478707989025');
 
 -- ----------------------------
 -- Table structure for user
@@ -941,7 +949,7 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `emailValidate` tinyint(1) NOT NULL DEFAULT '0',
   `desc` varchar(255) DEFAULT NULL,
-  `avatar` int(255) NOT NULL DEFAULT '1',
+  `avatar` int(255) DEFAULT '1',
   `creditLines` decimal(10,0) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '0',
   `role` int(11) NOT NULL,
@@ -955,14 +963,14 @@ CREATE TABLE `user` (
   KEY `role` (`role`),
   KEY `user_ibfk_2` (`avatar`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `user_ibfk_2` FOREIGN KEY (`avatar`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+  CONSTRAINT `user_ibfk_2` FOREIGN KEY (`avatar`) REFERENCES `image` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', 'zl810881283', 'zl7112585', '0573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '1', '2', null, '1472891876059', '1468489586718', '1472891876071');
-INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '2', '3', null, '1476815720911', '1468489586719', '1476815720916');
+INSERT INTO `user` VALUES ('2', 'admin', 'admin', '1573328344@qq.com', '1', 'I\'m zhangle', '1', '5000', '2', '3', null, '1478573622410', '1468489586719', '1478573622414');
 INSERT INTO `user` VALUES ('3', 'zhangle2', 'zlpwd2', '2573328344@qq.com', '1', 'I\'m zhangle', '1', '2', '3', '1', null, '1468489586704', '1468489586719', '1468489586719');
 INSERT INTO `user` VALUES ('4', 'zhangle3', 'zlpwd3', '3573328344@qq.com', '1', 'I\'m zhangle', '1', '3', '4', '1', null, '1468489586704', '1468489586719', '1468489586719');
 INSERT INTO `user` VALUES ('5', 'zhangle4', 'zlpwd4', '4573328344@qq.com', '1', 'I\'m zhangle', '1', '4', '5', '1', null, '1468489586704', '1468489586719', '1468489586719');
