@@ -9,6 +9,7 @@ import {
 import {ItemGroup} from "../../entities/itemGroup";
 import {REQUEST_HOST} from "../../app.config";
 import {AdminSearchComponent} from "../admin-search/admin-search.component";
+import {Address} from "../../entities/address";
 
 let data = require('./data.json');
 
@@ -29,6 +30,8 @@ export class AdminUserComponent implements OnInit {
 
   public selected = null;
   public curr = new ItemGroup();
+
+  public currAddresses:Array<Address>=[];
 
   private _requestUrl: string = REQUEST_HOST;
 
@@ -60,7 +63,15 @@ export class AdminUserComponent implements OnInit {
   public onModify(idx) {
     this.selected = idx;
     this.curr = JSON.parse(JSON.stringify(this.searchedData[idx]));
-    this.addOrUpdateModal.show();
+
+    this._http.get(this._requestUrl + '/rest/address' +"?filter="+ JSON.stringify({user:this.curr.id}) ,{withCredentials: true})
+      .map(res=>res.json().data)
+      .subscribe((data)=>{
+        this.currAddresses=data;
+        this.addOrUpdateModal.show();
+        console.log(data);
+      })
+
   }
 
   public onDel(idx) {

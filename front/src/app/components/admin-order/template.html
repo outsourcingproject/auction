@@ -1,7 +1,7 @@
 <div class="header">
   <h2>订单列表</h2>
 </div>
-<admin-search [data]="data" (result)="searchedData=$event"></admin-search>
+<admin-search [data]="data" (result)="searchedData=$event" [config]="{'name':2,'username':1}"></admin-search>
 <table class="table">
   <thead>
   <tr>
