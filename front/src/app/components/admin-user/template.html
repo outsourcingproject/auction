@@ -15,8 +15,8 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData; let idx=index">
-    <td>{{i.username}}</td>
-    <td>{{i.desc}}</td>
+    <td>{{i.username|clip:30}}</td>
+    <td>{{i.desc|clip:30}}</td>
     <td>{{i.email}}</td>
     <td>¥ {{i.creditLines}}</td>
     <td>{{i.createAt|date}}</td>

@@ -15,9 +15,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let order of pagedData; let idx=index">
-    <td><a [routerLink]="['/auc-item',order.iid]">{{order.name}}</a></td>
+    <td width="45%"><a [routerLink]="['/auc-item',order.iid]">{{order.name}}</a></td>
 
-    <td>¥ {{order.price|number:'1.2-2'}}</td>
+    <td width="15%">¥ {{order.price|number:'1.2-2'}}</td>
     <td>{{order.username}}</td>
     <td>{{order.createAt|date}}</td>
     <td>{{order.status|orderStatus}}</td>

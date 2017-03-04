@@ -15,9 +15,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData; let idx=index">
-    <td><a [routerLink]="['/article',i.id]">{{i.title}}</a></td>
+    <td width="45%"><a [routerLink]="['/article',i.id]">{{i.title}}</a></td>
 
-    <td>{{i.type|num2str:articleType:1}}</td>
+    <td>{{i.type|num2str:articleType}}</td>
     <td>{{i.createAt|date}}</td>
     <td>{{i.updateAt|date}}</td>
     <td><a (click)="onModifyArticle(i)">修改</a> <a (click)="onDeleteArticle(i)">删除</a></td>

@@ -17,9 +17,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData; let idx=index">
-    <td><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
+    <td width="45%"><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
 
-    <td>{{i.group|num2str:itemGroup:1}}</td>
+    <td>{{i.group|num2str:itemGroup}}</td>
     <td>¥ {{i.beginPrice|number:'1.2-2'}}</td>
     <td>{{i.auctionType|num2str:auctionType}}</td>
     <td>{{i.auctionBeginTime|date}}</td>
@@ -52,7 +52,7 @@
             <div class="col-md-8">
               <div class="form-group">
                 <label for="name">名称</label>
-                <input id="name" type="text" name="name" class="form-control" [(ngModel)]="curr.name" required>
+                <input id="name" type="text" name="name" class="form-control" [(ngModel)]="curr.name" maxlength="35" required>
               </div>
             </div>
             <div class="col-md-2">
