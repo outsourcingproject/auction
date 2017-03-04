@@ -10,7 +10,7 @@ export class Num2strPipe {
       console.log(input);
       console.log(arr);
       try {
-        return arr.filter((i) => i.id == input)[0][name];
+        return arr.filter((i) => i["id"] == input)[0][name];
       } catch (e) {
         return '';
       }
