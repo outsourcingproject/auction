@@ -6,7 +6,6 @@
   <thead>
   <tr>
     <th>用户名</th>
-    <th>简介</th>
     <th>邮箱</th>
     <th>信用额度</th>
     <th>创建时间</th>
@@ -16,7 +15,6 @@
   <tbody>
   <tr *ngFor="let i of pagedData; let idx=index">
     <td>{{i.username|clip:30}}</td>
-    <td>{{i.desc|clip:30}}</td>
     <td>{{i.email}}</td>
     <td>¥ {{i.creditLines}}</td>
     <td>{{i.createAt|date}}</td>

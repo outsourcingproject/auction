@@ -17,12 +17,12 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData; let idx=index">
-    <td width="45%"><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
+    <td style="width:25em"><a [routerLink]="['/auc-item',i.id]">{{i.name}}</a></td>
 
-    <td>{{i.group|num2str:itemGroup}}</td>
-    <td>¥ {{i.beginPrice|number:'1.2-2'}}</td>
+    <td style="width:6em">{{i.group|num2str:itemGroup}}</td>
+    <td style="width:8em">¥ {{i.beginPrice|number:'1.2-2'}}</td>
     <td>{{i.auctionType|num2str:auctionType}}</td>
-    <td>{{i.auctionBeginTime|date}}</td>
+    <td style="width:8em">{{i.auctionBeginTime|date}}</td>
     <td>{{i.createAt|date}}</td>
 
     <td><a (click)="onModify(idx)">修改</a> <a (click)="onDelete(idx)">删除</a></td>

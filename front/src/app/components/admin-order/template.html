@@ -15,13 +15,13 @@
   </thead>
   <tbody>
   <tr *ngFor="let order of pagedData; let idx=index">
-    <td width="45%"><a [routerLink]="['/auc-item',order.iid]">{{order.name}}</a></td>
+    <td style="width:20em"><a [routerLink]="['/auc-item',order.iid]">{{order.name }}</a></td>
 
-    <td width="15%">¥ {{order.price|number:'1.2-2'}}</td>
-    <td>{{order.username}}</td>
+    <td style="width:7em">¥ {{order.price|number:'1.2-2'}}</td>
+    <td >{{order.username}}</td>
     <td>{{order.createAt|date}}</td>
-    <td>{{order.status|orderStatus}}</td>
-    <td>
+    <td style="width:6em">{{order.status|orderStatus}}</td>
+    <td style="width:8em">
       <a *ngIf="order.status==0||order.status==1" (click)="orderTimeout(idx)">订单超时处理</a>
       <a *ngIf="order.status==2" (click)="confirmPay(idx)">核实付款</a>
       <a *ngIf="order.status==3" (click)="deliveryGood(idx)">发货</a>

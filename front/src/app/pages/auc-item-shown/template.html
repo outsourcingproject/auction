@@ -95,7 +95,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let i of itemBids">
-                <td>{{i.username}}</td>
+                <td>{{i.username | hide}}</td>
                 <td>¥ {{i.price | number:'1.2-2'}}</td>
                 <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
               </tr>

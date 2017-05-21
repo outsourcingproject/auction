@@ -29,7 +29,7 @@ const data = require('./config.json');
 })
 export class AucItemShown implements OnInit,OnDestroy {
   public id;
-  public tabsItems: Array<string> = ['拍品描述', '出价记录', '注意事项'];
+  public tabsItems: Array<string> = ['拍品描述', '出价记录', /*'注意事项'*/];
   public itemBids = [];
   public data: {
     id: number,
