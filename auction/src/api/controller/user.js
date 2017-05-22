@@ -8,6 +8,7 @@ export default class User extends Base {
   init(...args) {
     super.init(...args);
     this.userModel = this.model('user');
+    this.messageModel=this.model('message')
   }
   //获取当前用户
   async indexAction() {
@@ -16,7 +17,6 @@ export default class User extends Base {
       return this.fail("未登录", {});
 
     let userDetail = await this.userModel
-      .field("desc,level,creditLines,lastLogin")
       .where({id: user.id}).find();
 
     userDetail = think.extend(user, userDetail, {
@@ -37,6 +37,9 @@ export default class User extends Base {
       return this.fail(result);
     } else {
       // auto login
+      let message = [{from:this.userModel.systemUser, to:result.id, title:"欢迎注册，请完善个人资料", content:"请至账户设置页，完善个人资料，我们审核通过后，会增加您的个人信用额度", read:0}];
+      await this.messageModel.sendSystemMessage(message)
+
       return this.success(await this._login(result));
     }
   }

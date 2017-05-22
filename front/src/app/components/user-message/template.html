@@ -8,7 +8,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let i of pagedData;let idx=index">
-    <td><a (click)="onMessageClick(idx)">{{i.title}}</a></td>
+    <td><a (click)="onMessageClick(idx)" [class]="i.read?'read':'unread'">{{i.title}}</a></td>
     <td>{{i.from.username}}</td>
     <td>{{i.createAt | date:"YYYY/MM/DD hh:mm:ss"}}</td>
   </tr>

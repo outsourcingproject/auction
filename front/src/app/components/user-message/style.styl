@@ -1,7 +1,12 @@
 .table {
   a {
     cursor: pointer;
+    &.unread:before{
+      content:'* '
+      color: black
+    }
   }
+  
 }
 
 .message-title {

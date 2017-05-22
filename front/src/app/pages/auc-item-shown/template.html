@@ -1,7 +1,15 @@
 <div class="container">
   <div class="header">
     <img src="../../../assets/img/header.png" width="100%">
-    <div class="nav">当前路径&nbsp;<a [routerLink]="['/']">首页</a> - <a [routerLink]="['/auctioning']">正在拍卖</a> -
+    <div class="nav">
+      当前路径&nbsp;
+      <a [routerLink]="['/']">首页</a> - 
+      <a [routerLink]="['/auction-not-start']" *ngIf="data.status==0">即将开拍</a> 
+      <a [routerLink]="['/auctioning']" *ngIf="data.status==1">正在拍卖</a> 
+      <a [routerLink]="['/auction-end']" *ngIf="data.status==2||data.status==3">拍卖结束</a> 
+      -
+      <a [routerLink]="['/item-group/'+data.group]"> {{groupData.name}}</a>
+      -
       {{data.name}}
     </div>
   </div>

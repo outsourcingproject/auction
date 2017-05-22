@@ -39,6 +39,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     currentPrice: number,
     startPrice: number,
     stage: number,
+    group: number,
     bidCount: number,
     status: number,
     followCount: number,
@@ -59,6 +60,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     currentPrice: null,
     startPrice: null,
     stage: null,
+    group: null,
     bidCount: null,
     status: null,
     followCount: null,
@@ -70,6 +72,7 @@ export class AucItemShown implements OnInit,OnDestroy {
     images: [],
     relatedItems: []
   };
+  public groupData={};
 
   public auctionPrice;
   public imagesSelectedIdx;
@@ -86,6 +89,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   private _currTimer;
   private dataUrl;
+  private groupDataUrl;
   private sub;
   private imageUrl;
   private bidUrl;
@@ -97,6 +101,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
   constructor(private _http: Http, private _router: Router, private _arouter: ActivatedRoute, private _userService: UserService) {
     this.dataUrl = REQUEST_HOST + "/api/item/detail";
+    this.groupDataUrl = REQUEST_HOST + "/rest/item_group";
     this.imageUrl = REQUEST_HOST.replace('http:', '') + "/rest/image/"
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
     this.followUrl = REQUEST_HOST + "/api/item/follow";
@@ -173,6 +178,11 @@ export class AucItemShown implements OnInit,OnDestroy {
         }
 
       })
+      .then(()=> this._http.get(this.groupDataUrl+ "?id=" + this.data.group, {withCredentials: true}).toPromise())
+      .then(res => res.json().data)
+      .then((data)=>{
+        this.groupData = data
+      })
       .catch(this.handleError);
 
     this._http.get(this._requestHost + '/api/item/get_bid?id=' + this.id, {withCredentials: true}).map((res)=>res.json().data)
@@ -242,15 +252,17 @@ export class AucItemShown implements OnInit,OnDestroy {
       if (isEmpty(user)) {
         alert('登录后才能竞拍，请登录后再试！即将将为您转到登录页');
         this._router.navigate(['/login']);
-        return;
+        return false;
       }
-      this.auctionPriceSubmitButtonDisable = null;
-      if (user.creditLines >= this.auctionPrice) {
+      if(this.itemBids.length!=0&&this.itemBids[this.itemBids.length-1].userId==user.id){
+         alert(`您的已经是当前最高出价者，不需要继续出价`);
+      } else if (user.creditLines > this.auctionPrice) {
         this.auctionConfirmModal.show();
       } else {
         alert(`您的信用额度不足以进行此次竞拍\n` + `您的信用额度为 ${user.creditLines} 元，当前出价为 ${this.auctionPrice} 元`);
       }
     });
+    this.auctionPriceSubmitButtonDisable = null;
     return false;
   }
 

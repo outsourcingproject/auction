@@ -33,7 +33,16 @@
     <div class="user-info">
       <div class="header">用户信息 <i class="fa fa-cog"></i></div>
       <div class="content">
-        <p>绑定邮箱：{{user.email}}</p>
+        <p *ngIf="user.email">绑定邮箱：{{user.email}}</p>
+        <p *ngIf="user.phoneNum">联系电话：{{user.phoneNum}}</p>
+        <p *ngIf="user.age">年龄：{{user.age}}</p>
+        <p *ngIf="user.name">真实姓名：{{user.name}}</p>
+        <p *ngIf="user.idNum">绑定邮箱：{{user.idNum}}</p>
+        <p *ngIf="user.income != undefined">月收入：{{user.email}}</p>
+        <p >审核状态：{{user.checked | userCheckStatus}}</p>
+
+        <button class="btn btn-default" type="button" *ngIf="user.checked!=2">{{user.checked==0?"完善":"修改"}}个人信息
+        </button>
       </div>
     </div>
   </div>
@@ -70,6 +79,25 @@
       <area-picker [(apModel)]="currAddress"
                    [hidden]="!newAddress&&(selectedAddressIdx===null||selectedAddressIdx===undefined)"
                    (addressSubmit)="onAddressSubmit($event)"></area-picker>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #userModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="userModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">完善个人消息</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
     </div>
   </div>
 </div>

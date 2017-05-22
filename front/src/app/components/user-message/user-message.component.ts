@@ -31,7 +31,8 @@ export class UserMessageComponent implements OnInit {
 
   public onMessageClick(idx:number) {
     this.selected = this.data[idx];
-    this._http.post(this._requestHost+"/rest/message/" + this.data[idx].id + '?_method=delete',{read:1},{withCredentials: true})
+    this.selected["read"]=1;
+    this._http.post(this._requestHost+"/rest/message/" + this.data[idx].id + '?_method=put',{read:1},{withCredentials: true})
         .toPromise()
         .then();
     this.detailModal.show();

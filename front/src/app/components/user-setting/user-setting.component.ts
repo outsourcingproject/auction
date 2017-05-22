@@ -1,9 +1,9 @@
-import {Component, OnInit, Inject} from '@angular/core'
+import {Component, OnInit, Inject,ViewChild} from '@angular/core'
 import {Http} from '@angular/http';
 import {User}      from '../../entities/user'
 import {AlertComponent} from 'ng2-bootstrap/ng2-bootstrap';
 import {TimepickerComponent} from 'ng2-bootstrap/ng2-bootstrap';
-import {DATEPICKER_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
+import {DATEPICKER_DIRECTIVES,ModalDirective,BS_VIEW_PROVIDERS, MODAL_DIRECTIVES} from 'ng2-bootstrap/ng2-bootstrap';
 import {AreaPickerComponent} from "../area-picker";
 import {Address} from "../../entities/address";
 import {Observable} from "rxjs";
@@ -17,7 +17,8 @@ let debug = require('debug')('ng:user-setting');
   selector: 'user-setting',
   styles: [require('./style.styl')],
   template: require('./template.html'),
-  directives: [AlertComponent, TimepickerComponent, DATEPICKER_DIRECTIVES, AreaPickerComponent]
+  viewProviders: [BS_VIEW_PROVIDERS],
+  directives: [AlertComponent, TimepickerComponent, DATEPICKER_DIRECTIVES, AreaPickerComponent,MODAL_DIRECTIVES]
 })
 export class UserSettingComponent implements OnInit {
 
@@ -34,6 +35,9 @@ export class UserSettingComponent implements OnInit {
   public currAddress:Address = new Address();
   public activeDefaultAddressIdx:number;
 
+
+  @ViewChild('userModal')
+  public userModal:ModalDirective;
 
   private _requestHost:string = REQUEST_HOST;
 

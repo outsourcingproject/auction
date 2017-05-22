@@ -69,7 +69,7 @@ export default {
   user: {
     default: {
       role: 2,
-      creditLines: 1000,
+      creditLines: 0,
       avatar: '/assets/img/avatar.png',
       desc: '他很懒，什么都没留下',
       level: 1,
