@@ -6,20 +6,20 @@
         <div class="input-group form-group">
           <label for="password" class="input-group-addon">当前密码：</label>
           <input id="password" type="password" class="form-control"
-                 required [(ngModel)]="user.password" name="password">
+                 required [(ngModel)]="userTemp.password" name="password">
         </div>
         <div class="input-group form-group">
           <label for="pwdReset" class="input-group-addon">新密码：　</label>
           <input id="pwdReset" type="password" class="form-control"
-                 required [(ngModel)]="user.pwdReset" name="pwdReset">
+                 required [(ngModel)]="userTemp.pwdReset" name="pwdReset">
         </div>
         <div class="input-group form-group">
           <label for="pwdRepeat" class="input-group-addon">重复密码：</label>
           <input id="pwdRepeat" type="password" class="form-control"
-                 required [(ngModel)]="user.pwdRepeat" name="pwdRepeat">
+                 required [(ngModel)]="userTemp.pwdRepeat" name="pwdRepeat">
         </div>
         <div class="submit-button-wrapper">
-          <button class="btn btn-default" [disabled]="user.pwdReset!=user.pwdRepeat||!user.password"
+          <button class="btn btn-default" [disabled]="userTemp.pwdReset!=userTemp.pwdRepeat||!userTemp.password"
                   type="submit">提交
           </button>
         </div>
@@ -37,11 +37,12 @@
         <p *ngIf="user.phoneNum">联系电话：{{user.phoneNum}}</p>
         <p *ngIf="user.age">年龄：{{user.age}}</p>
         <p *ngIf="user.name">真实姓名：{{user.name}}</p>
-        <p *ngIf="user.idNum">绑定邮箱：{{user.idNum}}</p>
-        <p *ngIf="user.income != undefined">月收入：{{user.email}}</p>
+        <p *ngIf="user.idNum">身份证号码：{{user.idNum}}</p>
+        <p *ngIf="user.income != undefined">月收入：{{user.income}}</p>
         <p >审核状态：{{user.checked | userCheckStatus}}</p>
 
-        <button class="btn btn-default" type="button" *ngIf="user.checked!=2">{{user.checked==0?"完善":"修改"}}个人信息
+        <button class="btn btn-default" type="button" *ngIf="user.checked!=2" (click)="onClickShowUserInfo()">
+          {{user.checked==0?"完善":"修改"}}个人信息
         </button>
       </div>
     </div>
@@ -96,7 +97,47 @@
         <h4 class="modal-title">完善个人消息</h4>
       </div>
       <div class="modal-body">
+        <form (ngSubmit)="onSubmitUserInfo()" class="form">
+          <div class="input-group form-group">
+            <label for="phoneNum" class="input-group-addon">联系电话：　　</label>
+            <input id="phoneNum" type="text" class="form-control"
+                  required [(ngModel)]="userTemp.phoneNum" name="phoneNum">
+          </div>
+          <div class="input-group form-group">
+            <label for="age" class="input-group-addon">年龄：　　　　</label>
+            <input id="age" type="number" class="form-control"
+                  required [(ngModel)]="userTemp.age" name="age">
+          </div>
+          <div class="input-group form-group">
+            <label for="name" class="input-group-addon">真实姓名：　　</label>
+            <input id="name" type="text" class="form-control"
+                  required [(ngModel)]="userTemp.name" name="name">
+          </div>
 
+          <div class="input-group form-group">
+            <label for="idNum" class="input-group-addon">身份证号码：　</label>
+            <input id="idNum" type="text" class="form-control"
+                  required [(ngModel)]="userTemp.idNum" name="idNum">
+          </div>
+
+          <div class="input-group form-group">
+            <label for="income" class="input-group-addon">月收入（元）：</label>
+            <input id="income" type="text" class="form-control"
+                  required [(ngModel)]="userTemp.income" name="income">
+          </div>
+
+
+          <div class="submit-button-wrapper">
+            <button class="btn btn-default" 
+                    type="submit">提交
+            </button>
+          </div>
+
+          <alert [type]="'warning'" [dismissible]="true" *ngIf="showPwdWorn">密码错误，请重试</alert>
+          <alert [type]="'success'" [dismissible]="true" *ngIf="showSuccess">修改成功</alert>
+          <alert [type]="'warning'" *ngIf="user.pwdReset!=user.pwdRepeat">两次输入密码不一致</alert>
+
+        </form>
       </div>
     </div>
   </div>

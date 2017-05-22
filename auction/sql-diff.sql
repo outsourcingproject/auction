@@ -1,2 +1,0 @@
-ALTER TABLE `auction`.`user` ADD COLUMN `income` int AFTER `lastLogin`, ADD COLUMN `age` int AFTER `income`, ADD COLUMN `name` text AFTER `age`, ADD COLUMN `idNum` text AFTER `name`, ADD COLUMN `phoneNum` text AFTER `idNum`;
-ALTER TABLE `auction`.`user` ADD COLUMN `checked` int NOT NULL DEFAULT 0 AFTER `phoneNum`;

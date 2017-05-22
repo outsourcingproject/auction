@@ -24,6 +24,7 @@ export class AdminUserComponent implements OnInit {
 
   public data = []//data;
   public searchedData;
+  public showData=[];
   public pagedData;
 
   public pageSize = 15;
@@ -35,6 +36,9 @@ export class AdminUserComponent implements OnInit {
 
   private _requestUrl: string = REQUEST_HOST;
 
+  public checkUser;
+
+
   @ViewChild('addOrUpdateModal')
   public addOrUpdateModal: ModalDirective;
 
@@ -44,6 +48,9 @@ export class AdminUserComponent implements OnInit {
   constructor(private _http: Http, private _router: Router) {
   }
 
+  public onCheckUserChange(){
+    this.showData=!this.checkUser?this.searchedData.filter(i=>i.checked==1):this.searchedData
+  }
   public onPagedDataChange(data) {
     this.pagedData = data;
   }
@@ -53,6 +60,7 @@ export class AdminUserComponent implements OnInit {
       .map(res=>res.json().data)
       .subscribe((data)=> {
         this.data = data;
+        
       })
   }
 
@@ -60,9 +68,14 @@ export class AdminUserComponent implements OnInit {
     this._getData();
   }
 
+  public onSearchResult($event){
+    this.searchedData=$event;
+    this.showData=this.checkUser?this.searchedData.filter(i=>i.checked==1):this.searchedData
+  }
+
   public onModify(idx) {
     this.selected = idx;
-    this.curr = JSON.parse(JSON.stringify(this.searchedData[idx]));
+    this.curr = JSON.parse(JSON.stringify(this.showData[idx]));
 
     this._http.get(this._requestUrl + '/rest/address' +"?filter="+ JSON.stringify({user:this.curr.id}) ,{withCredentials: true})
       .map(res=>res.json().data)
@@ -76,7 +89,7 @@ export class AdminUserComponent implements OnInit {
 
   public onDel(idx) {
     this.selected = idx;
-    this.curr = JSON.parse(JSON.stringify(this.searchedData[idx]));
+    this.curr = JSON.parse(JSON.stringify(this.showData[idx]));
     this.delModal.show();
   }
 

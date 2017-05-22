@@ -44,7 +44,7 @@ export class AdminItemComponent implements OnInit {
   public selected = null;
   public curr = new Item();
 
-  public images = ['', '', ''];
+  public images = [];
 
   @ViewChild('addOrUpdateModal')
   public addOrUpdateModal: ModalDirective;
@@ -150,7 +150,7 @@ export class AdminItemComponent implements OnInit {
     this.curr.auctionBeginTime = +this.curr.auctionBeginTime;
     this.curr.auctionEndTime = +this.curr.auctionEndTime;
 
-    this.curr.image = JSON.stringify(this.curr.images);
+    this.curr.image = JSON.stringify(this.curr.images.filter(i=>!!i));
 
     if (this.selected != null) {
       //修改物品

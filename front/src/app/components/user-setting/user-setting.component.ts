@@ -25,7 +25,7 @@ export class UserSettingComponent implements OnInit {
   public date = new Date();
   public time = new Date();
   public user;
-
+  public userTemp ={};
   public showPwdWorn:boolean;
   public showSuccess:boolean;
 
@@ -141,5 +141,19 @@ export class UserSettingComponent implements OnInit {
 
     this.setSelectedAddressIdx(null);
     this.newAddress = 0;
+  }
+  public onClickShowUserInfo(){
+    this.userModal.show()
+  }
+  public onSubmitUserInfo(){
+    this.userTemp["checked"]=1;
+    this._http.post(this._requestHost + "/rest/user/"+this.user.id+"?_method=put", this.userTemp, {withCredentials: true})
+      .subscribe((res)=> {
+        this.userModal.hide()
+        this._userService.flushUser().subscribe(user=> {
+          this.user = user;
+        })
+        this.userTemp={};
+    })
   }
 }

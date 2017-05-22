@@ -1,89 +1,119 @@
 <div class="header">
   <h2>用户列表</h2>
 </div>
-<admin-search (result)="searchedData=$event" [data]="data" [config]="{'username':1,'email':1}"></admin-search>
+<admin-search (result)="onSearchResult($event)" [data]="data" [config]="{'username':1,'email':1}"></admin-search>
+
+<div class="form-group">
+  <label for="checkUser">只显示未审核用户</label>
+  <input id="checkUser" name="checkUser" class="form-control" [(ngModel)]="checkUser" required type="checkbox" (change)="onCheckUserChange()">
+</div>
 <table class="table">
   <thead>
-  <tr>
-    <th>用户名</th>
-    <th>邮箱</th>
-    <th>信用额度</th>
-    <th>创建时间</th>
-    <th>操作</th>
-  </tr>
+    <tr>
+      <th>用户名</th>
+      <th>邮箱</th>
+      <th>信用额度</th>
+      <th>创建时间</th>
+      <th>操作</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let i of pagedData; let idx=index">
-    <td>{{i.username|clip:30}}</td>
-    <td>{{i.email}}</td>
-    <td>¥ {{i.creditLines}}</td>
-    <td>{{i.createAt|date}}</td>
-    <td><a (click)="onModify(idx)">修改</a> <a (click)="onDel(idx)">删除</a></td>
-  </tr>
+    <tr *ngFor="let i of pagedData; let idx=index">
+      <td>{{i.username|clip:30}}</td>
+      <td>{{i.email}}</td>
+      <td>¥ {{i.creditLines}}</td>
+      <td>{{i.createAt|date}}</td>
+      <td><a (click)="onModify(idx)">修改</a> <a (click)="onDel(idx)">删除</a></td>
+    </tr>
   </tbody>
 </table>
 
-<pager *ngIf="data.length" [data]="searchedData" [pageSize]="pageSize"
-       (pagedDataChange)="onPagedDataChange($event)"></pager>
 
 
-<div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-     aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
+<pager *ngIf="data.length" [data]="showData" [pageSize]="pageSize" (pagedDataChange)="onPagedDataChange($event)"></pager>
+
+
+<div bsModal #addOrUpdateModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" (click)="addOrUpdateModal.hide()" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">{{selected?'修改':'添加'}}专场</h4>
+        <h4 class="modal-title">用户信息</h4>
       </div>
       <div class="modal-body">
 
         <h4>用户基本信息</h4>
         <table class="table">
           <thead>
-          <tr>
-            <th>用户名</th>
-            <th>简介</th>
-            <th>邮箱</th>
-            <th>信用额度</th>
-            <th>创建时间</th>
-          </tr>
+            <tr>
+              <th>用户名</th>
+              <th>简介</th>
+              <th>邮箱</th>
+              <th>信用额度</th>
+              <th>创建时间</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>{{curr.username}}</td>
-            <td>{{curr.desc}}</td>
-            <td>{{curr.email}}</td>
-            <td>¥ {{curr.creditLines}}</td>
-            <td>{{curr.createAt|date}}</td>
-          </tr>
+            <tr>
+              <td>{{curr.username}}</td>
+              <td>{{curr.desc}}</td>
+              <td>{{curr.email}}</td>
+              <td>¥ {{curr.creditLines}}</td>
+              <td>{{curr.createAt|date}}</td>
+            </tr>
           </tbody>
         </table>
+        <h4>用户个人信息</h4>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>联系电话</th>
+              <th>年龄</th>
+              <th>真实姓名</th>
+              <th>身份证号码</th>
+              <th>月收入</th>
+              <th>审核状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{curr.phoneNum}}</td>
+              <td>{{curr.age}}</td>
+              <td>{{curr.name}}</td>
+              <td>{{curr.idNum}}</td>
+              <td>{{curr.income}}</td>
+              <td>{{curr.checked |userCheckStatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+
 
         <h4>用户收货地址信息</h4>
 
         <div class="alert alert-success" *ngIf="!currAddresses.length">暂无收货信息</div>
         <table class="table" *ngIf="currAddresses.length">
           <thead>
-          <tr>
-            <th>详细地址</th>
-            <th>收货人</th>
-            <th>收货电话</th>
-            <th class="default">默认收货地址</th>
-          </tr>
+            <tr>
+              <th>详细地址</th>
+              <th>收货人</th>
+              <th>收货电话</th>
+              <th class="default">默认收货地址</th>
+            </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let address of currAddresses;let idx=index">
-            <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
-            <td>{{address.name}}</td>
-            <td>{{address.phoneNum}}</td>
-            <td>
-              <div *ngIf="address.isDefault">默认</div>
-            </td>
+            <tr *ngFor="let address of currAddresses;let idx=index">
+              <td>{{address.province}} {{address.city}} {{address.district}} {{address.address}}</td>
+              <td>{{address.name}}</td>
+              <td>{{address.phoneNum}}</td>
+              <td>
+                <div *ngIf="address.isDefault">默认</div>
+              </td>
 
-          </tr>
+            </tr>
           </tbody>
         </table>
 
@@ -91,18 +121,27 @@
         <form (ngSubmit)="onSubmit()">
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <label for="creditLines">信用额度</label>
-                <input id="creditLines" name="creditLines" class="form-control" [(ngModel)]="curr.creditLines" required
-                       type="number">
+                <input id="creditLines" name="creditLines" class="form-control" [(ngModel)]="curr.creditLines" required type="number">
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
               <div class="form-group">
                 <label for="mark">备注</label>
                 <input id="mark" name="mark" class="form-control" [(ngModel)]="curr.mark">
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="checked">审核结果</label>
+                <select id="checked" name="checked" class="form-control" [(ngModel)]="curr.checked">
+                <option value="2">审核通过</option>
+                <option value="1">未审核</option>
+              </select>
               </div>
             </div>
           </div>
@@ -117,9 +156,7 @@
 </div>
 
 
-<div bsModal #delModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
-     aria-labelledby="myLargeModalLabel"
-     aria-hidden="true">
+<div bsModal #delModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -132,22 +169,22 @@
         <p>您确定删除该用户？该过程不可逆</p>
         <table class="table">
           <thead>
-          <tr>
-            <th>用户名</th>
-            <th>简介</th>
-            <th>邮箱</th>
-            <th>信用额度</th>
-            <th>创建时间</th>
-          </tr>
+            <tr>
+              <th>用户名</th>
+              <th>简介</th>
+              <th>邮箱</th>
+              <th>信用额度</th>
+              <th>创建时间</th>
+            </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>{{curr.username}}</td>
-            <td>{{curr.desc}}</td>
-            <td>{{curr.email}}</td>
-            <td>¥ {{curr.creditLines}}</td>
-            <td>{{curr.createAt|date}}</td>
-          </tr>
+            <tr>
+              <td>{{curr.username}}</td>
+              <td>{{curr.desc}}</td>
+              <td>{{curr.email}}</td>
+              <td>¥ {{curr.creditLines}}</td>
+              <td>{{curr.createAt|date}}</td>
+            </tr>
           </tbody>
         </table>
         <button class="btn btn-success" (click)="delSubmit()">确定</button>
