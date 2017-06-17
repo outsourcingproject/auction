@@ -18,19 +18,19 @@ export default class extends Base {
       .setRelation(false)
       .join("item_group on item.group = item_group.id")
       .join("item_type on item.type = item_type.id")
-      .where({status: itemModel.AUCTIONING})
+      .where({ status: itemModel.AUCTIONING })
       .where("item_group.isOpen = 1")
       .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")
       .select();
     let user = await this.session("user");
     if (!think.isEmpty(user)) {
-      let followingItems = await this.model("follow").field("item").where({user: user["id"]}).select();
-      let itemIds = followingItems.map((f)=>f["item"]);
-      items.map((i)=> {
+      let followingItems = await this.model("follow").field("item").where({ user: user["id"] }).select();
+      let itemIds = followingItems.map((f) => f["item"]);
+      items.map((i) => {
         return (itemIds.indexOf(i["id"]) !== -1) ? i["following"] = true : i["following"] = false
       });
     } else {
-      items.map((i)=> {
+      items.map((i) => {
         return i["following"] = null
       });
     }
@@ -43,19 +43,19 @@ export default class extends Base {
       .setRelation(false)
       .join("item_group on item.group = item_group.id")
       .join("item_type on item.type = item_type.id")
-      .where({status: [itemModel.AUCTION_ENDED, itemModel.AUCTION_FAILED]})
+      .where({ status: [itemModel.AUCTION_ENDED, itemModel.AUCTION_FAILED] })
       .where("item_group.isOpen = 1")
       .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")
       .select();
     let user = await this.session("user");
     if (!think.isEmpty(user)) {
-      let followingItems = await this.model("follow").field("item").where({user: user["id"]}).select();
-      let itemIds = followingItems.map((f)=>f["item"]);
-      items.map((i)=> {
+      let followingItems = await this.model("follow").field("item").where({ user: user["id"] }).select();
+      let itemIds = followingItems.map((f) => f["item"]);
+      items.map((i) => {
         return (itemIds.indexOf(i["id"]) !== -1) ? i["following"] = true : i["following"] = false
       });
     } else {
-      items.map((i)=> {
+      items.map((i) => {
         return i["following"] = null
       });
     }
@@ -68,19 +68,19 @@ export default class extends Base {
       .setRelation(false)
       .join("item_group on item.group = item_group.id")
       .join("item_type on item.type = item_type.id")
-      .where({status: itemModel.AUCTION_NOT_STARTED})
+      .where({ status: itemModel.AUCTION_NOT_STARTED })
       .where("item_group.isOpen = 1")
       .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")
       .select();
     let user = await this.session("user");
     if (!think.isEmpty(user)) {
-      let followingItems = await this.model("follow").field("item").where({user: user["id"]}).select();
-      let itemIds = followingItems.map((f)=>f["item"]);
-      items.map((i)=> {
+      let followingItems = await this.model("follow").field("item").where({ user: user["id"] }).select();
+      let itemIds = followingItems.map((f) => f["item"]);
+      items.map((i) => {
         return (itemIds.indexOf(i["id"]) !== -1) ? i["following"] = true : i["following"] = false
       });
     } else {
-      items.map((i)=> {
+      items.map((i) => {
         return i["following"] = null
       });
     }
@@ -113,9 +113,15 @@ export default class extends Base {
       item: itemid,
       value: value,
       status: this.model("bid").LEADING
-    });//res=0 if failed
+    });
+    console.log("~~~~~~~~~~~~bidAction~~~~~~~~~~~~~~")
+    console.log(user)
+    await this.model("item").where({ id: itemid }).update({
+      currentBidder: userId
+    });
+
     //将新的价格数据返回给前端。
-    let item = await this.model("item").setRelation(false).where({id: itemid}).find();
+    let item = await this.model("item").setRelation(false).where({ id: itemid }).find();
 
 
     //时间领先
@@ -124,7 +130,9 @@ export default class extends Base {
 
       if (item.auctionEndTime < now + time) {
         item.auctionEndTime = now + time;
-        await this.model("item").where({id: itemid}).update({auctionEndTime: item.auctionEndTime});
+        await this.model("item").where({ id: itemid }).update({
+          auctionEndTime: item.auctionEndTime
+        });
         this.model("item").setCheckStatusTimer(item.auctionEndTime - now);
       }
     }
@@ -134,12 +142,14 @@ export default class extends Base {
       let auto_delay_time = config.get('auction.fix_time.auto_delay_time');
       if (now + need_delay_time > item.auctionEndTime) {
         item.auctionEndTime += auto_delay_time;
-        await this.model("item").where({id: itemid}).update({auctionEndTime: item.auctionEndTime});
+        await this.model("item").where({ id: itemid }).update({
+          auctionEndTime: item.auctionEndTime
+        });
         this.model("item").setCheckStatusTimer(item.auctionEndTime - now);
       }
     }
     let newStage = await this.model("item").getStage(item["currentPrice"]);
-    return this.success({id: res, newPrice: item["currentPrice"], newStage: newStage});
+    return this.success({ id: res, newPrice: item["currentPrice"], newStage: newStage });
   }
 
   async followAction() {
@@ -150,9 +160,9 @@ export default class extends Base {
     let itemId = this.param("itemId");
     let state = this.param("state");
     if (state)
-      return this.success(await this.model("follow").add({user: userId, item: itemId}));
+      return this.success(await this.model("follow").add({ user: userId, item: itemId }));
     else
-      return this.success(await this.model("follow").where({user: userId, item: itemId}).delete());
+      return this.success(await this.model("follow").where({ user: userId, item: itemId }).delete());
   }
 
   async groupAction() {
@@ -162,11 +172,11 @@ export default class extends Base {
       .setRelation(false)
       .join("item_group on item.group = item_group.id")
       .join("item_type on item.type = item_type.id")
-      .where({"item_group.id": groupId})
+      .where({ "item_group.id": groupId })
       .where("item_group.isOpen = 1")
       .field("item.id as id, currentPrice, item.name as name, followCount, auctionEndTime, item.image, item_type.name as type")
       .select();
-    return this.success({group,items:data});
+    return this.success({ group, items: data });
   }
 
   async detailAction() {
@@ -189,8 +199,8 @@ export default class extends Base {
   }
 
   async _relatedItemHelper(id, userId) {
-    let itemInfo = await this.itemModel.setRelation(false).where({"id": id}).find();
-    let relatedItems = await this.itemModel.setRelation(false).where({"group": itemInfo["group"]}).field("id").limit(10).select();
+    let itemInfo = await this.itemModel.setRelation(false).where({ "id": id }).find();
+    let relatedItems = await this.itemModel.setRelation(false).where({ "group": itemInfo["group"] }).field("id").limit(10).select();
     let res = [];
     for (let r of relatedItems) {
       let rDetail = await this._detailHelper(r["id"], userId);
@@ -201,10 +211,10 @@ export default class extends Base {
   }
 
   async _detailHelper(id) {
-    let itemInfo = await this.itemModel.setRelation(false).where({"id": id}).find();
+    let itemInfo = await this.itemModel.setRelation(false).where({ "id": id }).find();
     let imageIds = JSON.parse(itemInfo["image"]);
-    itemInfo["bidCount"] = await this.model("bid").where({"item": id}).count();
-    itemInfo["followCount"] = await this.model("follow").where({"item": id}).count();
+    itemInfo["bidCount"] = await this.model("bid").where({ "item": id }).count();
+    itemInfo["followCount"] = await this.model("follow").where({ "item": id }).count();
     itemInfo.beginPrice = +itemInfo.beginPrice;
     itemInfo.currentPrice = +itemInfo.currentPrice;
     itemInfo["stage"] = await this.model("item").getStage(itemInfo["currentPrice"]);

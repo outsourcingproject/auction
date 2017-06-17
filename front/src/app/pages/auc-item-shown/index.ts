@@ -86,6 +86,7 @@ export class AucItemShown implements OnInit,OnDestroy {
   public _currTime: number;
   public auctionPriceSubmitButtonDisable = null;
 
+  public user;
 
   private _currTimer;
   private dataUrl;
@@ -106,6 +107,10 @@ export class AucItemShown implements OnInit,OnDestroy {
     this.bidUrl = REQUEST_HOST + "/api/item/bid";
     this.followUrl = REQUEST_HOST + "/api/item/follow";
     this.userUrl = REQUEST_HOST + "/api/user";
+    this._userService.getUser().take(1).subscribe(user=> {
+      this.user=user;
+    });
+
   }
 
   @ViewChild('auctionConfirmModal')
