@@ -34,7 +34,7 @@ export default class User extends Base {
     if (!think.isEmpty(result)) {
       return 'EMAIL_ALREADY_USED';
     }
-    result = await this.add({username, password, email, role, creditLines, desc, level, lastLogin});
+    result = await this.add({username, password, email, role, creditLines,remainCreditLines:creditLines, desc, level, lastLogin});
 
     return this.where({id: result}).find();
   }

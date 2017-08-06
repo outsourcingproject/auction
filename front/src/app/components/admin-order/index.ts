@@ -1,1 +1,1 @@
-export * from './admin-order.component.ts'
+export * from './admin-order.component'

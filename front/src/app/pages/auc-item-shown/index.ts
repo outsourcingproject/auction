@@ -261,10 +261,10 @@ export class AucItemShown implements OnInit,OnDestroy {
       }
       if(this.itemBids.length!=0&&this.itemBids[this.itemBids.length-1].userId==user.id){
          alert(`您的已经是当前最高出价者，不需要继续出价`);
-      } else if (user.creditLines > this.auctionPrice) {
+      } else if (user.remainCreditLines > this.auctionPrice) {
         this.auctionConfirmModal.show();
       } else {
-        alert(`您的信用额度不足以进行此次竞拍\n` + `您的信用额度为 ${user.creditLines} 元，当前出价为 ${this.auctionPrice} 元`);
+        alert(`您的信用额度不足以进行此次竞拍\n` + `您的总信用额度为 ${user.creditLines} 元，剩余信用额度为 ${user.remainCreditLines}，当前出价为 ${this.auctionPrice} 元`);
       }
     });
     this.auctionPriceSubmitButtonDisable = null;

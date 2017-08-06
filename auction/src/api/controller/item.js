@@ -114,12 +114,14 @@ export default class extends Base {
       value: value,
       status: this.model("bid").LEADING
     });
-    console.log("~~~~~~~~~~~~bidAction~~~~~~~~~~~~~~")
-    console.log(user)
     await this.model("item").where({ id: itemid }).update({
       currentBidder: userId
     });
 
+    user = await this.model("user").where({ id: userId}).find()
+    await this.model("user").where({ id:userId }).update({
+      remainCreditLines: user.remainCreditLines - value 
+    })
     //将新的价格数据返回给前端。
     let item = await this.model("item").setRelation(false).where({ id: itemid }).find();
 

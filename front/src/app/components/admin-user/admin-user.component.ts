@@ -10,6 +10,7 @@ import {ItemGroup} from "../../entities/itemGroup";
 import {REQUEST_HOST} from "../../app.config";
 import {AdminSearchComponent} from "../admin-search/admin-search.component";
 import {Address} from "../../entities/address";
+import {User} from '../../entities/User'
 
 let data = require('./data.json');
 
@@ -30,7 +31,7 @@ export class AdminUserComponent implements OnInit {
   public pageSize = 15;
 
   public selected = null;
-  public curr = new ItemGroup();
+  public curr = new User();
 
   public currAddresses:Array<Address>=[];
 
@@ -102,6 +103,7 @@ export class AdminUserComponent implements OnInit {
   }
 
   public onSubmit() {
+    this.curr.remainCreditLines=this.curr.creditLines
     if (this.selected != null) {
       //put
       this._http.post(this._requestUrl + '/rest/user/' + this.curr.id + '?_method=put', this.curr, {withCredentials: true})

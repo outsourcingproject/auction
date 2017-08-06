@@ -11,7 +11,7 @@ export default class Order extends Base {
       "user on user.id=order.user",
       "item on item.id=order.item"
     ];
-    this.field = "order.id,order.address,order.status,order.createAt,order.updateAt,order.price,user.id as uid,user.username,item.name,item.id as iid,item.tag as tag,expressNo,expressName";
+    this.field = "order.id,order.address,order.status,order.createAt,order.updateAt,order.price,user.id as uid, remainCreditLines ,user.username,item.name,item.id as iid,item.tag as tag,expressNo,expressName";
     return await super.__before();
   }
 }

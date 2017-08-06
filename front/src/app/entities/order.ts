@@ -8,6 +8,8 @@ export class Order {
               public name:string = null,
               public address:string = null,
               public status:number = null,
+              public remainCreditLines:number = null,
+              public price:number = null,
               public expressName:string = null,
               public expressNo:string = null,
               public createAt:number = +new Date(),

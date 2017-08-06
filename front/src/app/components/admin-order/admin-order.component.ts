@@ -93,6 +93,9 @@ export class AdminOrderComponent implements OnInit {
         this._getData();
         this.confirmPayModal.hide();
       })
+    this._http.post(this._requestHost + '/rest/user/' + this.selected.uid + '?_method=put', {remainCreditLines: this.selected.remainCreditLines+this.selected.price}, {withCredentials: true})
+      .subscribe(()=> {
+    });  
   }
 
   @ViewChild('deliveryGoodModal')

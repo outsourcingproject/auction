@@ -13,6 +13,7 @@
       <th>用户名</th>
       <th>邮箱</th>
       <th>信用额度</th>
+      <th>剩余额度</th>
       <th>创建时间</th>
       <th>操作</th>
     </tr>
@@ -22,6 +23,7 @@
       <td>{{i.username|clip:30}}</td>
       <td>{{i.email}}</td>
       <td>¥ {{i.creditLines}}</td>
+      <td>¥ {{i.remainCreditLines}}</td>
       <td>{{i.createAt|date}}</td>
       <td><a (click)="onModify(idx)">修改</a> <a (click)="onDel(idx)">删除</a></td>
     </tr>
