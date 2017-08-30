@@ -1,18 +1,16 @@
 <div class="detail">
   <div class="flex-row">
-    <div class="avatar"><img [src]="user.avatarUrl" alt="头像"></div>
     <div class="info">
       <h4 class="username">{{user.username}}</h4>
-      <div class="user-desc">{{user.desc}}</div>
     </div>
   </div>
   <div class="flex-row">
     <div class="tag">注册时间<span>{{user.createAt | date}}</span></div>
     <div class="tag">当前等级<span>{{user.level}}</span></div>
-    <div class="tag">信用额度<span>¥ {{user.creditLines}}</span></div>
+    <div class="tag">信用总额度<span>¥ {{user.creditLines}}</span></div>
   </div>
   <div class="flex-row">
-    <div class="tag">上一次登陆<span>{{user.lastLogin | date}}</span></div>
+    <div class="tag">剩余信用额度<span>¥ {{user.remainCreditLines}}</span></div>
     <div class="tag">累计交易量<span>{{user.totalVolume}}</span></div>
     <div class="tag">累计交易额<span>¥ {{user.totalTurnover}}</span></div>
   </div>

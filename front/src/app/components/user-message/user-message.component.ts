@@ -37,7 +37,15 @@ export class UserMessageComponent implements OnInit {
         .then();
     this.detailModal.show();
   }
-
+  public onMessageDel(msg){
+    let res = confirm("确认删除？")
+    if(res){
+      this._http.post(this._requestHost+"/rest/message/" + msg.id + '?_method=delete',{},{withCredentials: true}).toPromise()
+        .then(()=>{
+          this._getData()
+        })
+    }
+  }
   public onPagedDataChange(pagedData) {
     this.pagedData = pagedData;
   }
@@ -46,10 +54,13 @@ export class UserMessageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._getData()
+
+  }
+  private _getData(){
     this._userServer.getUser().flatMap((user)=> {
       return this._http.get(this._requestHost + '/rest/message?filter=' + JSON.stringify({to: user.id}), {withCredentials: true})
         .map((res)=>res.json().data);
     }).subscribe((data)=>this.data = data);
-
   }
 }

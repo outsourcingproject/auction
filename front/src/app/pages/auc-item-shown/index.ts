@@ -75,6 +75,7 @@ export class AucItemShown implements OnInit,OnDestroy {
   public groupData={};
 
   public auctionPrice;
+  public oldAuctionPrice;
   public imagesSelectedIdx;
   public tabsSelectedIdx;
   public relatedItems = [];
@@ -192,7 +193,7 @@ export class AucItemShown implements OnInit,OnDestroy {
 
     this._http.get(this._requestHost + '/api/item/get_bid?id=' + this.id, {withCredentials: true}).map((res)=>res.json().data)
       .subscribe((itemBids)=> {
-        this.itemBids = itemBids;
+        this.itemBids = itemBids.reverse();
       });
 
 
@@ -259,7 +260,7 @@ export class AucItemShown implements OnInit,OnDestroy {
         this._router.navigate(['/login']);
         return false;
       }
-      if(this.itemBids.length!=0&&this.itemBids[this.itemBids.length-1].userId==user.id){
+      if(this.itemBids.length!=0&&this.itemBids.reduce((i,j) => i.price > j.price ? i : j).userId==user.id){
          alert(`您的已经是当前最高出价者，不需要继续出价`);
       } else if (user.remainCreditLines > this.auctionPrice) {
         this.auctionConfirmModal.show();
@@ -286,6 +287,7 @@ export class AucItemShown implements OnInit,OnDestroy {
           if (data.id != 0) {
             this.data.currentPrice = data.newPrice;
             this.data.stage = data.newStage;
+            this.oldAuctionPrice = this.data.currentPrice
             this.auctionPrice = this.data.currentPrice + this.data.stage;
             this.auctionConfirmModal.hide();
             this.auctionSuccess.show();

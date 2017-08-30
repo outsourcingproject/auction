@@ -1,7 +1,15 @@
 <div class="header">
   <h2>订单列表</h2>
 </div>
-<admin-search [data]="data" (result)="searchedData=$event" [config]="{'name':2,'username':1}"></admin-search>
+<admin-search [data]="filtedData" (result)="searchedData=$event" [config]="{'name':2,'username':1}"></admin-search>
+<div class="input-group form-group">
+  <label class="input-group-addon" for="city">订单状态</label>
+  <select id="city" name="city" class="form-control" [(ngModel)]="filterOrderStatue" (change)="filterOrderStatueChange()"
+          required>
+    <option [value]="-1">全选</option>
+    <option *ngFor="let i of orderStatues;let idx=index" [value]="idx">{{i}}</option>
+  </select>
+</div>
 <table class="table">
   <thead>
   <tr>

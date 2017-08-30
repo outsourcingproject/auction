@@ -35,15 +35,15 @@
       <div class="content">
         <p *ngIf="user.email">绑定邮箱：{{user.email}}</p>
         <p *ngIf="user.phoneNum">联系电话：{{user.phoneNum}}</p>
-        <p *ngIf="user.age">年龄：{{user.age}}</p>
         <p *ngIf="user.name">真实姓名：{{user.name}}</p>
         <p *ngIf="user.idNum">身份证号码：{{user.idNum}}</p>
-        <p *ngIf="user.income != undefined">月收入：{{user.income}}</p>
+        <p *ngIf="user.birthday">年龄：{{user.birthday}}</p>
         <p >审核状态：{{user.checked | userCheckStatus}}</p>
 
-        <button class="btn btn-default" type="button" *ngIf="user.checked!=2" (click)="onClickShowUserInfo()">
+        <button class="btn btn-default" type="button"  (click)="onClickShowUserInfo()">
           {{user.checked==0?"完善":"修改"}}个人信息
         </button>
+        <div class="user-info-modify-warning" *ngIf="user.checked==2">您已审核通过，修改个人信息需要重新审核</div>
       </div>
     </div>
   </div>
@@ -104,11 +104,6 @@
                   required [(ngModel)]="userTemp.phoneNum" name="phoneNum">
           </div>
           <div class="input-group form-group">
-            <label for="age" class="input-group-addon">年龄：　　　　</label>
-            <input id="age" type="number" class="form-control"
-                  required [(ngModel)]="userTemp.age" name="age">
-          </div>
-          <div class="input-group form-group">
             <label for="name" class="input-group-addon">真实姓名：　　</label>
             <input id="name" type="text" class="form-control"
                   required [(ngModel)]="userTemp.name" name="name">
@@ -121,11 +116,10 @@
           </div>
 
           <div class="input-group form-group">
-            <label for="income" class="input-group-addon">月收入（元）：</label>
-            <input id="income" type="text" class="form-control"
-                  required [(ngModel)]="userTemp.income" name="income">
+            <label for="birthday" class="input-group-addon">出生日期(年/月/日)：　</label>
+            <input id="birthday" type="text" class="form-control"
+                  required [(ngModel)]="userTemp.birthday" name="birthday">
           </div>
-
 
           <div class="submit-button-wrapper">
             <button class="btn btn-default" 

@@ -7,6 +7,7 @@ import {AdminItemComponent} from "../../components/admin-item";
 import {AdminArticleComponent} from "../../components/admin-article";
 import {AdminOverviewComponent} from "../../components/admin-overview";
 import {AdminItemGroupComponent} from "../../components/admin-item-group";
+import {AdminMessageComponent} from "../../components/admin-message"
 import {AdminUserComponent} from "../../components/admin-user";
 
 export const adminRoutes:RouterConfig = [
@@ -21,7 +22,7 @@ export const adminRoutes:RouterConfig = [
       {path: 'item', component: AdminItemComponent},
       {path: 'item-group', component: AdminItemGroupComponent},
       {path: 'order', component: AdminOrderComponent},
-      {path: 'message', component: Todo /*AdminMessageComponent*/},
+      {path: 'message', component: AdminMessageComponent},
       {path: 'user', component: AdminUserComponent /*AdminUserComponent*/},
     ]
   },

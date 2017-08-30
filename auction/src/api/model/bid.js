@@ -52,7 +52,7 @@ export default class Bid extends Base {
       let bidId = await this.add(bid);
       let item = await itemModel.where({id:bid.item}).find();
       //发送暂时领先系统消息
-      await messageModel.sendSystemMessage([{from:userModel.systemUser, to:bid.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[bid.status], read:0}])
+      await messageModel.sendSystemMessage([{from:userModel.systemUser, to:bid.user, title:"系统消息：您的出价领先", content:"您的商品"+item.name+this.STATUS[bid.status], read:0}])
 
       //更新被超越竞标记录的状态
 
@@ -61,7 +61,7 @@ export default class Bid extends Base {
       await this.where({value:{"<":bid.value},item:bid.item})
                 .update({status:this.FALLING});
       //给被超越竞标记录的用户发送消息
-      let messages = bids.map((b)=>{return {from:userModel.systemUser, to:b.user, title:"系统消息", content:"您的商品"+item.name+this.STATUS[3], read:0}});
+      let messages = bids.map((b)=>{return {from:userModel.systemUser, to:b.user, title:"系统消息：您的出价被超越", content:"您的商品"+item.name+this.STATUS[3], read:0}});
       if(!think.isEmpty(messages)){
           await messageModel.sendSystemMessage(messages);   
       }
